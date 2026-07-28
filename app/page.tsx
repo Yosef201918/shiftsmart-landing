@@ -6,8 +6,13 @@ import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import MotionProvider from "@/components/MotionProvider";
+import PhoneShowcase from "@/components/PhoneShowcase";
 import StickyCta from "@/components/StickyCta";
 
+/*
+ * סדר הקריאה זהה במובייל ובדסקטופ:
+ * כותרת ופעולות → מדריך ההצטרפות → מוקאפ האפליקציה → יכולות → גלריה → שאלות.
+ */
 export default function Home() {
   return (
     <>
@@ -17,6 +22,7 @@ export default function Home() {
         <main className="relative z-10 flex-1">
           <Hero />
           <BetaSteps />
+          <PhoneShowcase />
           <Features />
           <AppCarousel />
           <Faq />
