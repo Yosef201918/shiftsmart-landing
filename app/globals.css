@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   Shift Smart — Design Tokens
+   שפה עיצובית: "לוח מכשירים" — שחור עמוק, זכוכית מטושטשת וקריאות ניאון ירוקות,
+   עם ענבר כמבטא משני שנשמר לאזהרות ולתוכן פרימיום בלבד.
+   ========================================================================= */
+
+@theme {
+  /* משטחים */
+  --color-void: #03060b;
+  --color-abyss: #060b13;
+  --color-panel: #0a111b;
+
+  /* קווי מתאר */
+  --color-hair: #1a2734;
+  --color-hair-lit: #2b4457;
+
+  /* ניאון — המבטא הראשי */
+  --color-neon: #5cff9d;
+  --color-neon-soft: #a6ffcb;
+  --color-neon-deep: #0b7a45;
+
+  /* ענבר — מבטא משני, במינון נמוך */
+  --color-amber: #ffc24d;
+  --color-amber-soft: #ffdb94;
+  --color-amber-deep: #6b4d10;
+
+  /* טיפוגרפיה */
+  --color-chalk: #eef4f2;
+  --color-mist: #9db0ab;
+
+  /* צללים */
+  --shadow-panel: 0 24px 60px -24px rgb(0 0 0 / 0.9);
+  --shadow-neon: 0 0 28px -6px rgb(92 255 157 / 0.5);
+  --shadow-device:
+    0 45px 90px -32px rgb(0 0 0 / 0.95), 0 0 70px -20px rgb(92 255 157 / 0.4),
+    inset 0 1px 0 0 rgb(255 255 255 / 0.14);
+}
+
+/* משתני הגופנים מגיעים מ-next/font ולכן חייבים להישאר inline */
+@theme inline {
+  --font-display: var(--font-secular-one);
+  --font-sans: var(--font-heebo);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-chalk);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-neon);
+    color: #021309;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-neon);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* פס גלילה תואם לערכת הצבעים */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-hair);
+    border-radius: 999px;
+    border: 2px solid var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-hair-lit);
+  }
+}
+
+/* =========================================================================
+   Components — זכוכית, מסגרות טכניות וזוהר
+   ========================================================================= */
+
+@layer components {
+  /* לוח זכוכית: שכבת שקיפות + טשטוש + הבהקה עליונה פנימית */
+  .panel {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid color-mix(in oklab, var(--color-hair) 90%, transparent);
+    background:
+      linear-gradient(
+        155deg,
+        rgb(255 255 255 / 0.07) 0%,
+        rgb(255 255 255 / 0.02) 38%,
+        rgb(255 255 255 / 0) 72%
+      ),
+      rgb(4 8 14 / 0.55);
+    -webkit-backdrop-filter: blur(16px) saturate(135%);
+    backdrop-filter: blur(16px) saturate(135%);
+    box-shadow:
+      var(--shadow-panel),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.07);
+  }
+
+  /*
+   * קצה זכוכית "תופס אור": הילה בעובי פיקסל אחד בלבד שנוצרת מגרדיאנט
+   * וממוסכת לטבעת בעזרת mask-composite. זה מה שנותן לכרטיס את התחושה
+   * של זכוכית אמיתית במקום מסגרת שטוחה בצבע אחיד.
+   *
+   * אזהרה: .edge-lit תופסת את ::before, בדיוק כמו .brackets — אסור להשתמש
+   * בשתיהן על אותו אלמנט. שילוב עם .panel-rail (שתופסת ::after) תקין.
+   */
+  .edge-lit::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      145deg,
+      rgb(255 255 255 / 0.28) 0%,
+      rgb(255 255 255 / 0.05) 34%,
+      rgb(255 255 255 / 0) 62%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* פס ניאון דק בראש הכרטיס שנדלק במעבר עכבר */
+  .panel-rail::after {
+    content: "";
+    position: absolute;
+    inset-block-start: -1px;
+    inset-inline: 1.75rem;
+    height: 1px;
+    background: linear-gradient(
+      to left,
+      transparent,
+      var(--color-neon),
+      transparent
+    );
+    opacity: 0.22;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+  }
+  .panel-rail:hover::after,
+  .panel-rail:focus-within::after {
+    opacity: 1;
+  }
+
+  /* סימני פינה טכניים — משתמשים בתכונות לוגיות כדי לכבד RTL */
+  .brackets::before,
+  .brackets::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
+    border-color: color-mix(in oklab, var(--color-neon) 60%, transparent);
+  }
+  .brackets::before {
+    inset-block-start: -1px;
+    inset-inline-start: -1px;
+    border-block-start: 1px solid;
+    border-inline-start: 1px solid;
+  }
+  .brackets::after {
+    inset-block-end: -1px;
+    inset-inline-end: -1px;
+    border-block-end: 1px solid;
+    border-inline-end: 1px solid;
+  }
+
+  /* זוהר טקסט ניאון */
+  .neon-glow {
+    text-shadow:
+      0 0 18px rgb(92 255 157 / 0.55),
+      0 0 64px rgb(92 255 157 / 0.22);
+  }
+
+  /* קו הפרדה דק ומדורג */
+  .rule-hair {
+    height: 1px;
+    background: linear-gradient(
+      to left,
+      transparent,
+      var(--color-hair-lit),
+      transparent
+    );
+  }
+
+  /* רשת "לוח מעגלים" שנשענת על תמונת הרקע */
+  .grid-weave {
+    background-image:
+      linear-gradient(to left, rgb(92 255 157 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(92 255 157 / 0.045) 1px, transparent 1px);
+    background-size: 68px 68px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 85% 60% at 50% 0%,
+      #000 30%,
+      transparent 78%
+    );
+    mask-image: radial-gradient(
+      ellipse 85% 60% at 50% 0%,
+      #000 30%,
+      transparent 78%
+    );
+  }
+}
+
+/* =========================================================================
+   Motion
+   הופעת אלמנטים בגלילה מנוהלת ע"י framer-motion (ראה lib/motion.ts).
+   כאן נשארות רק אנימציות אווירה רציפות.
+   ========================================================================= */
+
+@keyframes beacon {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(92 255 157 / 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgb(92 255 157 / 0);
+  }
+}
+
+@keyframes haze {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate3d(0, -18px, 0) scale(1.06);
+  }
+}
+
+@layer components {
+  .beacon {
+    animation: beacon 2.4s ease-out infinite;
+  }
+  .haze {
+    animation: haze 14s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
