@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo, JetBrains_Mono, Secular_One } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 /* גופן גוף — Heebo תומך בעברית ובעל טווח משקלים מלא */
@@ -80,6 +81,9 @@ export default function RootLayout({
           />
         </noscript>
         {children}
+
+        {/* Vercel Web Analytics — נטען רק בפרודקשן ואינו מרנדר DOM */}
+        <Analytics />
       </body>
     </html>
   );

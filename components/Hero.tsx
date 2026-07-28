@@ -57,10 +57,10 @@ export default function Hero() {
 
         {/*
           פריסה א-סימטרית: עמודת הטקסט רחבה יותר ומוסטת כלפי מעלה,
-          והמכשיר יושב נמוך יותר ובזווית — כדי שהקומפוזיציה לא תיראה כמו
-          שתי עמודות שוות שנשפכו לתוך גריד.
+          והמכשיר יושב נמוך יותר ובזווית. במובייל המרווח בין הטקסט למכשיר
+          גדול במיוחד כדי שהבלוקים לא ייראו דבוקים זה לזה.
         */}
-        <div className="mt-14 grid gap-20 lg:mt-20 lg:grid-cols-12 lg:items-start lg:gap-8">
+        <div className="mt-14 grid gap-24 sm:gap-28 lg:mt-20 lg:grid-cols-12 lg:items-start lg:gap-8">
           {/* ---------- עמודת הטקסט ---------- */}
           <motion.div
             className="lg:col-span-7 lg:pt-6"
@@ -78,15 +78,16 @@ export default function Hero() {
             </motion.p>
 
             {/*
-              שתי השורות באותו גודל בדיוק — ההיררכיה נוצרת ממשקל, מגופן ומצבע
-              ולא מקפיצת גודל. זה מה שגורם לכותרת להיקרא כיחידה אחת מאוזנת
-              במקום כשתי כותרות נפרדות שהודבקו.
+              שתי השורות באותו גודל בדיוק — ההיררכיה נוצרת ממשקל, מגופן ומצבע.
+              במובייל הגודל הוא 1.75rem ולא text-3xl: ב-text-3xl השורה הראשונה
+              נמדדה 324px בתוך מיכל של 335px, כלומר נשברה בכל מסך צר יותר.
+              text-balance מחלק את השורות באופן שווה אם בכל זאת נדרשת שבירה.
             */}
-            <motion.h1 className="mt-6" variants={fadeUp}>
-              <span className="block text-3xl font-extralight leading-tight tracking-tight text-chalk sm:text-4xl lg:text-5xl">
+            <motion.h1 className="mt-6 text-balance" variants={fadeUp}>
+              <span className="block text-[1.75rem] font-extralight leading-tight tracking-tight text-chalk sm:text-4xl lg:text-5xl">
                 קורעים את התחת במשמרות?
               </span>
-              <span className="neon-glow mt-1.5 block font-display text-3xl leading-tight text-neon sm:text-4xl lg:text-5xl">
+              <span className="neon-glow mt-1.5 block font-display text-[1.75rem] leading-tight text-neon sm:text-4xl lg:text-5xl">
                 מצאתי לכם את הפתרון!
               </span>
             </motion.h1>
@@ -107,23 +108,18 @@ export default function Hero() {
             </motion.p>
 
             {/*
-              ---------- פעולות ----------
-              items-center מונע מ-align-items: stretch למתוח את הפריטים לגובה
-              השורה, ו-shrink-0 מונע את המעיכה האופקית כשהמקום נהיה צר.
+              ---------- קבוצת הפעולות ----------
+              במובייל שני הכפתורים ברוחב מלא וזהה, כך שהם נקראים כזוג מאוזן.
+              המשני מקבל רקע זכוכית ומסגרת כדי שייראה ככפתור ולא כטקסט.
             */}
             <motion.div
-              className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+              className="mt-9 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center sm:gap-4"
               variants={fadeUp}
             >
-              {/*
-                כפתור CSS רגיל במקום נכס גרפי: אין לו מימדים אינטרינזיים
-                שיכולים לקרוס בתוך flexbox, הרוחב נגזר מהתוכן והגובה קבוע —
-                ולכן פיזית אי אפשר שייראה מעוך או מתוח.
-              */}
               <a
                 href={PLAY_STORE_URL}
                 {...EXTERNAL_LINK_PROPS}
-                className="group inline-flex h-14 shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)]"
+                className="group inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] sm:w-auto"
               >
                 <Download className="size-5 shrink-0" strokeWidth={2.25} />
                 הורדה מ-Google Play
@@ -136,7 +132,7 @@ export default function Hero() {
               <a
                 href={BETA_GROUP_URL}
                 {...EXTERNAL_LINK_PROPS}
-                className="inline-flex h-14 shrink-0 items-center justify-center gap-2.5 rounded-xl border border-hair px-7 text-base text-chalk transition duration-300 hover:border-hair-lit hover:bg-abyss/60"
+                className="panel inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl px-7 font-display text-base text-chalk transition duration-300 hover:-translate-y-0.5 hover:border-neon-deep hover:text-neon sm:w-auto"
               >
                 <Users className="size-5 shrink-0 text-neon" strokeWidth={1.75} />
                 הצטרפו לבטא הסגורה
