@@ -50,6 +50,17 @@
    ========================================================================= */
 
 @layer base {
+  html,
+  body {
+    /*
+     * רשת ביטחון נגד גלילה אופקית. clip עדיף על hidden כי הוא לא יוצר
+     * מיכל גלילה חדש, ולכן לא שובר position: sticky ולא את הגלילה החלקה.
+     * ההצהרה הראשונה היא נפילה אחורה לדפדפנים שלא מכירים clip.
+     */
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
   html {
     color-scheme: dark;
     scroll-behavior: smooth;

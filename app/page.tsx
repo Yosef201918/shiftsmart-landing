@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import MotionProvider from "@/components/MotionProvider";
 import PhoneShowcase from "@/components/PhoneShowcase";
+import Roadmap from "@/components/Roadmap";
 import StickyCta from "@/components/StickyCta";
 
 /*
@@ -25,6 +26,7 @@ export default function Home() {
           <PhoneShowcase />
           <Features />
           <AppCarousel />
+          <Roadmap />
           <Faq />
         </main>
 
