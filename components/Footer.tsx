@@ -1,3 +1,5 @@
+"use client";
+
 import { Clock4, Download, Mail, Users, type LucideIcon } from "lucide-react";
 
 import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons";
@@ -8,35 +10,20 @@ import {
   EXTERNAL_LINK_PROPS,
   PLAY_STORE_URL,
 } from "@/lib/links";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 type FooterLink = {
   label: string;
   href: string;
   icon: LucideIcon;
-  /** קישור פנימי כמו mailto לא נפתח בלשונית חדשה */
   external: boolean;
+  /**
+   * מכריח דיר LTR על כתובת המייל בלבד — היא תמיד תווים לטיניים ללא קשר
+   * לשפת הממשק. שני הקישורים המתורגמים האחרים לא צריכים דיר משלהם;
+   * הם יורשים אותו מ-<html> ומתהפכים ממילא נכון בכל שפה.
+   */
+  forceLtr?: boolean;
 };
-
-const FOOTER_LINKS: FooterLink[] = [
-  {
-    label: "הורדה מ‑Google Play",
-    href: PLAY_STORE_URL,
-    icon: Download,
-    external: true,
-  },
-  {
-    label: "קבוצת הבודקים",
-    href: BETA_GROUP_URL,
-    icon: Users,
-    external: true,
-  },
-  {
-    label: CONTACT_EMAIL,
-    href: CONTACT_MAILTO,
-    icon: Mail,
-    external: false,
-  },
-];
 
 type SocialLink = {
   label: string;
@@ -46,30 +33,54 @@ type SocialLink = {
   hover: string;
 };
 
-/*
- * הקישורים החברתיים עדיין מצביעים ל-"#" עד שיהיו עמודים אמיתיים.
- * במעבר עכבר האייקון והמסגרת נצבעים בצבע המותג ומקבלים הילה תואמת.
- */
-const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: "עמוד הפייסבוק של Shift Smart",
-    href: "#",
-    Icon: FacebookIcon,
-    hover:
-      "hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_24px_-6px_#1877F2]",
-  },
-  {
-    label: "עמוד האינסטגרם של Shift Smart",
-    href: "#",
-    Icon: InstagramIcon,
-    hover:
-      "hover:border-[#E1306C] hover:text-[#E1306C] hover:shadow-[0_0_24px_-6px_#E1306C]",
-  },
-];
-
 export default function Footer() {
+  const { t } = useLanguage();
+
   /* נקבע בזמן הבנייה — מונע פער בין רינדור השרת לרינדור הלקוח */
   const year = new Date().getFullYear();
+
+  const footerLinks: FooterLink[] = [
+    {
+      label: t.footer.linkPlayStore,
+      href: PLAY_STORE_URL,
+      icon: Download,
+      external: true,
+    },
+    {
+      label: t.footer.linkBetaGroup,
+      href: BETA_GROUP_URL,
+      icon: Users,
+      external: true,
+    },
+    {
+      label: CONTACT_EMAIL,
+      href: CONTACT_MAILTO,
+      icon: Mail,
+      external: false,
+      forceLtr: true,
+    },
+  ];
+
+  /*
+   * הקישורים החברתיים עדיין מצביעים ל-"#" עד שיהיו עמודים אמיתיים.
+   * במעבר עכבר האייקון והמסגרת נצבעים בצבע המותג ומקבלים הילה תואמת.
+   */
+  const socialLinks: SocialLink[] = [
+    {
+      label: t.footer.socialFacebookAria,
+      href: "#",
+      Icon: FacebookIcon,
+      hover:
+        "hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_24px_-6px_#1877F2]",
+    },
+    {
+      label: t.footer.socialInstagramAria,
+      href: "#",
+      Icon: InstagramIcon,
+      hover:
+        "hover:border-[#E1306C] hover:text-[#E1306C] hover:shadow-[0_0_24px_-6px_#E1306C]",
+    },
+  ];
 
   return (
     <footer className="relative z-10 px-5 pb-10 sm:px-8 lg:px-12">
@@ -84,18 +95,20 @@ export default function Footer() {
                 <Clock4 className="size-5 text-neon" strokeWidth={1.75} />
               </span>
               <div>
-                <p className="font-display text-base text-chalk">Shift Smart</p>
-                <p className="text-sm text-mist">
-                  ניהול משמרות ושעון נוכחות חכם
+                <p className="font-display text-base text-chalk">
+                  {t.brand.name}
                 </p>
+                <p className="text-sm text-mist">{t.footer.tagline}</p>
               </div>
             </div>
 
             {/* ---------- רשתות חברתיות ---------- */}
             <div className="mt-7">
-              <p className="text-xs tracking-wide text-mist">עקבו אחרינו</p>
+              <p className="text-xs tracking-wide text-mist">
+                {t.footer.followUs}
+              </p>
               <ul className="mt-3 flex items-center gap-3">
-                {SOCIAL_LINKS.map(({ label, href, Icon, hover }) => (
+                {socialLinks.map(({ label, href, Icon, hover }) => (
                   <li key={label}>
                     <a
                       href={href}
@@ -111,10 +124,9 @@ export default function Footer() {
           </div>
 
           {/* ---------- קישורים ויצירת קשר ---------- */}
-          <nav aria-label="קישורים ויצירת קשר">
-            <p className="text-xs tracking-wide text-mist">קישורים</p>
+          <nav aria-label={t.footer.linksAriaLabel}>
             <ul className="mt-3 flex flex-col gap-3">
-              {FOOTER_LINKS.map(({ label, href, icon: Icon, external }) => (
+              {footerLinks.map(({ label, href, icon: Icon, external, forceLtr }) => (
                 <li key={label}>
                   <a
                     href={href}
@@ -125,7 +137,7 @@ export default function Footer() {
                       className="size-4 shrink-0 transition duration-300 group-hover:text-neon"
                       strokeWidth={1.75}
                     />
-                    <span dir={external ? "rtl" : "ltr"}>{label}</span>
+                    <span dir={forceLtr ? "ltr" : undefined}>{label}</span>
                   </a>
                 </li>
               ))}
@@ -136,8 +148,7 @@ export default function Footer() {
         <div className="rule-hair mt-12" />
 
         <p className="mt-6 text-xs leading-relaxed text-mist/70">
-          © {year} Shift Smart. כל הזכויות שמורות. האפליקציה נמצאת בשלב בטא
-          סגורה והתכונות עשויות להשתנות.
+          {t.footer.copyright(year)}
         </p>
       </div>
     </footer>

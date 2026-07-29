@@ -15,11 +15,14 @@ import {
 } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-type Feature = {
+/*
+ * מיקום, צורה ומבטא הם עיצוב קבוע שאינו תלוי שפה — רק הכותרת והתיאור
+ * מגיעים מהמילון, לפי אותו סדר אינדקסים בדיוק ב-t.features.items.
+ */
+type FeatureMeta = {
   icon: LucideIcon;
-  title: string;
-  description: string;
   /** מיקום בגריד בן 6 העמודות (דסקטופ) */
   area: string;
   /** צורת הכרטיס — משפיעה על סידור פנימי, גודל אייקון וטיפוגרפיה */
@@ -39,78 +42,30 @@ type Feature = {
  *   שורה 3:  E(2 רחב, 2 גבוה) | F(2) | G(2)
  *   שורה 4:  E ממשיך          | H(2) | I(2)
  */
-const FEATURES: Feature[] = [
-  {
-    icon: FingerprintPattern,
-    title: "החתמה בטביעת אצבע",
-    description: "כניסה ויציאה קלה ומאובטחת.",
-    area: "lg:col-span-2 lg:row-span-2",
-    shape: "tall",
-  },
-  {
-    icon: Calculator,
-    title: "מחשבון שכר וטיפים",
-    description: "שעות נוספות, שבתות וחגים – הכל אוטומטי.",
-    area: "lg:col-span-4",
-    shape: "wide",
-    accent: "neon",
-  },
-  {
-    icon: CalendarSync,
-    title: "יומן משמרות חכם",
-    description:
-      "יומן ייעודי בתוך האפליקציה פלוס סנכרון אוטומטי ליומן Google.",
-    area: "lg:col-span-2",
-    shape: "standard",
-  },
-  {
-    icon: Volume2,
-    title: "חיווי קולי",
-    description: 'צליל "ביפ" בכל החתמה.',
-    area: "lg:col-span-2",
-    shape: "standard",
-  },
-  {
-    icon: DatabaseBackup,
-    title: "דוחות וגיבוי",
-    description: "סיכום חודשי מפורט, ייצוא לוואטסאפ/PDF, ומערכת גיבוי.",
-    area: "lg:col-span-2 lg:row-span-2",
-    shape: "tall",
-  },
-  {
-    icon: MapPinned,
-    title: "וידוא מיקום חכם",
-    description: "שמירה מדויקת של תחילת המשמרת.",
-    area: "lg:col-span-2",
-    shape: "standard",
-  },
-  {
-    icon: BatteryCharging,
-    title: "חיסכון בסוללה ופרטיות",
-    description: "עיצוב כהה, נתונים נשארים אך ורק במכשיר שלכם.",
-    area: "lg:col-span-2",
-    shape: "standard",
-  },
-  {
-    icon: Briefcase,
-    title: "ניהול משרות",
-    description:
-      "תמיכה במספר מקומות עבודה, כולל הגדרת משמרות בוקר/צהריים/ערב/לילה.",
-    area: "lg:col-span-2",
-    shape: "standard",
-  },
-  {
-    icon: Crown,
-    title: "תכונות פרימיום",
-    description: "חינם למשתמשי בטא כמו ייצוא ל-PDF ועוד...",
-    area: "lg:col-span-2",
-    shape: "standard",
-    accent: "amber",
-  },
+const FEATURE_META: [
+  FeatureMeta,
+  FeatureMeta,
+  FeatureMeta,
+  FeatureMeta,
+  FeatureMeta,
+  FeatureMeta,
+  FeatureMeta,
+  FeatureMeta,
+  FeatureMeta,
+] = [
+  { icon: FingerprintPattern, area: "lg:col-span-2 lg:row-span-2", shape: "tall" },
+  { icon: Calculator, area: "lg:col-span-4", shape: "wide", accent: "neon" },
+  { icon: CalendarSync, area: "lg:col-span-2", shape: "standard" },
+  { icon: Volume2, area: "lg:col-span-2", shape: "standard" },
+  { icon: DatabaseBackup, area: "lg:col-span-2 lg:row-span-2", shape: "tall" },
+  { icon: MapPinned, area: "lg:col-span-2", shape: "standard" },
+  { icon: BatteryCharging, area: "lg:col-span-2", shape: "standard" },
+  { icon: Briefcase, area: "lg:col-span-2", shape: "standard" },
+  { icon: Crown, area: "lg:col-span-2", shape: "standard", accent: "amber" },
 ];
 
-/** מיפוי צורה → סידור פנימי, ריווח, מידות אייקון וטיפוגרפיה */
-const SHAPE_STYLES = {
+/** מיפוי גודל → סידור פנימי, ריווח, מידות אייקון וטיפוגרפיה */
+const SIZE_STYLES = {
   tall: {
     card: "flex-col p-8",
     iconBox: "size-16 rounded-2xl",
@@ -161,6 +116,8 @@ const ACCENT_STYLES = {
 } as const;
 
 export default function Features() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="features"
@@ -179,14 +136,16 @@ export default function Features() {
             className="font-mono text-xs tracking-[0.3em] text-neon-deep"
             variants={fadeUp}
           >
-            01 — 09
+            {t.features.kicker}
           </motion.p>
           <motion.h2
             className="mt-4 text-3xl font-extralight leading-tight text-chalk sm:text-4xl"
             variants={fadeUp}
           >
-            כל מה שיש{" "}
-            <span className="font-display font-normal text-neon">בפנים</span>
+            {t.features.titlePrefix}
+            <span className="font-display font-normal text-neon">
+              {t.features.titleHighlight}
+            </span>
           </motion.h2>
         </motion.div>
 
@@ -198,50 +157,49 @@ export default function Features() {
           whileInView="visible"
           viewport={VIEWPORT_ONCE}
         >
-          {FEATURES.map(
-            ({ icon: Icon, title, description, area, shape, accent }) => {
-              const form = SHAPE_STYLES[shape];
-              const tone = ACCENT_STYLES[accent ?? "none"];
+          {FEATURE_META.map(({ icon: Icon, area, shape, accent }, index) => {
+            const { title, description } = t.features.items[index];
+            const form = SIZE_STYLES[shape];
+            const tone = ACCENT_STYLES[accent ?? "none"];
 
-              return (
-                <motion.article
-                  key={title}
-                  variants={fadeUp}
-                  /*
-                   * ההרמה ב-hover מנוהלת ע"י framer-motion ולא ע"י Tailwind:
-                   * framer-motion כותב transform ישירות ל-style, ולכן מחלקת
-                   * hover:-translate-y של Tailwind הייתה נדרסת ולא עובדת.
-                   */
-                  whileHover={{
-                    y: -6,
-                    transition: { duration: 0.3, ease: "easeOut" },
-                  }}
-                  /* edge-lit תופסת ::before ו-panel-rail תופסת ::after — אין התנגשות */
-                  className={`panel panel-rail edge-lit group flex rounded-2xl transition-colors duration-500 hover:border-hair-lit ${form.card} ${area} ${tone.card}`}
+            return (
+              <motion.article
+                key={title}
+                variants={fadeUp}
+                /*
+                 * ההרמה ב-hover מנוהלת ע"י framer-motion ולא ע"י Tailwind:
+                 * framer-motion כותב transform ישירות ל-style, ולכן מחלקת
+                 * hover:-translate-y של Tailwind הייתה נדרסת ולא עובדת.
+                 */
+                whileHover={{
+                  y: -6,
+                  transition: { duration: 0.3, ease: "easeOut" },
+                }}
+                /* edge-lit תופסת ::before ו-panel-rail תופסת ::after — אין התנגשות */
+                className={`panel panel-rail edge-lit group flex rounded-2xl transition-colors duration-500 hover:border-hair-lit ${form.card} ${area} ${tone.card}`}
+              >
+                <span
+                  className={`flex shrink-0 items-center justify-center border transition duration-500 ${form.iconBox} ${tone.iconBox}`}
                 >
-                  <span
-                    className={`flex shrink-0 items-center justify-center border transition duration-500 ${form.iconBox} ${tone.iconBox}`}
-                  >
-                    <Icon
-                      className={`${form.icon} ${tone.icon}`}
-                      strokeWidth={1.6}
-                    />
-                  </span>
+                  <Icon
+                    className={`${form.icon} ${tone.icon}`}
+                    strokeWidth={1.6}
+                  />
+                </span>
 
-                  <div className={form.body}>
-                    <h3 className={`leading-snug ${form.title} ${tone.title}`}>
-                      {title}
-                    </h3>
-                    <p
-                      className={`leading-relaxed text-mist ${form.description}`}
-                    >
-                      {description}
-                    </p>
-                  </div>
-                </motion.article>
-              );
-            },
-          )}
+                <div className={form.body}>
+                  <h3 className={`leading-snug ${form.title} ${tone.title}`}>
+                    {title}
+                  </h3>
+                  <p
+                    className={`leading-relaxed text-mist ${form.description}`}
+                  >
+                    {description}
+                  </p>
+                </div>
+              </motion.article>
+            );
+          })}
         </motion.div>
       </div>
     </section>

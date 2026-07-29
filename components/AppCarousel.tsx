@@ -7,68 +7,62 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-type Shot = {
+type ShotMeta = {
   /** שם הקובץ נשמר כפי שהוא, כולל הרווח — next/image מקודד אותו בעצמו */
   src: string;
   width: number;
   height: number;
-  alt: string;
 };
 
 /*
  * המידות אמיתיות ונלקחו מהקבצים עצמם. הן חשובות פעמיים:
  * גם למניעת קפיצת פריסה בזמן טעינה, וגם כדי שרוחב כל שקופית ייגזר
  * מיחס הגובה-רוחב שלה — כך הקרוסלה נמדדת נכון עוד לפני שהתמונות ירדו.
+ * טקסט ה-alt של כל שקופית מגיע מהמילון לפי אותו אינדקס.
  */
-const SHOTS: Shot[] = [
-  {
-    src: "/Screenshot 1.jpg",
-    width: 1080,
-    height: 2525,
-    alt: "מסך שעון הנוכחות: כפתור הפעלת שעון בטביעת אצבע, בחירת משרה, תעריף לשעה וצבירה במשמרת",
-  },
-  {
-    src: "/Screenshot 2.jpg",
-    width: 1080,
-    height: 2340,
-    alt: "מסך ההגדרות: מצב לילה, בחירת שפת האפליקציה בין עברית לאנגלית וחיסכון סוללה מקסימלי למסכי AMOLED",
-  },
-  {
-    src: "/Screenshot 3.jpg",
-    width: 1080,
-    height: 2340,
-    alt: "מסך המשרות: רשימת מקומות עבודה עם תעריף לשעה, החזר נסיעות ומיקום שמור לכל משרה",
-  },
-  {
-    src: "/Screenshot 4.jpg",
-    width: 1080,
-    height: 3389,
-    alt: "מסך ההיסטוריה: ייצוא דוח חודשי ל-PDF ולוואטסאפ, ורשימת משמרות עם תאריך, שעות ושכר לכל משמרת",
-  },
-  {
-    src: "/Screenshot 5.jpg",
-    width: 1080,
-    height: 2466,
-    alt: "מסך היומן: לוח חודשי עם סימון ימי עבודה והוספת משמרת מתוכננת מראש",
-  },
-  {
-    src: "/Screenshot 6.jpg",
-    width: 1080,
-    height: 2768,
-    alt: "מסך הסיכום החודשי: סך הרווח לחודש, שכר נטו משוער, התקדמות מול יעד חודשי ופילוח לפי משרה",
-  },
+const SHOT_META: [
+  ShotMeta,
+  ShotMeta,
+  ShotMeta,
+  ShotMeta,
+  ShotMeta,
+  ShotMeta,
+] = [
+  { src: "/Screenshot 1.jpg", width: 1080, height: 2525 },
+  { src: "/Screenshot 2.jpg", width: 1080, height: 2340 },
+  { src: "/Screenshot 3.jpg", width: 1080, height: 2340 },
+  { src: "/Screenshot 4.jpg", width: 1080, height: 3389 },
+  { src: "/Screenshot 5.jpg", width: 1080, height: 2466 },
+  { src: "/Screenshot 6.jpg", width: 1080, height: 2768 },
 ];
 
 export default function AppCarousel() {
+  const { dir, t } = useLanguage();
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    direction: "rtl",
+    direction: dir,
     loop: true,
     align: "center",
     skipSnaps: false,
   });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  /*
+   * embla קורא את direction רק בהקמה הראשונית. כשהמשתמש מחליף שפה
+   * (ומכאן dir), חייבים לאתחל מחדש את המנוע כדי שהחישוב הפנימי של
+   * הגלילה (סימן ה-scrollLeft וכו') יתאים לכיוון החדש.
+   */
+  useEffect(() => {
+    emblaApi?.reInit({
+      direction: dir,
+      loop: true,
+      align: "center",
+      skipSnaps: false,
+    });
+  }, [dir, emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -118,36 +112,39 @@ export default function AppCarousel() {
               className="font-mono text-xs tracking-[0.3em] text-neon-deep"
               variants={fadeUp}
             >
-              GALLERY
+              {t.gallery.kicker}
             </motion.p>
             <motion.h2
               className="mt-4 text-3xl font-extralight leading-tight text-chalk sm:text-4xl"
               variants={fadeUp}
             >
-              הצצה{" "}
+              {t.gallery.titlePrefix}
               <span className="font-display font-normal text-neon">
-                לאפליקציה
+                {t.gallery.titleHighlight}
               </span>
             </motion.h2>
           </div>
 
-          {/* חצי ניווט — במסכי מגע אפשר פשוט להחליק */}
+          {/*
+            חצי ניווט — מבוססים על rtl:rotate-180 של Tailwind, שמתהפך
+            אוטומטית לפי dir/lang של <html>. במסכי מגע אפשר פשוט להחליק.
+          */}
           <motion.div className="flex items-center gap-3" variants={fadeUp}>
             <button
               type="button"
               onClick={scrollPrev}
-              aria-label="המסך הקודם"
+              aria-label={t.gallery.prevAria}
               className="panel flex size-11 items-center justify-center rounded-full text-chalk transition duration-300 hover:border-neon-deep hover:text-neon"
             >
-              <ChevronRight className="size-5" strokeWidth={2} />
+              <ChevronLeft className="size-5 rtl:rotate-180" strokeWidth={2} />
             </button>
             <button
               type="button"
               onClick={scrollNext}
-              aria-label="המסך הבא"
+              aria-label={t.gallery.nextAria}
               className="panel flex size-11 items-center justify-center rounded-full text-chalk transition duration-300 hover:border-neon-deep hover:text-neon"
             >
-              <ChevronLeft className="size-5" strokeWidth={2} />
+              <ChevronRight className="size-5 rtl:rotate-180" strokeWidth={2} />
             </button>
           </motion.div>
         </motion.div>
@@ -166,7 +163,7 @@ export default function AppCarousel() {
       >
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex touch-pan-y gap-5 px-5 sm:gap-7 sm:px-8">
-            {SHOTS.map((shot, index) => (
+            {SHOT_META.map((shot, index) => (
               <div
                 key={shot.src}
                 /* גובה קבוע + aspect-ratio = רוחב מוגדר עוד לפני טעינת התמונה */
@@ -182,7 +179,7 @@ export default function AppCarousel() {
                 >
                   <Image
                     src={shot.src}
-                    alt={shot.alt}
+                    alt={t.gallery.shots[index].alt}
                     width={shot.width}
                     height={shot.height}
                     sizes="(min-width: 640px) 260px, 200px"
@@ -197,12 +194,12 @@ export default function AppCarousel() {
 
       {/* ---------- נקודות ניווט ---------- */}
       <div className="mt-8 flex items-center justify-center gap-2.5">
-        {SHOTS.map((shot, index) => (
+        {SHOT_META.map((shot, index) => (
           <button
             key={shot.src}
             type="button"
             onClick={() => scrollTo(index)}
-            aria-label={`מעבר למסך ${index + 1}`}
+            aria-label={t.gallery.goToSlideAria(index + 1)}
             aria-current={index === selectedIndex}
             className={`h-1.5 rounded-full transition-all duration-400 ${
               index === selectedIndex

@@ -5,31 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 import { EASE, fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
-
-type QuestionItem = {
-  question: string;
-  answer: string;
-};
-
-const QUESTIONS: QuestionItem[] = [
-  {
-    question: "איך מחושבות שעות נוספות?",
-    answer:
-      "בכל משמרת האפליקציה משווה את סך השעות שנצברו לאורך יום העבודה שהגדרתם. כל שעה מעבר לסף מסומנת בנפרד ומחושבת לפי אחוז התוספת שקבעתם, כך שהסכום שמופיע בסיכום החודשי כבר כולל אותן ואין צורך בחישוב ידני.",
-  },
-  {
-    question: "מה קורה אם שכחתי להחתים כניסה או יציאה?",
-    answer:
-      "אפשר להוסיף או לתקן משמרת ידנית בכל רגע. נכנסים ליומן, בוחרים את התאריך הרלוונטי ומזינים את שעות ההתחלה והסיום. הסיכום החודשי וסך ההכנסות מתעדכנים מיד, בלי לפגוע בשאר המשמרות.",
-  },
-  {
-    question: "אפשר לנהל כמה מקומות עבודה במקביל?",
-    answer:
-      "כן. מגדירים לכל מקום עבודה תעריף שעתי ואורך משמרת משלו, וכל משמרת משויכת למקום שבו עבדתם בפועל. הדוח החודשי מציג פילוח נפרד לכל מקום עבודה וגם סיכום כולל של כל השעות וההכנסות יחד.",
-  },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Faq() {
+  const { t } = useLanguage();
+
   /* הפריט הראשון פתוח כברירת מחדל כדי שיהיה ברור שהרכיב אינטראקטיבי */
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -50,20 +30,20 @@ export default function Faq() {
             className="font-mono text-xs tracking-[0.3em] text-neon-deep"
             variants={fadeUp}
           >
-            FAQ
+            {t.faq.kicker}
           </motion.p>
           <motion.h2
             className="mt-4 font-display text-3xl leading-snug text-chalk sm:text-4xl"
             variants={fadeUp}
           >
-            שאלות <span className="text-neon">ותשובות</span>
+            {t.faq.titlePrefix}
+            <span className="text-neon">{t.faq.titleHighlight}</span>
           </motion.h2>
           <motion.p
             className="mt-5 text-lg leading-relaxed text-mist"
             variants={fadeUp}
           >
-            כל מה שנשאלנו הכי הרבה על חישוב שעות וניהול משמרות. לא מצאתם תשובה?
-            אנחנו זמינים במייל.
+            {t.faq.subtitle}
           </motion.p>
         </motion.div>
 
@@ -75,7 +55,7 @@ export default function Faq() {
           whileInView="visible"
           viewport={VIEWPORT_ONCE}
         >
-          {QUESTIONS.map(({ question, answer }, index) => {
+          {t.faq.items.map(({ question, answer }, index) => {
             const isOpen = openIndex === index;
             const panelId = `faq-panel-${index}`;
             const triggerId = `faq-trigger-${index}`;
@@ -93,7 +73,7 @@ export default function Faq() {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-right sm:px-7"
+                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-start sm:px-7"
                   >
                     <span
                       className={`font-display text-lg transition-colors duration-300 sm:text-xl ${

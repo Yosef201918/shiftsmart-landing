@@ -3,6 +3,10 @@ import { Heebo, JetBrains_Mono, Secular_One } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
+import HtmlAttributesSync from "@/components/HtmlAttributesSync";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
+import { dictionaries } from "@/lib/i18n/dictionaries";
+
 /* גופן גוף — Heebo תומך בעברית ובעל טווח משקלים מלא */
 const heebo = Heebo({
   variable: "--font-heebo",
@@ -25,21 +29,21 @@ const jetBrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+/*
+ * המטא-דאטה מוגשת מהשרת פעם אחת בעברית — שפת ברירת המחדל של האתר — כי
+ * ה-i18n כאן קליל ומבוסס state בצד הלקוח, בלי ניתוב לפי שפה (למשל /en).
+ * מנועי חיפוש וכרטיסי שיתוף תמיד יראו את הגרסה העברית; זהו פשרה מודעת
+ * שמתאימה לדף נחיתה יחיד ולא לאתר רב-לשוני מלא.
+ */
+const defaultDictionary = dictionaries.he;
+
 export const metadata: Metadata = {
-  title: "Shift Smart — ניהול משמרות ושעון נוכחות חכם",
-  description:
-    "Shift Smart הוא שעון נוכחות חכם שסופר עבורכם את השעות, מסדר את המשמרות ומפיק דוח מדויק בלחיצה אחת. הצטרפו לבטא הסגורה.",
-  keywords: [
-    "ניהול משמרות",
-    "שעון נוכחות",
-    "מעקב שעות עבודה",
-    "דוח שעות",
-    "Shift Smart",
-  ],
+  title: defaultDictionary.meta.title,
+  description: defaultDictionary.meta.description,
+  keywords: defaultDictionary.meta.keywords,
   openGraph: {
-    title: "Shift Smart — ניהול משמרות ושעון נוכחות חכם",
-    description:
-      "שעון נוכחות חכם שסופר עבורכם את השעות, מסדר את המשמרות ומפיק דוח מדויק בלחיצה אחת.",
+    title: defaultDictionary.meta.title,
+    description: defaultDictionary.meta.ogDescription,
     locale: "he_IL",
     type: "website",
   },
@@ -80,7 +84,11 @@ export default function RootLayout({
             }}
           />
         </noscript>
-        {children}
+
+        <LanguageProvider>
+          <HtmlAttributesSync />
+          {children}
+        </LanguageProvider>
 
         {/* Vercel Web Analytics — נטען רק בפרודקשן ואינו מרנדר DOM */}
         <Analytics />

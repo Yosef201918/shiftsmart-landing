@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import {
-  ArrowLeft,
   Clock4,
   Download,
   Sparkles,
@@ -11,12 +10,15 @@ import {
   Users,
 } from "lucide-react";
 
+import DirectionalArrow from "@/components/DirectionalArrow";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import {
   BETA_GROUP_URL,
   EXTERNAL_LINK_PROPS,
   PLAY_STORE_URL,
 } from "@/lib/links";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const STARS = [0, 1, 2, 3, 4];
 
@@ -26,6 +28,8 @@ const STARS = [0, 1, 2, 3, 4];
  * זהה במובייל ובדסקטופ: כותרת → פעולות → אמון → מדריך → מוקאפ.
  */
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="hero"
@@ -44,14 +48,22 @@ export default function Hero() {
               <Clock4 className="size-5 text-neon" strokeWidth={1.75} />
             </span>
             <span className="font-display text-lg tracking-wide text-chalk">
-              Shift Smart
+              {t.brand.name}
             </span>
           </div>
 
-          <span className="flex items-center gap-2 rounded-full border border-hair bg-abyss/70 px-3.5 py-1.5 text-xs text-mist backdrop-blur-md">
-            <span className="beacon size-1.5 rounded-full bg-neon" />
-            בטא סגורה
-          </span>
+          {/*
+            קבוצת מתג השפה ותווית הבטא, יחד בקצה הנגדי למותג. במובייל
+            תווית הבטא מציגה רק את הנקודה הירוקה כדי לפנות מקום למתג השפה —
+            שלושת האלמנטים יחד היו נדחסים אל מתחת לרוחב 375px.
+          */}
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <span className="flex items-center gap-2 rounded-full border border-hair bg-abyss/70 px-3 py-1.5 text-xs text-mist backdrop-blur-md sm:px-3.5">
+              <span className="beacon size-1.5 rounded-full bg-neon" />
+              <span className="hidden sm:inline">{t.brand.betaBadge}</span>
+            </span>
+          </div>
         </motion.header>
 
         {/* ---------- תוכן ההירו ---------- */}
@@ -67,7 +79,7 @@ export default function Hero() {
             variants={fadeUp}
           >
             <Sparkles className="size-4 shrink-0" strokeWidth={1.75} />
-            Shift Smart - ניהול משמרות ברמה אחרת!
+            {t.hero.kicker}
           </motion.p>
 
           {/*
@@ -78,10 +90,10 @@ export default function Hero() {
           */}
           <motion.h1 className="mt-6 text-balance" variants={fadeUp}>
             <span className="block text-[1.75rem] font-extralight leading-tight tracking-tight text-chalk sm:text-4xl lg:text-5xl">
-              קורעים את התחת במשמרות?
+              {t.hero.titleLine1}
             </span>
             <span className="neon-glow mt-1.5 block font-display text-[1.75rem] leading-tight text-neon sm:text-4xl lg:text-5xl">
-              מצאתי לכם את הפתרון!
+              {t.hero.titleLine2}
             </span>
           </motion.h1>
 
@@ -89,7 +101,7 @@ export default function Hero() {
             className="mt-6 max-w-xl text-lg font-light leading-relaxed text-chalk/90 sm:text-xl"
             variants={fadeUp}
           >
-            שעון הנוכחות שיעשה לכם סדר בשעות ובשכר.
+            {t.hero.subtitle}
           </motion.p>
 
           {/* קהל היעד — רצועה עם מבטא ניאון בקצה הפנימי */}
@@ -97,7 +109,7 @@ export default function Hero() {
             className="mt-6 max-w-lg border-s-2 border-neon-deep bg-abyss/40 py-3 ps-5 text-base leading-relaxed text-mist"
             variants={fadeUp}
           >
-            מושלם למאבטחים סדרנים, מסעדות וכל מי שחי על משמרות.
+            {t.hero.audience}
           </motion.p>
 
           {/*
@@ -115,10 +127,10 @@ export default function Hero() {
               className="group inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] sm:w-auto"
             >
               <Download className="size-5 shrink-0" strokeWidth={2.25} />
-              הורדה מ-Google Play
-              <ArrowLeft
-                className="size-5 shrink-0 transition-transform duration-300 group-hover:-translate-x-1"
+              {t.hero.downloadCta}
+              <DirectionalArrow
                 strokeWidth={2.25}
+                className="size-5 shrink-0 transition-transform duration-300 ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
               />
             </a>
 
@@ -128,7 +140,7 @@ export default function Hero() {
               className="panel inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl px-7 font-display text-base text-chalk transition duration-300 hover:-translate-y-0.5 hover:border-neon-deep hover:text-neon sm:w-auto"
             >
               <Users className="size-5 shrink-0 text-neon" strokeWidth={1.75} />
-              הצטרפו לבטא הסגורה
+              {t.hero.joinBetaCta}
             </a>
           </motion.div>
 
@@ -140,7 +152,7 @@ export default function Hero() {
             <span
               className="flex shrink-0 items-center gap-1"
               role="img"
-              aria-label="חמישה כוכבים"
+              aria-label={t.hero.starsAriaLabel}
             >
               {STARS.map((star) => (
                 <Star
@@ -151,8 +163,7 @@ export default function Hero() {
               ))}
             </span>
             <p className="max-w-lg text-sm leading-relaxed text-mist">
-              הצטרפו למאבטחים, סדרנים ומנהלי משמרות שכבר מנהלים את הזמן שלהם
-              חכם.
+              {t.hero.socialProof}
             </p>
           </motion.div>
 
@@ -166,8 +177,7 @@ export default function Hero() {
               strokeWidth={1.9}
             />
             <p className="text-sm leading-relaxed text-amber-soft">
-              שימו לב: זמין למכשירי אנדרואיד בלבד. אנחנו בגרסת בטא (Beta) –
-              משתפרים כל הזמן!
+              {t.hero.betaWarning}
             </p>
           </motion.div>
         </motion.div>

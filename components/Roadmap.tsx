@@ -9,35 +9,18 @@ import {
 } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-type Milestone = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-};
-
-const MILESTONES: Milestone[] = [
-  {
-    icon: Smartphone,
-    title: "גרסת iOS",
-    description:
-      "אותה אפליקציה בדיוק, עם אותם מסכים ואותם חישובים — גם למשתמשי אייפון.",
-  },
-  {
-    icon: BellRing,
-    title: "מערכת תזכורות חכמה",
-    description:
-      "תזכורת אוטומטית להחתים כניסה ויציאה לפי המשמרות שתכננתם, כדי שלא תשכחו אף פעם.",
-  },
-  {
-    icon: ReceiptText,
-    title: "יצירת דוחות מס ישירים",
-    description:
-      "הפקת דוח שנתי מסודר של שעות והכנסות, מוכן להגשה ולשליחה לרואה החשבון.",
-  },
+/** האייקון בלבד הוא מבנה קבוע — הכותרת והתיאור מגיעים מהמילון לפי אינדקס */
+const MILESTONE_ICONS: [LucideIcon, LucideIcon, LucideIcon] = [
+  Smartphone,
+  BellRing,
+  ReceiptText,
 ];
 
 export default function Roadmap() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="roadmap"
@@ -55,26 +38,29 @@ export default function Roadmap() {
             className="font-mono text-xs tracking-[0.3em] text-neon-deep"
             variants={fadeUp}
           >
-            מפת דרכים
+            {t.roadmap.kicker}
           </motion.p>
           <motion.h2
             className="mt-4 text-3xl font-extralight leading-tight text-chalk sm:text-4xl"
             variants={fadeUp}
           >
-            מה מתוכנן{" "}
-            <span className="font-display font-normal text-neon">להמשך?</span>
+            {t.roadmap.titlePrefix}
+            <span className="font-display font-normal text-neon">
+              {t.roadmap.titleHighlight}
+            </span>
           </motion.h2>
           <motion.p
             className="mt-5 text-lg leading-relaxed text-mist"
             variants={fadeUp}
           >
-            הבטא היא רק ההתחלה. אלה הדברים שנמצאים על שולחן העבודה שלנו עכשיו.
+            {t.roadmap.subtitle}
           </motion.p>
         </motion.div>
 
         {/*
           ציר זמן אנכי. כל פריט הוא גריד של שתי עמודות — סמן וכרטיס — כך
-          שהקו והנקודות מתהפכים אוטומטית ב-RTL בלי מיקום אבסולוטי ידני.
+          שהקו והנקודות מתהפכים אוטומטית לפי כיוון הדף (RTL/LTR) בלי מיקום
+          אבסולוטי ידני: CSS Grid הופך את סדר העמודות בהתאם ל-dir.
         */}
         <motion.ol
           className="mt-14"
@@ -83,8 +69,9 @@ export default function Roadmap() {
           whileInView="visible"
           viewport={VIEWPORT_ONCE}
         >
-          {MILESTONES.map(({ icon: Icon, title, description }, index) => {
-            const isLast = index === MILESTONES.length - 1;
+          {MILESTONE_ICONS.map((Icon, index) => {
+            const { title, description } = t.roadmap.milestones[index];
+            const isLast = index === MILESTONE_ICONS.length - 1;
 
             return (
               <motion.li

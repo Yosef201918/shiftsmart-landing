@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, Users } from "lucide-react";
+import { Users } from "lucide-react";
 
+import DirectionalArrow from "@/components/DirectionalArrow";
 import { BETA_GROUP_URL, EXTERNAL_LINK_PROPS } from "@/lib/links";
 import { EASE } from "@/lib/motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /**
  * כפתור צף שמופיע רק אחרי שההירו יצא לגמרי מהמסך.
@@ -14,6 +16,7 @@ import { EASE } from "@/lib/motion";
  * מחוץ ל-main thread, בלי חישוב מיקום בכל פריים גלילה ובלי צורך ב-throttle.
  */
 export default function StickyCta() {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -46,10 +49,10 @@ export default function StickyCta() {
             className="panel edge-lit pointer-events-auto inline-flex h-14 items-center justify-center gap-2.5 rounded-full px-7 text-base text-chalk shadow-neon transition duration-300 hover:border-neon-deep hover:text-neon"
           >
             <Users className="size-5 shrink-0 text-neon" strokeWidth={1.75} />
-            הצטרפו לבטא הסגורה
-            <ArrowLeft
-              className="size-4 shrink-0 transition-transform duration-300 hover:-translate-x-1"
+            {t.stickyCta.label}
+            <DirectionalArrow
               strokeWidth={2}
+              className="size-4 shrink-0 transition-transform duration-300"
             />
           </a>
         </motion.div>

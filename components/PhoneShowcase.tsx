@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { fadeScale, VIEWPORT_ONCE } from "@/lib/motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /*
  * מוקאפ הטלפון כמקטע עצמאי. הוא הוצא מתוך ההירו כדי שמדריך שלושת השלבים
@@ -12,8 +13,13 @@ import { fadeScale, VIEWPORT_ONCE } from "@/lib/motion";
  *
  * התמונה לא מסומנת priority: היא כבר לא מעל הקיפול, ולכן טעינה עצלה
  * מיטיבה עם ה-LCP במקום להתחרות בתוכן שמופיע לפניה.
+ *
+ * שלדת המכשיר וכפתורי הצד נשארים במיקום פיזי קבוע (left/right) בכל שפה:
+ * זהו רכיב חומרה אמיתי, לא טקסט זורם, ולכן אסור לו להתהפך לפי כיוון קריאה.
  */
 export default function PhoneShowcase() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="app-preview"
@@ -55,7 +61,7 @@ export default function PhoneShowcase() {
             <div className="relative overflow-hidden rounded-[2.05rem] bg-void">
               <Image
                 src="/mockup-v2.png"
-                alt="מסך שעון הנוכחות באפליקציית Shift Smart: משמרת פעילה עם טיימר רץ, תעריף לשעה וצבירה מצטברת במשמרת"
+                alt={t.phoneShowcase.mockupAlt}
                 width={380}
                 height={757}
                 sizes="(min-width: 640px) 268px, 244px"
