@@ -9,37 +9,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-type ShotMeta = {
-  /** שם הקובץ נשמר כפי שהוא, כולל הרווח — next/image מקודד אותו בעצמו */
-  src: string;
-  width: number;
-  height: number;
-};
-
-/*
- * המידות אמיתיות ונלקחו מהקבצים עצמם. הן חשובות פעמיים:
- * גם למניעת קפיצת פריסה בזמן טעינה, וגם כדי שרוחב כל שקופית ייגזר
- * מיחס הגובה-רוחב שלה — כך הקרוסלה נמדדת נכון עוד לפני שהתמונות ירדו.
- * טקסט ה-alt של כל שקופית מגיע מהמילון לפי אותו אינדקס.
- */
-const SHOT_META: [
-  ShotMeta,
-  ShotMeta,
-  ShotMeta,
-  ShotMeta,
-  ShotMeta,
-  ShotMeta,
-] = [
-  { src: "/Screenshot 1.jpg", width: 1080, height: 2525 },
-  { src: "/Screenshot 2.jpg", width: 1080, height: 2340 },
-  { src: "/Screenshot 3.jpg", width: 1080, height: 2340 },
-  { src: "/Screenshot 4.jpg", width: 1080, height: 3389 },
-  { src: "/Screenshot 5.jpg", width: 1080, height: 2466 },
-  { src: "/Screenshot 6.jpg", width: 1080, height: 2768 },
-];
-
 export default function AppCarousel() {
-  const { dir, t } = useLanguage();
+  const { dir, lang, t } = useLanguage();
+  const shots = t.gallery.shots;
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     direction: dir,
@@ -53,7 +25,10 @@ export default function AppCarousel() {
   /*
    * embla קורא את direction רק בהקמה הראשונית. כשהמשתמש מחליף שפה
    * (ומכאן dir), חייבים לאתחל מחדש את המנוע כדי שהחישוב הפנימי של
-   * הגלילה (סימן ה-scrollLeft וכו') יתאים לכיוון החדש.
+   * הגלילה (סימן ה-scrollLeft וכו') יתאים לכיוון החדש. אותו מעבר שפה
+   * גם מחליף את קובצי התמונה ואת יחסי הגובה-רוחב שלהם (הסטים העברי
+   * והאנגלי צולמו ביחסים שונים), ולכן reInit נחוץ גם כדי שהמידות
+   * המחודשות של השקופיות יימדדו נכון.
    */
   useEffect(() => {
     emblaApi?.reInit({
@@ -62,7 +37,7 @@ export default function AppCarousel() {
       align: "center",
       skipSnaps: false,
     });
-  }, [dir, emblaApi]);
+  }, [dir, lang, emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -163,7 +138,7 @@ export default function AppCarousel() {
       >
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex touch-pan-y gap-5 px-5 sm:gap-7 sm:px-8">
-            {SHOT_META.map((shot, index) => (
+            {shots.map((shot, index) => (
               <div
                 key={shot.src}
                 /* גובה קבוע + aspect-ratio = רוחב מוגדר עוד לפני טעינת התמונה */
@@ -179,7 +154,7 @@ export default function AppCarousel() {
                 >
                   <Image
                     src={shot.src}
-                    alt={t.gallery.shots[index].alt}
+                    alt={shot.alt}
                     width={shot.width}
                     height={shot.height}
                     sizes="(min-width: 640px) 260px, 200px"
@@ -194,7 +169,7 @@ export default function AppCarousel() {
 
       {/* ---------- נקודות ניווט ---------- */}
       <div className="mt-8 flex items-center justify-center gap-2.5">
-        {SHOT_META.map((shot, index) => (
+        {shots.map((shot, index) => (
           <button
             key={shot.src}
             type="button"

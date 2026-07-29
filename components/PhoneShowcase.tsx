@@ -16,9 +16,17 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
  *
  * שלדת המכשיר וכפתורי הצד נשארים במיקום פיזי קבוע (left/right) בכל שפה:
  * זהו רכיב חומרה אמיתי, לא טקסט זורם, ולכן אסור לו להתהפך לפי כיוון קריאה.
+ *
+ * מקור התמונה עצמו כן תלוי שפה (t.phoneShowcase.mockupSrc/Width/Height):
+ * לעברית זהו נכס ייעודי שנבחר במיוחד להירו (mockup-v2.png). לאנגלית טרם
+ * סופק נכס מקביל, ולכן משמש כרגע צילום המסך הראשון מתוך הסט האנגלי
+ * (משמרת פעילה עם טיימר רץ) כתחליף הכי קרוב תוכנית. מכיוון שיחסי
+ * הגובה-רוחב של שני הקבצים שונים, גובה שלדת המכשיר נגזר אוטומטית
+ * מ-h-auto ומשתנה מעט בין השפות — וזה תקין, לא באג.
  */
 export default function PhoneShowcase() {
   const { t } = useLanguage();
+  const { mockupSrc, mockupWidth, mockupHeight, mockupAlt } = t.phoneShowcase;
 
   return (
     <section
@@ -60,10 +68,11 @@ export default function PhoneShowcase() {
             {/* המסך — נשאר נקי לגמרי, בלי אלמנטים צפים מעליו */}
             <div className="relative overflow-hidden rounded-[2.05rem] bg-void">
               <Image
-                src="/mockup-v2.png"
-                alt={t.phoneShowcase.mockupAlt}
-                width={380}
-                height={757}
+                key={mockupSrc}
+                src={mockupSrc}
+                alt={mockupAlt}
+                width={mockupWidth}
+                height={mockupHeight}
                 sizes="(min-width: 640px) 268px, 244px"
                 className="h-auto w-full"
               />

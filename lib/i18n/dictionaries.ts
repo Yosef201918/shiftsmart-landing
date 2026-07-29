@@ -16,6 +16,10 @@ export interface FaqItem {
 }
 
 export interface ShotItem {
+  /** נתיב תמונה משלו לכל שפה — הצילומים העבריים והאנגליים הם קבצים נפרדים */
+  src: string;
+  width: number;
+  height: number;
   alt: string;
 }
 
@@ -113,15 +117,24 @@ export interface Dictionary {
     label: string;
   };
   phoneShowcase: {
+    /**
+     * לעברית זהו נכס ייעודי (mockup-v2.png) שנבחר במיוחד להירו. לאנגלית לא
+     * סופק נכס מקביל — עד שיסופק אחד, המסך הראשון מתוך צילומי המסך
+     * האנגליים (English screenshot1.jpg, מציג משמרת פעילה) משמש תחליף,
+     * כי הוא הכי קרוב תוכנית לתמונת ה-mockup העברית (טיימר משמרת רץ).
+     */
+    mockupSrc: string;
+    mockupWidth: number;
+    mockupHeight: number;
     mockupAlt: string;
   };
 }
 
 const he: Dictionary = {
   meta: {
-    title: "Shift Smart — ניהול משמרות ושעון נוכחות חכם",
+    title: "Shift Smart - ניהול משמרות ברמה אחרת!",
     description:
-      "Shift Smart הוא שעון נוכחות חכם שסופר עבורכם את השעות, מסדר את המשמרות ומפיק דוח מדויק בלחיצה אחת. הצטרפו לבטא הסגורה.",
+      "שעון הנוכחות שיעשה לכם סדר בשעות ובשכר. מושלם למאבטחים, סדרנים וכל מי שחי על משמרות — הצטרפו לבטא הסגורה עוד היום.",
     keywords: [
       "ניהול משמרות",
       "שעון נוכחות",
@@ -130,7 +143,7 @@ const he: Dictionary = {
       "Shift Smart",
     ],
     ogDescription:
-      "שעון נוכחות חכם שסופר עבורכם את השעות, מסדר את המשמרות ומפיק דוח מדויק בלחיצה אחת.",
+      "שעון הנוכחות שיעשה לכם סדר בשעות ובשכר. הצטרפו לבטא הסגורה של Shift Smart.",
   },
   brand: {
     name: "Shift Smart",
@@ -235,21 +248,39 @@ const he: Dictionary = {
     goToSlideAria: (position) => `מעבר למסך ${position}`,
     shots: [
       {
+        src: "/Screenshot 1.jpg",
+        width: 1080,
+        height: 2525,
         alt: "מסך שעון הנוכחות: כפתור הפעלת שעון בטביעת אצבע, בחירת משרה, תעריף לשעה וצבירה במשמרת",
       },
       {
+        src: "/Screenshot 2.jpg",
+        width: 1080,
+        height: 2340,
         alt: "מסך ההגדרות: מצב לילה, בחירת שפת האפליקציה בין עברית לאנגלית וחיסכון סוללה מקסימלי למסכי AMOLED",
       },
       {
+        src: "/Screenshot 3.jpg",
+        width: 1080,
+        height: 2340,
         alt: "מסך המשרות: רשימת מקומות עבודה עם תעריף לשעה, החזר נסיעות ומיקום שמור לכל משרה",
       },
       {
+        src: "/Screenshot 4.jpg",
+        width: 1080,
+        height: 3389,
         alt: "מסך ההיסטוריה: ייצוא דוח חודשי ל-PDF ולוואטסאפ, ורשימת משמרות עם תאריך, שעות ושכר לכל משמרת",
       },
       {
+        src: "/Screenshot 5.jpg",
+        width: 1080,
+        height: 2466,
         alt: "מסך היומן: לוח חודשי עם סימון ימי עבודה והוספת משמרת מתוכננת מראש",
       },
       {
+        src: "/Screenshot 6.jpg",
+        width: 1080,
+        height: 2768,
         alt: "מסך הסיכום החודשי: סך הרווח לחודש, שכר נטו משוער, התקדמות מול יעד חודשי ופילוח לפי משרה",
       },
     ],
@@ -317,6 +348,9 @@ const he: Dictionary = {
     label: "הצטרפו לבטא הסגורה",
   },
   phoneShowcase: {
+    mockupSrc: "/mockup-v2.png",
+    mockupWidth: 380,
+    mockupHeight: 757,
     mockupAlt:
       "מסך שעון הנוכחות באפליקציית Shift Smart: משמרת פעילה עם טיימר רץ, תעריף לשעה וצבירה מצטברת במשמרת",
   },
@@ -324,9 +358,9 @@ const he: Dictionary = {
 
 const en: Dictionary = {
   meta: {
-    title: "Shift Smart — Smart Shift Management & Time Clock",
+    title: "Shift Smart - Shift Management on Another Level",
     description:
-      "Shift Smart is a smart time clock that counts your hours, organizes your shifts, and generates an accurate report in one tap. Join the closed Beta.",
+      "The ultimate attendance clock for security guards and shift workers. Track your hours, calculate your pay automatically, and never lose a shekel again — join the closed Beta today.",
     keywords: [
       "shift management",
       "time clock",
@@ -335,7 +369,7 @@ const en: Dictionary = {
       "Shift Smart",
     ],
     ogDescription:
-      "A smart time clock that counts your hours, organizes your shifts, and generates an accurate report in one tap.",
+      "The ultimate attendance clock for security guards and shift workers. Track your hours and calculate your pay automatically with Shift Smart.",
   },
   brand: {
     name: "Shift Smart",
@@ -441,24 +475,48 @@ const en: Dictionary = {
     prevAria: "Previous screen",
     nextAria: "Next screen",
     goToSlideAria: (position) => `Go to screen ${position}`,
+    /*
+     * הצילומים האנגליים מציגים סט מסכים שונה במקצת מהעברי — למשל אין כאן
+     * מסכי היסטוריה/יומן נפרדים, אך יש מסך "מוכן להתחיל" (idle) ושני מסכי
+     * הגדרות. ה-alt כאן מתאר בדיוק את מה שמופיע בכל תמונה אנגלית בפועל,
+     * ולא תרגום מילולי של ה-alt העברי המקביל.
+     */
     shots: [
       {
-        alt: "Time clock screen: fingerprint clock-in button, workplace selector, hourly rate, and shift earnings",
+        src: "/English screenshot1.jpg",
+        width: 1079,
+        height: 2495,
+        alt: "Active shift screen: running timer with a Clock Out button, hourly rate, and current shift earnings",
       },
       {
-        alt: "Settings screen: night mode, app language toggle between Hebrew and English, and maximum battery saving for AMOLED screens",
+        src: "/English screenshot2.jpg",
+        width: 1080,
+        height: 2118,
+        alt: "Idle clock screen: \"Ready to start working\" with a Start Clock button and fingerprint authentication prompt",
       },
       {
-        alt: "Workplaces screen: list of jobs with hourly rate, travel reimbursement, and saved location for each workplace",
+        src: "/English screenshot3.jpg",
+        width: 1080,
+        height: 2124,
+        alt: "Jobs screen: list of workplaces with hourly rate, travel reimbursement, and saved location for each job",
       },
       {
-        alt: "History screen: export a monthly report to PDF/WhatsApp, plus a shift list with date, hours, and pay for each shift",
+        src: "/English screenshot4.jpg",
+        width: 1080,
+        height: 2402,
+        alt: "Monthly summary screen: total earnings for the month, progress toward a monthly goal, and a breakdown by job",
       },
       {
-        alt: "Calendar screen: monthly view with marked workdays and adding a shift planned in advance",
+        src: "/English screenshot5.jpg",
+        width: 1080,
+        height: 2124,
+        alt: "Settings screen: night mode, in-app language toggle between Hebrew and English, and vibration feedback",
       },
       {
-        alt: "Monthly summary screen: total monthly earnings, estimated net pay, progress toward a monthly goal, and a breakdown by workplace",
+        src: "/English screenshot6.jpg",
+        width: 1080,
+        height: 2124,
+        alt: "Settings screen: sound alerts, maximum battery saving for AMOLED screens, and fingerprint/Face ID clock-in",
       },
     ],
   },
@@ -525,8 +583,11 @@ const en: Dictionary = {
     label: "Join the Closed Beta",
   },
   phoneShowcase: {
+    mockupSrc: "/English screenshot1.jpg",
+    mockupWidth: 1079,
+    mockupHeight: 2495,
     mockupAlt:
-      "Shift Smart time clock screen: active shift with a running timer, hourly rate, and accumulated shift earnings",
+      "Shift Smart active shift screen: running timer, Clock Out button, hourly rate, and current shift earnings",
   },
 };
 
