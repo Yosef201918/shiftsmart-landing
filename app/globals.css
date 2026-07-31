@@ -247,13 +247,20 @@
    כאן נשארות רק אנימציות אווירה רציפות.
    ========================================================================= */
 
-@keyframes beacon {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgb(92 255 157 / 0.5);
+/*
+ * טבעת ה-"פינג" של .beacon בנויה כ-::before נפרד שמתרחב ודועך, במקום
+ * להנפיש box-shadow על הנקודה עצמה: box-shadow הוא תכונת ציור שנדרש
+ * לחשב מחדש בכל פריים ואינה רצה על ה-GPU. transform+opacity על שכבה
+ * נפרדת כן רצים על ה-GPU ומולחנים (compositing) בלי לגעת בציור.
+ */
+@keyframes beacon-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
   }
-  70% {
-    box-shadow: 0 0 0 9px rgb(92 255 157 / 0);
+  100% {
+    transform: scale(4);
+    opacity: 0;
   }
 }
 
@@ -271,10 +278,20 @@
 
 @layer components {
   .beacon {
-    animation: beacon 2.4s ease-out infinite;
+    position: relative;
+  }
+  .beacon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: inherit;
+    animation: beacon-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+    will-change: transform, opacity;
   }
   .haze {
     animation: haze 14s ease-in-out infinite;
+    will-change: transform, opacity;
   }
 }
 

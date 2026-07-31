@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-import { EASE, fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
+import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Faq() {
@@ -99,26 +99,33 @@ export default function Faq() {
                   </button>
                 </h3>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      id={panelId}
-                      role="region"
-                      aria-labelledby={triggerId}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.32, ease: EASE }}
-                      className="overflow-hidden"
-                    >
-                      <div className="rule-hair mx-6 sm:mx-7" />
-                      <p className="px-6 pb-6 pt-5 text-base leading-relaxed text-mist sm:px-7">
-                        {answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/*
+                  הפאנל תמיד קיים ב-DOM ולעולם לא ממתגים בו height בפועל:
+                  height הוא תכונת פריסה שכל שינוי בה מכריח reflow בכל פריים
+                  של האנימציה — בדיוק סוג הגמגום שנאסר עלינו בשלב הזה.
+                  התחליף: grid-template-rows בין 0fr ל-1fr, טריק CSS טהור
+                  (ללא framer-motion, ללא מדידת גובה ב-JS) שמאפשר "לחשוף"
+                  תוכן בגובה לא ידוע מראש בלי לגעת ב-height עצמה. ה-opacity
+                  נע יחד איתו כדי שהתוכן לא "יקפוץ" גלוי ברגע שהשורה נפתחת.
+                */}
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={triggerId}
+                  aria-hidden={!isOpen}
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out will-change-[grid-template-rows] ${
+                    isOpen
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="rule-hair mx-6 sm:mx-7" />
+                    <p className="px-6 pb-6 pt-5 text-base leading-relaxed text-mist sm:px-7">
+                      {answer}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             );
           })}

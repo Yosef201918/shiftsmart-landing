@@ -45,3 +45,16 @@ export function InstagramIcon({ className, strokeWidth = 1.75 }: IconProps) {
     </svg>
   );
 }
+
+export function TiktokIcon({ className, strokeWidth = 1.75 }: IconProps) {
+  return (
+    <svg
+      {...BASE_PROPS}
+      strokeWidth={strokeWidth}
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  );
+}

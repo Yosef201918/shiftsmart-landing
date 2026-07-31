@@ -111,6 +111,7 @@ export interface Dictionary {
     linkBetaGroup: string;
     socialFacebookAria: string;
     socialInstagramAria: string;
+    socialTiktokAria: string;
     copyright: (year: number) => string;
   };
   stickyCta: {
@@ -341,6 +342,7 @@ const he: Dictionary = {
     linkBetaGroup: "קבוצת הבודקים",
     socialFacebookAria: "עמוד הפייסבוק של Shift Smart",
     socialInstagramAria: "עמוד האינסטגרם של Shift Smart",
+    socialTiktokAria: "עמוד הטיקטוק של Shift Smart",
     copyright: (year) =>
       `© ${year} Shift Smart. כל הזכויות שמורות. האפליקציה נמצאת בשלב בטא סגורה והתכונות עשויות להשתנות.`,
   },
@@ -576,6 +578,7 @@ const en: Dictionary = {
     linkBetaGroup: "Testers Group",
     socialFacebookAria: "Shift Smart on Facebook",
     socialInstagramAria: "Shift Smart on Instagram",
+    socialTiktokAria: "Shift Smart on TikTok",
     copyright: (year) =>
       `© ${year} Shift Smart. All rights reserved. The app is currently in closed Beta and features may change.`,
   },

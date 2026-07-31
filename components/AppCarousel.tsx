@@ -137,7 +137,12 @@ export default function AppCarousel() {
         viewport={VIEWPORT_ONCE}
       >
         <div ref={emblaRef} className="overflow-hidden">
-          <div className="flex touch-pan-y gap-5 px-5 sm:gap-7 sm:px-8">
+          {/*
+            will-change-transform: embla כותב translate3d על האלמנט הזה בכל
+            פריים בזמן גרירה/גלילה — זהו האלמנט הכי "כבד" באנימציה בכל הדף,
+            ורמז מוקדם לדפדפן מונע קפיצת שכבת קומפוזיציה ברגע הראשון של הגרירה.
+          */}
+          <div className="flex touch-pan-y gap-5 px-5 will-change-transform sm:gap-7 sm:px-8">
             {shots.map((shot, index) => (
               <div
                 key={shot.src}
@@ -167,7 +172,13 @@ export default function AppCarousel() {
         </div>
       </motion.div>
 
-      {/* ---------- נקודות ניווט ---------- */}
+      {/*
+        ---------- נקודות ניווט ----------
+        כל נקודה שומרת על רוחב קבוע (w-7) בכל מצב — האפקט הוויזואלי של
+        "התכווצות" מושג אך ורק דרך transform: scaleX, לא דרך שינוי width.
+        width הוא תכונת פריסה שגורמת לחישוב reflow בכל פריים של האנימציה;
+        scaleX רץ על ה-GPU בלבד ואינו נוגע בפריסה כלל.
+      */}
       <div className="mt-8 flex items-center justify-center gap-2.5">
         {shots.map((shot, index) => (
           <button
@@ -176,10 +187,10 @@ export default function AppCarousel() {
             onClick={() => scrollTo(index)}
             aria-label={t.gallery.goToSlideAria(index + 1)}
             aria-current={index === selectedIndex}
-            className={`h-1.5 rounded-full transition-all duration-400 ${
+            className={`h-1.5 w-7 origin-center rounded-full transition-[transform,background-color] duration-400 will-change-transform ${
               index === selectedIndex
-                ? "w-7 bg-neon"
-                : "w-1.5 bg-hair-lit hover:bg-mist"
+                ? "scale-x-100 bg-neon"
+                : "scale-x-[0.214] bg-hair-lit hover:bg-mist"
             }`}
           />
         ))}

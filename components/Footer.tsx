@@ -2,7 +2,7 @@
 
 import { Clock4, Download, Mail, Users, type LucideIcon } from "lucide-react";
 
-import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons";
+import { FacebookIcon, InstagramIcon, TiktokIcon } from "@/components/SocialIcons";
 import {
   BETA_GROUP_URL,
   CONTACT_EMAIL,
@@ -10,6 +10,7 @@ import {
   EXTERNAL_LINK_PROPS,
   INSTAGRAM_URL,
   PLAY_STORE_URL,
+  TIKTOK_URL,
 } from "@/lib/links";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -65,8 +66,8 @@ export default function Footer() {
   ];
 
   /*
-   * הקישור לפייסבוק עדיין מצביע ל-"#" עד שיהיה עמוד אמיתי; אינסטגרם
-   * כבר מחובר לפרופיל הרשמי. במעבר עכבר האייקון והמסגרת נצבעים בצבע
+   * הקישור לפייסבוק עדיין מצביע ל-"#" עד שיהיה עמוד אמיתי; אינסטגרם וטיקטוק
+   * כבר מחוברים לפרופילים הרשמיים. במעבר עכבר האייקון והמסגרת נצבעים בצבע
    * המותג ומקבלים הילה תואמת.
    */
   const socialLinks: SocialLink[] = [
@@ -84,6 +85,14 @@ export default function Footer() {
       Icon: InstagramIcon,
       hover:
         "hover:border-[#E1306C] hover:text-[#E1306C] hover:shadow-[0_0_24px_-6px_#E1306C]",
+      external: true,
+    },
+    {
+      label: t.footer.socialTiktokAria,
+      href: TIKTOK_URL,
+      Icon: TiktokIcon,
+      hover:
+        "hover:border-[#25F4EE] hover:text-[#25F4EE] hover:shadow-[0_0_24px_-6px_#25F4EE]",
       external: true,
     },
   ];

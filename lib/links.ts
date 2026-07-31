@@ -14,6 +14,8 @@ export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
 export const INSTAGRAM_URL = "https://www.instagram.com/shiftsmart.app/";
 
+export const TIKTOK_URL = "https://www.tiktok.com/@shiftsmart.app";
+
 /** מאפייני אבטחה קבועים לכל קישור שנפתח בלשונית חדשה */
 export const EXTERNAL_LINK_PROPS = {
   target: "_blank",
