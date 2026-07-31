@@ -12,6 +12,8 @@ export const CONTACT_EMAIL = "yoseffstor@gmail.com";
 
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
+export const INSTAGRAM_URL = "https://www.instagram.com/shiftsmart.app/";
+
 /** מאפייני אבטחה קבועים לכל קישור שנפתח בלשונית חדשה */
 export const EXTERNAL_LINK_PROPS = {
   target: "_blank",

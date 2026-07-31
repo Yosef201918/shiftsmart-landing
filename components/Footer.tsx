@@ -8,6 +8,7 @@ import {
   CONTACT_EMAIL,
   CONTACT_MAILTO,
   EXTERNAL_LINK_PROPS,
+  INSTAGRAM_URL,
   PLAY_STORE_URL,
 } from "@/lib/links";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -31,6 +32,8 @@ type SocialLink = {
   Icon: typeof FacebookIcon;
   /** צבע המותג שנדלק במעבר עכבר */
   hover: string;
+  /** האם לפתוח בלשונית חדשה עם מאפייני האבטחה של EXTERNAL_LINK_PROPS */
+  external: boolean;
 };
 
 export default function Footer() {
@@ -62,8 +65,9 @@ export default function Footer() {
   ];
 
   /*
-   * הקישורים החברתיים עדיין מצביעים ל-"#" עד שיהיו עמודים אמיתיים.
-   * במעבר עכבר האייקון והמסגרת נצבעים בצבע המותג ומקבלים הילה תואמת.
+   * הקישור לפייסבוק עדיין מצביע ל-"#" עד שיהיה עמוד אמיתי; אינסטגרם
+   * כבר מחובר לפרופיל הרשמי. במעבר עכבר האייקון והמסגרת נצבעים בצבע
+   * המותג ומקבלים הילה תואמת.
    */
   const socialLinks: SocialLink[] = [
     {
@@ -72,13 +76,15 @@ export default function Footer() {
       Icon: FacebookIcon,
       hover:
         "hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_24px_-6px_#1877F2]",
+      external: false,
     },
     {
       label: t.footer.socialInstagramAria,
-      href: "#",
+      href: INSTAGRAM_URL,
       Icon: InstagramIcon,
       hover:
         "hover:border-[#E1306C] hover:text-[#E1306C] hover:shadow-[0_0_24px_-6px_#E1306C]",
+      external: true,
     },
   ];
 
@@ -108,11 +114,12 @@ export default function Footer() {
                 {t.footer.followUs}
               </p>
               <ul className="mt-3 flex items-center gap-3">
-                {socialLinks.map(({ label, href, Icon, hover }) => (
+                {socialLinks.map(({ label, href, Icon, hover, external }) => (
                   <li key={label}>
                     <a
                       href={href}
                       aria-label={label}
+                      {...(external ? EXTERNAL_LINK_PROPS : {})}
                       className={`panel flex size-11 items-center justify-center rounded-full text-mist transition duration-300 hover:-translate-y-0.5 ${hover}`}
                     >
                       <Icon className="size-5" />
