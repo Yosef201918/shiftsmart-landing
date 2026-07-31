@@ -10,27 +10,47 @@ import { EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /**
- * כפתור צף שמופיע רק אחרי שההירו יצא לגמרי מהמסך.
+ * כפתור צף שמופיע רק אחרי שההירו יצא לגמרי מהמסך, ונעלם שוב ברגע שהפוטר
+ * מגיע לתצוגה.
  *
- * המימוש נשען על IntersectionObserver ולא על מאזין scroll: המעקב נעשה
- * מחוץ ל-main thread, בלי חישוב מיקום בכל פריים גלילה ובלי צורך ב-throttle.
+ * באג שתוקן כאן: הכפתור היה position:fixed בתחתית המסך כל עוד ההירו לא
+ * בתצוגה — כלומר גם כשמגיעים לסוף הדף. בגלילה מלאה כלפי מטה הוא צף בדיוק
+ * מעל שורת הזכויות בפוטר ומכסה חלק מהטקסט ("...האפליקציה נמצאת בשלב בטא
+ * סגורה..."). זו לא הייתה בעיית flex/grid בין אחים באותו מכולה — הכפתור
+ * וטקסט הפוטר כלל לא נמצאים באותו הקשר פריסה — אלא חפיפה של שכבה קבועה
+ * (fixed) מעל תוכן רגיל שממשיך לזרום מתחתיה. הפתרון: IntersectionObserver
+ * שני שעוקב אחרי הפוטר, ומסתיר את הכפתור ברגע שהוא נכנס לתצוגה.
  */
 export default function StickyCta() {
   const { t } = useLanguage();
-  const [visible, setVisible] = useState(false);
+  const [heroPassed, setHeroPassed] = useState(false);
+  const [footerReached, setFooterReached] = useState(false);
 
   useEffect(() => {
     const hero = document.getElementById("hero");
-    if (!hero) return;
+    const footer = document.getElementById("site-footer");
+    if (!hero || !footer) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => setHeroPassed(!entry.isIntersecting),
       { threshold: 0 },
     );
+    // מפעילים מוקדם קצת (rootMargin שלילי) כדי שהכפתור יתפנה עוד לפני
+    // שהפוטר ממש נוגע בתחתית המסך, ולא רק ברגע שהחפיפה כבר קיימת.
+    const footerObserver = new IntersectionObserver(
+      ([entry]) => setFooterReached(entry.isIntersecting),
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" },
+    );
 
-    observer.observe(hero);
-    return () => observer.disconnect();
+    heroObserver.observe(hero);
+    footerObserver.observe(footer);
+    return () => {
+      heroObserver.disconnect();
+      footerObserver.disconnect();
+    };
   }, []);
+
+  const visible = heroPassed && !footerReached;
 
   return (
     <AnimatePresence>

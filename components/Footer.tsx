@@ -98,7 +98,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative z-10 px-5 pb-10 sm:px-8 lg:px-12">
+    // id="site-footer": משמש עוגן ל-IntersectionObserver ב-StickyCta,
+    // כדי שהכפתור הצף ידע להיעלם ברגע שהפוטר נכנס לתצוגה (ראו הסבר שם).
+    <footer id="site-footer" className="relative z-10 px-5 pb-10 sm:px-8 lg:px-12">
       <div className="mx-auto w-full max-w-6xl">
         <div className="rule-hair" />
 
