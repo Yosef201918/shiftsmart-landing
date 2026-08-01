@@ -9,10 +9,12 @@ import MotionProvider from "@/components/MotionProvider";
 import PhoneShowcase from "@/components/PhoneShowcase";
 import Roadmap from "@/components/Roadmap";
 import StickyCta from "@/components/StickyCta";
+import WhatsNew from "@/components/WhatsNew";
 
 /*
  * סדר הקריאה זהה במובייל ובדסקטופ:
- * כותרת ופעולות → מדריך ההצטרפות → מוקאפ האפליקציה → יכולות → גלריה → שאלות.
+ * כותרת ופעולות → מה חדש → מדריך ההצטרפות → מוקאפ האפליקציה → יכולות →
+ * גלריה → שאלות.
  */
 export default function Home() {
   return (
@@ -22,6 +24,7 @@ export default function Home() {
       <MotionProvider>
         <main className="relative z-10 flex-1">
           <Hero />
+          <WhatsNew />
           <BetaSteps />
           <PhoneShowcase />
           <Features />

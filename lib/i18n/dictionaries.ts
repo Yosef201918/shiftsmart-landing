@@ -56,6 +56,15 @@ export interface Dictionary {
     starsAriaLabel: string;
     betaWarning: string;
   };
+  whatsNew: {
+    kicker: string;
+    titlePrefix: string;
+    titleHighlight: string;
+    subtitle: string;
+    /** תווית קטנה על כל כרטיס — "חדש" / "NEW" */
+    badgeLabel: string;
+    items: [TitledItem, TitledItem, TitledItem];
+  };
   betaSteps: {
     kicker: string;
     titlePrefix: string;
@@ -168,6 +177,30 @@ const he: Dictionary = {
     starsAriaLabel: "חמישה כוכבים",
     betaWarning:
       "שימו לב: זמין למכשירי אנדרואיד בלבד. אנחנו בגרסת בטא (Beta) – משתפרים כל הזמן!",
+  },
+  whatsNew: {
+    kicker: "עדכונים",
+    titlePrefix: "🚀 מה חדש ",
+    titleHighlight: "באפליקציה?",
+    subtitle: "(עדכוני השבוע האחרון)",
+    badgeLabel: "חדש",
+    items: [
+      {
+        title: "ווידג'ט חכם למסך הבית (Smart Widget)",
+        description:
+          "הפעלה ועצירה של שעון הנוכחות בלחיצת כפתור מהירה ישירות ממסך הבית, מבלי לפתוח את האפליקציה. מעקב חי ונוח אחרי סטטוס המשמרת שלך מכל מסך.",
+      },
+      {
+        title: "אוטומציה ונוחות בסיום משמרת",
+        description:
+          "מעבר אוטומטי להיסטוריה (העברה למסך סיכום השעות מיד ביציאה) והערות מהירות (הקפצת חלון הערה אוטומטי כדי לא לשכוח טיפים או חריגים).",
+      },
+      {
+        title: "שליטה מלאה בהתראות וברטט",
+        description:
+          "התאמה אישית של חוויית המשתמש - שליטה מלאה על הפעלה או כיבוי של צלילי חיווי ורטט בכל כניסה ויציאה ממשמרת.",
+      },
+    ],
   },
   betaSteps: {
     kicker: "BETA",
@@ -396,6 +429,30 @@ const en: Dictionary = {
     starsAriaLabel: "Five stars",
     betaWarning:
       "Please note: Android devices only for now. We're in Beta — improving all the time!",
+  },
+  whatsNew: {
+    kicker: "UPDATES",
+    titlePrefix: "🚀 What's ",
+    titleHighlight: "New?",
+    subtitle: "(Latest Updates)",
+    badgeLabel: "NEW",
+    items: [
+      {
+        title: "Smart Home Screen Widget",
+        description:
+          "Start and stop the attendance clock with a quick button press directly from your home screen, without opening the app. Live and convenient tracking of your shift status.",
+      },
+      {
+        title: "Automation & Convenience at Shift End",
+        description:
+          "Automatic redirect to history (instantly moves you to the summary screen upon clocking out) and Quick Notes (automatic note pop-up so you never forget tips or unusual events).",
+      },
+      {
+        title: "Full Control Over Notifications & Vibration",
+        description:
+          "Personalized user experience - full control to enable or disable sound notifications and vibration for every clock-in and clock-out.",
+      },
+    ],
   },
   betaSteps: {
     kicker: "BETA",
