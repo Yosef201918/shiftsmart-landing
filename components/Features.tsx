@@ -9,8 +9,11 @@ import {
   Crown,
   DatabaseBackup,
   FingerprintPattern,
+  LayoutGrid,
   MapPinned,
+  Sliders,
   Volume2,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -41,8 +44,16 @@ type FeatureMeta = {
  *   שורה 2:  A ממשיך          | C(2) | D(2)
  *   שורה 3:  E(2 רחב, 2 גבוה) | F(2) | G(2)
  *   שורה 4:  E ממשיך          | H(2) | I(2)
+ *   שורה 5:  J(2)             | K(2) | L(2)   ← שלושת התכונות החדשות (פאזה 15)
+ *
+ * שורה 5 נוספה בדיוק כמו שורה 2/4: שלושה כרטיסי "standard" בני 2 עמודות
+ * שממלאים את ה-6 עמודות בלי שארית, כך שהריצוף נשאר מדויק ואין חורים גם
+ * אחרי ההרחבה מ-9 ל-12 כרטיסים.
  */
 const FEATURE_META: [
+  FeatureMeta,
+  FeatureMeta,
+  FeatureMeta,
   FeatureMeta,
   FeatureMeta,
   FeatureMeta,
@@ -62,6 +73,9 @@ const FEATURE_META: [
   { icon: BatteryCharging, area: "lg:col-span-2", shape: "standard" },
   { icon: Briefcase, area: "lg:col-span-2", shape: "standard" },
   { icon: Crown, area: "lg:col-span-2", shape: "standard", accent: "amber" },
+  { icon: LayoutGrid, area: "lg:col-span-2", shape: "standard" },
+  { icon: Zap, area: "lg:col-span-2", shape: "standard" },
+  { icon: Sliders, area: "lg:col-span-2", shape: "standard" },
 ];
 
 /** מיפוי גודל → סידור פנימי, ריווח, מידות אייקון וטיפוגרפיה */

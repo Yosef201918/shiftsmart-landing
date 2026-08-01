@@ -87,6 +87,9 @@ export interface Dictionary {
       TitledItem,
       TitledItem,
       TitledItem,
+      TitledItem,
+      TitledItem,
+      TitledItem,
     ];
   };
   gallery: {
@@ -229,7 +232,7 @@ const he: Dictionary = {
     ],
   },
   features: {
-    kicker: "01 — 09",
+    kicker: "01 — 12",
     titlePrefix: "כל מה שיש ",
     titleHighlight: "בפנים",
     items: [
@@ -270,6 +273,21 @@ const he: Dictionary = {
       {
         title: "תכונות פרימיום",
         description: "חינם למשתמשי בטא כמו ייצוא ל-PDF ועוד...",
+      },
+      {
+        title: "ווידג'ט חכם למסך הבית",
+        description:
+          "הפעלה ועצירה ישירה ממסך הבית, כולל מעקב חי אחרי סטטוס המשמרת.",
+      },
+      {
+        title: "אוטומציה בסיום משמרת",
+        description:
+          "מעבר אוטומטי לסיכום השעות והקפצת חלון הערות כדי שלא תשכחו שום טיפ.",
+      },
+      {
+        title: "שליטה אישית בהתראות",
+        description:
+          "התאמה אישית מלאה להפעלה או כיבוי של רטט וצלילי חיווי.",
       },
     ],
   },
@@ -481,7 +499,7 @@ const en: Dictionary = {
     ],
   },
   features: {
-    kicker: "01 — 09",
+    kicker: "01 — 12",
     titlePrefix: "Everything ",
     titleHighlight: "Inside",
     items: [
@@ -524,6 +542,21 @@ const en: Dictionary = {
       {
         title: "Premium Features",
         description: "Free for Beta users — like PDF export and more...",
+      },
+      {
+        title: "Smart Home Screen Widget",
+        description:
+          "Start and stop directly from your home screen with live shift tracking.",
+      },
+      {
+        title: "Shift End Automation",
+        description:
+          "Auto-redirect to hours summary and quick notes pop-up so you never forget a tip.",
+      },
+      {
+        title: "Custom Notifications",
+        description:
+          "Full control to enable or disable vibration and sound alerts.",
       },
     ],
   },
