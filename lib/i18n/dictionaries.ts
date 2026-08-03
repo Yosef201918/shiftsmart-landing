@@ -23,6 +23,15 @@ export interface ShotItem {
   alt: string;
 }
 
+export interface ReviewItem {
+  name: string;
+  /** תפקיד/מקצוע המבקר — מוסיף אמינות למקטע */
+  role: string;
+  /** דירוג מ-1 עד 5 */
+  rating: number;
+  text: string;
+}
+
 /**
  * טיפוסי tuple באורך קבוע (במקום `TitledItem[]` גנרי) מכריחים את TypeScript
  * לוודא שלכל שפה יש בדיוק אותו מספר פריטים באותו סדר — אם תתווסף תכונה
@@ -92,6 +101,28 @@ export interface Dictionary {
       TitledItem,
     ];
   };
+  reviews: {
+    kicker: string;
+    titlePrefix: string;
+    titleHighlight: string;
+    subtitle: string;
+    averageRating: string;
+    ratingAriaLabel: (rating: number) => string;
+    writeReviewCta: string;
+    toastMessage: string;
+    items: [ReviewItem, ReviewItem, ReviewItem];
+    modal: {
+      title: string;
+      nameLabel: string;
+      namePlaceholder: string;
+      ratingLabel: string;
+      ratingAria: (stars: number) => string;
+      reviewLabel: string;
+      reviewPlaceholder: string;
+      submitCta: string;
+      closeAria: string;
+    };
+  };
   gallery: {
     kicker: string;
     titlePrefix: string;
@@ -128,19 +159,6 @@ export interface Dictionary {
   };
   stickyCta: {
     label: string;
-  };
-  feedback: {
-    fabAriaLabel: string;
-    modalTitle: string;
-    modalSubtitle: string;
-    nameLabel: string;
-    namePlaceholder: string;
-    messageLabel: string;
-    messagePlaceholder: string;
-    submitCta: string;
-    closeAria: string;
-    /** נושא הודעת המייל שנפתחת ב-mailto */
-    mailSubject: string;
   };
   phoneShowcase: {
     /**
@@ -304,6 +322,47 @@ const he: Dictionary = {
       },
     ],
   },
+  reviews: {
+    kicker: "דירוגים וביקורות",
+    titlePrefix: "מה ",
+    titleHighlight: "אומרים עלינו",
+    subtitle: "מבוסס על משתמשי הבטא שלנו",
+    averageRating: "4.9",
+    ratingAriaLabel: (rating) => `דירוג ${rating} מתוך 5 כוכבים`,
+    writeReviewCta: "כתוב ביקורת",
+    toastMessage: "תודה! הביקורת שלך נשלחה לאישור.",
+    items: [
+      {
+        name: "דור כהן",
+        role: "מאבטח",
+        rating: 5,
+        text: "סוף סוף אפליקציה שמחשבת לי נכון שעות נוספות ומשמרות לילה. חוסכת לי כאב ראש בסוף כל חודש.",
+      },
+      {
+        name: "מאיה לוי",
+        role: "מלצרית",
+        rating: 5,
+        text: "הווידג'ט למסך הבית פשוט מציל. מתחילה ומסיימת משמרת בלחיצה אחת בלי לפתוח את האפליקציה בכלל.",
+      },
+      {
+        name: "אורי בן דוד",
+        role: "מנהל משמרת באירועים",
+        rating: 4,
+        text: "מנהל כמה מקומות עבודה במקביל וזה סוף סוף מסודר. יהיה נהדר לקבל גם גרסת iOS בקרוב.",
+      },
+    ],
+    modal: {
+      title: "כתיבת ביקורת",
+      nameLabel: "שם",
+      namePlaceholder: "איך קוראים לך?",
+      ratingLabel: "דירוג",
+      ratingAria: (stars) => `דירוג ${stars} כוכבים`,
+      reviewLabel: "הביקורת שלך",
+      reviewPlaceholder: "ספרו לנו איך הייתה החוויה שלכם עם האפליקציה...",
+      submitCta: "שליחת ביקורת",
+      closeAria: "סגירת חלון הביקורת",
+    },
+  },
   gallery: {
     kicker: "GALLERY",
     titlePrefix: "הצצה ",
@@ -412,18 +471,6 @@ const he: Dictionary = {
   },
   stickyCta: {
     label: "הצטרפו לבטא הסגורה",
-  },
-  feedback: {
-    fabAriaLabel: "שליחת פידבק על הבטא",
-    modalTitle: "שלח פידבק",
-    modalSubtitle: "נתקלתם בבאג או שיש לכם רעיון? נשמח לשמוע ישירות.",
-    nameLabel: "שם (אופציונלי)",
-    namePlaceholder: "איך קוראים לך?",
-    messageLabel: "הודעה",
-    messagePlaceholder: "ספרו לנו מה קרה או מה תרצו לראות באפליקציה...",
-    submitCta: "שליחה במייל",
-    closeAria: "סגירת חלון הפידבק",
-    mailSubject: "פידבק על בטא Shift Smart",
   },
   phoneShowcase: {
     mockupSrc: "/mockup-v2.png",
@@ -585,6 +632,47 @@ const en: Dictionary = {
       },
     ],
   },
+  reviews: {
+    kicker: "RATINGS & REVIEWS",
+    titlePrefix: "What ",
+    titleHighlight: "People Say",
+    subtitle: "Based on our beta testers",
+    averageRating: "4.9",
+    ratingAriaLabel: (rating) => `Rated ${rating} out of 5 stars`,
+    writeReviewCta: "Write a Review",
+    toastMessage: "Thank you! Your review has been submitted for approval.",
+    items: [
+      {
+        name: "Dor Cohen",
+        role: "Security Guard",
+        rating: 5,
+        text: "Finally an app that correctly calculates my overtime and night shifts. Saves me a headache at the end of every month.",
+      },
+      {
+        name: "Maya Levi",
+        role: "Waitress",
+        rating: 5,
+        text: "The home screen widget is a lifesaver. I start and end my shift with one tap without even opening the app.",
+      },
+      {
+        name: "Ori Ben David",
+        role: "Events Shift Manager",
+        rating: 4,
+        text: "I manage a few workplaces at once and it's finally organized. Would love an iOS version soon.",
+      },
+    ],
+    modal: {
+      title: "Write a Review",
+      nameLabel: "Name",
+      namePlaceholder: "What's your name?",
+      ratingLabel: "Rating",
+      ratingAria: (stars) => `Rate ${stars} stars`,
+      reviewLabel: "Your Review",
+      reviewPlaceholder: "Tell us about your experience with the app...",
+      submitCta: "Submit Review",
+      closeAria: "Close review dialog",
+    },
+  },
   gallery: {
     kicker: "GALLERY",
     titlePrefix: "A Look ",
@@ -699,18 +787,6 @@ const en: Dictionary = {
   },
   stickyCta: {
     label: "Join the Closed Beta",
-  },
-  feedback: {
-    fabAriaLabel: "Send Beta feedback",
-    modalTitle: "Send Feedback",
-    modalSubtitle: "Found a bug or have an idea? We'd love to hear it directly.",
-    nameLabel: "Name (optional)",
-    namePlaceholder: "What's your name?",
-    messageLabel: "Message",
-    messagePlaceholder: "Tell us what happened or what you'd like to see in the app...",
-    submitCta: "Send by Email",
-    closeAria: "Close feedback dialog",
-    mailSubject: "Shift Smart Beta Feedback",
   },
   phoneShowcase: {
     mockupSrc: "/English screenshot1.jpg",
