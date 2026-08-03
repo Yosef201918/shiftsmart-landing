@@ -71,19 +71,34 @@ export default function Reviews() {
     let isMounted = true;
 
     async function loadReviews() {
-      const { data, error } = await supabase
-        .from("reviews")
-        .select("id, name, rating, content, status, created_at")
-        .eq("status", "approved")
-        .order("created_at", { ascending: false });
+      try {
+        const { data, error } = await supabase
+          .from("reviews")
+          .select("id, name, rating, content, status, created_at")
+          .eq("status", "approved")
+          .order("created_at", { ascending: false });
 
-      if (!isMounted) return;
-      if (error) {
+        if (!isMounted) return;
+
+        if (error) {
+          // שגיאה אמיתית מה-API (למשל מדיניות RLS או בעיית הרשאות) —
+          // לא בלבול עם תשובה ריקה תקינה, שהיא [] או null, לא error.
+          console.error("Supabase Error:", error);
+          setLoadError(true);
+        } else {
+          // [] או null הם תגובה תקינה לגמרי (עדיין אין ביקורות מאושרות),
+          // לא מקרה שגיאה — data ?? [] מנרמל את שניהם למערך ריק פשוט.
+          setReviews(data ?? []);
+        }
+      } catch (unexpectedError) {
+        // תופס כשל רשת אמיתי (DNS/CORS/כתובת שגויה) שנזרק כחריגה ולא
+        // חוזר כ-{error} רגיל מ-supabase-js.
+        if (!isMounted) return;
+        console.error("Supabase Error:", unexpectedError);
         setLoadError(true);
-      } else {
-        setReviews(data ?? []);
+      } finally {
+        if (isMounted) setIsLoading(false);
       }
-      setIsLoading(false);
     }
 
     loadReviews();
@@ -137,23 +152,29 @@ export default function Reviews() {
     setIsSubmitting(true);
     setSubmitError(false);
 
-    // status לא נשלח כלל — ברירת המחדל "pending" מוגדרת בטבלה עצמה בצד
-    // Supabase, כך שביקורות חדשות תמיד ממתינות לאישור ידני לפני שיוצגו.
-    const { error } = await supabase.from("reviews").insert({
-      name: name.trim(),
-      rating: selectedRating,
-      content: reviewText.trim(),
-    });
+    try {
+      // status לא נשלח כלל — ברירת המחדל "pending" מוגדרת בטבלה עצמה
+      // בצד Supabase, כך שביקורות חדשות תמיד ממתינות לאישור ידני.
+      const { error } = await supabase.from("reviews").insert({
+        name: name.trim(),
+        rating: selectedRating,
+        content: reviewText.trim(),
+      });
 
-    setIsSubmitting(false);
+      if (error) {
+        console.error("Supabase Error:", error);
+        setSubmitError(true);
+        return;
+      }
 
-    if (error) {
+      closeModal();
+      setIsToastVisible(true);
+    } catch (unexpectedError) {
+      console.error("Supabase Error:", unexpectedError);
       setSubmitError(true);
-      return;
+    } finally {
+      setIsSubmitting(false);
     }
-
-    closeModal();
-    setIsToastVisible(true);
   };
 
   return (
