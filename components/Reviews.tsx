@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useId, useState, type FormEvent } from "react";
+import { useEffect, useId, useMemo, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Star, X } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE, EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { supabase, type ReviewRow } from "@/lib/supabase";
 
 /** כוכבים קבועים (לא אינטראקטיביים) — מציגים דירוג קיים בכרטיס ביקורת/ממוצע */
 function StaticStars({ rating, className = "size-4" }: { rating: number; className?: string }) {
@@ -24,11 +25,23 @@ function StaticStars({ rating, className = "size-4" }: { rating: number; classNa
   );
 }
 
+/** שלד טעינה קליל — רק opacity מונפש (animate-pulse של Tailwind), בלי שום חישוב פריסה */
+function ReviewCardSkeleton() {
+  return (
+    <div className="panel flex animate-pulse flex-col rounded-2xl p-7">
+      <div className="h-4 w-24 rounded-full bg-hair" />
+      <div className="mt-4 h-4 w-full rounded-full bg-hair" />
+      <div className="mt-2 h-4 w-3/4 rounded-full bg-hair" />
+      <div className="mt-6 h-4 w-20 rounded-full bg-hair" />
+    </div>
+  );
+}
+
 /*
- * שלב 17 — מקטע ביקורות ציבורי בסגנון Google Play, במקום ה-FAB הפרטי
- * שהוסר. שלושה חלקים: כותרת ממוצע דירוג + כפתור "כתוב ביקורת", גריד
- * כרטיסי ביקורות (נתוני דמו), ומודאל כתיבת ביקורת עם דירוג כוכבים
- * אינטראקטיבי. לאחר שליחה מוצג טוסט זמני — אין עדיין backend אמיתי.
+ * שלב 18 — הביקורות נשלפות בזמן אמת מטבלת reviews ב-Supabase (רק status
+ * 'approved', מסודרות מהחדש לישן), וטופס "כתוב ביקורת" מכניס שורה חדשה
+ * לטבלה (עם status='pending' כברירת המחדל של הטבלה עצמה — אנחנו לא
+ * שולחים את השדה הזה בכלל מהלקוח).
  *
  * מודאל וטוסט בנויים כשכבת מיקום קבועה תמיד-מורכבת עם AnimatePresence
  * נפרד לכל אלמנט מונפש (לא מקונן) — התבנית שתוקנה בפאזה 16 אחרי שגילינו
@@ -37,13 +50,55 @@ function StaticStars({ rating, className = "size-4" }: { rating: number; classNa
  */
 export default function Reviews() {
   const { t, dir } = useLanguage();
+
+  const [reviews, setReviews] = useState<ReviewRow[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isToastVisible, setIsToastVisible] = useState(false);
   const [name, setName] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const titleId = useId();
+
+  useEffect(() => {
+    // isMounted מונע setState אחרי שהרכיב כבר פורק — התגובה מהרשת עלולה
+    // לחזור אחרי ניווט הרחק מהעמוד, וזה בדיוק מקור נפוץ לדליפת זיכרון.
+    let isMounted = true;
+
+    async function loadReviews() {
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("id, name, rating, content, status, created_at")
+        .eq("status", "approved")
+        .order("created_at", { ascending: false });
+
+      if (!isMounted) return;
+      if (error) {
+        setLoadError(true);
+      } else {
+        setReviews(data ?? []);
+      }
+      setIsLoading(false);
+    }
+
+    loadReviews();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // ממוצע אמיתי מהביקורות שנטענו; כל עוד אין אף ביקורת מאושרת עדיין
+  // (בטא טרייה) מוצג הדירוג הבסיסי מהמילון במקום "0.0" מטעה.
+  const averageRating = useMemo(() => {
+    if (reviews.length === 0) return null;
+    const sum = reviews.reduce((total, review) => total + review.rating, 0);
+    return (sum / reviews.length).toFixed(1);
+  }, [reviews]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -72,13 +127,31 @@ export default function Reviews() {
     setReviewText("");
     setSelectedRating(0);
     setHoverRating(0);
+    setSubmitError(false);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!reviewText.trim() || selectedRating === 0) return;
+    if (!reviewText.trim() || selectedRating === 0 || isSubmitting) return;
 
-    // TODO: Connect to backend database to save review permanently
+    setIsSubmitting(true);
+    setSubmitError(false);
+
+    // status לא נשלח כלל — ברירת המחדל "pending" מוגדרת בטבלה עצמה בצד
+    // Supabase, כך שביקורות חדשות תמיד ממתינות לאישור ידני לפני שיוצגו.
+    const { error } = await supabase.from("reviews").insert({
+      name: name.trim(),
+      rating: selectedRating,
+      content: reviewText.trim(),
+    });
+
+    setIsSubmitting(false);
+
+    if (error) {
+      setSubmitError(true);
+      return;
+    }
+
     closeModal();
     setIsToastVisible(true);
   };
@@ -119,7 +192,7 @@ export default function Reviews() {
               variants={fadeUp}
             >
               <span dir="ltr" className="font-display text-4xl text-chalk">
-                {t.reviews.averageRating}
+                {averageRating ?? t.reviews.averageRating}
               </span>
               <span className="flex flex-col gap-1">
                 <StaticStars rating={5} className="size-4" />
@@ -139,31 +212,42 @@ export default function Reviews() {
         </motion.div>
 
         {/* ---------- גריד הביקורות ---------- */}
-        <motion.div
-          className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_ONCE}
-        >
-          {t.reviews.items.map(({ name: reviewerName, role, rating, text }) => (
-            <motion.article
-              key={reviewerName}
-              variants={fadeUp}
-              whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
-              className="panel panel-rail edge-lit flex flex-col rounded-2xl p-7 transition-colors duration-500 hover:border-hair-lit"
-            >
-              <StaticStars rating={rating} />
-              <p className="mt-4 flex-1 text-base leading-relaxed text-mist">
-                “{text}”
-              </p>
-              <div className="mt-6 border-t border-hair pt-4">
-                <p className="font-display text-base text-chalk">{reviewerName}</p>
-                <p className="text-sm text-mist">{role}</p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
+        {isLoading ? (
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ReviewCardSkeleton />
+            <ReviewCardSkeleton />
+            <ReviewCardSkeleton />
+          </div>
+        ) : loadError ? (
+          <p className="mt-12 text-base text-mist">{t.reviews.errorState}</p>
+        ) : reviews.length === 0 ? (
+          <p className="mt-12 text-base text-mist">{t.reviews.emptyState}</p>
+        ) : (
+          <motion.div
+            className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT_ONCE}
+          >
+            {reviews.map((review) => (
+              <motion.article
+                key={review.id}
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
+                className="panel panel-rail edge-lit flex flex-col rounded-2xl p-7 transition-colors duration-500 hover:border-hair-lit"
+              >
+                <StaticStars rating={review.rating} />
+                <p className="mt-4 flex-1 text-base leading-relaxed text-mist">
+                  “{review.content}”
+                </p>
+                <div className="mt-6 border-t border-hair pt-4">
+                  <p className="font-display text-base text-chalk">{review.name}</p>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        )}
       </div>
 
       {/*
@@ -273,9 +357,14 @@ export default function Reviews() {
                   />
                 </label>
 
+                {submitError ? (
+                  <p className="text-sm text-amber-soft">{t.reviews.submitError}</p>
+                ) : null}
+
                 <button
                   type="submit"
-                  className="mt-1 inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)]"
+                  disabled={isSubmitting}
+                  className="mt-1 inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] disabled:pointer-events-none disabled:opacity-60"
                 >
                   {t.reviews.modal.submitCta}
                 </button>

@@ -23,15 +23,6 @@ export interface ShotItem {
   alt: string;
 }
 
-export interface ReviewItem {
-  name: string;
-  /** תפקיד/מקצוע המבקר — מוסיף אמינות למקטע */
-  role: string;
-  /** דירוג מ-1 עד 5 */
-  rating: number;
-  text: string;
-}
-
 /**
  * טיפוסי tuple באורך קבוע (במקום `TitledItem[]` גנרי) מכריחים את TypeScript
  * לוודא שלכל שפה יש בדיוק אותו מספר פריטים באותו סדר — אם תתווסף תכונה
@@ -106,11 +97,19 @@ export interface Dictionary {
     titlePrefix: string;
     titleHighlight: string;
     subtitle: string;
+    /** דירוג ברירת מחדל שמוצג עד שיש ולפחות ביקורת מאושרת אחת בטבלה */
     averageRating: string;
     ratingAriaLabel: (rating: number) => string;
     writeReviewCta: string;
     toastMessage: string;
-    items: [ReviewItem, ReviewItem, ReviewItem];
+    /** מוצג בזמן שהבקשה ל-Supabase רצה */
+    loadingLabel: string;
+    /** מוצג כשאין עדיין אף ביקורת מאושרת בטבלה */
+    emptyState: string;
+    /** מוצג אם השליפה מ-Supabase נכשלה (בעיית רשת/הרשאות) */
+    errorState: string;
+    /** מוצג אם שליחת הביקורת החדשה נכשלה */
+    submitError: string;
     modal: {
       title: string;
       nameLabel: string;
@@ -331,26 +330,10 @@ const he: Dictionary = {
     ratingAriaLabel: (rating) => `דירוג ${rating} מתוך 5 כוכבים`,
     writeReviewCta: "כתוב ביקורת",
     toastMessage: "תודה! הביקורת שלך נשלחה לאישור.",
-    items: [
-      {
-        name: "דור כהן",
-        role: "מאבטח",
-        rating: 5,
-        text: "סוף סוף אפליקציה שמחשבת לי נכון שעות נוספות ומשמרות לילה. חוסכת לי כאב ראש בסוף כל חודש.",
-      },
-      {
-        name: "מאיה לוי",
-        role: "מלצרית",
-        rating: 5,
-        text: "הווידג'ט למסך הבית פשוט מציל. מתחילה ומסיימת משמרת בלחיצה אחת בלי לפתוח את האפליקציה בכלל.",
-      },
-      {
-        name: "אורי בן דוד",
-        role: "מנהל משמרת באירועים",
-        rating: 4,
-        text: "מנהל כמה מקומות עבודה במקביל וזה סוף סוף מסודר. יהיה נהדר לקבל גם גרסת iOS בקרוב.",
-      },
-    ],
+    loadingLabel: "טוען ביקורות...",
+    emptyState: "היו הראשונים לכתוב ביקורת על הבטא!",
+    errorState: "לא הצלחנו לטעון ביקורות כרגע. נסו לרענן את הדף.",
+    submitError: "שליחת הביקורת נכשלה. בדקו את החיבור ונסו שוב.",
     modal: {
       title: "כתיבת ביקורת",
       nameLabel: "שם",
@@ -641,26 +624,10 @@ const en: Dictionary = {
     ratingAriaLabel: (rating) => `Rated ${rating} out of 5 stars`,
     writeReviewCta: "Write a Review",
     toastMessage: "Thank you! Your review has been submitted for approval.",
-    items: [
-      {
-        name: "Dor Cohen",
-        role: "Security Guard",
-        rating: 5,
-        text: "Finally an app that correctly calculates my overtime and night shifts. Saves me a headache at the end of every month.",
-      },
-      {
-        name: "Maya Levi",
-        role: "Waitress",
-        rating: 5,
-        text: "The home screen widget is a lifesaver. I start and end my shift with one tap without even opening the app.",
-      },
-      {
-        name: "Ori Ben David",
-        role: "Events Shift Manager",
-        rating: 4,
-        text: "I manage a few workplaces at once and it's finally organized. Would love an iOS version soon.",
-      },
-    ],
+    loadingLabel: "Loading reviews...",
+    emptyState: "Be the first to review the Beta!",
+    errorState: "We couldn't load reviews right now. Try refreshing the page.",
+    submitError: "Couldn't submit your review. Check your connection and try again.",
     modal: {
       title: "Write a Review",
       nameLabel: "Name",
