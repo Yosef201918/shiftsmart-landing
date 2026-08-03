@@ -129,6 +129,19 @@ export interface Dictionary {
   stickyCta: {
     label: string;
   };
+  feedback: {
+    fabAriaLabel: string;
+    modalTitle: string;
+    modalSubtitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+    submitCta: string;
+    closeAria: string;
+    /** נושא הודעת המייל שנפתחת ב-mailto */
+    mailSubject: string;
+  };
   phoneShowcase: {
     /**
      * לעברית זהו נכס ייעודי (mockup-v2.png) שנבחר במיוחד להירו. לאנגלית לא
@@ -399,6 +412,18 @@ const he: Dictionary = {
   },
   stickyCta: {
     label: "הצטרפו לבטא הסגורה",
+  },
+  feedback: {
+    fabAriaLabel: "שליחת פידבק על הבטא",
+    modalTitle: "שלח פידבק",
+    modalSubtitle: "נתקלתם בבאג או שיש לכם רעיון? נשמח לשמוע ישירות.",
+    nameLabel: "שם (אופציונלי)",
+    namePlaceholder: "איך קוראים לך?",
+    messageLabel: "הודעה",
+    messagePlaceholder: "ספרו לנו מה קרה או מה תרצו לראות באפליקציה...",
+    submitCta: "שליחה במייל",
+    closeAria: "סגירת חלון הפידבק",
+    mailSubject: "פידבק על בטא Shift Smart",
   },
   phoneShowcase: {
     mockupSrc: "/mockup-v2.png",
@@ -674,6 +699,18 @@ const en: Dictionary = {
   },
   stickyCta: {
     label: "Join the Closed Beta",
+  },
+  feedback: {
+    fabAriaLabel: "Send Beta feedback",
+    modalTitle: "Send Feedback",
+    modalSubtitle: "Found a bug or have an idea? We'd love to hear it directly.",
+    nameLabel: "Name (optional)",
+    namePlaceholder: "What's your name?",
+    messageLabel: "Message",
+    messagePlaceholder: "Tell us what happened or what you'd like to see in the app...",
+    submitCta: "Send by Email",
+    closeAria: "Close feedback dialog",
+    mailSubject: "Shift Smart Beta Feedback",
   },
   phoneShowcase: {
     mockupSrc: "/English screenshot1.jpg",

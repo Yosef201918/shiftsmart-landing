@@ -10,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 
+import BetaSteps from "@/components/BetaSteps";
 import DirectionalArrow from "@/components/DirectionalArrow";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import {
@@ -23,9 +24,12 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 const STARS = [0, 1, 2, 3, 4];
 
 /*
- * ההירו מכיל טקסט ופעולות בלבד. מוקאפ הטלפון הוצא לקומפוננטה נפרדת
- * (PhoneShowcase) שמוצגת אחרי מדריך שלושת השלבים, כדי שסדר הקריאה יהיה
- * זהה במובייל ובדסקטופ: כותרת → פעולות → אמון → מדריך → מוקאפ.
+ * שלב 16 — מדריך שלושת השלבים (BetaSteps) עבר לתוך ה-Hero עצמו, מיד מתחת
+ * לכפתורי הפעולה: כותרת → פעולות → מדריך → אמון/אזהרה. כך המשתמש רואה את
+ * הדרך להצטרפות בלי לגלול, במקום שהמדריך יישאר קבור במקטע נפרד למטה.
+ * BetaSteps מוצג ברוחב מלא (מחוץ ל-max-w-3xl של טור הטקסט) כדי שהגריד בן
+ * שלוש העמודות שלו יקבל את כל רוחב ה-Hero. מוקאפ הטלפון (PhoneShowcase)
+ * ממשיך לשבת אחרי המדריך בסדר הדף הכללי — כלומר עדיין "מתחת למדריך".
  */
 export default function Hero() {
   const { t } = useLanguage();
@@ -33,7 +37,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative px-5 pb-20 pt-8 sm:px-8 lg:px-12 lg:pb-28"
+      className="relative px-5 pb-20 pt-6 sm:px-8 lg:px-12 lg:pb-28"
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* ---------- סרגל מותג ---------- */}
@@ -66,9 +70,9 @@ export default function Hero() {
           </div>
         </motion.header>
 
-        {/* ---------- תוכן ההירו ---------- */}
+        {/* ---------- תוכן ההירו: כותרת ופעולות ---------- */}
         <motion.div
-          className="mt-16 max-w-3xl lg:mt-24"
+          className="mt-8 max-w-3xl lg:mt-14"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -88,7 +92,7 @@ export default function Hero() {
             נמדדה 324px בתוך מיכל של 335px, כלומר נשברה בכל מסך צר יותר.
             text-balance מחלק את השורות באופן שווה אם בכל זאת נדרשת שבירה.
           */}
-          <motion.h1 className="mt-6 text-balance" variants={fadeUp}>
+          <motion.h1 className="mt-4 text-balance" variants={fadeUp}>
             <span className="block text-[1.75rem] font-extralight leading-tight tracking-tight text-chalk sm:text-4xl lg:text-5xl">
               {t.hero.titleLine1}
             </span>
@@ -98,18 +102,10 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="mt-6 max-w-xl text-lg font-light leading-relaxed text-chalk/90 sm:text-xl"
+            className="mt-4 max-w-xl text-lg font-light leading-relaxed text-chalk/90 sm:text-xl"
             variants={fadeUp}
           >
             {t.hero.subtitle}
-          </motion.p>
-
-          {/* קהל היעד — רצועה עם מבטא ניאון בקצה הפנימי */}
-          <motion.p
-            className="mt-6 max-w-lg border-s-2 border-neon-deep bg-abyss/40 py-3 ps-5 text-base leading-relaxed text-mist"
-            variants={fadeUp}
-          >
-            {t.hero.audience}
           </motion.p>
 
           {/*
@@ -118,7 +114,7 @@ export default function Hero() {
             המשני מקבל רקע זכוכית ומסגרת כדי שייראה ככפתור ולא כטקסט.
           */}
           <motion.div
-            className="mt-9 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center sm:gap-4"
+            className="mt-6 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center sm:gap-4"
             variants={fadeUp}
           >
             <a
@@ -143,6 +139,26 @@ export default function Hero() {
               {t.hero.joinBetaCta}
             </a>
           </motion.div>
+        </motion.div>
+
+        {/* ---------- מדריך שלושת השלבים — מיד מתחת לכפתורים, ברוחב מלא ---------- */}
+        <BetaSteps />
+
+        {/* ---------- אמון ואזהרה — מתחת למדריך ---------- */}
+        <motion.div
+          className="mt-8 max-w-3xl"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT_ONCE}
+        >
+          {/* קהל היעד — רצועה עם מבטא ניאון בקצה הפנימי */}
+          <motion.p
+            className="max-w-lg border-s-2 border-neon-deep bg-abyss/40 py-3 ps-5 text-base leading-relaxed text-mist"
+            variants={fadeUp}
+          >
+            {t.hero.audience}
+          </motion.p>
 
           {/* ---------- הוכחה חברתית ---------- */}
           <motion.div

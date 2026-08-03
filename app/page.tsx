@@ -1,8 +1,8 @@
 import AppCarousel from "@/components/AppCarousel";
 import Backdrop from "@/components/Backdrop";
-import BetaSteps from "@/components/BetaSteps";
 import Faq from "@/components/Faq";
 import Features from "@/components/Features";
+import FeedbackFab from "@/components/FeedbackFab";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import MotionProvider from "@/components/MotionProvider";
@@ -12,9 +12,11 @@ import StickyCta from "@/components/StickyCta";
 import WhatsNew from "@/components/WhatsNew";
 
 /*
- * סדר הקריאה זהה במובייל ובדסקטופ:
- * כותרת ופעולות → מה חדש → מדריך ההצטרפות → מוקאפ האפליקציה → יכולות →
- * גלריה → שאלות.
+ * שלב 16: מדריך שלושת השלבים (BetaSteps) כבר לא מקטע עצמאי בעמוד — הוא
+ * עבר להיות מרונדר בתוך <Hero> עצמו, מיד מתחת לכפתורי הפעולה, כדי שיהיה
+ * גלוי בלי גלילה. סדר הקריאה בעמוד:
+ * הירו (כולל כותרת → פעולות → מדריך → אמון) → מה חדש → מוקאפ האפליקציה →
+ * יכולות → גלריה → מפת דרכים → שאלות.
  */
 export default function Home() {
   return (
@@ -25,7 +27,6 @@ export default function Home() {
         <main className="relative z-10 flex-1">
           <Hero />
           <WhatsNew />
-          <BetaSteps />
           <PhoneShowcase />
           <Features />
           <AppCarousel />
@@ -34,6 +35,7 @@ export default function Home() {
         </main>
 
         <StickyCta />
+        <FeedbackFab />
       </MotionProvider>
 
       <Footer />
