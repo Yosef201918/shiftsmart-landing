@@ -65,6 +65,10 @@ export const metadata: Metadata = {
     locale: "he_IL",
     type: "website",
   },
+  /* אימות בעלות על הדומיין עבור Google Play Developer Console */
+  verification: {
+    google: "ZtSkJ8cq55M33DeeZvYB6rpZAQ-kztLt5rD0Ktcr2nw",
+  },
 };
 
 export const viewport: Viewport = {
