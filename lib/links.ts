@@ -3,6 +3,9 @@
  * שינוי כאן מתעדכן אוטומטית גם ב-Hero וגם ב-Footer.
  */
 
+/* כתובת האתר עצמו — נדרשת בטקסט השיתוף כדי שוואטסאפ יוכל למשוך את תמונת ה-OG */
+export const SITE_URL = "https://shiftsmart-landing.vercel.app";
+
 export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.yosefgabaydev.shiftsmart";
 

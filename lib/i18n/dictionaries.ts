@@ -164,8 +164,12 @@ export interface Dictionary {
     copiedLabel: string;
     /** כותרת שנשלחת ל-navigator.share() (שדה title של ה-API) */
     title: string;
-    /** בונה את טקסט השיתוף המלא עם הקישורים האמיתיים משובצים בפנים */
-    buildText: (groupUrl: string, storeUrl: string) => string;
+    /**
+     * בונה את טקסט השיתוף המלא. siteUrl חייב להופיע כטקסט רגיל (לא קישור
+     * בתוך קישור אחר) כי זה מה שוואטסאפ סורק כדי למשוך את תמונת ה-OG
+     * לתצוגה המקדימה — קישורי קבוצת הבודקים וה-Play Store לבדם לא מספיקים.
+     */
+    buildText: (siteUrl: string, groupUrl: string, storeUrl: string) => string;
   };
   featureRequest: {
     buttonLabel: string;
@@ -496,8 +500,8 @@ const he: Dictionary = {
     buttonLabel: "שתף את האפליקציה",
     copiedLabel: "הועתק!",
     title: "הצטרפו לבטא של Shift Smart!",
-    buildText: (groupUrl, storeUrl) =>
-      `היי! מצאתי אפליקציה מעולה לניהול משמרות ושכר בשם Shift Smart. כרגע היא בגרסת בטא סגורה.\nכדי להצטרף ולהוריד, עקבו אחרי 2 השלבים הקלים:\n1. הירשמו לקבוצת הבודקים כאן: ${groupUrl}\n2. הורידו מחנות Google Play כאן: ${storeUrl}`,
+    buildText: (siteUrl, groupUrl, storeUrl) =>
+      `היי! מצאתי אפליקציה מעולה לניהול משמרות ושכר בשם Shift Smart. כרגע היא בגרסת בטא סגורה.\nכנסו לאתר לכל הפרטים:\n${siteUrl}\n\nאו עקבו אחרי 2 שלבים קלים להצטרפות:\n1. הירשמו לקבוצת הבודקים: ${groupUrl}\n2. הורידו מ-Google Play: ${storeUrl}`,
   },
   featureRequest: {
     buttonLabel: "הצעת פיצ'ר",
@@ -831,8 +835,8 @@ const en: Dictionary = {
     buttonLabel: "Share App",
     copiedLabel: "Copied!",
     title: "Join the Shift Smart Beta!",
-    buildText: (groupUrl, storeUrl) =>
-      `Hey! I found a great shift and payroll management app called Shift Smart. It's currently in closed Beta.\nTo join and download, just follow 2 easy steps:\n1. Sign up for the testers group here: ${groupUrl}\n2. Download it from Google Play here: ${storeUrl}`,
+    buildText: (siteUrl, groupUrl, storeUrl) =>
+      `Hey! I found a great shift and payroll management app called Shift Smart. It's currently in closed Beta.\nCheck out the website for all the details:\n${siteUrl}\n\nOr follow 2 easy steps to join:\n1. Sign up for the testers group: ${groupUrl}\n2. Download it from Google Play: ${storeUrl}`,
   },
   featureRequest: {
     buttonLabel: "Suggest a Feature",

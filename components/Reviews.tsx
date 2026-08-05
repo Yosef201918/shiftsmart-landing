@@ -38,10 +38,14 @@ function ReviewCardSkeleton() {
 }
 
 /*
- * שלב 18 — הביקורות נשלפות בזמן אמת מטבלת reviews ב-Supabase (רק status
+ * שלב 18 — הביקורות נשלפות מטבלת reviews ב-Supabase (רק status
  * 'approved', מסודרות מהחדש לישן), וטופס "כתוב ביקורת" מכניס שורה חדשה
  * לטבלה (עם status='pending' כברירת המחדל של הטבלה עצמה — אנחנו לא
  * שולחים את השדה הזה בכלל מהלקוח).
+ *
+ * שלב 24 — נוסף מנוי Supabase Realtime: כל שינוי בטבלה (בעיקר אישור
+ * ביקורת ע"י admin, status -> 'approved') מפעיל שליפה חוזרת אוטומטית,
+ * כך שהרשימה מתעדכנת בעצמה בלי שהמשתמש יצטרך לרענן את הדף.
  *
  * מודאל וטוסט בנויים כשכבת מיקום קבועה תמיד-מורכבת עם AnimatePresence
  * נפרד לכל אלמנט מונפש (לא מקונן) — התבנית שתוקנה בפאזה 16 אחרי שגילינו
@@ -102,8 +106,30 @@ export default function Reviews() {
     }
 
     loadReviews();
+
+    // Realtime: מנוי יחיד לערוץ ייעודי לטבלת reviews. כל INSERT/UPDATE/
+    // DELETE (בעיקר admin שמאשר ביקורת) מפעיל שליפה חוזרת שקטה — isLoading
+    // כבר false אחרי הטעינה הראשונה, כך שאין הבהוב מחדש של השלד בכל עדכון.
+    const channel = supabase
+      .channel("reviews-changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "reviews" },
+        () => loadReviews(),
+      )
+      .subscribe((status) => {
+        // מתעד רק כשל אמיתי (למשל Realtime לא מופעל על הטבלה בפרויקט
+        // Supabase) — לא מרעישים את הקונסולה בכל חיבור מוצלח.
+        if (status === "CHANNEL_ERROR" || status === "TIMED_OUT") {
+          console.error("Supabase Realtime Error:", status);
+        }
+      });
+
     return () => {
       isMounted = false;
+      // ניקוי חובה: בלי removeChannel החיבור ל-WebSocket נשאר פתוח גם
+      // אחרי שהרכיב פורק — דליפת זיכרון וחיבור מיותר בכל ניווט בין דפים.
+      supabase.removeChannel(channel);
     };
   }, []);
 
