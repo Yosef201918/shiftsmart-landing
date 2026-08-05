@@ -6,11 +6,13 @@ import { Lightbulb, X } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE, EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { supabase } from "@/lib/supabase";
 
 /*
  * שלב 21 — מקטע "הצעת פיצ'ר": כרטיס קריאה-לפעולה קטן שפותח מודאל עם טופס
- * פשוט (שם, אימייל אופציונלי, תיאור הרעיון). בשלב הזה השליחה היא מקומית
- * בלבד — טוסט הצלחה וסגירה — ללא חיבור לאף backend עדיין.
+ * פשוט (שם, תיאור הרעיון). שלב 22: שדה האימייל הוסר (פחות חיכוך), וההגשה
+ * מכניסה שורה אמיתית לטבלת feature_requests ב-Supabase במקום להישאר
+ * מקומית בלבד.
  *
  * מודאל וטוסט בנויים כשכבת מיקום קבועה תמיד-מורכבת עם AnimatePresence
  * נפרד לכל אלמנט מונפש (לא מקונן), אותה תבנית בדיוק כמו ב-Reviews.tsx —
@@ -23,8 +25,9 @@ export default function FeatureRequest() {
   const [isOpen, setIsOpen] = useState(false);
   const [isToastVisible, setIsToastVisible] = useState(false);
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [feature, setFeature] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const titleId = useId();
 
   useEffect(() => {
@@ -51,17 +54,37 @@ export default function FeatureRequest() {
   const closeModal = () => {
     setIsOpen(false);
     setName("");
-    setEmail("");
     setFeature("");
+    setSubmitError(false);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!name.trim() || !feature.trim()) return;
+    if (!name.trim() || !feature.trim() || isSubmitting) return;
 
-    // TODO: Connect to Supabase feature_requests table
-    closeModal();
-    setIsToastVisible(true);
+    setIsSubmitting(true);
+    setSubmitError(false);
+
+    try {
+      const { error } = await supabase.from("feature_requests").insert({
+        name: name.trim(),
+        feature_text: feature.trim(),
+      });
+
+      if (error) {
+        console.error("Supabase Error:", error);
+        setSubmitError(true);
+        return;
+      }
+
+      closeModal();
+      setIsToastVisible(true);
+    } catch (unexpectedError) {
+      console.error("Supabase Error:", unexpectedError);
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -169,18 +192,6 @@ export default function FeatureRequest() {
                 </label>
 
                 <label className="flex flex-col gap-1.5 text-sm text-mist">
-                  {t.featureRequest.emailLabel}
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    placeholder={t.featureRequest.emailPlaceholder}
-                    dir="ltr"
-                    className="rounded-xl border border-hair bg-abyss/60 px-4 py-3 text-end text-base text-chalk placeholder:text-mist/60 transition duration-300 focus:border-neon-deep focus:outline-none"
-                  />
-                </label>
-
-                <label className="flex flex-col gap-1.5 text-sm text-mist">
                   {t.featureRequest.featureLabel}
                   <textarea
                     required
@@ -192,9 +203,14 @@ export default function FeatureRequest() {
                   />
                 </label>
 
+                {submitError ? (
+                  <p className="text-sm text-amber-soft">{t.featureRequest.submitError}</p>
+                ) : null}
+
                 <button
                   type="submit"
-                  className="mt-1 inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)]"
+                  disabled={isSubmitting}
+                  className="mt-1 inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] disabled:pointer-events-none disabled:opacity-60"
                 >
                   {t.featureRequest.submitCta}
                 </button>

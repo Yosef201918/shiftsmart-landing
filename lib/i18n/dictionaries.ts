@@ -173,13 +173,13 @@ export interface Dictionary {
     modalSubtitle: string;
     nameLabel: string;
     namePlaceholder: string;
-    emailLabel: string;
-    emailPlaceholder: string;
     featureLabel: string;
     featurePlaceholder: string;
     submitCta: string;
     closeAria: string;
     toastMessage: string;
+    /** מוצג אם השליחה ל-Supabase נכשלה */
+    submitError: string;
   };
   phoneShowcase: {
     /**
@@ -237,7 +237,7 @@ const he: Dictionary = {
     kicker: "עדכונים",
     titlePrefix: "🚀 מה חדש ",
     titleHighlight: "באפליקציה?",
-    subtitle: "(עדכוני השבוע האחרון)",
+    subtitle: "(עדכונים אחרונים)",
     badgeLabel: "חדש",
     items: [
       {
@@ -505,13 +505,12 @@ const he: Dictionary = {
     modalSubtitle: "יש לכם רעיון שיהפוך את Shift Smart לטובה יותר? נשמח לשמוע.",
     nameLabel: "שם",
     namePlaceholder: "איך קוראים לך?",
-    emailLabel: "אימייל (אופציונלי)",
-    emailPlaceholder: "כדי שנוכל לעדכן אתכם אם נטמיע את זה",
     featureLabel: "איזה פיצ'ר תרצו לראות?",
     featurePlaceholder: "ספרו לנו על הרעיון שלכם...",
     submitCta: "שליחת הצעה",
     closeAria: "סגירת חלון הצעת הפיצ'ר",
     toastMessage: "תודה! ההצעה שלך נרשמה ותיבדק.",
+    submitError: "שליחת ההצעה נכשלה. בדקו את החיבור ונסו שוב.",
   },
   phoneShowcase: {
     mockupSrc: "/mockup-v2.png",
@@ -841,13 +840,12 @@ const en: Dictionary = {
     modalSubtitle: "Got an idea that would make Shift Smart better? We'd love to hear it.",
     nameLabel: "Name",
     namePlaceholder: "What's your name?",
-    emailLabel: "Email (optional)",
-    emailPlaceholder: "So we can update you if we build it",
     featureLabel: "What feature would you like to see?",
     featurePlaceholder: "Tell us about your idea...",
     submitCta: "Submit Suggestion",
     closeAria: "Close feature request dialog",
     toastMessage: "Thank you! Your suggestion has been submitted for review.",
+    submitError: "Couldn't submit your suggestion. Check your connection and try again.",
   },
   phoneShowcase: {
     mockupSrc: "/English screenshot1.jpg",

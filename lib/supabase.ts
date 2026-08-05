@@ -17,6 +17,16 @@ export interface ReviewRow {
 /** שדות שהלקוח מספק בעת יצירת ביקורת — id/status/created_at נקבעים בשרת */
 export type NewReview = Pick<ReviewRow, "name" | "rating" | "content">;
 
+/** שורה בטבלת feature_requests ב-Supabase — שתי עמודות טקסט פשוטות בלבד */
+export interface FeatureRequestRow {
+  id: string;
+  name: string;
+  feature_text: string;
+  created_at: string;
+}
+
+export type NewFeatureRequest = Pick<FeatureRequestRow, "name" | "feature_text">;
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
