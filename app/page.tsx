@@ -2,6 +2,7 @@ import AppCarousel from "@/components/AppCarousel";
 import Backdrop from "@/components/Backdrop";
 import Faq from "@/components/Faq";
 import Features from "@/components/Features";
+import FeatureRequest from "@/components/FeatureRequest";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import MotionProvider from "@/components/MotionProvider";
@@ -12,10 +13,11 @@ import StickyCta from "@/components/StickyCta";
 import WhatsNew from "@/components/WhatsNew";
 
 /*
- * שלב 17: כפתור הפידבק הצף (FeedbackFab) הוסר לגמרי והוחלף במקטע ביקורות
- * ציבורי (Reviews) בסגנון Google Play, מיד אחרי מקטע היכולות. סדר הקריאה
- * בעמוד: הירו (כולל כותרת → פעולות → מדריך → אמון) → מה חדש → מוקאפ
- * האפליקציה → יכולות → ביקורות → גלריה → מפת דרכים → שאלות.
+ * שלב 21: כפתור שיתוף חכם נוסף בתוך ה-Hero (מיד מתחת לכפתורי הפעולה
+ * הראשיים), ומקטע "הצעת פיצ'ר" נוסף אחרי מפת הדרכים — המשכיות הגיונית
+ * מ"מה מתוכנן להמשך" ל"יש לכם רעיון למה שיבוא אחרי זה?". סדר הקריאה
+ * בעמוד: הירו (כותרת → פעולות → שיתוף → מדריך → אמון) → מה חדש → מוקאפ
+ * האפליקציה → יכולות → ביקורות → גלריה → מפת דרכים → הצעת פיצ'ר → שאלות.
  */
 export default function Home() {
   return (
@@ -31,6 +33,7 @@ export default function Home() {
           <Reviews />
           <AppCarousel />
           <Roadmap />
+          <FeatureRequest />
           <Faq />
         </main>
 

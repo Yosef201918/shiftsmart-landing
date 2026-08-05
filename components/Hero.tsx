@@ -13,6 +13,7 @@ import {
 import BetaSteps from "@/components/BetaSteps";
 import DirectionalArrow from "@/components/DirectionalArrow";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ShareButton from "@/components/ShareButton";
 import {
   BETA_GROUP_URL,
   EXTERNAL_LINK_PROPS,
@@ -159,6 +160,16 @@ export default function Hero() {
           >
             {t.hero.audience}
           </motion.p>
+
+          {/*
+            כפתור השיתוף יושב כאן, מתחת למדריך, ולא בין הכפתורים לשלבים:
+            הוא פעולה משנית, ולא רצינו שיידחוף את מדריך שלושת השלבים מתחת
+            לקפל במובייל — בדיוק המאמץ שנעשה בשלב 16 לשמור אותו גלוי בלי
+            גלילה. כאן, אחרי המדריך, אין לו שום עלות על אותו יעד.
+          */}
+          <motion.div className="mt-5" variants={fadeUp}>
+            <ShareButton />
+          </motion.div>
 
           {/* ---------- הוכחה חברתית ---------- */}
           <motion.div

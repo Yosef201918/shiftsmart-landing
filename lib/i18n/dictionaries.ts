@@ -143,7 +143,7 @@ export interface Dictionary {
     titlePrefix: string;
     titleHighlight: string;
     subtitle: string;
-    items: [FaqItem, FaqItem, FaqItem];
+    items: [FaqItem, FaqItem, FaqItem, FaqItem, FaqItem, FaqItem];
   };
   footer: {
     tagline: string;
@@ -158,6 +158,28 @@ export interface Dictionary {
   };
   stickyCta: {
     label: string;
+  };
+  share: {
+    buttonLabel: string;
+    copiedLabel: string;
+    /** כותרת שנשלחת ל-navigator.share() (שדה title של ה-API) */
+    title: string;
+    /** בונה את טקסט השיתוף המלא עם הקישורים האמיתיים משובצים בפנים */
+    buildText: (groupUrl: string, storeUrl: string) => string;
+  };
+  featureRequest: {
+    buttonLabel: string;
+    modalTitle: string;
+    modalSubtitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    featureLabel: string;
+    featurePlaceholder: string;
+    submitCta: string;
+    closeAria: string;
+    toastMessage: string;
   };
   phoneShowcase: {
     /**
@@ -424,6 +446,21 @@ const he: Dictionary = {
       "כל מה שנשאלנו הכי הרבה על חישוב שעות וניהול משמרות. לא מצאתם תשובה? אנחנו זמינים במייל.",
     items: [
       {
+        question: "למה צריך להירשם לקבוצת בודקים?",
+        answer:
+          "זו דרישה של Google Play לגרסאות בטא סגורות: כדי לקבל גישה מוקדמת לאפליקציה לפני ההשקה הרשמית, גוגל מחייבת שתהיו חברים בקבוצת הבודקים המקושרת לחשבון ה-Google שלכם. זהו תהליך חד-פעמי של דקה שפותח את הרשאת ההתקנה.",
+      },
+      {
+        question: "האם האפליקציה תישאר בחינם?",
+        answer:
+          "כן — כל התכונות שזמינות היום ימשיכו להיות חינמיות גם אחרי הבטא. בעתיד ייתכן שנוסיף תכונות פרימיום אופציונליות, אבל שעון הנוכחות והחישובים הבסיסיים יישארו חינמיים תמיד.",
+      },
+      {
+        question: "מה עושים אם מצאתי באג?",
+        answer:
+          "נשמח לדעת! אפשר לדווח לנו ישירות במקטע הביקורות למעלה בעמוד, או לשלוח לנו מייל ל-yoseffstor@gmail.com. כל דיווח עוזר לנו לשפר את הבטא לפני ההשקה הרשמית.",
+      },
+      {
         question: "איך מחושבות שעות נוספות?",
         answer:
           "בכל משמרת האפליקציה משווה את סך השעות שנצברו לאורך יום העבודה שהגדרתם. כל שעה מעבר לסף מסומנת בנפרד ומחושבת לפי אחוז התוספת שקבעתם, כך שהסכום שמופיע בסיכום החודשי כבר כולל אותן ואין צורך בחישוב ידני.",
@@ -454,6 +491,27 @@ const he: Dictionary = {
   },
   stickyCta: {
     label: "הצטרפו לבטא הסגורה",
+  },
+  share: {
+    buttonLabel: "שתף את האפליקציה",
+    copiedLabel: "הועתק!",
+    title: "הצטרפו לבטא של Shift Smart!",
+    buildText: (groupUrl, storeUrl) =>
+      `היי! מצאתי אפליקציה מעולה לניהול משמרות ושכר בשם Shift Smart. כרגע היא בגרסת בטא סגורה.\nכדי להצטרף ולהוריד, עקבו אחרי 2 השלבים הקלים:\n1. הירשמו לקבוצת הבודקים כאן: ${groupUrl}\n2. הורידו מחנות Google Play כאן: ${storeUrl}`,
+  },
+  featureRequest: {
+    buttonLabel: "הצעת פיצ'ר",
+    modalTitle: "הצעת פיצ'ר",
+    modalSubtitle: "יש לכם רעיון שיהפוך את Shift Smart לטובה יותר? נשמח לשמוע.",
+    nameLabel: "שם",
+    namePlaceholder: "איך קוראים לך?",
+    emailLabel: "אימייל (אופציונלי)",
+    emailPlaceholder: "כדי שנוכל לעדכן אתכם אם נטמיע את זה",
+    featureLabel: "איזה פיצ'ר תרצו לראות?",
+    featurePlaceholder: "ספרו לנו על הרעיון שלכם...",
+    submitCta: "שליחת הצעה",
+    closeAria: "סגירת חלון הצעת הפיצ'ר",
+    toastMessage: "תודה! ההצעה שלך נרשמה ותיבדק.",
   },
   phoneShowcase: {
     mockupSrc: "/mockup-v2.png",
@@ -724,6 +782,21 @@ const en: Dictionary = {
       "The questions we get asked the most about calculating hours and managing shifts. Can't find your answer? We're available by email.",
     items: [
       {
+        question: "Why do I need to join a testers group?",
+        answer:
+          "It's a Google Play requirement for closed Beta apps: to get early access before the official launch, you need to be a member of the testers group linked to your Google account. It's a one-time, one-minute step that unlocks the install permission.",
+      },
+      {
+        question: "Will the app stay free?",
+        answer:
+          "Yes — every feature available today will stay free after the Beta too. We might add optional premium features down the line, but the core time clock and calculations will always be free.",
+      },
+      {
+        question: "What should I do if I find a bug?",
+        answer:
+          "We'd love to know! You can report it directly in the reviews section above, or email us at yoseffstor@gmail.com. Every report helps us improve the Beta before the official launch.",
+      },
+      {
         question: "How is overtime calculated?",
         answer:
           "In every shift, the app compares the total hours accrued across the workday you defined. Every hour beyond the threshold is marked separately and calculated using the overtime percentage you set, so the number in your monthly summary already includes it — no manual math required.",
@@ -754,6 +827,27 @@ const en: Dictionary = {
   },
   stickyCta: {
     label: "Join the Closed Beta",
+  },
+  share: {
+    buttonLabel: "Share App",
+    copiedLabel: "Copied!",
+    title: "Join the Shift Smart Beta!",
+    buildText: (groupUrl, storeUrl) =>
+      `Hey! I found a great shift and payroll management app called Shift Smart. It's currently in closed Beta.\nTo join and download, just follow 2 easy steps:\n1. Sign up for the testers group here: ${groupUrl}\n2. Download it from Google Play here: ${storeUrl}`,
+  },
+  featureRequest: {
+    buttonLabel: "Suggest a Feature",
+    modalTitle: "Suggest a Feature",
+    modalSubtitle: "Got an idea that would make Shift Smart better? We'd love to hear it.",
+    nameLabel: "Name",
+    namePlaceholder: "What's your name?",
+    emailLabel: "Email (optional)",
+    emailPlaceholder: "So we can update you if we build it",
+    featureLabel: "What feature would you like to see?",
+    featurePlaceholder: "Tell us about your idea...",
+    submitCta: "Submit Suggestion",
+    closeAria: "Close feature request dialog",
+    toastMessage: "Thank you! Your suggestion has been submitted for review.",
   },
   phoneShowcase: {
     mockupSrc: "/English screenshot1.jpg",
