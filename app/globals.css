@@ -86,20 +86,29 @@
     border-radius: 6px;
   }
 
-  /* פס גלילה תואם לערכת הצבעים */
+  /*
+   * פס גלילה דק ומודרני: מסלול כהה תואם לרקע, ואגודל ניאון-עמוק עדין
+   * שמבהיק לניאון המלא רק ב-hover — כדי שהוא יישאר ברקע ולא יתחרה בתוכן.
+   * html מקבל scrollbar-color/scrollbar-width לתמיכה ב-Firefox; שאר
+   * הדפדפנים (מבוססי Chromium/WebKit) משתמשים בפסאודו-אלמנטים למטה.
+   */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neon-deep) var(--color-void);
+  }
+
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
     background: var(--color-void);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-hair);
+    background: var(--color-neon-deep);
     border-radius: 999px;
-    border: 2px solid var(--color-void);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-hair-lit);
+    background: var(--color-neon);
   }
 }
 

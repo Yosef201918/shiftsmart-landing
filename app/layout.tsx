@@ -30,6 +30,19 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 /*
+ * metadataBase נדרש כאן כי openGraph.images/twitter.images למטה משתמשים
+ * בנתיב יחסי ("/og-image.png") — בגרסת Next.js הזו זו לא רק המלצה: שימוש
+ * בנתיב יחסי בשדה metadata מבוסס-URL בלי metadataBase גורם לשגיאת build
+ * (מתועד ב-node_modules/next/dist/docs/.../generate-metadata.md). NEXT_
+ * PUBLIC_SITE_URL מאפשר לקבוע דומיין קבוע בפרודקשן; VERCEL_URL הוא נפילה
+ * אחורה אוטומטית שוורסל מזריק לכל דיפלוי (כולל preview deployments) בלי
+ * שצריך להגדיר אותו ידנית; localhost הוא רק לפיתוח מקומי.
+ */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
+/*
  * המטא-דאטה שהשרת מגיש בתגובה הראשונית — ולכן גם מה שכרטיסי שיתוף
  * בוואטסאפ/פייסבוק יראו, וגם כותרת הלשונית בטעינה הראשונה — היא תמיד
  * בעברית, שפת ברירת המחדל של האתר.
@@ -55,7 +68,16 @@ const jetBrainsMono = JetBrains_Mono({
  */
 const defaultDictionary = dictionaries.he;
 
+/* תמונת ה-OG שהמשתמש מניח ב-public/og-image.png — 2048×2048 בפועל */
+const OG_IMAGE = {
+  url: "/og-image.png",
+  width: 2048,
+  height: 2048,
+  alt: defaultDictionary.meta.title,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: defaultDictionary.meta.title,
   description: defaultDictionary.meta.description,
   keywords: defaultDictionary.meta.keywords,
@@ -64,6 +86,14 @@ export const metadata: Metadata = {
     description: defaultDictionary.meta.ogDescription,
     locale: "he_IL",
     type: "website",
+    images: [OG_IMAGE],
+  },
+  /* כרטיס תצוגה מקדימה ב-X/Twitter — summary_large_image מציג את התמונה במלואה */
+  twitter: {
+    card: "summary_large_image",
+    title: defaultDictionary.meta.title,
+    description: defaultDictionary.meta.ogDescription,
+    images: [OG_IMAGE.url],
   },
   /* אימות בעלות על הדומיין עבור Google Play Developer Console */
   verification: {
