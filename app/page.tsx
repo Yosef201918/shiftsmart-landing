@@ -1,4 +1,5 @@
 import AppCarousel from "@/components/AppCarousel";
+import AppPoster from "@/components/AppPoster";
 import Backdrop from "@/components/Backdrop";
 import Faq from "@/components/Faq";
 import Features from "@/components/Features";
@@ -13,11 +14,12 @@ import StickyCta from "@/components/StickyCta";
 import WhatsNew from "@/components/WhatsNew";
 
 /*
- * שלב 21: כפתור שיתוף חכם נוסף בתוך ה-Hero (מיד מתחת לכפתורי הפעולה
- * הראשיים), ומקטע "הצעת פיצ'ר" נוסף אחרי מפת הדרכים — המשכיות הגיונית
- * מ"מה מתוכנן להמשך" ל"יש לכם רעיון למה שיבוא אחרי זה?". סדר הקריאה
- * בעמוד: הירו (כותרת → פעולות → שיתוף → מדריך → אמון) → מה חדש → מוקאפ
- * האפליקציה → יכולות → ביקורות → גלריה → מפת דרכים → הצעת פיצ'ר → שאלות.
+ * שלב 25: פוסטר המותג הרשמי (AppPoster, ICON.jpg) נוסף מיד אחרי ה-Hero —
+ * מקטע עצמאי ולא בתוך ה-Hero עצמו, כדי לא לפגוע במאמץ משלב 16 לשמור על
+ * מדריך שלושת השלבים גלוי בלי גלילה במובייל. סדר הקריאה בעמוד: הירו
+ * (כותרת → פעולות → שיתוף → מדריך → אמון) → פוסטר המותג → מה חדש →
+ * מוקאפ האפליקציה → יכולות → ביקורות → גלריה → מפת דרכים → הצעת פיצ'ר →
+ * שאלות.
  */
 export default function Home() {
   return (
@@ -27,6 +29,7 @@ export default function Home() {
       <MotionProvider>
         <main className="relative z-10 flex-1">
           <Hero />
+          <AppPoster />
           <WhatsNew />
           <PhoneShowcase />
           <Features />

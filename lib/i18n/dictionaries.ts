@@ -187,7 +187,7 @@ export interface Dictionary {
   };
   phoneShowcase: {
     /**
-     * לעברית זהו נכס ייעודי (mockup-v2.png) שנבחר במיוחד להירו. לאנגלית לא
+     * לעברית זהו נכס ייעודי (mockup-v2.jpg) שנבחר במיוחד להירו. לאנגלית לא
      * סופק נכס מקביל — עד שיסופק אחד, המסך הראשון מתוך צילומי המסך
      * האנגליים (English screenshot1.jpg, מציג משמרת פעילה) משמש תחליף,
      * כי הוא הכי קרוב תוכנית לתמונת ה-mockup העברית (טיימר משמרת רץ).
@@ -196,6 +196,12 @@ export interface Dictionary {
     mockupWidth: number;
     mockupHeight: number;
     mockupAlt: string;
+  };
+  appPoster: {
+    kicker: string;
+    titlePrefix: string;
+    titleHighlight: string;
+    imageAlt: string;
   };
 }
 
@@ -382,38 +388,38 @@ const he: Dictionary = {
     shots: [
       {
         src: "/Screenshot 1.jpg",
-        width: 1080,
-        height: 2525,
+        width: 768,
+        height: 1376,
         alt: "מסך שעון הנוכחות: כפתור הפעלת שעון בטביעת אצבע, בחירת משרה, תעריף לשעה וצבירה במשמרת",
       },
       {
         src: "/Screenshot 2.jpg",
-        width: 1080,
-        height: 2340,
+        width: 768,
+        height: 1376,
         alt: "מסך ההגדרות: מצב לילה, בחירת שפת האפליקציה בין עברית לאנגלית וחיסכון סוללה מקסימלי למסכי AMOLED",
       },
       {
         src: "/Screenshot 3.jpg",
-        width: 1080,
-        height: 2340,
+        width: 768,
+        height: 1376,
         alt: "מסך המשרות: רשימת מקומות עבודה עם תעריף לשעה, החזר נסיעות ומיקום שמור לכל משרה",
       },
       {
         src: "/Screenshot 4.jpg",
-        width: 1080,
-        height: 3389,
+        width: 768,
+        height: 1376,
         alt: "מסך ההיסטוריה: ייצוא דוח חודשי ל-PDF ולוואטסאפ, ורשימת משמרות עם תאריך, שעות ושכר לכל משמרת",
       },
       {
         src: "/Screenshot 5.jpg",
-        width: 1080,
-        height: 2466,
+        width: 768,
+        height: 1376,
         alt: "מסך היומן: לוח חודשי עם סימון ימי עבודה והוספת משמרת מתוכננת מראש",
       },
       {
         src: "/Screenshot 6.jpg",
-        width: 1080,
-        height: 2768,
+        width: 768,
+        height: 1376,
         alt: "מסך הסיכום החודשי: סך הרווח לחודש, שכר נטו משוער, התקדמות מול יעד חודשי ופילוח לפי משרה",
       },
     ],
@@ -517,11 +523,18 @@ const he: Dictionary = {
     submitError: "שליחת ההצעה נכשלה. בדקו את החיבור ונסו שוב.",
   },
   phoneShowcase: {
-    mockupSrc: "/mockup-v2.png",
-    mockupWidth: 380,
-    mockupHeight: 757,
+    mockupSrc: "/mockup-v2.jpg",
+    mockupWidth: 768,
+    mockupHeight: 1376,
     mockupAlt:
       "מסך שעון הנוכחות באפליקציית Shift Smart: משמרת פעילה עם טיימר רץ, תעריף לשעה וצבירה מצטברת במשמרת",
+  },
+  appPoster: {
+    kicker: "האפליקציה",
+    titlePrefix: "הכירו את ",
+    titleHighlight: "Shift Smart",
+    imageAlt:
+      "פוסטר Shift Smart — שעון נוכחות חכם: ניהול משמרות חכם ויעיל",
   },
 };
 
@@ -857,6 +870,13 @@ const en: Dictionary = {
     mockupHeight: 2495,
     mockupAlt:
       "Shift Smart active shift screen: running timer, Clock Out button, hourly rate, and current shift earnings",
+  },
+  appPoster: {
+    kicker: "THE APP",
+    titlePrefix: "Meet ",
+    titleHighlight: "Shift Smart",
+    imageAlt:
+      "Shift Smart poster — smart attendance clock: efficient, intelligent shift management",
   },
 };
 
