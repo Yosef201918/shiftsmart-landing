@@ -15,6 +15,9 @@ export const CONTACT_EMAIL = "yoseffstor@gmail.com";
 
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
+export const FACEBOOK_URL =
+  "https://www.facebook.com/profile.php?id=61593217317936";
+
 export const INSTAGRAM_URL = "https://www.instagram.com/shiftsmart.app/";
 
 export const TIKTOK_URL = "https://www.tiktok.com/@shiftsmart.app";

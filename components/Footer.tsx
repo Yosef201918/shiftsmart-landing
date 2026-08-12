@@ -8,6 +8,7 @@ import {
   CONTACT_EMAIL,
   CONTACT_MAILTO,
   EXTERNAL_LINK_PROPS,
+  FACEBOOK_URL,
   INSTAGRAM_URL,
   PLAY_STORE_URL,
   TIKTOK_URL,
@@ -66,18 +67,18 @@ export default function Footer() {
   ];
 
   /*
-   * הקישור לפייסבוק עדיין מצביע ל-"#" עד שיהיה עמוד אמיתי; אינסטגרם וטיקטוק
-   * כבר מחוברים לפרופילים הרשמיים. במעבר עכבר האייקון והמסגרת נצבעים בצבע
-   * המותג ומקבלים הילה תואמת.
+   * שלב 27: פייסבוק חובר לעמוד הרשמי (FACEBOOK_URL) — כל שלוש הרשתות
+   * החברתיות פעילות עכשיו. במעבר עכבר האייקון והמסגרת נצבעים בצבע המותג
+   * ומקבלים הילה תואמת.
    */
   const socialLinks: SocialLink[] = [
     {
       label: t.footer.socialFacebookAria,
-      href: "#",
+      href: FACEBOOK_URL,
       Icon: FacebookIcon,
       hover:
         "hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_24px_-6px_#1877F2]",
-      external: false,
+      external: true,
     },
     {
       label: t.footer.socialInstagramAria,

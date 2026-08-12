@@ -37,22 +37,20 @@ export default function AppPoster() {
           </span>
         </h2>
 
-        <div className="relative mt-10 w-full max-w-[280px] sm:max-w-xs">
-          {/* הילת ניאון שמרימה את הפוסטר מהרקע, כמו ב-PhoneShowcase */}
-          <div
-            aria-hidden="true"
-            className="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(92,255,157,0.22),transparent_65%)] blur-3xl"
+        {/*
+          שלב 27: הוסרה מסגרת הזכוכית (panel edge-lit) וההילה שעטפו את
+          התמונה — נראו כמו שלדת מכשיר מזויפת. הפוסטר עצמו כבר מעוצב
+          ומוכן, ולכן מוצג נקי לגמרי: רק פינות מעוגלות וצל ירוק עדין.
+        */}
+        <div className="mt-10 w-full max-w-[280px] sm:max-w-xs">
+          <Image
+            src="/ICON.jpg"
+            alt={t.appPoster.imageAlt}
+            width={768}
+            height={1376}
+            sizes="(min-width: 640px) 320px, 280px"
+            className="h-auto w-full rounded-3xl shadow-2xl shadow-green-500/10"
           />
-          <div className="panel edge-lit relative overflow-hidden rounded-3xl shadow-2xl">
-            <Image
-              src="/ICON.jpg"
-              alt={t.appPoster.imageAlt}
-              width={768}
-              height={1376}
-              sizes="(min-width: 640px) 320px, 280px"
-              className="h-auto w-full"
-            />
-          </div>
         </div>
       </motion.div>
     </section>
