@@ -1,0 +1,17 @@
+{
+  "name": "Shift Smart",
+  "short_name": "Shift Smart",
+  "description": "ניהול משמרות חכם ויעיל",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/ICON.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

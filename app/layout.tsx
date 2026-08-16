@@ -99,10 +99,17 @@ export const metadata: Metadata = {
   verification: {
     google: "ZtSkJ8cq55M33DeeZvYB6rpZAQ-kztLt5rD0Ktcr2nw",
   },
+  /* שלב 30: פאביקון מותאם אישית (ICON.jpg) במקום ברירת המחדל של Vercel */
+  icons: {
+    icon: "/ICON.jpg",
+    apple: "/ICON.jpg",
+  },
+  /* שלב 30: מניפסט PWA — מאפשר התקנת האתר כאפליקציה */
+  manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#03060b",
+  themeColor: "#10b981",
   colorScheme: "dark",
 };
 
