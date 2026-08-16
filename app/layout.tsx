@@ -99,10 +99,10 @@ export const metadata: Metadata = {
   verification: {
     google: "ZtSkJ8cq55M33DeeZvYB6rpZAQ-kztLt5rD0Ktcr2nw",
   },
-  /* שלב 31: הוחלף ל-"ICON Chrome WED.png" — תמונת ICON.jpg הקודמת הייתה portrait וגרמה לעיוות ריבוע ב-PWA/פאביקון; הקובץ החדש ריבועי. הרווחים בשם הקובץ מקודדים כ-%20 */
+  /* שלב 32: עודכן ל-"ICON Chrome WED V1.png" — גרסה מתוקנת שמתקנת בעיות תצוגה שנותרו במובייל. הרווחים בשם הקובץ מקודדים כ-%20 */
   icons: {
-    icon: "/ICON%20Chrome%20WED.png",
-    apple: "/ICON%20Chrome%20WED.png",
+    icon: "/ICON%20Chrome%20WED%20V1.png",
+    apple: "/ICON%20Chrome%20WED%20V1.png",
   },
   /* שלב 30: מניפסט PWA — מאפשר התקנת האתר כאפליקציה */
   manifest: "/manifest.json",
