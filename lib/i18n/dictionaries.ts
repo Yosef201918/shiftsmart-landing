@@ -151,6 +151,7 @@ export interface Dictionary {
     linksAriaLabel: string;
     linkPlayStore: string;
     linkBetaGroup: string;
+    linkPrivacyPolicy: string;
     socialFacebookAria: string;
     socialInstagramAria: string;
     socialTiktokAria: string;
@@ -493,6 +494,7 @@ const he: Dictionary = {
     linksAriaLabel: "קישורים ויצירת קשר",
     linkPlayStore: "הורדה מ‑Google Play",
     linkBetaGroup: "קבוצת הבודקים",
+    linkPrivacyPolicy: "מדיניות פרטיות",
     socialFacebookAria: "עמוד הפייסבוק של Shift Smart",
     socialInstagramAria: "עמוד האינסטגרם של Shift Smart",
     socialTiktokAria: "עמוד הטיקטוק של Shift Smart",
@@ -835,6 +837,7 @@ const en: Dictionary = {
     linksAriaLabel: "Links and contact",
     linkPlayStore: "Get it on Google Play",
     linkBetaGroup: "Testers Group",
+    linkPrivacyPolicy: "Privacy Policy",
     socialFacebookAria: "Shift Smart on Facebook",
     socialInstagramAria: "Shift Smart on Instagram",
     socialTiktokAria: "Shift Smart on TikTok",

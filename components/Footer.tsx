@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock4, Download, Mail, Users, type LucideIcon } from "lucide-react";
+import { Clock4, Download, Mail, ShieldCheck, Users, type LucideIcon } from "lucide-react";
 
 import { FacebookIcon, InstagramIcon, TiktokIcon } from "@/components/SocialIcons";
 import {
@@ -63,6 +63,16 @@ export default function Footer() {
       icon: Mail,
       external: false,
       forceLtr: true,
+    },
+    /*
+     * שלב 28: קישור פנימי לדף מדיניות הפרטיות (app/privacy/page.tsx) —
+     * external:false כי זה נתיב באותו אתר, לא צריך להיפתח בלשונית חדשה.
+     */
+    {
+      label: t.footer.linkPrivacyPolicy,
+      href: "/privacy",
+      icon: ShieldCheck,
+      external: false,
     },
   ];
 
