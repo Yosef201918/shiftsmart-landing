@@ -39,7 +39,7 @@ export default function BetaSteps() {
 
   return (
     <motion.div
-      className="mt-6 lg:mt-10"
+      className="mt-4 lg:mt-10"
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"

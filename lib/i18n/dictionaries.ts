@@ -152,6 +152,7 @@ export interface Dictionary {
     linkPlayStore: string;
     linkBetaGroup: string;
     linkPrivacyPolicy: string;
+    linkTermsOfService: string;
     socialFacebookAria: string;
     socialInstagramAria: string;
     socialTiktokAria: string;
@@ -243,8 +244,8 @@ const he: Dictionary = {
   },
   hero: {
     kicker: "Shift Smart - ניהול משמרות ברמה אחרת!",
-    titleLine1: "קורעים את התחת במשמרות?",
-    titleLine2: "מצאתי לכם את הפתרון!",
+    titleLine1: "רוצים לדעת מה השכר המדויק שלכם?",
+    titleLine2: "כל חודש, עד האגורה האחרונה.",
     subtitle: "שעון הנוכחות שיעשה לכם סדר בשעות ובשכר.",
     audience: "מושלם למאבטחים סדרנים, מסעדות וכל מי שחי על משמרות.",
     downloadCta: "הורדה מ-Google Play",
@@ -506,6 +507,7 @@ const he: Dictionary = {
     linkPlayStore: "הורדה מ‑Google Play",
     linkBetaGroup: "קבוצת הבודקים",
     linkPrivacyPolicy: "מדיניות פרטיות",
+    linkTermsOfService: "תנאי שימוש",
     socialFacebookAria: "עמוד הפייסבוק של Shift Smart",
     socialInstagramAria: "עמוד האינסטגרם של Shift Smart",
     socialTiktokAria: "עמוד הטיקטוק של Shift Smart",
@@ -588,8 +590,8 @@ const en: Dictionary = {
   },
   hero: {
     kicker: "Shift Smart - Shift Management on Another Level!",
-    titleLine1: "Grinding Through Endless Shifts?",
-    titleLine2: "I Found You The Fix!",
+    titleLine1: "Want to know your exact pay?",
+    titleLine2: "Every month, down to the last cent.",
     subtitle: "The time clock that finally gets your hours and pay in order.",
     audience:
       "Perfect for security guards, stewards, restaurant staff, and anyone living life in shifts.",
@@ -860,6 +862,7 @@ const en: Dictionary = {
     linkPlayStore: "Get it on Google Play",
     linkBetaGroup: "Testers Group",
     linkPrivacyPolicy: "Privacy Policy",
+    linkTermsOfService: "Terms of Service",
     socialFacebookAria: "Shift Smart on Facebook",
     socialInstagramAria: "Shift Smart on Instagram",
     socialTiktokAria: "Shift Smart on TikTok",

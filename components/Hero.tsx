@@ -38,7 +38,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative px-5 pb-20 pt-2 sm:px-8 sm:pt-4 lg:px-12 lg:pb-28 lg:pt-6"
+      className="relative px-5 pb-20 pt-1 sm:px-8 sm:pt-4 lg:px-12 lg:pb-28 lg:pt-6"
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* ---------- סרגל מותג ---------- */}
@@ -73,7 +73,7 @@ export default function Hero() {
 
         {/* ---------- תוכן ההירו: כותרת ופעולות ---------- */}
         <motion.div
-          className="mt-5 max-w-3xl lg:mt-14"
+          className="mt-4 max-w-3xl lg:mt-14"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -89,21 +89,26 @@ export default function Hero() {
 
           {/*
             שתי השורות באותו גודל בדיוק — ההיררכיה נוצרת ממשקל, מגופן ומצבע.
-            במובייל הגודל הוא 1.75rem ולא text-3xl: ב-text-3xl השורה הראשונה
-            נמדדה 324px בתוך מיכל של 335px, כלומר נשברה בכל מסך צר יותר.
+            במובייל הגודל הוא 1.2rem (הוקטן משלב 35, בעקבות שינוי הכותרת
+            לעדכון תמחור-שקוף): נמדד עם ctx.measureText שהשורה המגבילה היא
+            לא העברית אלא האנגלית — "Every month, down to the last cent."
+            (36 תווים) רוחבה כ-322px בגודל 19.2px, בתוך מיכל של 335px.
+            ב-1.75rem הקודם (ואפילו ב-1.4rem שנוסה קודם) שורה זו נשברה
+            לשתיים וזה דחף את מדריך שלושת השלבים מתחת לקפל במובייל 375×812
+            — הגודל נבחר כך שיתאים גם לעברית וגם לאנגלית בשורה אחת.
             text-balance מחלק את השורות באופן שווה אם בכל זאת נדרשת שבירה.
           */}
           <motion.h1 className="mt-4 text-balance" variants={fadeUp}>
-            <span className="block text-[1.75rem] font-extralight leading-tight tracking-tight text-chalk sm:text-4xl lg:text-5xl">
+            <span className="block text-[1.2rem] font-extralight leading-tight tracking-tight text-chalk sm:text-4xl lg:text-5xl">
               {t.hero.titleLine1}
             </span>
-            <span className="neon-glow mt-1.5 block font-display text-[1.75rem] leading-tight text-neon sm:text-4xl lg:text-5xl">
+            <span className="neon-glow mt-1.5 block font-display text-[1.2rem] leading-tight text-neon sm:text-4xl lg:text-5xl">
               {t.hero.titleLine2}
             </span>
           </motion.h1>
 
           <motion.p
-            className="mt-4 max-w-xl text-lg font-light leading-relaxed text-chalk/90 sm:text-xl"
+            className="mt-3 max-w-xl text-lg font-light leading-relaxed text-chalk/90 sm:text-xl"
             variants={fadeUp}
           >
             {t.hero.subtitle}
@@ -115,7 +120,7 @@ export default function Hero() {
             המשני מקבל רקע זכוכית ומסגרת כדי שייראה ככפתור ולא כטקסט.
           */}
           <motion.div
-            className="mt-6 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center sm:gap-4"
+            className="mt-5 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center sm:gap-4"
             variants={fadeUp}
           >
             <a
