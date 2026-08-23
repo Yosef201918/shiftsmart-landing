@@ -211,6 +211,10 @@ export interface Dictionary {
     acceptLabel: string;
     rejectLabel: string;
   };
+  openBetaBanner: {
+    message: string;
+    ctaLabel: string;
+  };
 }
 
 const he: Dictionary = {
@@ -551,6 +555,10 @@ const he: Dictionary = {
     privacyLinkLabel: "מדיניות הפרטיות",
     acceptLabel: "מאשר/ת",
     rejectLabel: "דוחה",
+  },
+  openBetaBanner: {
+    message: "בטא פתוחה לכולם בקרוב —",
+    ctaLabel: "הצטרפו מוקדם",
   },
 };
 
@@ -901,6 +909,10 @@ const en: Dictionary = {
     privacyLinkLabel: "Privacy Policy",
     acceptLabel: "Accept",
     rejectLabel: "Reject",
+  },
+  openBetaBanner: {
+    message: "Open Beta launching soon —",
+    ctaLabel: "Join early access",
   },
 };
 

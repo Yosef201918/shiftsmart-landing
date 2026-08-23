@@ -38,7 +38,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative px-5 pb-20 pt-6 sm:px-8 lg:px-12 lg:pb-28"
+      className="relative px-5 pb-20 pt-2 sm:px-8 sm:pt-4 lg:px-12 lg:pb-28 lg:pt-6"
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* ---------- סרגל מותג ---------- */}
@@ -73,7 +73,7 @@ export default function Hero() {
 
         {/* ---------- תוכן ההירו: כותרת ופעולות ---------- */}
         <motion.div
-          className="mt-8 max-w-3xl lg:mt-14"
+          className="mt-5 max-w-3xl lg:mt-14"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
