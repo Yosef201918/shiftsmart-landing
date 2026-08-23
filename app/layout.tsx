@@ -3,6 +3,7 @@ import { Heebo, JetBrains_Mono, Secular_One } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
+import CookieConsent from "@/components/CookieConsent";
 import HtmlAttributesSync from "@/components/HtmlAttributesSync";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { dictionaries } from "@/lib/i18n/dictionaries";
@@ -147,6 +148,8 @@ export default function RootLayout({
         <LanguageProvider>
           <HtmlAttributesSync />
           {children}
+          {/* גלובלי בכל דף (כולל /privacy) — לא רק בדף הבית */}
+          <CookieConsent />
         </LanguageProvider>
 
         {/* Vercel Web Analytics — נטען רק בפרודקשן ואינו מרנדר DOM */}

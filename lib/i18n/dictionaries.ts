@@ -204,6 +204,13 @@ export interface Dictionary {
     titleHighlight: string;
     imageAlt: string;
   };
+  cookieConsent: {
+    heading: string;
+    body: string;
+    privacyLinkLabel: string;
+    acceptLabel: string;
+    rejectLabel: string;
+  };
 }
 
 const he: Dictionary = {
@@ -537,6 +544,13 @@ const he: Dictionary = {
     titleHighlight: "Shift Smart",
     imageAlt:
       "פוסטר Shift Smart — שעון נוכחות חכם: ניהול משמרות חכם ויעיל",
+  },
+  cookieConsent: {
+    heading: "אנחנו משתמשים בעוגיות",
+    body: "האתר משתמש בעוגיות חיוניות לתפעולו ולשיפור החוויה שלכם. לפרטים נוספים ראו את",
+    privacyLinkLabel: "מדיניות הפרטיות",
+    acceptLabel: "מאשר/ת",
+    rejectLabel: "דוחה",
   },
 };
 
@@ -880,6 +894,13 @@ const en: Dictionary = {
     titleHighlight: "Shift Smart",
     imageAlt:
       "Shift Smart poster — smart attendance clock: efficient, intelligent shift management",
+  },
+  cookieConsent: {
+    heading: "We use cookies",
+    body: "This site uses essential cookies to operate and improve your experience. For more details, see our",
+    privacyLinkLabel: "Privacy Policy",
+    acceptLabel: "Accept",
+    rejectLabel: "Reject",
   },
 };
 
