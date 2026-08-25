@@ -27,3 +27,6 @@ export const EXTERNAL_LINK_PROPS = {
   target: "_blank",
   rel: "noopener noreferrer",
 } as const;
+
+/* Google tag (gtag.js) Measurement ID — נטען רק אחרי הסכמת עוגיות, ראו components/GoogleTag.tsx */
+export const GA_MEASUREMENT_ID = "G-Q1YX92N0LQ";

@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import CookieConsent from "@/components/CookieConsent";
+import GoogleTag from "@/components/GoogleTag";
 import HtmlAttributesSync from "@/components/HtmlAttributesSync";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { dictionaries } from "@/lib/i18n/dictionaries";
@@ -154,6 +155,8 @@ export default function RootLayout({
 
         {/* Vercel Web Analytics — נטען רק בפרודקשן ואינו מרנדר DOM */}
         <Analytics />
+        {/* Google tag — נטען רק אחרי הסכמת עוגיות, ראו components/GoogleTag.tsx */}
+        <GoogleTag />
       </body>
     </html>
   );

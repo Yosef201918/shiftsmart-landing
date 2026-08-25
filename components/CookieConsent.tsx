@@ -1,41 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cookie } from "lucide-react";
 import Link from "next/link";
 
+import {
+  commitConsent,
+  getServerSnapshot,
+  getSnapshot,
+  subscribe,
+} from "@/lib/cookieConsent";
 import { EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-
-const STORAGE_KEY = "shiftsmart-cookie-consent";
 
 /**
  * באנר הסכמת עוגיות. עוגן לפינה תחתונה (start, לא מרכז) כדי שלא יתנגש
  * עם כפתור StickyCta שממורכז בתחתית המסך — שני הבאנרים יכולים להיות
  * גלויים בו-זמנית בלי לחפוף.
  *
- * דפוס mount-guard: לפני שהאפקט הראשון רץ בצד הלקוח אין דרך לדעת אם
- * המשתמש כבר בחר בעבר (זה שמור ב-localStorage, לא נגיש בזמן רינדור
- * השרת) — ולכן מרנדרים null עד שהבדיקה בצד הלקוח מסתיימת, במקום לרנדר
- * את הבאנר תמיד ואז להסתיר אותו, מה שהיה גורם להבהוב (flash) בטעינה.
+ * מצב ההסכמה עצמו הוצא ל-lib/cookieConsent.ts (חנות useSyncExternalStore
+ * משותפת), כדי ש-GoogleTag.tsx יוכל להאזין לאותה הסכמה. דפוס mount-guard:
+ * לפני שהאפקט הראשון רץ בצד הלקוח מרנדרים null, במקום לרנדר את הבאנר
+ * תמיד ואז להסתיר אותו, מה שהיה גורם להבהוב (flash) בטעינה.
  */
 export default function CookieConsent() {
   const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
     setMounted(true);
-    setVisible(localStorage.getItem(STORAGE_KEY) === null);
   }, []);
 
-  const choose = (value: "accepted" | "rejected") => {
-    localStorage.setItem(STORAGE_KEY, value);
-    setVisible(false);
-  };
-
   if (!mounted) return null;
+
+  const visible = consent === null;
 
   return (
     <AnimatePresence>
@@ -81,14 +81,14 @@ export default function CookieConsent() {
           <div className="mt-4 flex items-center gap-3">
             <button
               type="button"
-              onClick={() => choose("accepted")}
+              onClick={() => commitConsent("accepted")}
               className="inline-flex h-11 flex-1 items-center justify-center rounded-xl bg-neon px-4 font-display text-sm text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft"
             >
               {t.cookieConsent.acceptLabel}
             </button>
             <button
               type="button"
-              onClick={() => choose("rejected")}
+              onClick={() => commitConsent("rejected")}
               className="panel inline-flex h-11 flex-1 items-center justify-center rounded-xl px-4 font-display text-sm text-chalk transition duration-300 hover:-translate-y-0.5 hover:border-neon-deep hover:text-neon"
             >
               {t.cookieConsent.rejectLabel}
