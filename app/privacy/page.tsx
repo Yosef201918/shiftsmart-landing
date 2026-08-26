@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
         <h1 className="font-display text-3xl text-chalk sm:text-4xl">
           מדיניות פרטיות — Shift Smart
         </h1>
-        <p className="mt-3 text-sm text-mist">עודכן לאחרונה: 17.08.2026</p>
+        <p className="mt-3 text-sm text-mist">עודכן לאחרונה: 26.08.2026</p>
 
         <p className="mt-8 text-base leading-relaxed text-mist">
           תודה שאתם משתמשים ב-Shift Smart (&quot;האפליקציה&quot;). מדיניות זו
@@ -68,6 +68,15 @@ export default function PrivacyPolicyPage() {
               לתזכורות משמרת מתוכננת, אישורי סיום משמרת, והתראות יעד שכר.
               כל ההתראות הן מקומיות (Local Notifications) — לא נעשה שימוש
               בשירותי Push מרוחקים.
+            </span>
+          </li>
+          <li className="flex gap-3 text-base leading-relaxed text-mist">
+            <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-neon" />
+            <span>
+              <strong className="text-chalk">יומן (קריאה/כתיבה):</strong> משמשת
+              אך ורק לתכונת סנכרון המשמרות ליומן — ורק אם בחרתם להפעיל או
+              להשתמש בתכונה זו. אירועי היומן נוצרים ונקראים מקומית על המכשיר
+              בלבד, ואיננו שולחים שום נתון יומן לשרת חיצוני.
             </span>
           </li>
           <li className="flex gap-3 text-base leading-relaxed text-mist">
