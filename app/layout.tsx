@@ -8,6 +8,7 @@ import GoogleTag from "@/components/GoogleTag";
 import HtmlAttributesSync from "@/components/HtmlAttributesSync";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { dictionaries } from "@/lib/i18n/dictionaries";
+import { PLAY_STORE_URL } from "@/lib/links";
 
 /* גופן גוף — Heebo תומך בעברית ובעל טווח משקלים מלא */
 const heebo = Heebo({
@@ -115,6 +116,36 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+/*
+ * JSON-LD (schema.org) לתוצאות עשירות בגוגל. ratingValue הוא המספר האמיתי
+ * המוצג במקטע הביקורות (t.reviews.averageRating, "4.9") — ratingCount לא
+ * נכלל בכוונה: אין לנו מספר ביקורות קבוע ואמיתי לצטט (הוא נספר דינמית
+ * מ-Supabase בזמן ריצה בצד הלקוח), ולא נמציא מספר. שני האובייקטים בנויים
+ * כ-plain object ומוזרקים דרך JSON.stringify כדי שה-JSON יהיה תמיד תקין.
+ */
+const mobileApplicationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: defaultDictionary.brand.name,
+  description: defaultDictionary.meta.description,
+  operatingSystem: "Android",
+  applicationCategory: "BusinessApplication",
+  url: PLAY_STORE_URL,
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: defaultDictionary.reviews.averageRating,
+    bestRating: "5",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: defaultDictionary.brand.name,
+  url: siteUrl,
+  logo: `${siteUrl}/ICON.jpg`,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -126,6 +157,21 @@ export default function RootLayout({
       dir="rtl"
       className={`${heebo.variable} ${secularOne.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
+      {/*
+        JSON-LD בתוך <html> ומחוץ ל-<body>: Next.js מרים כל <script> שמופיע
+        ברינדור ה-root layout אל תוך ה-<head> הסופי של הדף, בלי צורך ברכיב
+        <Head> ייעודי (הוסר ב-App Router). dangerouslySetInnerHTML עם
+        JSON.stringify על אובייקט רגיל — לא מחרוזת קשיחה — מבטיח JSON תקין.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(mobileApplicationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+
       {/*
         תמונת הרקע עברה לשכבה ייעודית ב-<Backdrop/> במקום background-attachment: fixed.
         הסיבה: Safari ב-iOS לא תומך ב-fixed ושובר את הגלילה. אלמנט position:fixed

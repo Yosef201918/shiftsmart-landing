@@ -1,3 +1,4 @@
+import AboutTimeTracking from "@/components/AboutTimeTracking";
 import AppCarousel from "@/components/AppCarousel";
 import AppPoster from "@/components/AppPoster";
 import Backdrop from "@/components/Backdrop";
@@ -19,8 +20,8 @@ import WhatsNew from "@/components/WhatsNew";
  * מקטע עצמאי ולא בתוך ה-Hero עצמו, כדי לא לפגוע במאמץ משלב 16 לשמור על
  * מדריך שלושת השלבים גלוי בלי גלילה במובייל. סדר הקריאה בעמוד: הירו
  * (כותרת → פעולות → שיתוף → מדריך → אמון) → פוסטר המותג → מה חדש →
- * מוקאפ האפליקציה → יכולות → ביקורות → גלריה → מפת דרכים → הצעת פיצ'ר →
- * שאלות.
+ * מוקאפ האפליקציה → יכולות → מה זה שעון נוכחות (AboutTimeTracking, תוכן
+ * SEO קצר) → ביקורות → גלריה → מפת דרכים → הצעת פיצ'ר → שאלות.
  */
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
           <WhatsNew />
           <PhoneShowcase />
           <Features />
+          <AboutTimeTracking />
           <Reviews />
           <AppCarousel />
           <Roadmap />

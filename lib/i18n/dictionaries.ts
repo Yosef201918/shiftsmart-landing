@@ -65,6 +65,12 @@ export interface Dictionary {
     badgeLabel: string;
     items: [TitledItem, TitledItem, TitledItem];
   };
+  aboutTimeTracking: {
+    kicker: string;
+    titlePrefix: string;
+    titleHighlight: string;
+    body: string;
+  };
   betaSteps: {
     kicker: string;
     titlePrefix: string;
@@ -143,7 +149,17 @@ export interface Dictionary {
     titlePrefix: string;
     titleHighlight: string;
     subtitle: string;
-    items: [FaqItem, FaqItem, FaqItem, FaqItem, FaqItem, FaqItem];
+    items: [
+      FaqItem,
+      FaqItem,
+      FaqItem,
+      FaqItem,
+      FaqItem,
+      FaqItem,
+      FaqItem,
+      FaqItem,
+      FaqItem,
+    ];
   };
   footer: {
     tagline: string;
@@ -220,9 +236,9 @@ export interface Dictionary {
 
 const he: Dictionary = {
   meta: {
-    title: "Shift Smart - ניהול משמרות ברמה אחרת!",
+    title: "Shift Smart – שעון נוכחות וניהול משמרות",
     description:
-      "שעון הנוכחות שיעשה לכם סדר בשעות ובשכר. מושלם למאבטחים, סדרנים וכל מי שחי על משמרות — הצטרפו לבטא הסגורה עוד היום.",
+      "שעון נוכחות דיגיטלי לניהול משמרות ושכר, מותאם למאבטחים, סדרנים ומסעדות. הצטרפו לבטא הסגורה של Shift Smart בחינם.",
     keywords: [
       "ניהול משמרות",
       "שעון נוכחות",
@@ -231,7 +247,7 @@ const he: Dictionary = {
       "Shift Smart",
     ],
     ogDescription:
-      "שעון הנוכחות שיעשה לכם סדר בשעות ובשכר. הצטרפו לבטא הסגורה של Shift Smart.",
+      "שעון נוכחות דיגיטלי לניהול משמרות ושכר. הצטרפו לבטא הסגורה של Shift Smart.",
   },
   brand: {
     name: "Shift Smart",
@@ -279,6 +295,12 @@ const he: Dictionary = {
           "התאמה אישית של חוויית המשתמש - שליטה מלאה על הפעלה או כיבוי של צלילי חיווי ורטט בכל כניסה ויציאה ממשמרת.",
       },
     ],
+  },
+  aboutTimeTracking: {
+    kicker: "למה זה חשוב",
+    titlePrefix: "מה זה בעצם ",
+    titleHighlight: "שעון נוכחות דיגיטלי?",
+    body: "שעון נוכחות דיגיטלי מחליף רישום ידני בפנקס או בזיכרון, ומתעד באופן מדויק מתי התחלתם ומתי סיימתם כל משמרת. עבור עובדים במשמרות — מאבטחים, סדרנים, צוותי מסעדות ועוד — זה ההבדל בין הערכה גסה של השכר לבין ידיעה מדויקת כמה שעות עבדתם וכמה זה שווה, בלי לחכות לתלוש כדי לגלות.",
   },
   betaSteps: {
     kicker: "BETA",
@@ -498,6 +520,22 @@ const he: Dictionary = {
         answer:
           "כן. מגדירים לכל מקום עבודה תעריף שעתי ואורך משמרת משלו, וכל משמרת משויכת למקום שבו עבדתם בפועל. הדוח החודשי מציג פילוח נפרד לכל מקום עבודה וגם סיכום כולל של כל השעות וההכנסות יחד.",
       },
+      {
+        question: "מה זה שעון נוכחות דיגיטלי, ולמה עדיף על פנקס או Excel?",
+        answer:
+          "שעון נוכחות דיגיטלי מתעד לכם אוטומטית את שעת הכניסה והיציאה בכל משמרת, ומחשב מיד כמה שעות עבדתם וכמה זה שווה בכסף — בלי לזכור לרשום ידנית ובלי טעויות חישוב שקורות בפנקס או בגיליון Excel. ב-Shift Smart כל זה קורה על המכשיר שלכם בזמן אמת, כך שבסוף החודש הסיכום כבר מוכן ומדויק.",
+      },
+      {
+        question: "איך Shift Smart מחשבת שעות עבודה ושכר?",
+        answer:
+          "לכל מקום עבודה מגדירים תעריף שעתי ואורך משמרת משלו; בכל משמרת האפליקציה סופרת את השעות בפועל, ומעבר לסף שקבעתם היא מוסיפה אוטומטית את אחוז השעות הנוספות. הסיכום החודשי מרכז את כל המשמרות מכל מקומות העבודה יחד עם סך ההכנסות, בלי צורך בשום חישוב ידני.",
+      },
+      {
+        question:
+          "האם Shift Smart מתאימה לניהול משמרות בעברית, למאבטחים, סדרנים וצוותי מסעדות?",
+        answer:
+          "כן — האפליקציה מיועדת בדיוק לקהל הזה: מאבטחים, סדרנים, צוותי מסעדות וכל מי שעובד במשמרות משתנות. הממשק כולו בעברית ומותאם RTL, ותומך במספר מקומות עבודה עם תעריפים שונים במקביל — בדיוק המבנה הנפוץ בעבודות משמרות.",
+      },
     ],
   },
   footer: {
@@ -566,9 +604,9 @@ const he: Dictionary = {
 
 const en: Dictionary = {
   meta: {
-    title: "Shift Smart - Shift Management on Another Level",
+    title: "Shift Smart – Time Clock & Shift Management",
     description:
-      "The ultimate attendance clock for security guards and shift workers. Track your hours, calculate your pay automatically, and never lose a shekel again — join the closed Beta today.",
+      "A digital time clock app for shift management and payroll — built for security guards, stewards, and restaurant staff. Join the closed Beta free.",
     keywords: [
       "shift management",
       "time clock",
@@ -577,7 +615,7 @@ const en: Dictionary = {
       "Shift Smart",
     ],
     ogDescription:
-      "The ultimate attendance clock for security guards and shift workers. Track your hours and calculate your pay automatically with Shift Smart.",
+      "A digital time clock app for shift management and payroll. Join the closed Beta of Shift Smart.",
   },
   brand: {
     name: "Shift Smart",
@@ -626,6 +664,12 @@ const en: Dictionary = {
           "Personalized user experience - full control to enable or disable sound notifications and vibration for every clock-in and clock-out.",
       },
     ],
+  },
+  aboutTimeTracking: {
+    kicker: "Why it matters",
+    titlePrefix: "What is a ",
+    titleHighlight: "digital time clock?",
+    body: "A digital time clock replaces manual notes in a paper log or your memory, accurately recording exactly when each shift started and ended. For shift workers — security guards, stewards, restaurant staff, and more — that's the difference between a rough guess at your pay and knowing exactly how many hours you worked and what they're worth, without waiting for a payslip to find out.",
   },
   betaSteps: {
     kicker: "BETA",
@@ -852,6 +896,22 @@ const en: Dictionary = {
         question: "Can I manage several workplaces at once?",
         answer:
           "Yes. Each workplace gets its own hourly rate and shift length, and every shift is linked to the place you actually worked at. The monthly report shows a separate breakdown per workplace, plus one combined summary of all hours and income.",
+      },
+      {
+        question: "What is a digital time clock, and why is it better than a paper log or Excel?",
+        answer:
+          "A digital time clock automatically records your clock-in and clock-out times for every shift, and instantly calculates how many hours you worked and how much that's worth — no manual writing, and none of the calculation mistakes that creep into a paper log or spreadsheet. With Shift Smart, all of this happens on your device in real time, so your monthly summary is ready and accurate by the end of the month.",
+      },
+      {
+        question: "How does Shift Smart calculate work hours and pay?",
+        answer:
+          "You set an hourly rate and shift length for each workplace; during every shift the app tracks your actual hours, and once you pass the threshold you defined, it automatically adds the overtime percentage. The monthly summary brings together every shift from every workplace along with total income, with no manual math needed.",
+      },
+      {
+        question:
+          "Does Shift Smart support Hebrew shift management for security guards, stewards, and restaurant staff?",
+        answer:
+          "Yes — the app is built exactly for that audience: security guards, stewards, restaurant staff, and anyone working variable shifts. The entire interface is in Hebrew with full RTL support, and it handles multiple workplaces with different rates at once — exactly the structure common in shift-based jobs.",
       },
     ],
   },
