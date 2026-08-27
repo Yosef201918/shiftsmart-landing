@@ -559,8 +559,8 @@ const he: Dictionary = {
     buttonLabel: "שתף את האפליקציה",
     copiedLabel: "הועתק!",
     title: "הצטרפו לבטא של Shift Smart!",
-    buildText: (siteUrl, groupUrl, storeUrl) =>
-      `היי! מצאתי אפליקציה מעולה לניהול משמרות ושכר בשם Shift Smart. כרגע היא בגרסת בטא סגורה.\nכנסו לאתר לכל הפרטים:\n${siteUrl}\n\nאו עקבו אחרי 2 שלבים קלים להצטרפות:\n1. הירשמו לקבוצת הבודקים: ${groupUrl}\n2. הורידו מ-Google Play: ${storeUrl}`,
+    buildText: (siteUrl) =>
+      `מה הולך? גם לך יוצא לעבור על תלוש המשכורת בסוף החודש ולתהות איך חישבו בדיוק את השעות הנוספות וההפסקות? 📉\nתכלס, חבל על האנרגיות שלך. בין כל הריצות בעבודה, הדוחות והלחץ היומיומי, הדבר האחרון שצריך זה כאב ראש מול גיליונות אקסל מסובכים או חישובים ידניים שלפעמים מפספסים אגורות חשובות.\nבדיוק בשביל זה פיתחנו את Shift Smart – שעון נוכחות חכם שפשוט עושה סדר בראש ובארנק. 📱✨\nמהיום יודעים בדיוק מה השכר המדויק, עד האגורה האחרונה, בלי ניירת ובלי ניחושים מיותרים. האפליקציה מרכזת הכל במקום אחד בצורה פשוטה, שקופה ונוחה שחוסכת לך המון זמן יקר ועצבים.\nשווה לגמרי לבדוק את זה ולראות איך אפשר להקל על עצמך את החיים כבר מהחודש הקרוב.\nכל הפרטים והורדה מהירה מחכים לך ממש כאן:\n${siteUrl}`,
   },
   featureRequest: {
     buttonLabel: "הצעת פיצ'ר",
@@ -936,8 +936,8 @@ const en: Dictionary = {
     buttonLabel: "Share App",
     copiedLabel: "Copied!",
     title: "Join the Shift Smart Beta!",
-    buildText: (siteUrl, groupUrl, storeUrl) =>
-      `Hey! I found a great shift and payroll management app called Shift Smart. It's currently in closed Beta.\nCheck out the website for all the details:\n${siteUrl}\n\nOr follow 2 easy steps to join:\n1. Sign up for the testers group: ${groupUrl}\n2. Download it from Google Play: ${storeUrl}`,
+    buildText: (siteUrl) =>
+      `What's going on? Do you also dread checking your payslip at the end of the month, wondering exactly how they calculated your overtime and breaks? 📉\nHonestly, it's not worth the energy. Between the running around at work, the reports, and the daily pressure, the last thing you need is a headache over complicated spreadsheets or manual calculations that sometimes miss important cents.\nThat's exactly why we built Shift Smart – a smart time clock that simply gets your head and your wallet in order. 📱✨\nFrom today, you'll know exactly what your pay is, down to the last cent, without paperwork and without unnecessary guesswork. The app brings everything together in one simple, transparent, convenient place that saves you tons of precious time and stress.\nIt's definitely worth checking out and seeing how you can make your life easier starting next month.\nAll the details and a quick download are waiting for you right here:\n${siteUrl}`,
   },
   featureRequest: {
     buttonLabel: "Suggest a Feature",
