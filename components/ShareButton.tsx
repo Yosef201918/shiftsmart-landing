@@ -10,8 +10,10 @@ type ShareButtonProps = {
   className?: string;
 };
 
+/* נתיב תמונת השיתוף הייעודית ב-public/ (יש רווח בשם הקובץ, לכן %20 בנתיב ה-fetch) */
+const SHARE_IMAGE_PATH = "/Sharing%20image.jpg";
 /* שם קובץ אמיתי לתמונה המשותפת — נדרש כדי שאפליקציות היעד (וואטסאפ וכו') יזהו אותה כתמונה תקינה */
-const SHARE_IMAGE_FILENAME = "shiftsmart.png";
+const SHARE_IMAGE_FILENAME = "shiftsmart.jpg";
 
 /*
  * שלב 21 — כפתור שיתוף חכם. במובייל (רוב הדפדפנים התומכים ב-Web Share
@@ -19,11 +21,11 @@ const SHARE_IMAGE_FILENAME = "shiftsmart.png";
  * שבו navigator.share כמעט אף פעם לא קיים, מעתיקים את אותו טקסט ללוח
  * ומראים אישור זמני על גבי הכפתור עצמו — בלי שום התראת דפדפן חוסמת.
  *
- * שלב 41: מנסים לצרף גם את תמונת ה-OG הקיימת (og-image.png) כקובץ אמיתי
- * לשיתוף, לא רק טקסט. navigator.share תומך בכך רק חלקית ורק במובייל, ולכן
- * navigator.canShare({ files }) חייב להיבדק במפורש לפני שמעבירים files —
- * דפדפן שתומך ב-navigator.share אך לא ביכולת קבצים (או שהקובץ מסוג לא
- * נתמך) עדיין יעבוד, רק בלי הקובץ המצורף.
+ * שלב 41: מנסים לצרף גם תמונה ייעודית לשיתוף (public/Sharing image.jpg)
+ * כקובץ אמיתי, לא רק טקסט. navigator.share תומך בכך רק חלקית ורק במובייל,
+ * ולכן navigator.canShare({ files }) חייב להיבדק במפורש לפני שמעבירים
+ * files — דפדפן שתומך ב-navigator.share אך לא ביכולת קבצים (או שהקובץ
+ * מסוג לא נתמך) עדיין יעבוד, רק בלי הקובץ המצורף.
  */
 export default function ShareButton({ className = "" }: ShareButtonProps) {
   const { t } = useLanguage();
@@ -40,13 +42,13 @@ export default function ShareButton({ className = "" }: ShareButtonProps) {
    */
   const getShareImageFile = async (): Promise<File | null> => {
     try {
-      const response = await fetch("/og-image.png");
+      const response = await fetch(SHARE_IMAGE_PATH);
       if (!response.ok) return null;
 
       const blob = await response.blob();
       if (blob.size === 0) return null;
 
-      return new File([blob], SHARE_IMAGE_FILENAME, { type: "image/png" });
+      return new File([blob], SHARE_IMAGE_FILENAME, { type: "image/jpeg" });
     } catch {
       return null;
     }
