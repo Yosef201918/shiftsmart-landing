@@ -35,16 +35,26 @@ export default function Backdrop() {
       {/* רשת טכנית עדינה שנמוגה כלפי מטה */}
       <div className="grid-weave absolute inset-0" />
 
-      {/* שתי הילות ניאון נושמות שיוצרות תנועה איטית ברקע */}
-      <div className="haze absolute -top-40 right-[-12%] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(92,255,157,0.16),transparent_68%)] blur-3xl" />
+      {/*
+        שתי הילות ניאון נושמות שיוצרות תנועה איטית ברקע. blur-3xl (64px)
+        הוא אחת הפעולות היקרות ביותר ל-GPU במובייל, ורץ ברציפות כי כל
+        המכולה fixed — לכן blur-xl (24px) במובייל ו-blur-3xl רק מ-sm ומעלה.
+        האנימציה עצמה מושהית מתחת ל-sm בכלל CSS ב-globals.css (.haze
+        media query) — האפקט נשאר קיים (עדיין glow סטטי), רק לא רץ ברציפות.
+      */}
+      <div className="haze absolute -top-40 right-[-12%] h-[38rem] w-[38rem] rounded-full bg-[radial-gradient(circle,rgba(92,255,157,0.16),transparent_68%)] blur-xl sm:blur-3xl" />
       <div
-        className="haze absolute bottom-[-18rem] left-[-14%] h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(43,68,87,0.35),transparent_70%)] blur-3xl"
+        className="haze absolute bottom-[-18rem] left-[-14%] h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(43,68,87,0.35),transparent_70%)] blur-xl sm:blur-3xl"
         style={{ animationDelay: "-7s" }}
       />
 
-      {/* גרעיניות דקה שמונעת מהגרדיאנטים להיראות "פלסטיים" */}
+      {/*
+        גרעיניות דקה שמונעת מהגרדיאנטים להיראות "פלסטיים" — מוסתרת לגמרי
+        במובייל (hidden sm:block): הפילטר SVG feTurbulence יקר לציור, וברוב
+        המקרים כמעט בלתי מורגש מאחורי כל שכבות ההכהיה שמעליו.
+      */}
       <div
-        className="absolute inset-0 opacity-[0.045] mix-blend-overlay"
+        className="absolute inset-0 hidden opacity-[0.045] mix-blend-overlay sm:block"
         style={{ backgroundImage: NOISE_TEXTURE }}
       />
     </div>

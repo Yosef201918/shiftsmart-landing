@@ -71,7 +71,8 @@ export default function AppCarousel() {
   return (
     <section
       id="gallery"
-      className="relative scroll-mt-16 pb-28 sm:pb-32 lg:pb-40"
+      /* פוצל sm:pb-32 שהיה חריג לכל שאר המקטעים (כולם pb-28...lg:pb-40 בלי override ב-sm) — יצר קפיצת ריווח לא עקבית ברוחב טאבלט */
+      className="relative scroll-mt-16 pb-28 lg:pb-40"
     >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12">
         {/* ---------- כותרת המקטע ---------- */}

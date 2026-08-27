@@ -18,7 +18,8 @@ export default function OpenBetaBanner() {
   const { t } = useLanguage();
 
   return (
-    <div className="relative z-20 border-b border-hair bg-abyss/80 backdrop-blur-md">
+    // backdrop-blur מוקל במובייל: פעולת GPU יקרה, ורצועה זו יושבת בראש כל דף
+    <div className="relative z-20 border-b border-hair bg-abyss/80 backdrop-blur-sm sm:backdrop-blur-md">
       <a
         href={BETA_GROUP_URL}
         {...EXTERNAL_LINK_PROPS}

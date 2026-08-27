@@ -64,7 +64,8 @@ export default function Hero() {
           */}
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
-            <span className="flex items-center gap-2 rounded-full border border-hair bg-abyss/70 px-3 py-1.5 text-xs text-mist backdrop-blur-md sm:px-3.5">
+            {/* backdrop-blur מוקל במובייל: פעולת GPU יקרה, ותג הבטא כאן נשאר גלוי לאורך כל הגלילה */}
+            <span className="flex items-center gap-2 rounded-full border border-hair bg-abyss/70 px-3 py-1.5 text-xs text-mist backdrop-blur-sm sm:px-3.5 sm:backdrop-blur-md">
               <span className="beacon size-1.5 rounded-full bg-neon" />
               <span className="hidden sm:inline">{t.brand.betaBadge}</span>
             </span>

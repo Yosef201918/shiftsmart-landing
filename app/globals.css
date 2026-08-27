@@ -304,6 +304,20 @@
   }
 }
 
+/*
+ * במובייל (מתחת ל-sm, 640px) עוצרים את אנימציית .haze לגמרי: transform+
+ * opacity רצים על ה-GPU ולא אמורים "לעלות" הרבה, אבל בשילוב עם blur ותמונת
+ * הרקע שממילא נטענת ב-fixed, זו הפחתה אמיתית בעומס על מובייל חלש. האפקט
+ * עצמו לא נעלם — ה-opacity הבסיסי (0.5, לפי keyframe ה-0%/100%) נשאר קבוע,
+ * רק ההנפשה הרציפה מושבתת.
+ */
+@media (max-width: 639.98px) {
+  .haze {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

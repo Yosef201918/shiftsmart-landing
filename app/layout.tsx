@@ -71,11 +71,11 @@ const siteUrl =
  */
 const defaultDictionary = dictionaries.he;
 
-/* תמונת ה-OG שהמשתמש מניח ב-public/og-image.png — 2048×2048 בפועל */
+/* תמונת ה-OG שהמשתמש מניח ב-public/og-image.png — 1600×1600 בפועל (כווצה מ-2048×2048 בשלב 40 להורדת המשקל מ-6.3MB ל-930KB) */
 const OG_IMAGE = {
   url: "/og-image.png",
-  width: 2048,
-  height: 2048,
+  width: 1600,
+  height: 1600,
   alt: defaultDictionary.meta.title,
 };
 
@@ -158,26 +158,32 @@ export default function RootLayout({
       className={`${heebo.variable} ${secularOne.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
       {/*
-        JSON-LD בתוך <html> ומחוץ ל-<body>: Next.js מרים כל <script> שמופיע
-        ברינדור ה-root layout אל תוך ה-<head> הסופי של הדף, בלי צורך ברכיב
-        <Head> ייעודי (הוסר ב-App Router). dangerouslySetInnerHTML עם
-        JSON.stringify על אובייקט רגיל — לא מחרוזת קשיחה — מבטיח JSON תקין.
-      */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(mobileApplicationJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-      />
-
-      {/*
         תמונת הרקע עברה לשכבה ייעודית ב-<Backdrop/> במקום background-attachment: fixed.
         הסיבה: Safari ב-iOS לא תומך ב-fixed ושובר את הגלילה. אלמנט position:fixed
         משיג את אותו אפקט "רקע נעוץ" בכל הדפדפנים, וגם מאפשר אופטימיזציה של התמונה.
       */}
       <body className="bg-void min-h-full flex flex-col">
+        {/*
+          JSON-LD בתוך <body>, לא בין <html> ל-<body>: ניסיון קודם למקם את
+          ה-<script> שם גרם לשגיאת hydration אמיתית ("Cannot render a sync
+          or defer <script> outside the main document") — <script> חייב
+          להיות ילד של <head> או <body> בתוך HTML תקין, לא ילד ישיר של
+          <html>. זה בדיוק התבנית המתועדת ב-node_modules/next/dist/docs/
+          .../json-ld.md. ה-`<`\` מונע הזרקת HTML/XSS דרך שדות שמגיעים
+          מהמילון (למרות ששניהם כאן קבועים סטטיים, לא קלט משתמש).
+        */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(mobileApplicationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         {/*
           framer-motion מרנדר את אלמנטי הכניסה עם opacity:0 בצד השרת ומנפיש אותם
           בצד הלקוח. בלי JavaScript האנימציה לא תרוץ והתוכן יישאר בלתי נראה,

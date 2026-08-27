@@ -312,7 +312,8 @@ export default function Reviews() {
               key="review-backdrop"
               aria-hidden="true"
               onClick={closeModal}
-              className="absolute inset-0 bg-void/80 backdrop-blur-sm"
+              /* backdrop-blur מוקל במובייל: bg-void/80 כבר מספיק לקריאות המודאל בלי הפעולה היקרה */
+              className="absolute inset-0 bg-void/80 backdrop-blur-none sm:backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
