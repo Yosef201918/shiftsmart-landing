@@ -1,16 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LayoutGrid, Vibrate, Workflow, type LucideIcon } from "lucide-react";
+import {
+  Image as ImageIcon,
+  LayoutGrid,
+  Receipt,
+  SunMoon,
+  type LucideIcon,
+} from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
+/*
+ * שלב 43: עדכון v1.7.0 — 4 פריטים במקום 3, ולכן ה-grid רחב יותר
+ * (lg:grid-cols-4 ולא lg:grid-cols-3) כדי שכולם ישבו בשורה אחת נקייה
+ * ולא ייוותר כרטיס בודד בשורה שנייה.
+ */
 /** האייקון בלבד הוא מבנה קבוע — הכותרת והתיאור מגיעים מהמילון לפי אינדקס */
-const UPDATE_ICONS: [LucideIcon, LucideIcon, LucideIcon] = [
+const UPDATE_ICONS: [LucideIcon, LucideIcon, LucideIcon, LucideIcon] = [
+  Receipt,
   LayoutGrid,
-  Workflow,
-  Vibrate,
+  ImageIcon,
+  SunMoon,
 ];
 
 export default function WhatsNew() {
@@ -55,7 +67,7 @@ export default function WhatsNew() {
 
         {/* ---------- כרטיסי העדכונים ---------- */}
         <motion.div
-          className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+          className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

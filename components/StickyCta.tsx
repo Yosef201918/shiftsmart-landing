@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Users } from "lucide-react";
+import { Download } from "lucide-react";
 
 import DirectionalArrow from "@/components/DirectionalArrow";
-import { BETA_GROUP_URL, EXTERNAL_LINK_PROPS } from "@/lib/links";
+import { EXTERNAL_LINK_PROPS, PLAY_STORE_URL } from "@/lib/links";
 import { EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -16,7 +16,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
  * באג שתוקן כאן: הכפתור היה position:fixed בתחתית המסך כל עוד ההירו לא
  * בתצוגה — כלומר גם כשמגיעים לסוף הדף. בגלילה מלאה כלפי מטה הוא צף בדיוק
  * מעל שורת הזכויות בפוטר ומכסה חלק מהטקסט ("...האפליקציה נמצאת בשלב בטא
- * סגורה..."). זו לא הייתה בעיית flex/grid בין אחים באותו מכולה — הכפתור
+ * פתוחה..."). זו לא הייתה בעיית flex/grid בין אחים באותו מכולה — הכפתור
  * וטקסט הפוטר כלל לא נמצאים באותו הקשר פריסה — אלא חפיפה של שכבה קבועה
  * (fixed) מעל תוכן רגיל שממשיך לזרום מתחתיה. הפתרון: IntersectionObserver
  * שני שעוקב אחרי הפוטר, ומסתיר את הכפתור ברגע שהוא נכנס לתצוגה.
@@ -64,11 +64,11 @@ export default function StickyCta() {
           className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center px-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]"
         >
           <a
-            href={BETA_GROUP_URL}
+            href={PLAY_STORE_URL}
             {...EXTERNAL_LINK_PROPS}
             className="panel edge-lit pointer-events-auto inline-flex h-14 items-center justify-center gap-2.5 rounded-full px-7 text-base text-chalk shadow-neon transition duration-300 hover:border-neon-deep hover:text-neon"
           >
-            <Users className="size-5 shrink-0 text-neon" strokeWidth={1.75} />
+            <Download className="size-5 shrink-0 text-neon" strokeWidth={1.75} />
             {t.stickyCta.label}
             <DirectionalArrow
               strokeWidth={2}

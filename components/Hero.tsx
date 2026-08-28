@@ -1,24 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Clock4,
-  Download,
-  Sparkles,
-  Star,
-  TriangleAlert,
-  Users,
-} from "lucide-react";
+import { Clock4, Download, Sparkles, Star, TriangleAlert } from "lucide-react";
 
 import BetaSteps from "@/components/BetaSteps";
 import DirectionalArrow from "@/components/DirectionalArrow";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ShareButton from "@/components/ShareButton";
-import {
-  BETA_GROUP_URL,
-  EXTERNAL_LINK_PROPS,
-  PLAY_STORE_URL,
-} from "@/lib/links";
+import { EXTERNAL_LINK_PROPS, PLAY_STORE_URL } from "@/lib/links";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -117,17 +106,17 @@ export default function Hero() {
 
           {/*
             ---------- קבוצת הפעולות ----------
-            במובייל שני הכפתורים ברוחב מלא וזהה, כך שהם נקראים כזוג מאוזן.
-            המשני מקבל רקע זכוכית ומסגרת כדי שייראה ככפתור ולא כטקסט.
+            שלב 43: הבטא עברה מסגורה לפתוחה, ולכן הוסר כפתור "הצטרפו לבטא
+            הסגורה" המשני — אין יותר קבוצת בודקים להצטרף אליה, רק הורדה
+            ישירה. נשאר כפתור יחיד, ברוחב מלא במובייל וברוחב תוכן בדסקטופ
+            (בלי flex-row מיותר לילד בודד) — הזוהר והגודל שלו (h-14, shadow-
+            neon) מספיקים כדי שלא "ייראה בודד" גם עם מרחב פנוי לצידו.
           */}
-          <motion.div
-            className="mt-5 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center sm:gap-4"
-            variants={fadeUp}
-          >
+          <motion.div className="mt-5" variants={fadeUp}>
             <a
               href={PLAY_STORE_URL}
               {...EXTERNAL_LINK_PROPS}
-              className="group inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] sm:w-auto"
+              className="group inline-flex h-14 w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] sm:w-auto"
             >
               <Download className="size-5 shrink-0" strokeWidth={2.25} />
               {t.hero.downloadCta}
@@ -135,15 +124,6 @@ export default function Hero() {
                 strokeWidth={2.25}
                 className="size-5 shrink-0 transition-transform duration-300 ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
               />
-            </a>
-
-            <a
-              href={BETA_GROUP_URL}
-              {...EXTERNAL_LINK_PROPS}
-              className="panel inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl px-7 font-display text-base text-chalk transition duration-300 hover:-translate-y-0.5 hover:border-neon-deep hover:text-neon sm:w-auto"
-            >
-              <Users className="size-5 shrink-0 text-neon" strokeWidth={1.75} />
-              {t.hero.joinBetaCta}
             </a>
           </motion.div>
         </motion.div>

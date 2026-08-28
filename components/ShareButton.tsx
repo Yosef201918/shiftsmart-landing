@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Check, Share2 } from "lucide-react";
 
-import { BETA_GROUP_URL, PLAY_STORE_URL, SITE_URL } from "@/lib/links";
+import { SITE_URL } from "@/lib/links";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 type ShareButtonProps = {
@@ -32,7 +32,7 @@ export default function ShareButton({ className = "" }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
 
   // שלב 24: כתובת האתר עצמה חייבת להופיע בטקסט כדי שוואטסאפ ימשוך את תמונת ה-OG
-  const shareText = t.share.buildText(SITE_URL, BETA_GROUP_URL, PLAY_STORE_URL);
+  const shareText = t.share.buildText(SITE_URL);
 
   /*
    * מביא את תמונת ה-OG הקיימת מהשרת עצמו (fetch יחסי, לא מפנה לדומיין

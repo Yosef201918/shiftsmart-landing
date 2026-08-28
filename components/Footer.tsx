@@ -1,10 +1,9 @@
 "use client";
 
-import { Clock4, Download, FileText, Mail, ShieldCheck, Users, type LucideIcon } from "lucide-react";
+import { Clock4, Download, FileText, Mail, ShieldCheck, type LucideIcon } from "lucide-react";
 
 import { FacebookIcon, InstagramIcon, TiktokIcon } from "@/components/SocialIcons";
 import {
-  BETA_GROUP_URL,
   CONTACT_EMAIL,
   CONTACT_MAILTO,
   EXTERNAL_LINK_PROPS,
@@ -49,12 +48,6 @@ export default function Footer() {
       label: t.footer.linkPlayStore,
       href: PLAY_STORE_URL,
       icon: Download,
-      external: true,
-    },
-    {
-      label: t.footer.linkBetaGroup,
-      href: BETA_GROUP_URL,
-      icon: Users,
       external: true,
     },
     {

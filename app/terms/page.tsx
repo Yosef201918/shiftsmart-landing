@@ -50,10 +50,10 @@ export default function TermsOfServicePage() {
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
-          גרסת בטא סגורה
+          גרסת בטא פתוחה
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">
-          האפליקציה נמצאת כרגע בשלב <strong className="text-chalk">בטא סגורה</strong>{" "}
+          האפליקציה נמצאת כרגע בשלב <strong className="text-chalk">בטא פתוחה</strong>{" "}
           בחנות Google Play. המשמעות: ייתכנו תקלות, שגיאות חישוב, אובדן
           נתונים או שינויים תכופים בתכונות ובממשק. אנחנו לא מתחייבים לזמינות
           רצופה, לדיוק מוחלט של החישובים, או להמשך פיתוח וקיום השירות בצורתו

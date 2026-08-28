@@ -9,8 +9,6 @@ export const SITE_URL = "https://shiftsmart-landing.vercel.app";
 export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.yosefgabaydev.shiftsmart";
 
-export const BETA_GROUP_URL = "https://groups.google.com/g/shiftsmart-testers";
-
 export const CONTACT_EMAIL = "yoseffstor@gmail.com";
 
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;

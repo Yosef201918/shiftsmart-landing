@@ -1,15 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, Rocket, UserPlus, type LucideIcon } from "lucide-react";
+import { Briefcase, Download, Wallet, type LucideIcon } from "lucide-react";
 
-import { BETA_GROUP_URL, EXTERNAL_LINK_PROPS, PLAY_STORE_URL } from "@/lib/links";
+import { EXTERNAL_LINK_PROPS, PLAY_STORE_URL } from "@/lib/links";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /*
  * המבנה החזותי של כל שלב (אייקון, קישור) הוא קבוע ואינו תלוי שפה — רק
  * הכותרת והתיאור מגיעים מהמילון, לפי אותו סדר אינדקסים ב-t.betaSteps.steps.
+ *
+ * שלב 43: הבטא עברה מסגורה לפתוחה — שלב 1 כבר לא "הצטרפות לקבוצת בודקים"
+ * (UserPlus) אלא הורדה ישירה מ-Google Play, ולכן href עבר לשם ואייקון
+ * Download תפס את מקומו של UserPlus.
  */
 type StepMeta = {
   icon: LucideIcon;
@@ -17,9 +21,9 @@ type StepMeta = {
 };
 
 const STEP_META: [StepMeta, StepMeta, StepMeta] = [
-  { icon: UserPlus, href: BETA_GROUP_URL },
   { icon: Download, href: PLAY_STORE_URL },
-  { icon: Rocket },
+  { icon: Briefcase },
+  { icon: Wallet },
 ];
 
 const HOVER_LIFT = {

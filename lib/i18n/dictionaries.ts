@@ -51,7 +51,6 @@ export interface Dictionary {
     subtitle: string;
     audience: string;
     downloadCta: string;
-    joinBetaCta: string;
     socialProof: string;
     starsAriaLabel: string;
     betaWarning: string;
@@ -63,7 +62,7 @@ export interface Dictionary {
     subtitle: string;
     /** תווית קטנה על כל כרטיס — "חדש" / "NEW" */
     badgeLabel: string;
-    items: [TitledItem, TitledItem, TitledItem];
+    items: [TitledItem, TitledItem, TitledItem, TitledItem];
   };
   aboutTimeTracking: {
     kicker: string;
@@ -166,7 +165,6 @@ export interface Dictionary {
     followUs: string;
     linksAriaLabel: string;
     linkPlayStore: string;
-    linkBetaGroup: string;
     linkPrivacyPolicy: string;
     linkTermsOfService: string;
     socialFacebookAria: string;
@@ -185,9 +183,9 @@ export interface Dictionary {
     /**
      * בונה את טקסט השיתוף המלא. siteUrl חייב להופיע כטקסט רגיל (לא קישור
      * בתוך קישור אחר) כי זה מה שוואטסאפ סורק כדי למשוך את תמונת ה-OG
-     * לתצוגה המקדימה — קישורי קבוצת הבודקים וה-Play Store לבדם לא מספיקים.
+     * לתצוגה המקדימה.
      */
-    buildText: (siteUrl: string, groupUrl: string, storeUrl: string) => string;
+    buildText: (siteUrl: string) => string;
   };
   featureRequest: {
     buttonLabel: string;
@@ -238,7 +236,7 @@ const he: Dictionary = {
   meta: {
     title: "Shift Smart – שעון נוכחות וניהול משמרות",
     description:
-      "שעון נוכחות דיגיטלי לניהול משמרות ושכר, מותאם למאבטחים, סדרנים ומסעדות. הצטרפו לבטא הסגורה של Shift Smart בחינם.",
+      "שעון נוכחות דיגיטלי לניהול משמרות ושכר, מותאם למאבטחים, סדרנים ומסעדות. הורידו את Shift Smart בחינם מ-Google Play.",
     keywords: [
       "ניהול משמרות",
       "שעון נוכחות",
@@ -247,11 +245,11 @@ const he: Dictionary = {
       "Shift Smart",
     ],
     ogDescription:
-      "שעון נוכחות דיגיטלי לניהול משמרות ושכר. הצטרפו לבטא הסגורה של Shift Smart.",
+      "שעון נוכחות דיגיטלי לניהול משמרות ושכר. הורידו את Shift Smart בחינם מ-Google Play.",
   },
   brand: {
     name: "Shift Smart",
-    betaBadge: "בטא סגורה",
+    betaBadge: "בטא פתוחה",
   },
   languageSwitcher: {
     hebrewLabel: "עברית",
@@ -265,7 +263,6 @@ const he: Dictionary = {
     subtitle: "שעון הנוכחות שיעשה לכם סדר בשעות ובשכר.",
     audience: "מושלם למאבטחים סדרנים, מסעדות וכל מי שחי על משמרות.",
     downloadCta: "הורדה מ-Google Play",
-    joinBetaCta: "הצטרפו לבטא הסגורה",
     socialProof:
       "הצטרפו למאבטחים, סדרנים ומנהלי משמרות שכבר מנהלים את הזמן שלהם חכם.",
     starsAriaLabel: "חמישה כוכבים",
@@ -280,19 +277,24 @@ const he: Dictionary = {
     badgeLabel: "חדש",
     items: [
       {
-        title: "ווידג'ט חכם למסך הבית (Smart Widget)",
+        title: "פירוט מלא של ניכויי השכר",
         description:
-          "הפעלה ועצירה של שעון הנוכחות בלחיצת כפתור מהירה ישירות ממסך הבית, מבלי לפתוח את האפליקציה. מעקב חי ונוח אחרי סטטוס המשמרת שלך מכל מסך.",
+          "רואים בדיוק כמה הולך לביטוח לאומי, מס בריאות, פנסיה, קרן השתלמות ומס הכנסה — לא רק את השכר הסופי, אלא בדיוק מאיפה כל אגורה יוצאת.",
       },
       {
-        title: "אוטומציה ונוחות בסיום משמרת",
+        title: "ווידג'ט שעון למסך הבית",
         description:
-          "מעבר אוטומטי להיסטוריה (העברה למסך סיכום השעות מיד ביציאה) והערות מהירות (הקפצת חלון הערה אוטומטי כדי לא לשכוח טיפים או חריגים).",
+          "מוסיפים ווידג'ט שעון ישירות מתוך האפליקציה, עם תצוגה מקדימה חיה לפני שמוסיפים — והוא מסתנכרן אוטומטית עם ערכת הנושא שלכם (בהיר/כהה/אוטומטי).",
       },
       {
-        title: "שליטה מלאה בהתראות וברטט",
+        title: "צפייה במסך מלא בתמונות משמרת",
         description:
-          "התאמה אישית של חוויית המשתמש - שליטה מלאה על הפעלה או כיבוי של צלילי חיווי ורטט בכל כניסה ויציאה ממשמרת.",
+          "לוחצים על כל תמונה שצירפתם למשמרת (קבלה, תלוש) ורואים אותה במסך מלא, בלי לצאת מהיסטוריית המשמרות.",
+      },
+      {
+        title: "צביעה אוטומטית לפי שעת היום",
+        description:
+          "כרטיסי המשמרות מתצבעים לבד לפי שעת ההתחלה — בוקר, צהריים, ערב או לילה — כך שקל להבחין בין המשמרות במבט אחד ביומן.",
       },
     ],
   },
@@ -303,28 +305,27 @@ const he: Dictionary = {
     body: "שעון נוכחות דיגיטלי מחליף רישום ידני בפנקס או בזיכרון, ומתעד באופן מדויק מתי התחלתם ומתי סיימתם כל משמרת. עבור עובדים במשמרות — מאבטחים, סדרנים, צוותי מסעדות ועוד — זה ההבדל בין הערכה גסה של השכר לבין ידיעה מדויקת כמה שעות עבדתם וכמה זה שווה, בלי לחכות לתלוש כדי לגלות.",
   },
   betaSteps: {
-    kicker: "BETA",
-    titlePrefix: "איך מצטרפים ",
-    titleHighlight: "לבטא",
+    kicker: "התחלה מהירה",
+    titlePrefix: "איך ",
+    titleHighlight: "מתחילים",
     titleSuffix: "?",
-    subtitle: "שלושה שלבים, כמה דקות, ואתם בפנים.",
+    subtitle: "שלושה שלבים פשוטים, וכל הנתונים שלכם מוכנים.",
     steps: [
       {
-        title: "הצטרפות לקבוצת הבודקים",
+        title: "הורדה מ-Google Play",
         description:
-          "נרשמים לקבוצת הבודקים בחשבון Google שממנו תורידו את האפליקציה. זה מה שפותח את הגישה לגרסת הבטא.",
-        linkLabel: "לקבוצת הבודקים",
-      },
-      {
-        title: "הורדת האפליקציה",
-        description:
-          "אחרי ההצטרפות נכנסים לדף האפליקציה בחנות Google Play ומתקינים כרגיל.",
+          "מורידים את Shift Smart ישירות מהחנות — האפליקציה זמינה עכשיו לכולם, בלי הרשמה מוקדמת.",
         linkLabel: "לחנות Google Play",
       },
       {
-        title: "כניסה חלקה וניהול משמרות",
+        title: "הגדרת מקום עבודה ותעריף",
         description:
-          "מגדירים מקום עבודה ותעריף שעתי ומתחילים להחתים. מכאן השעות נספרות לבד.",
+          "מזינים את תעריף השעה שלכם ופרטי מקום העבודה — האפליקציה תדע לחשב את השכר בהתאם.",
+      },
+      {
+        title: "מתחילים להחתים ולראות שכר מדויק",
+        description:
+          "מכאן האפליקציה עוקבת אחרי המשמרות שלכם ומציגה בכל רגע בדיוק כמה הרווחתם.",
       },
     ],
   },
@@ -491,9 +492,9 @@ const he: Dictionary = {
       "כל מה שנשאלנו הכי הרבה על חישוב שעות וניהול משמרות. לא מצאתם תשובה? אנחנו זמינים במייל.",
     items: [
       {
-        question: "למה צריך להירשם לקבוצת בודקים?",
+        question: "האם צריך תהליך הרשמה מיוחד כדי להוריד את האפליקציה?",
         answer:
-          "זו דרישה של Google Play לגרסאות בטא סגורות: כדי לקבל גישה מוקדמת לאפליקציה לפני ההשקה הרשמית, גוגל מחייבת שתהיו חברים בקבוצת הבודקים המקושרת לחשבון ה-Google שלכם. זהו תהליך חד-פעמי של דקה שפותח את הרשאת ההתקנה.",
+          "לא יותר — Shift Smart עברה לבטא פתוחה, כך שאפשר להוריד אותה ישירות מ-Google Play בלי שום קבוצת בודקים או תהליך הרשמה מוקדם. מורידים ומתחילים להשתמש מיד.",
       },
       {
         question: "האם האפליקציה תישאר בחינם?",
@@ -543,17 +544,16 @@ const he: Dictionary = {
     followUs: "עקבו אחרינו",
     linksAriaLabel: "קישורים ויצירת קשר",
     linkPlayStore: "הורדה מ‑Google Play",
-    linkBetaGroup: "קבוצת הבודקים",
     linkPrivacyPolicy: "מדיניות פרטיות",
     linkTermsOfService: "תנאי שימוש",
     socialFacebookAria: "עמוד הפייסבוק של Shift Smart",
     socialInstagramAria: "עמוד האינסטגרם של Shift Smart",
     socialTiktokAria: "עמוד הטיקטוק של Shift Smart",
     copyright: (year) =>
-      `© ${year} Shift Smart. כל הזכויות שמורות. האפליקציה נמצאת בשלב בטא סגורה והתכונות עשויות להשתנות.`,
+      `© ${year} Shift Smart. כל הזכויות שמורות. האפליקציה נמצאת בשלב בטא פתוחה והתכונות עשויות להשתנות.`,
   },
   stickyCta: {
-    label: "הצטרפו לבטא הסגורה",
+    label: "הורידו את Shift Smart",
   },
   share: {
     buttonLabel: "שתף את האפליקציה",
@@ -597,8 +597,8 @@ const he: Dictionary = {
     rejectLabel: "דוחה",
   },
   openBetaBanner: {
-    message: "בטא פתוחה לכולם בקרוב —",
-    ctaLabel: "הצטרפו מוקדם",
+    message: "🎉 הבטא הפתוחה עלתה לאוויר — זמינה עכשיו לכולם ב-Google Play!",
+    ctaLabel: "הורידו עכשיו",
   },
 };
 
@@ -606,7 +606,7 @@ const en: Dictionary = {
   meta: {
     title: "Shift Smart – Time Clock & Shift Management",
     description:
-      "A digital time clock app for shift management and payroll — built for security guards, stewards, and restaurant staff. Join the closed Beta free.",
+      "A digital time clock app for shift management and payroll — built for security guards, stewards, and restaurant staff. Download Shift Smart free on Google Play.",
     keywords: [
       "shift management",
       "time clock",
@@ -615,11 +615,11 @@ const en: Dictionary = {
       "Shift Smart",
     ],
     ogDescription:
-      "A digital time clock app for shift management and payroll. Join the closed Beta of Shift Smart.",
+      "A digital time clock app for shift management and payroll. Download Shift Smart free on Google Play.",
   },
   brand: {
     name: "Shift Smart",
-    betaBadge: "Closed Beta",
+    betaBadge: "Open Beta",
   },
   languageSwitcher: {
     hebrewLabel: "עברית",
@@ -634,7 +634,6 @@ const en: Dictionary = {
     audience:
       "Perfect for security guards, stewards, restaurant staff, and anyone living life in shifts.",
     downloadCta: "Get it on Google Play",
-    joinBetaCta: "Join the Closed Beta",
     socialProof:
       "Join security guards, stewards, and shift managers who already manage their time smarter.",
     starsAriaLabel: "Five stars",
@@ -649,19 +648,24 @@ const en: Dictionary = {
     badgeLabel: "NEW",
     items: [
       {
-        title: "Smart Home Screen Widget",
+        title: "Full Salary Deductions Breakdown",
         description:
-          "Start and stop the attendance clock with a quick button press directly from your home screen, without opening the app. Live and convenient tracking of your shift status.",
+          "See exactly how much goes to National Insurance, health tax, pension, and study fund — not just your final pay, but precisely where every shekel goes.",
       },
       {
-        title: "Automation & Convenience at Shift End",
+        title: "Home-Screen Clock Widget",
         description:
-          "Automatic redirect to history (instantly moves you to the summary screen upon clocking out) and Quick Notes (automatic note pop-up so you never forget tips or unusual events).",
+          "Add a clock widget straight from the app, with a live preview before you add it — and it syncs automatically with your theme (light/dark/auto).",
       },
       {
-        title: "Full Control Over Notifications & Vibration",
+        title: "Full-Screen Shift Photo Viewer",
         description:
-          "Personalized user experience - full control to enable or disable sound notifications and vibration for every clock-in and clock-out.",
+          "Tap any photo you attached to a shift (a receipt, a payslip) to view it full-screen, without leaving your shift history.",
+      },
+      {
+        title: "Automatic Time-of-Day Shift Colors",
+        description:
+          "Shift cards are automatically colored by their start time — morning, afternoon, evening, or night — so you can tell shifts apart at a glance.",
       },
     ],
   },
@@ -672,28 +676,27 @@ const en: Dictionary = {
     body: "A digital time clock replaces manual notes in a paper log or your memory, accurately recording exactly when each shift started and ended. For shift workers — security guards, stewards, restaurant staff, and more — that's the difference between a rough guess at your pay and knowing exactly how many hours you worked and what they're worth, without waiting for a payslip to find out.",
   },
   betaSteps: {
-    kicker: "BETA",
-    titlePrefix: "How to Join the ",
-    titleHighlight: "Beta",
+    kicker: "GET STARTED",
+    titlePrefix: "How do ",
+    titleHighlight: "you get started",
     titleSuffix: "?",
-    subtitle: "Three steps, a few minutes, and you're in.",
+    subtitle: "Three simple steps, and your data is ready to go.",
     steps: [
       {
-        title: "Join the Testers Group",
+        title: "Download from Google Play",
         description:
-          "Sign up for the testers group using the Google account you'll download the app with. That's what unlocks access to the Beta.",
-        linkLabel: "Go to the Testers Group",
-      },
-      {
-        title: "Download the App",
-        description:
-          "After joining, head to the app page on Google Play and install it as usual.",
+          "Get Shift Smart straight from the store — the app is available to everyone now, no sign-up required.",
         linkLabel: "Go to Google Play",
       },
       {
-        title: "Smooth Sign-in & Shift Management",
+        title: "Set Up Your Workplace and Rate",
         description:
-          "Set your workplace and hourly rate, then start clocking in. From here, your hours count themselves.",
+          "Enter your hourly rate and workplace details — the app will calculate your pay accordingly.",
+      },
+      {
+        title: "Start Clocking In and See Accurate Pay",
+        description:
+          "From here the app tracks your shifts and shows you exactly how much you've earned, in real time.",
       },
     ],
   },
@@ -868,9 +871,9 @@ const en: Dictionary = {
       "The questions we get asked the most about calculating hours and managing shifts. Can't find your answer? We're available by email.",
     items: [
       {
-        question: "Why do I need to join a testers group?",
+        question: "Do I need to sign up for anything special to download the app?",
         answer:
-          "It's a Google Play requirement for closed Beta apps: to get early access before the official launch, you need to be a member of the testers group linked to your Google account. It's a one-time, one-minute step that unlocks the install permission.",
+          "Not anymore — Shift Smart is now in Open Beta, so you can download it straight from Google Play with no testers group or sign-up process. Just install it and get started right away.",
       },
       {
         question: "Will the app stay free?",
@@ -920,17 +923,16 @@ const en: Dictionary = {
     followUs: "Follow us",
     linksAriaLabel: "Links and contact",
     linkPlayStore: "Get it on Google Play",
-    linkBetaGroup: "Testers Group",
     linkPrivacyPolicy: "Privacy Policy",
     linkTermsOfService: "Terms of Service",
     socialFacebookAria: "Shift Smart on Facebook",
     socialInstagramAria: "Shift Smart on Instagram",
     socialTiktokAria: "Shift Smart on TikTok",
     copyright: (year) =>
-      `© ${year} Shift Smart. All rights reserved. The app is currently in closed Beta and features may change.`,
+      `© ${year} Shift Smart. All rights reserved. The app is currently in Open Beta and features may change.`,
   },
   stickyCta: {
-    label: "Join the Closed Beta",
+    label: "Download Shift Smart",
   },
   share: {
     buttonLabel: "Share App",
@@ -974,8 +976,8 @@ const en: Dictionary = {
     rejectLabel: "Reject",
   },
   openBetaBanner: {
-    message: "Open Beta launching soon —",
-    ctaLabel: "Join early access",
+    message: "🎉 Open Beta is live — available now on Google Play!",
+    ctaLabel: "Download now",
   },
 };
 
