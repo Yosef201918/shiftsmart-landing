@@ -62,7 +62,7 @@ export interface Dictionary {
     subtitle: string;
     /** תווית קטנה על כל כרטיס — "חדש" / "NEW" */
     badgeLabel: string;
-    items: [TitledItem, TitledItem, TitledItem, TitledItem];
+    items: [TitledItem, TitledItem, TitledItem];
   };
   aboutTimeTracking: {
     kicker: string;
@@ -141,7 +141,7 @@ export interface Dictionary {
     titlePrefix: string;
     titleHighlight: string;
     subtitle: string;
-    milestones: [TitledItem, TitledItem, TitledItem];
+    milestones: [TitledItem, TitledItem, TitledItem, TitledItem];
   };
   faq: {
     kicker: string;
@@ -277,24 +277,19 @@ const he: Dictionary = {
     badgeLabel: "חדש",
     items: [
       {
-        title: "פירוט מלא של ניכויי השכר",
+        title: "תגיות משמרת מותאמות אישית",
         description:
-          "רואים בדיוק כמה הולך לביטוח לאומי, מס בריאות, פנסיה, קרן השתלמות ומס הכנסה — לא רק את השכר הסופי, אלא בדיוק מאיפה כל אגורה יוצאת.",
+          'בוחרים צבע ותעריף משלכם לכל תגית, כולל תגית שבת/מוצ"ש חכמה שמחשבת אוטומטית תעריף 150% גם במשמרת שלא נופלת בשבת בלוח השנה.',
       },
       {
-        title: "ווידג'ט שעון למסך הבית",
+        title: "סימון ימי מחלה וחופשה מהיומן",
         description:
-          "מוסיפים ווידג'ט שעון ישירות מתוך האפליקציה, עם תצוגה מקדימה חיה לפני שמוסיפים — והוא מסתנכרן אוטומטית עם ערכת הנושא שלכם (בהיר/כהה/אוטומטי).",
+          "מסמנים יום מחלה או חופשה ישירות מתוך תצוגת היומן, והיתרה השנתית שלכם מתעדכנת מיד.",
       },
       {
-        title: "צפייה במסך מלא בתמונות משמרת",
+        title: "עדכון ידני לסכום המשמרת",
         description:
-          "לוחצים על כל תמונה שצירפתם למשמרת (קבלה, תלוש) ורואים אותה במסך מלא, בלי לצאת מהיסטוריית המשמרות.",
-      },
-      {
-        title: "צביעה אוטומטית לפי שעת היום",
-        description:
-          "כרטיסי המשמרות מתצבעים לבד לפי שעת ההתחלה — בוקר, צהריים, ערב או לילה — כך שקל להבחין בין המשמרות במבט אחד ביומן.",
+          "לא מסתדר עם החישוב האוטומטי? קובעים סכום סופי משלכם לכל משמרת, שמחליף את החישוב בכל מקום שהשכר מוצג.",
       },
     ],
   },
@@ -369,8 +364,9 @@ const he: Dictionary = {
           "תמיכה במספר מקומות עבודה, כולל הגדרת משמרות בוקר/צהריים/ערב/לילה.",
       },
       {
-        title: "תכונות פרימיום",
-        description: "חינם למשתמשי בטא כמו ייצוא ל-PDF ועוד...",
+        title: "פירוט ניכויי שכר מלא",
+        description:
+          "ביטוח לאומי, מס בריאות, פנסיה, קרן השתלמות ומס הכנסה — כל ניכוי עם אחוז לעריכה משלו והשפעה מיידית על השכר הנטו.",
       },
       {
         title: "ווידג'ט חכם למסך הבית",
@@ -383,9 +379,9 @@ const he: Dictionary = {
           "מעבר אוטומטי לסיכום השעות והקפצת חלון הערות כדי שלא תשכחו שום טיפ.",
       },
       {
-        title: "שליטה אישית בהתראות",
+        title: "תבניות משמרת וימי חופשה",
         description:
-          "התאמה אישית מלאה להפעלה או כיבוי של רטט וצלילי חיווי.",
+          "יוצרים סדרת משמרות שלמה מדפוס שבועי קבוע בלחיצה אחת, ועוקבים אחרי מכסת ימי המחלה והחופשה השנתית שלכם.",
       },
     ],
   },
@@ -473,14 +469,19 @@ const he: Dictionary = {
           "אותה אפליקציה בדיוק, עם אותם מסכים ואותם חישובים — גם למשתמשי אייפון.",
       },
       {
-        title: "מערכת תזכורות חכמה",
-        description:
-          "תזכורת אוטומטית להחתים כניסה ויציאה לפי המשמרות שתכננתם, כדי שלא תשכחו אף פעם.",
-      },
-      {
         title: "יצירת דוחות מס ישירים",
         description:
           "הפקת דוח שנתי מסודר של שעות והכנסות, מוכן להגשה ולשליחה לרואה החשבון.",
+      },
+      {
+        title: "גרסת Pro",
+        description:
+          "רבדים נוספים בתשלום מתוכננים לאחר סיום הבטא — כרגע נמצאים בפיתוח, ללא מחיר או תאריך סופיים.",
+      },
+      {
+        title: "גיבוי וסנכרון ל-Google Drive",
+        description:
+          "גיבוי אוטומטי של הנתונים שלכם ישירות לחשבון ה-Google Drive, בנוסף לגיבוי הידני הקיים — בפיתוח פעיל.",
       },
     ],
   },
@@ -648,24 +649,19 @@ const en: Dictionary = {
     badgeLabel: "NEW",
     items: [
       {
-        title: "Full Salary Deductions Breakdown",
+        title: "Custom Shift Tags",
         description:
-          "See exactly how much goes to National Insurance, health tax, pension, and study fund — not just your final pay, but precisely where every shekel goes.",
+          "Pick your own color and rate for every tag, including a smart Shabbat/Motzash tag that automatically applies the 150% rate even on a shift that doesn't fall on Saturday by the calendar.",
       },
       {
-        title: "Home-Screen Clock Widget",
+        title: "Mark Sick & Vacation Days from the Calendar",
         description:
-          "Add a clock widget straight from the app, with a live preview before you add it — and it syncs automatically with your theme (light/dark/auto).",
+          "Mark a sick or vacation day right from the calendar view, and your annual balance updates instantly.",
       },
       {
-        title: "Full-Screen Shift Photo Viewer",
+        title: "Manual Shift Amount Override",
         description:
-          "Tap any photo you attached to a shift (a receipt, a payslip) to view it full-screen, without leaving your shift history.",
-      },
-      {
-        title: "Automatic Time-of-Day Shift Colors",
-        description:
-          "Shift cards are automatically colored by their start time — morning, afternoon, evening, or night — so you can tell shifts apart at a glance.",
+          "Doesn't match the automatic calculation? Set your own final amount for any shift, and it replaces the calculation everywhere your pay is shown.",
       },
     ],
   },
@@ -742,8 +738,9 @@ const en: Dictionary = {
           "Support for multiple workplaces, including morning/noon/evening/night shift setups.",
       },
       {
-        title: "Premium Features",
-        description: "Free for Beta users — like PDF export and more...",
+        title: "Full Salary Deductions Breakdown",
+        description:
+          "National Insurance, health tax, pension, study fund, and income tax — each deduction with its own editable rate and instant effect on your net pay.",
       },
       {
         title: "Smart Home Screen Widget",
@@ -756,9 +753,9 @@ const en: Dictionary = {
           "Auto-redirect to hours summary and quick notes pop-up so you never forget a tip.",
       },
       {
-        title: "Custom Notifications",
+        title: "Shift Templates & Time Off",
         description:
-          "Full control to enable or disable vibration and sound alerts.",
+          "Generate a whole series of shifts from a fixed weekly pattern in one tap, and track your annual sick and vacation day balance.",
       },
     ],
   },
@@ -852,14 +849,19 @@ const en: Dictionary = {
           "The exact same app, with the same screens and the same calculations — for iPhone users too.",
       },
       {
-        title: "Smart Reminders System",
-        description:
-          "Automatic reminders to clock in and out based on your planned shifts, so you never forget.",
-      },
-      {
         title: "Direct Tax Reports",
         description:
           "Generate a tidy annual report of hours and income, ready to file and send to your accountant.",
+      },
+      {
+        title: "Pro Tier",
+        description:
+          "Additional paid tiers are planned for after the Beta — currently in development, with no final price or date yet.",
+      },
+      {
+        title: "Google Drive Backup & Sync",
+        description:
+          "Automatic backup of your data straight to your Google Drive account, alongside the existing manual backup — actively in development.",
       },
     ],
   },

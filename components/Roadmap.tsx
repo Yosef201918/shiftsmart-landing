@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import {
-  BellRing,
+  Cloud,
+  Crown,
   ReceiptText,
   Smartphone,
   type LucideIcon,
@@ -11,11 +12,17 @@ import {
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
+/*
+ * "מערכת תזכורות חכמה" הוסרה ממפת הדרכים כי כבר שולבה באפליקציה (רצף
+ * תזכורות למשמרות מתוכננות + Geofencing) — נוספו במקומה שני יעדים אמיתיים
+ * ועדיין לא זמינים: גרסת Pro (בפיתוח, בלי מחיר/תאריך) וגיבוי ל-Google Drive.
+ */
 /** האייקון בלבד הוא מבנה קבוע — הכותרת והתיאור מגיעים מהמילון לפי אינדקס */
-const MILESTONE_ICONS: [LucideIcon, LucideIcon, LucideIcon] = [
+const MILESTONE_ICONS: [LucideIcon, LucideIcon, LucideIcon, LucideIcon] = [
   Smartphone,
-  BellRing,
   ReceiptText,
+  Crown,
+  Cloud,
 ];
 
 export default function Roadmap() {

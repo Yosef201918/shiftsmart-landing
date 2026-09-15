@@ -5,13 +5,13 @@ import {
   BatteryCharging,
   Briefcase,
   Calculator,
+  CalendarDays,
   CalendarSync,
-  Crown,
   DatabaseBackup,
   FingerprintPattern,
   LayoutGrid,
   MapPinned,
-  Sliders,
+  Receipt,
   Volume2,
   Zap,
   type LucideIcon,
@@ -72,10 +72,10 @@ const FEATURE_META: [
   { icon: MapPinned, area: "lg:col-span-2", shape: "standard" },
   { icon: BatteryCharging, area: "lg:col-span-2", shape: "standard" },
   { icon: Briefcase, area: "lg:col-span-2", shape: "standard" },
-  { icon: Crown, area: "lg:col-span-2", shape: "standard", accent: "amber" },
+  { icon: Receipt, area: "lg:col-span-2", shape: "standard", accent: "amber" },
   { icon: LayoutGrid, area: "lg:col-span-2", shape: "standard" },
   { icon: Zap, area: "lg:col-span-2", shape: "standard" },
-  { icon: Sliders, area: "lg:col-span-2", shape: "standard" },
+  { icon: CalendarDays, area: "lg:col-span-2", shape: "standard" },
 ];
 
 /** מיפוי גודל → סידור פנימי, ריווח, מידות אייקון וטיפוגרפיה */
