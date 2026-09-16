@@ -11,9 +11,9 @@ type ShareButtonProps = {
 };
 
 /* נתיב תמונת השיתוף הייעודית ב-public/ (יש רווח בשם הקובץ, לכן %20 בנתיב ה-fetch) */
-const SHARE_IMAGE_PATH = "/Sharing%20image.jpg";
+const SHARE_IMAGE_PATH = "/Sharing%20image.png";
 /* שם קובץ אמיתי לתמונה המשותפת — נדרש כדי שאפליקציות היעד (וואטסאפ וכו') יזהו אותה כתמונה תקינה */
-const SHARE_IMAGE_FILENAME = "shiftsmart.jpg";
+const SHARE_IMAGE_FILENAME = "shiftsmart.png";
 
 /*
  * שלב 21 — כפתור שיתוף חכם. במובייל (רוב הדפדפנים התומכים ב-Web Share
@@ -21,7 +21,7 @@ const SHARE_IMAGE_FILENAME = "shiftsmart.jpg";
  * שבו navigator.share כמעט אף פעם לא קיים, מעתיקים את אותו טקסט ללוח
  * ומראים אישור זמני על גבי הכפתור עצמו — בלי שום התראת דפדפן חוסמת.
  *
- * שלב 41: מנסים לצרף גם תמונה ייעודית לשיתוף (public/Sharing image.jpg)
+ * שלב 41: מנסים לצרף גם תמונה ייעודית לשיתוף (public/Sharing image.png)
  * כקובץ אמיתי, לא רק טקסט. navigator.share תומך בכך רק חלקית ורק במובייל,
  * ולכן navigator.canShare({ files }) חייב להיבדק במפורש לפני שמעבירים
  * files — דפדפן שתומך ב-navigator.share אך לא ביכולת קבצים (או שהקובץ
@@ -48,7 +48,7 @@ export default function ShareButton({ className = "" }: ShareButtonProps) {
       const blob = await response.blob();
       if (blob.size === 0) return null;
 
-      return new File([blob], SHARE_IMAGE_FILENAME, { type: "image/jpeg" });
+      return new File([blob], SHARE_IMAGE_FILENAME, { type: "image/png" });
     } catch {
       return null;
     }
