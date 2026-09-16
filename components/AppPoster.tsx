@@ -7,13 +7,16 @@ import { fadeScale, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /*
- * שלב 25 — פוסטר המותג הרשמי (ICON.jpg): לוגו + סלוגן שכבר צרובים בתוך
- * התמונה עצמה, לכן אין כאן טקסט חופף מעליה — רק כותרת קצרה שממסגרת אותה.
- * מוצג במקטע עצמאי מיד מתחת ל-Hero (לא בתוכו) כדי לא לפגוע במאמץ שנעשה
- * בשלב 16 לשמור את מדריך שלושת השלבים גלוי בלי גלילה במובייל.
+ * שלב 25 — פוסטר המותג הרשמי: לוגו + סלוגן שכבר צרובים בתוך התמונה עצמה,
+ * לכן אין כאן טקסט חופף מעליה — רק כותרת קצרה שממסגרת אותה. מוצג במקטע
+ * עצמאי מיד מתחת ל-Hero (לא בתוכו) כדי לא לפגוע במאמץ שנעשה בשלב 16
+ * לשמור את מדריך שלושת השלבים גלוי בלי גלילה במובייל.
  *
- * width/height תואמים בדיוק לממדי הקובץ בפועל (768×1376) כדי ש-Next.js
- * ידע לשריין את השטח מראש ולא תהיה קפיצת פריסה (CLS) בזמן טעינת התמונה.
+ * מקור התמונה תלוי שפה (t.appPoster.imageSrc/Width/Height): "Sharing
+ * image.png" לעברית ו-"Sharing image2.png" לאנגלית — כל אחת עם הלוגו
+ * והסלוגן השיווקי הרלוונטי צרובים בתוכה. width/height תואמים בדיוק לממדי
+ * הקובץ בפועל (947×1661) כדי ש-Next.js ידע לשריין את השטח מראש ולא תהיה
+ * קפיצת פריסה (CLS) בזמן טעינת התמונה.
  */
 export default function AppPoster() {
   const { t } = useLanguage();
@@ -44,10 +47,11 @@ export default function AppPoster() {
         */}
         <div className="mt-10 w-full max-w-[280px] sm:max-w-xs">
           <Image
-            src="/ICON.jpg"
+            key={t.appPoster.imageSrc}
+            src={t.appPoster.imageSrc}
             alt={t.appPoster.imageAlt}
-            width={768}
-            height={1376}
+            width={t.appPoster.imageWidth}
+            height={t.appPoster.imageHeight}
             sizes="(min-width: 640px) 320px, 280px"
             className="h-auto w-full rounded-3xl shadow-2xl shadow-green-500/10"
           />

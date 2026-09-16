@@ -134,7 +134,12 @@ export interface Dictionary {
     prevAria: string;
     nextAria: string;
     goToSlideAria: (position: number) => string;
-    shots: [ShotItem, ShotItem, ShotItem, ShotItem, ShotItem, ShotItem];
+    /**
+     * מספר הצילומים אינו זהה בהכרח בין השפות (למשל האנגלית קיבלה צילום
+     * נוסף ב-7 בעוד העברית נשארה ב-6), ולכן זהו מערך גמיש ולא tuple קבוע
+     * כמו שאר האוספים בקובץ הזה.
+     */
+    shots: ShotItem[];
   };
   roadmap: {
     kicker: string;
@@ -217,6 +222,10 @@ export interface Dictionary {
     kicker: string;
     titlePrefix: string;
     titleHighlight: string;
+    /** נכס ייעודי לכל שפה: הלוגו והסלוגן השיווקי כבר צרובים בתוך התמונה עצמה */
+    imageSrc: string;
+    imageWidth: number;
+    imageHeight: number;
     imageAlt: string;
   };
   cookieConsent: {
@@ -588,8 +597,11 @@ const he: Dictionary = {
     kicker: "האפליקציה",
     titlePrefix: "הכירו את ",
     titleHighlight: "Shift Smart",
+    imageSrc: "/Sharing image.png",
+    imageWidth: 947,
+    imageHeight: 1661,
     imageAlt:
-      "פוסטר Shift Smart — שעון נוכחות חכם: ניהול משמרות חכם ויעיל",
+      "פוסטר Shift Smart — אייקון האפליקציה והסלוגן: המשמרות שלכם. בשליטה מלאה.",
   },
   cookieConsent: {
     heading: "אנחנו משתמשים בעוגיות",
@@ -836,6 +848,12 @@ const en: Dictionary = {
         height: 1672,
         alt: "Settings screen: sound alerts, maximum battery saving for AMOLED screens, and fingerprint/Face ID clock-in",
       },
+      {
+        src: "/English screenshot7.png",
+        width: 941,
+        height: 1672,
+        alt: "Settings screen: dark mode toggle, in-app language switch between English and Hebrew, and quick clock vibration/sound options",
+      },
     ],
   },
   roadmap: {
@@ -969,8 +987,11 @@ const en: Dictionary = {
     kicker: "THE APP",
     titlePrefix: "Meet ",
     titleHighlight: "Shift Smart",
+    imageSrc: "/Sharing image2.png",
+    imageWidth: 947,
+    imageHeight: 1661,
     imageAlt:
-      "Shift Smart poster — smart attendance clock: efficient, intelligent shift management",
+      "Shift Smart poster — app icon and tagline: Your shifts. In control.",
   },
   cookieConsent: {
     heading: "We use cookies",
