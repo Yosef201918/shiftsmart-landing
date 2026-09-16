@@ -257,10 +257,11 @@ const he: Dictionary = {
     groupAriaLabel: "בחירת שפה",
   },
   hero: {
-    kicker: "Shift Smart - ניהול משמרות ברמה אחרת!",
-    titleLine1: "רוצים לדעת מה השכר המדויק שלכם?",
-    titleLine2: "כל חודש, עד האגורה האחרונה.",
-    subtitle: "שעון הנוכחות שיעשה לכם סדר בשעות ובשכר.",
+    kicker: "המשמרות שלכם. בשליטה מלאה.",
+    titleLine1: "עובדים במשמרות?",
+    titleLine2: "יש דרך חכמה יותר.",
+    subtitle:
+      "נהלו את המשמרות שלכם, עקבו אחרי השעות וחשבו את השכר בקלות, ישירות מהטלפון.",
     audience: "מושלם למאבטחים סדרנים, מסעדות וכל מי שחי על משמרות.",
     downloadCta: "הורדה מ-Google Play",
     socialProof:
@@ -628,10 +629,11 @@ const en: Dictionary = {
     groupAriaLabel: "Language selection",
   },
   hero: {
-    kicker: "Shift Smart - Shift Management on Another Level!",
-    titleLine1: "Want to know your exact pay?",
-    titleLine2: "Every month, down to the last cent.",
-    subtitle: "The time clock that finally gets your hours and pay in order.",
+    kicker: "Your shifts. In control.",
+    titleLine1: "Work shifts?",
+    titleLine2: "There's a smarter way.",
+    subtitle:
+      "Manage your shifts, track your hours, and calculate your pay easily right from your phone.",
     audience:
       "Perfect for security guards, stewards, restaurant staff, and anyone living life in shifts.",
     downloadCta: "Get it on Google Play",
