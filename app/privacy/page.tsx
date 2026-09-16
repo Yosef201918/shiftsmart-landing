@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
         <h1 className="font-display text-3xl text-chalk sm:text-4xl">
           מדיניות פרטיות — Shift Smart
         </h1>
-        <p className="mt-3 text-sm text-mist">עודכן לאחרונה: 26.08.2026</p>
+        <p className="mt-3 text-sm text-mist">עודכן לאחרונה: 16.09.2026</p>
 
         <p className="mt-8 text-base leading-relaxed text-mist">
           תודה שאתם משתמשים ב-Shift Smart (&quot;האפליקציה&quot;). מדיניות זו
@@ -105,6 +105,34 @@ export default function PrivacyPolicyPage() {
           האפליקציה מאפשרת לכם לייצא גיבוי של הנתונים שלכם לקובץ, ולשתף אותו
           (לדוגמה לענן האישי שלכם או לאחסון אחר) לפי בחירתכם בלבד. אנחנו לא
           מקבלים או שומרים עותק מהגיבוי הזה בשום שלב.
+        </p>
+
+        <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
+          גיבוי אופציונלי ל-Google Drive
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          בנוסף לגיבוי המקומי לקובץ, האפליקציה מציעה תכונה{" "}
+          <strong className="text-chalk">אופציונלית</strong> — כבויה כברירת
+          מחדל ופועלת רק אם תפעילו אותה — לגיבוי ושחזור אותם הנתונים בדיוק
+          (עבודות, משמרות ורשומות נלוות) לחשבון ה-Google Drive האישי שלכם.
+          כדי להשתמש בה יש להתחבר במפורש עם חשבון Google ולאשר גישה במסך
+          ההרשאות של Google עצמו.
+        </p>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          התכונה משתמשת בהרשאת ה-Drive המוגבלת של Google הידועה בשם{" "}
+          <code className="rounded bg-abyss/60 px-1.5 py-0.5 text-sm text-neon" dir="ltr">
+            drive.file
+          </code>
+          . המשמעות: לאפליקציה יש גישה{" "}
+          <strong className="text-chalk">רק</strong> לקובץ הגיבוי שהיא עצמה
+          יצרה — היא לא יכולה לראות, לגשת או לנהל שום קובץ, תמונה, מסמך או
+          תיקייה אחרים שכבר קיימים בחשבון ה-Drive שלכם.
+        </p>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          שום נתון שנאסף דרך התכונה הזו לא משותף עם שום צד שלישי — הוא נשמר
+          ישירות בחשבון ה-Google Drive שלכם, בשליטתכם המלאה, וניתן למחוק
+          אותו בכל עת ישירות מתוך ה-Drive. ניתוק/יציאה מחשבון ה-Google
+          בהגדרות האפליקציה מבטלים את הגישה הזו.
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
