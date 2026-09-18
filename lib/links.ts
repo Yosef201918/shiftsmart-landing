@@ -4,7 +4,7 @@
  */
 
 /* כתובת האתר עצמו — נדרשת בטקסט השיתוף כדי שוואטסאפ יוכל למשוך את תמונת ה-OG */
-export const SITE_URL = "https://shiftsmart-landing.vercel.app";
+export const SITE_URL = "https://www.shift-smartapp.com";
 
 export const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.yosefgabaydev.shiftsmart";
