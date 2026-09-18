@@ -9,7 +9,7 @@ import GoogleTag from "@/components/GoogleTag";
 import HtmlAttributesSync from "@/components/HtmlAttributesSync";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { dictionaries } from "@/lib/i18n/dictionaries";
-import { PLAY_STORE_URL } from "@/lib/links";
+import { PLAY_STORE_URL, SITE_URL } from "@/lib/links";
 import { supabase } from "@/lib/supabase";
 
 /* גופן גוף — Heebo תומך בעברית ובעל טווח משקלים מלא */
@@ -35,17 +35,25 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 /*
- * metadataBase נדרש כאן כי openGraph.images/twitter.images למטה משתמשים
- * בנתיב יחסי ("/og-image.png") — בגרסת Next.js הזו זו לא רק המלצה: שימוש
- * בנתיב יחסי בשדה metadata מבוסס-URL בלי metadataBase גורם לשגיאת build
- * (מתועד ב-node_modules/next/dist/docs/.../generate-metadata.md). NEXT_
- * PUBLIC_SITE_URL מאפשר לקבוע דומיין קבוע בפרודקשן; VERCEL_URL הוא נפילה
- * אחורה אוטומטית שוורסל מזריק לכל דיפלוי (כולל preview deployments) בלי
- * שצריך להגדיר אותו ידנית; localhost הוא רק לפיתוח מקומי.
+ * תוקן: תגית ה-og:image בפרודקשן הצביעה על כתובת דיפלוי ספציפית של Vercel
+ * (למשל shiftsmart-landing-guvo2o6rp-....vercel.app) במקום על shift-
+ * smartapp.com. הסיבה: NEXT_PUBLIC_SITE_URL לא היה מוגדר בפועל בסביבת
+ * הפרודקשן, ולכן הנפילה האחורה השתמשה ב-VERCEL_URL — משתנה שוורסל מזריק
+ * אוטומטית עם הכתובת הייחודית **של אותו דיפלוי בדיוק**, לא כתובת הפרודקשן
+ * היציבה. התיקון: אם NEXT_PUBLIC_SITE_URL חסר וזו כן סביבת הפרודקשן
+ * (VERCEL_ENV), נופלים אחורה ל-SITE_URL הקבוע מ-lib/links.ts (מקור האמת
+ * היחיד לדומיין) במקום ל-VERCEL_URL — כך הפרודקשן תמיד מצביע על הדומיין
+ * הנכון גם בלי תלות בהגדרת משתנה סביבה ב-Vercel. ב-preview deployments
+ * (VERCEL_ENV="preview") עדיין נשמרת הנפילה ל-VERCEL_URL כדי שכל דיפלוי
+ * preview ימשיך להצביע על עצמו, ו-localhost נשאר רק לפיתוח מקומי.
  */
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  (process.env.VERCEL_ENV === "production"
+    ? SITE_URL
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
 
 /*
  * המטא-דאטה שהשרת מגיש בתגובה הראשונית — ולכן גם מה שכרטיסי שיתוף

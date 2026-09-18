@@ -1,15 +1,20 @@
 import type { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/lib/links";
+
 /*
- * אותה לוגיקת נפילה אחורה בדיוק כמו siteUrl ב-app/layout.tsx: NEXT_PUBLIC_
- * SITE_URL קובע דומיין קבוע בפרודקשן, VERCEL_URL הוא נפילה אחורה אוטומטית
- * שוורסל מזריק לכל דיפלוי (כולל preview deployments), localhost רק לפיתוח
- * מקומי. חייבת להישאר זהה ל-layout.tsx כדי שהסייטמאפ תמיד יצביע על אותו
- * דומיין שהאתר עצמו רץ עליו.
+ * אותה לוגיקת נפילה אחורה בדיוק כמו siteUrl ב-app/layout.tsx (כולל התיקון
+ * שם: נפילה ל-SITE_URL הקבוע בפרודקשן במקום ל-VERCEL_URL הספציפי-לדיפלוי,
+ * כשמשתנה הסביבה חסר). חייבת להישאר זהה ל-layout.tsx כדי שהסייטמאפ תמיד
+ * יצביע על אותו דומיין שהאתר עצמו רץ עליו.
  */
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  (process.env.VERCEL_ENV === "production"
+    ? SITE_URL
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
