@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo, JetBrains_Mono, Secular_One } from "next/font/google";
+import { unstable_cache } from "next/cache";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -9,6 +10,7 @@ import HtmlAttributesSync from "@/components/HtmlAttributesSync";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { dictionaries } from "@/lib/i18n/dictionaries";
 import { PLAY_STORE_URL } from "@/lib/links";
+import { supabase } from "@/lib/supabase";
 
 /* גופן גוף — Heebo תומך בעברית ובעל טווח משקלים מלא */
 const heebo = Heebo({
@@ -117,26 +119,34 @@ export const viewport: Viewport = {
 };
 
 /*
- * JSON-LD (schema.org) לתוצאות עשירות בגוגל. ratingValue הוא המספר האמיתי
- * המוצג במקטע הביקורות (t.reviews.averageRating, "4.9") — ratingCount לא
- * נכלל בכוונה: אין לנו מספר ביקורות קבוע ואמיתי לצטט (הוא נספר דינמית
- * מ-Supabase בזמן ריצה בצד הלקוח), ולא נמציא מספר. שני האובייקטים בנויים
- * כ-plain object ומוזרקים דרך JSON.stringify כדי שה-JSON יהיה תמיד תקין.
+ * תוקן: Google Search Console סימן את בלוק ה-AggregateRating כ"פריטים לא
+ * תקינים" כי schema.org דורש ratingCount/reviewCount לצד ratingValue כדי
+ * לאמת את המבנה — השדה הזה הושמט בכוונה בעבר כי לא רצינו להמציא מספר.
+ * הפתרון: שולפים כאן את מספר הביקורות המאושרות האמיתי והממוצע האמיתי
+ * מאותה טבלת reviews ב-Supabase שממנה Reviews.tsx כבר קורא בצד הלקוח,
+ * ומציגים aggregateRating רק אם יש בפועל לפחות ביקורת מאושרת אחת לגבות
+ * אותו — אחרת השדה כולו מושמט, בלי מספר מומצא. ה-unstable_cache שומר את
+ * הדף בפרימור סטטי (השאילתה מתרעננת פעם בשעה) במקום להפוך את כל האתר
+ * לדינמי-לחלוטין בכל בקשה, כי הפרויקט לא מפעיל את דגל cacheComponents.
  */
-const mobileApplicationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "MobileApplication",
-  name: defaultDictionary.brand.name,
-  description: defaultDictionary.meta.description,
-  operatingSystem: "Android",
-  applicationCategory: "BusinessApplication",
-  url: PLAY_STORE_URL,
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: defaultDictionary.reviews.averageRating,
-    bestRating: "5",
+const getApprovedReviewStats = unstable_cache(
+  async () => {
+    const { data, error } = await supabase
+      .from("reviews")
+      .select("rating")
+      .eq("status", "approved");
+
+    if (error || !data || data.length === 0) return null;
+
+    const sum = data.reduce((total, review) => total + review.rating, 0);
+    return {
+      average: (sum / data.length).toFixed(1),
+      count: data.length,
+    };
   },
-};
+  ["homepage-approved-review-stats"],
+  { revalidate: 3600 },
+);
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -146,11 +156,33 @@ const organizationJsonLd = {
   logo: `${siteUrl}/ICON.jpg`,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const reviewStats = await getApprovedReviewStats();
+
+  const mobileApplicationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: defaultDictionary.brand.name,
+    description: defaultDictionary.meta.description,
+    operatingSystem: "Android",
+    applicationCategory: "BusinessApplication",
+    url: PLAY_STORE_URL,
+    ...(reviewStats
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: reviewStats.average,
+            ratingCount: reviewStats.count,
+            bestRating: "5",
+          },
+        }
+      : {}),
+  };
+
   return (
     <html
       lang="he"
