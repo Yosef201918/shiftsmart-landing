@@ -35,9 +35,14 @@ export default function AppPoster() {
         </p>
         <h2 className="mt-4 max-w-xl text-3xl font-extralight leading-tight text-chalk sm:text-4xl">
           {t.appPoster.titlePrefix}
-          <span className="font-display font-normal text-neon">
+          {/*
+            תוקן: "Shift Smart" (לטיני) בתוך משפט עברי RTL. bdi עם dir="ltr"
+            מבודד את השם מהקשר הביידי הסובב (unicode-bidi: isolate) כדי
+            שהוא תמיד יוצג בסדר שמאל-לימין נכון, בלי תלות במיקומו במשפט.
+          */}
+          <bdi dir="ltr" className="font-display font-normal text-neon">
             {t.appPoster.titleHighlight}
-          </span>
+          </bdi>
         </h2>
 
         {/*

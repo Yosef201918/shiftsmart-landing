@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock4, Download, Sparkles, Star, TriangleAlert } from "lucide-react";
+import { Clock4, Download, Sparkles, TriangleAlert } from "lucide-react";
 
 import BetaSteps from "@/components/BetaSteps";
 import DirectionalArrow from "@/components/DirectionalArrow";
@@ -10,8 +10,6 @@ import ShareButton from "@/components/ShareButton";
 import { EXTERNAL_LINK_PROPS, PLAY_STORE_URL } from "@/lib/links";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-
-const STARS = [0, 1, 2, 3, 4];
 
 /*
  * שלב 16 — מדריך שלושת השלבים (BetaSteps) עבר לתוך ה-Hero עצמו, מיד מתחת
@@ -152,29 +150,6 @@ export default function Hero() {
           */}
           <motion.div className="mt-5" variants={fadeUp}>
             <ShareButton />
-          </motion.div>
-
-          {/* ---------- הוכחה חברתית ---------- */}
-          <motion.div
-            className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3.5"
-            variants={fadeUp}
-          >
-            <span
-              className="flex shrink-0 items-center gap-1"
-              role="img"
-              aria-label={t.hero.starsAriaLabel}
-            >
-              {STARS.map((star) => (
-                <Star
-                  key={star}
-                  className="size-4 fill-amber text-amber"
-                  strokeWidth={1.5}
-                />
-              ))}
-            </span>
-            <p className="max-w-lg text-sm leading-relaxed text-mist">
-              {t.hero.socialProof}
-            </p>
           </motion.div>
 
           {/* ---------- אזהרת פלטפורמה ובטא ---------- */}

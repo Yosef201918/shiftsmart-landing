@@ -24,6 +24,23 @@ export interface ShotItem {
 }
 
 /**
+ * קטע טקסט בודד בתוך פסקה משפטית (privacy/terms) שדורש הדגשה חזותית
+ * (מודגש/קוד) באמצע משפט. הרכיב שמרנדר את זה (RichText) ממפה format
+ * ל-<strong>/<code> — כך אפשר לתרגם פסקאות עם הדגשות מוטמעות בלי לשכפל
+ * JSX בכל שפה.
+ */
+export interface RichTextSegment {
+  text: string;
+  format?: "bold" | "code";
+}
+
+/** פריט הרשאה בודד בדף מדיניות הפרטיות — תווית מודגשת ואחריה הסבר */
+export interface PermissionItem {
+  label: string;
+  body: string;
+}
+
+/**
  * טיפוסי tuple באורך קבוע (במקום `TitledItem[]` גנרי) מכריחים את TypeScript
  * לוודא שלכל שפה יש בדיוק אותו מספר פריטים באותו סדר — אם תתווסף תכונה
  * לעברית ותישכח מהאנגלית, זו שגיאת קומפילציה ולא באג שקט בפרודקשן.
@@ -51,8 +68,6 @@ export interface Dictionary {
     subtitle: string;
     audience: string;
     downloadCta: string;
-    socialProof: string;
-    starsAriaLabel: string;
     betaWarning: string;
   };
   whatsNew: {
@@ -239,6 +254,54 @@ export interface Dictionary {
     message: string;
     ctaLabel: string;
   };
+  privacy: {
+    metaTitle: string;
+    metaDescription: string;
+    pageTitle: string;
+    lastUpdated: string;
+    backToHome: string;
+    intro: string;
+    dataPrinciple: { title: string; body: RichTextSegment[] };
+    permissionsTitle: string;
+    permissions: [
+      PermissionItem,
+      PermissionItem,
+      PermissionItem,
+      PermissionItem,
+      PermissionItem,
+    ];
+    backup: { title: string; body: string };
+    driveBackup: {
+      title: string;
+      paragraph1: RichTextSegment[];
+      paragraph2: RichTextSegment[];
+      paragraph3: string;
+    };
+    thirdPartySharing: { title: string; body: string };
+    dataDeletion: { title: string; body: string };
+    minors: { title: string; body: string };
+    policyChanges: { title: string; body: string };
+    contactTitle: string;
+    contactBody: string;
+  };
+  terms: {
+    metaTitle: string;
+    metaDescription: string;
+    pageTitle: string;
+    lastUpdated: string;
+    backToHome: string;
+    intro: string;
+    serviceDescription: { title: string; body: string };
+    openBeta: { title: string; body: RichTextSegment[] };
+    userResponsibilityTitle: string;
+    userResponsibilityItems: [string, string, string];
+    intellectualProperty: { title: string; body: string };
+    liability: { title: string; body: string };
+    changes: { title: string; body: string };
+    governingLaw: { title: string; body: string };
+    contactTitle: string;
+    contactBody: string;
+  };
 }
 
 const he: Dictionary = {
@@ -273,9 +336,6 @@ const he: Dictionary = {
       "נהלו את המשמרות שלכם, עקבו אחרי השעות וחשבו את השכר בקלות, ישירות מהטלפון.",
     audience: "מושלם למאבטחים סדרנים, מסעדות וכל מי שחי על משמרות.",
     downloadCta: "הורדה מ-Google Play",
-    socialProof:
-      "הצטרפו למאבטחים, סדרנים ומנהלי משמרות שכבר מנהלים את הזמן שלהם חכם.",
-    starsAriaLabel: "חמישה כוכבים",
     betaWarning:
       "שימו לב: זמין למכשירי אנדרואיד בלבד. אנחנו בגרסת בטא (Beta) – משתפרים כל הזמן!",
   },
@@ -614,6 +674,144 @@ const he: Dictionary = {
     message: "🎉 הבטא הפתוחה עלתה לאוויר — זמינה עכשיו לכולם ב-Google Play!",
     ctaLabel: "הורידו עכשיו",
   },
+  privacy: {
+    metaTitle: "מדיניות פרטיות — Shift Smart",
+    metaDescription:
+      "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
+    pageTitle: "מדיניות פרטיות — Shift Smart",
+    lastUpdated: "עודכן לאחרונה: 16.09.2026",
+    backToHome: "חזרה לדף הבית",
+    intro:
+      "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
+    dataPrinciple: {
+      title: "עיקרון מרכזי: הנתונים שלך נשארים אצלך",
+      body: [
+        {
+          text: "Shift Smart היא אפליקציה מקומית (offline-first). כל הנתונים שאתם מזינים — עבודות, משמרות, שכר, הערות, תמונות שמצורפות למשמרות, הגדרות — נשמרים ",
+        },
+        { text: "רק על המכשיר שלכם", format: "bold" },
+        {
+          text: ", באחסון המקומי של האפליקציה. אנחנו לא מפעילים שרת שאוסף, מאחסן או מעבד את הנתונים האלה, ואיננו מוכרים או משתפים אותם עם צד שלישי.",
+        },
+      ],
+    },
+    permissionsTitle: "אילו הרשאות האפליקציה מבקשת ולמה",
+    permissions: [
+      {
+        label: "מיקום (כולל ברקע):",
+        body: "משמש אך ורק כדי לזהות אוטומטית יציאה מאזור העבודה שהגדרתם (Geofencing), למשל לתזכורת \"שכחת להחתים יציאה?\" או לסיום משמרת אוטומטי אם הפעלתם את האפשרות. נתוני המיקום מעובדים על המכשיר בלבד ולא נשלחים לשום שרת חיצוני.",
+      },
+      {
+        label: "התראות:",
+        body: "משמשות לתזכורות משמרת מתוכננת, אישורי סיום משמרת, והתראות יעד שכר. כל ההתראות הן מקומיות (Local Notifications) — לא נעשה שימוש בשירותי Push מרוחקים.",
+      },
+      {
+        label: "יומן (קריאה/כתיבה):",
+        body: "משמשת אך ורק לתכונת סנכרון המשמרות ליומן — ורק אם בחרתם להפעיל או להשתמש בתכונה זו. אירועי היומן נוצרים ונקראים מקומית על המכשיר בלבד, ואיננו שולחים שום נתון יומן לשרת חיצוני.",
+      },
+      {
+        label: "מצלמה/גלריה:",
+        body: "משמשות רק אם בחרתם לצרף תמונה (למשל קבלה או תלוש) למשמרת בהיסטוריה. התמונה נשמרת מקומית על המכשיר.",
+      },
+      {
+        label: "אימות ביומטרי (טביעת אצבע/פנים):",
+        body: "אופציונלי, לנעילת האפליקציה בלבד — לא נשלח ולא נשמר שום נתון ביומטרי על ידינו; האימות מתבצע כולו על ידי מערכת ההפעלה של המכשיר.",
+      },
+    ],
+    backup: {
+      title: "גיבוי ושחזור",
+      body: "האפליקציה מאפשרת לכם לייצא גיבוי של הנתונים שלכם לקובץ, ולשתף אותו (לדוגמה לענן האישי שלכם או לאחסון אחר) לפי בחירתכם בלבד. אנחנו לא מקבלים או שומרים עותק מהגיבוי הזה בשום שלב.",
+    },
+    driveBackup: {
+      title: "גיבוי אופציונלי ל-Google Drive",
+      paragraph1: [
+        { text: "בנוסף לגיבוי המקומי לקובץ, האפליקציה מציעה תכונה " },
+        { text: "אופציונלית", format: "bold" },
+        {
+          text: " — כבויה כברירת מחדל ופועלת רק אם תפעילו אותה — לגיבוי ושחזור אותם הנתונים בדיוק (עבודות, משמרות ורשומות נלוות) לחשבון ה-Google Drive האישי שלכם. כדי להשתמש בה יש להתחבר במפורש עם חשבון Google ולאשר גישה במסך ההרשאות של Google עצמו.",
+        },
+      ],
+      paragraph2: [
+        {
+          text: "התכונה משתמשת בהרשאת ה-Drive המוגבלת של Google הידועה בשם ",
+        },
+        { text: "drive.file", format: "code" },
+        { text: ". המשמעות: לאפליקציה יש גישה " },
+        { text: "רק", format: "bold" },
+        {
+          text: " לקובץ הגיבוי שהיא עצמה יצרה — היא לא יכולה לראות, לגשת או לנהל שום קובץ, תמונה, מסמך או תיקייה אחרים שכבר קיימים בחשבון ה-Drive שלכם.",
+        },
+      ],
+      paragraph3:
+        "שום נתון שנאסף דרך התכונה הזו לא משותף עם שום צד שלישי — הוא נשמר ישירות בחשבון ה-Google Drive שלכם, בשליטתכם המלאה, וניתן למחוק אותו בכל עת ישירות מתוך ה-Drive. ניתוק/יציאה מחשבון ה-Google בהגדרות האפליקציה מבטלים את הגישה הזו.",
+    },
+    thirdPartySharing: {
+      title: "שיתוף עם צדדים שלישיים",
+      body: "האפליקציה מאפשרת לכם לשתף דוחות (PDF/טקסט) בעצמכם דרך אפליקציות אחרות המותקנות על המכשיר (למשל וואטסאפ, מייל) — זו פעולה יזומה שלכם, ואנחנו לא מעורבים בהעברת המידע הזה ולא רואים אותו.",
+    },
+    dataDeletion: {
+      title: "מחיקת נתונים",
+      body: "אתם יכולים למחוק עבודות, משמרות בודדות, או לאפס את כל נתוני האפליקציה בכל עת מתוך ההגדרות. מחיקה כזו היא מיידית ומלאה על המכשיר.",
+    },
+    minors: {
+      title: "קטינים",
+      body: "האפליקציה אינה מיועדת לילדים מתחת לגיל 13, ואיננו אוספים ביודעין מידע מקטינים.",
+    },
+    policyChanges: {
+      title: "שינויים במדיניות זו",
+      body: "ייתכן שנעדכן מדיניות זו מעת לעת עם הוספת פיצ'רים לאפליקציה. נעדכן את תאריך \"עודכן לאחרונה\" בראש העמוד בכל שינוי מהותי.",
+    },
+    contactTitle: "יצירת קשר",
+    contactBody: "לשאלות בנוגע למדיניות פרטיות זו, ניתן ליצור קשר בכתובת:",
+  },
+  terms: {
+    metaTitle: "תנאי שימוש — Shift Smart",
+    metaDescription:
+      "תנאי השימוש באפליקציית Shift Smart — הסכמה לתנאים, תיאור השירות, אחריות המשתמש, קניין רוחני והגבלת אחריות.",
+    pageTitle: "תנאי שימוש — Shift Smart",
+    lastUpdated: "עודכן לאחרונה: 17.08.2026",
+    backToHome: "חזרה לדף הבית",
+    intro:
+      "תנאי שימוש אלה (\"התנאים\") חלים על השימוש באפליקציית Shift Smart (\"האפליקציה\"). התקנת האפליקציה או השימוש בה מהווים הסכמה מלאה לתנאים אלה. אם אינכם מסכימים לתנאי מהם, אנא הימנעו משימוש באפליקציה.",
+    serviceDescription: {
+      title: "תיאור השירות",
+      body: "Shift Smart היא אפליקציית אנדרואיד מקומית (offline-first) לניהול משמרות, שעון נוכחות וחישוב שכר. האפליקציה מסייעת לכם לעקוב אחרי שעות העבודה, לחשב שכר, שעות נוספות ותוספות בהתאם לנתונים שאתם מזינים, ולייצא דוחות וסיכומים. Shift Smart אינה שירות תשלומי שכר רשמי, אינה מחוברת למעסיק שלכם, ואינה מבצעת שום העברת כספים.",
+    },
+    openBeta: {
+      title: "גרסת בטא פתוחה",
+      body: [
+        { text: "האפליקציה נמצאת כרגע בשלב " },
+        { text: "בטא פתוחה", format: "bold" },
+        {
+          text: " בחנות Google Play. המשמעות: ייתכנו תקלות, שגיאות חישוב, אובדן נתונים או שינויים תכופים בתכונות ובממשק. אנחנו לא מתחייבים לזמינות רצופה, לדיוק מוחלט של החישובים, או להמשך פיתוח וקיום השירות בצורתו הנוכחית. מומלץ לגבות את הנתונים שלכם באופן שוטף דרך תכונת הגיבוי שבאפליקציה.",
+        },
+      ],
+    },
+    userResponsibilityTitle: "אחריות המשתמש",
+    userResponsibilityItems: [
+      "אתם אחראים להזין נתונים מדויקים — שעות עבודה, תעריף שעתי ותוספות — שכן דיוק החישובים תלוי לחלוטין בנתונים שהזנתם.",
+      "Shift Smart היא כלי עזר בלבד ואינה תחליף לתלוש השכר הרשמי או לבדיקה מול המעסיק שלכם. חובה לוודא כל תשלום שכר בפועל מול המעסיק ומול תלוש השכר הרשמי.",
+      "אתם אחראים לשימוש חוקי באפליקציה בלבד, ולא להשתמש בה בניגוד לכל דין או להסכם העסקה שלכם.",
+    ],
+    intellectualProperty: {
+      title: "קניין רוחני",
+      body: "כל הזכויות באפליקציה — לרבות הקוד, העיצוב, הלוגו והתוכן — שייכות לבעלי Shift Smart. אין להעתיק, להנדס לאחור, להפיץ מחדש או ליצור יצירות נגזרות מהאפליקציה ללא אישור מראש ובכתב.",
+    },
+    liability: {
+      title: "הגבלת אחריות",
+      body: "האפליקציה מסופקת \"כפי שהיא\" (AS IS), ללא כל התחייבות לדיוק, זמינות רצופה או התאמה למטרה מסוימת. Shift Smart ומפתחיה לא יישאו באחריות לכל נזק — ישיר או עקיף — שייגרם כתוצאה משימוש באפליקציה, לרבות טעויות חישוב שכר, אובדן נתונים או אי-זמינות זמנית של השירות.",
+    },
+    changes: {
+      title: "שינויים באפליקציה ובתנאים",
+      body: "אנחנו רשאים לעדכן, לשנות או להפסיק תכונות באפליקציה בכל עת, במיוחד בשלב הבטא. ייתכן שנעדכן גם את תנאי השימוש הללו מעת לעת — נעדכן את תאריך \"עודכן לאחרונה\" בראש העמוד בכל שינוי מהותי. המשך שימוש באפליקציה לאחר עדכון מהווה הסכמה לתנאים המעודכנים.",
+    },
+    governingLaw: {
+      title: "דין חל וסמכות שיפוט",
+      body: "תנאי שימוש אלה כפופים לדיני מדינת ישראל בלבד, וסמכות השיפוט הבלעדית בכל מחלוקת הנוגעת אליהם נתונה לבתי המשפט המוסמכים בישראל.",
+    },
+    contactTitle: "יצירת קשר",
+    contactBody: "לשאלות בנוגע לתנאי שימוש אלה, ניתן ליצור קשר בכתובת:",
+  },
 };
 
 const en: Dictionary = {
@@ -649,9 +847,6 @@ const en: Dictionary = {
     audience:
       "Perfect for security guards, stewards, restaurant staff, and anyone living life in shifts.",
     downloadCta: "Get it on Google Play",
-    socialProof:
-      "Join security guards, stewards, and shift managers who already manage their time smarter.",
-    starsAriaLabel: "Five stars",
     betaWarning:
       "Please note: Android devices only for now. We're in Beta — improving all the time!",
   },
@@ -1003,6 +1198,144 @@ const en: Dictionary = {
   openBetaBanner: {
     message: "🎉 Open Beta is live — available now on Google Play!",
     ctaLabel: "Download now",
+  },
+  privacy: {
+    metaTitle: "Privacy Policy — Shift Smart",
+    metaDescription:
+      "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
+    pageTitle: "Privacy Policy — Shift Smart",
+    lastUpdated: "Last updated: 16.09.2026",
+    backToHome: "Back to home",
+    intro:
+      'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
+    dataPrinciple: {
+      title: "Core Principle: Your Data Stays With You",
+      body: [
+        {
+          text: "Shift Smart is a local, offline-first app. All the data you enter — jobs, shifts, pay, notes, photos attached to shifts, settings — is stored ",
+        },
+        { text: "only on your device", format: "bold" },
+        {
+          text: ", in the app's local storage. We do not run a server that collects, stores, or processes this data, and we do not sell or share it with any third party.",
+        },
+      ],
+    },
+    permissionsTitle: "What Permissions the App Requests, and Why",
+    permissions: [
+      {
+        label: "Location (including in the background):",
+        body: 'Used solely to automatically detect when you leave your defined workplace area (geofencing) — for example, for a "Forgot to clock out?" reminder or an automatic shift end if you enabled that option. Location data is processed on-device only and is never sent to any external server.',
+      },
+      {
+        label: "Notifications:",
+        body: "Used for scheduled shift reminders, clock-out confirmations, and pay-goal alerts. All notifications are local (Local Notifications) — no remote push service is used.",
+      },
+      {
+        label: "Calendar (read/write):",
+        body: "Used solely for the shift-to-calendar sync feature — and only if you choose to enable or use it. Calendar events are created and read locally on your device only, and we never send any calendar data to an external server.",
+      },
+      {
+        label: "Camera/Gallery:",
+        body: "Used only if you choose to attach a photo (for example, a receipt or payslip) to a shift in your history. The photo is stored locally on your device.",
+      },
+      {
+        label: "Biometric authentication (fingerprint/face):",
+        body: "Optional, used only to lock the app — we never send or store any biometric data ourselves; authentication is handled entirely by your device's operating system.",
+      },
+    ],
+    backup: {
+      title: "Backup & Restore",
+      body: "The app lets you export a backup of your data to a file and share it (for example, to your personal cloud or other storage) entirely at your own discretion. We never receive or keep a copy of this backup at any stage.",
+    },
+    driveBackup: {
+      title: "Optional Google Drive Backup",
+      paragraph1: [
+        { text: "In addition to the local file backup, the app offers an " },
+        { text: "optional", format: "bold" },
+        {
+          text: " feature — off by default and active only if you turn it on — to back up and restore the exact same data (jobs, shifts, and related records) to your personal Google Drive account. Using it requires you to explicitly sign in with a Google account and grant access on Google's own permission screen.",
+        },
+      ],
+      paragraph2: [
+        {
+          text: "The feature uses Google's restricted Drive permission known as ",
+        },
+        { text: "drive.file", format: "code" },
+        { text: ". This means the app has access " },
+        { text: "only", format: "bold" },
+        {
+          text: " to the backup file it created itself — it cannot see, access, or manage any other file, photo, document, or folder already in your Drive account.",
+        },
+      ],
+      paragraph3:
+        "No data collected through this feature is shared with any third party — it is stored directly in your Google Drive account, entirely under your control, and can be deleted at any time directly from your Drive. Disconnecting or signing out of the Google account in the app's settings revokes this access.",
+    },
+    thirdPartySharing: {
+      title: "Sharing With Third Parties",
+      body: "The app lets you share reports (PDF/text) yourself through other apps installed on your device (for example, WhatsApp or email) — this is an action you initiate, and we are not involved in transmitting this information and do not see it.",
+    },
+    dataDeletion: {
+      title: "Data Deletion",
+      body: "You can delete jobs, individual shifts, or reset all app data at any time from Settings. Such deletion is immediate and complete on your device.",
+    },
+    minors: {
+      title: "Minors",
+      body: "The app is not intended for children under the age of 13, and we do not knowingly collect information from minors.",
+    },
+    policyChanges: {
+      title: "Changes to This Policy",
+      body: 'We may update this policy from time to time as features are added to the app. We will update the "Last updated" date at the top of the page with every material change.',
+    },
+    contactTitle: "Contact Us",
+    contactBody: "For questions about this privacy policy, you can reach us at:",
+  },
+  terms: {
+    metaTitle: "Terms of Service — Shift Smart",
+    metaDescription:
+      "Shift Smart's terms of service — agreement to the terms, service description, user responsibility, intellectual property, and limitation of liability.",
+    pageTitle: "Terms of Service — Shift Smart",
+    lastUpdated: "Last updated: 17.08.2026",
+    backToHome: "Back to home",
+    intro:
+      'These Terms of Service ("the Terms") govern your use of the Shift Smart app ("the app"). Installing or using the app constitutes your full agreement to these Terms. If you do not agree to any part of these Terms, please refrain from using the app.',
+    serviceDescription: {
+      title: "Service Description",
+      body: "Shift Smart is a local, offline-first Android app for shift management, time tracking, and pay calculation. The app helps you track your work hours, calculate pay, overtime, and bonuses based on the data you enter, and export reports and summaries. Shift Smart is not an official payroll service, is not connected to your employer, and does not perform any transfer of funds.",
+    },
+    openBeta: {
+      title: "Open Beta",
+      body: [
+        { text: "The app is currently in an " },
+        { text: "Open Beta", format: "bold" },
+        {
+          text: " stage on Google Play. This means bugs, calculation errors, data loss, or frequent changes to features and the interface may occur. We do not guarantee continuous availability, absolute calculation accuracy, or continued development and maintenance of the service in its current form. We recommend backing up your data regularly using the app's backup feature.",
+        },
+      ],
+    },
+    userResponsibilityTitle: "User Responsibility",
+    userResponsibilityItems: [
+      "You are responsible for entering accurate data — work hours, hourly rate, and bonuses — since the accuracy of all calculations depends entirely on the data you provide.",
+      "Shift Smart is a helper tool only and is not a substitute for your official payslip or for checking with your employer. You must verify every actual pay payment against your employer and your official payslip.",
+      "You are responsible for using the app only lawfully, and not in violation of any law or your employment agreement.",
+    ],
+    intellectualProperty: {
+      title: "Intellectual Property",
+      body: "All rights in the app — including the code, design, logo, and content — belong to the owners of Shift Smart. You may not copy, reverse-engineer, redistribute, or create derivative works from the app without prior written permission.",
+    },
+    liability: {
+      title: "Limitation of Liability",
+      body: 'The app is provided "as is," with no warranty of accuracy, continuous availability, or fitness for a particular purpose. Shift Smart and its developers shall not be liable for any damage — direct or indirect — resulting from use of the app, including pay calculation errors, data loss, or temporary unavailability of the service.',
+    },
+    changes: {
+      title: "Changes to the App and These Terms",
+      body: 'We may update, change, or discontinue features in the app at any time, especially during the beta stage. We may also update these Terms of Service from time to time — we will update the "Last updated" date at the top of the page with every material change. Continued use of the app after an update constitutes acceptance of the updated Terms.',
+    },
+    governingLaw: {
+      title: "Governing Law and Jurisdiction",
+      body: "These Terms of Service are governed exclusively by the laws of the State of Israel, and the courts of the State of Israel shall have exclusive jurisdiction over any dispute related to them.",
+    },
+    contactTitle: "Contact Us",
+    contactBody: "For questions about these Terms of Service, you can reach us at:",
   },
 };
 
