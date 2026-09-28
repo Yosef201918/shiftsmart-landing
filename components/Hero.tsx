@@ -45,16 +45,17 @@ export default function Hero() {
           </div>
 
           {/*
-            קבוצת מתג השפה ותווית הבטא, יחד בקצה הנגדי למותג. במובייל
-            תווית הבטא מציגה רק את הנקודה הירוקה כדי לפנות מקום למתג השפה —
+            קבוצת מתג השפה ותווית ההשקה, יחד בקצה הנגדי למותג. במובייל
+            התווית מציגה רק את הנקודה הירוקה כדי לפנות מקום למתג השפה —
             שלושת האלמנטים יחד היו נדחסים אל מתחת לרוחב 375px.
           */}
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
-            {/* backdrop-blur מוקל במובייל: פעולת GPU יקרה, ותג הבטא כאן נשאר גלוי לאורך כל הגלילה */}
+            {/* backdrop-blur מוקל במובייל: פעולת GPU יקרה, והתווית כאן נשארת גלויה לאורך כל הגלילה */}
             <span className="flex items-center gap-2 rounded-full border border-hair bg-abyss/70 px-3 py-1.5 text-xs text-mist backdrop-blur-sm sm:px-3.5 sm:backdrop-blur-md">
               <span className="beacon size-1.5 rounded-full bg-neon" />
-              <span className="hidden sm:inline">{t.brand.betaBadge}</span>
+              {/* t.brand.betaBadge שונה ל-t.brand.launchBadge: "בטא פתוחה" הוחלף ב"ההשקה בקרוב" לבקשת המוצר */}
+              <span className="hidden sm:inline">{t.brand.launchBadge}</span>
             </span>
           </div>
         </motion.header>

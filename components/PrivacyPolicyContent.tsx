@@ -113,6 +113,13 @@ export default function PrivacyPolicyContent() {
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
+          {privacy.applicableLaw.title}
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          {privacy.applicableLaw.body}
+        </p>
+
+        <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
           {privacy.contactTitle}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">

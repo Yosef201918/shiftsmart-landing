@@ -54,7 +54,7 @@ export interface Dictionary {
   };
   brand: {
     name: string;
-    betaBadge: string;
+    launchBadge: string;
   };
   languageSwitcher: {
     hebrewLabel: string;
@@ -281,6 +281,8 @@ export interface Dictionary {
     dataDeletion: { title: string; body: string };
     minors: { title: string; body: string };
     policyChanges: { title: string; body: string };
+    /** אילו חוקי פרטיות חלים על האפליקציה, ולמה — נוסף לבקשת עמידה בדין */
+    applicableLaw: { title: string; body: string };
     contactTitle: string;
     contactBody: string;
   };
@@ -321,7 +323,7 @@ const he: Dictionary = {
   },
   brand: {
     name: "Shift Smart",
-    betaBadge: "בטא פתוחה",
+    launchBadge: "ההשקה בקרוב",
   },
   languageSwitcher: {
     hebrewLabel: "עברית",
@@ -761,6 +763,10 @@ const he: Dictionary = {
       title: "שינויים במדיניות זו",
       body: "ייתכן שנעדכן מדיניות זו מעת לעת עם הוספת פיצ'רים לאפליקציה. נעדכן את תאריך \"עודכן לאחרונה\" בראש העמוד בכל שינוי מהותי.",
     },
+    applicableLaw: {
+      title: "אילו חוקי פרטיות חלים על מדיניות זו",
+      body: "האפליקציה מיועדת בעיקרה למשתמשים בישראל ופותחה על ידי מפתח ישראלי, ולכן מדיניות זו כפופה לחוק הגנת הפרטיות הישראלי, כפי שתוקן בתיקון 13 (בתוקף מאוגוסט 2025), המחייב שקיפות לגבי איסוף ושימוש במידע אישי. תקנות ה-GDPR האירופי וה-CCPA האמריקאי (קליפורניה) אינן חלות על האפליקציה כיום, מכיוון שאיננו מעבדים באופן שיטתי מידע אישי של תושבי האיחוד האירופי או קליפורניה בהיקף שמפעיל את דרישות החוקים הללו. אם וכאשר בסיס המשתמשים יתרחב לאזורים אלו בהיקף משמעותי, נבחן את הנושא מחדש ונעדכן מדיניות זו בהתאם.",
+    },
     contactTitle: "יצירת קשר",
     contactBody: "לשאלות בנוגע למדיניות פרטיות זו, ניתן ליצור קשר בכתובת:",
   },
@@ -831,7 +837,7 @@ const en: Dictionary = {
   },
   brand: {
     name: "Shift Smart",
-    betaBadge: "Open Beta",
+    launchBadge: "Launching Soon",
   },
   languageSwitcher: {
     hebrewLabel: "עברית",
@@ -1285,6 +1291,10 @@ const en: Dictionary = {
     policyChanges: {
       title: "Changes to This Policy",
       body: 'We may update this policy from time to time as features are added to the app. We will update the "Last updated" date at the top of the page with every material change.',
+    },
+    applicableLaw: {
+      title: "Which Privacy Laws Apply to This Policy",
+      body: "The app is primarily intended for users in Israel and was developed by an Israeli developer, so this policy is governed by Israel's Privacy Protection Law, as amended by Amendment 13 (in effect since August 2025), which requires transparency about the collection and use of personal data. The EU's GDPR and California's CCPA do not currently apply to the app, since we do not systematically process the personal data of EU or California residents at a scale that would trigger those laws. If and when our user base expands significantly into those regions, we will revisit this and update this policy accordingly.",
     },
     contactTitle: "Contact Us",
     contactBody: "For questions about this privacy policy, you can reach us at:",

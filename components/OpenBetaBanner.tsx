@@ -7,7 +7,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 /**
  * רצועת הכרזה דקה מעל ה-Hero. שלב 43: הבטא הפתוחה יצאה לאוויר בפועל —
  * הרצועה עברה מהודעת "בקרוב" (מקשרת לקבוצת בודקים) להכרזת השקה חגיגית
- * שמקשרת ישירות ל-Play Store. תוכן נפרד מ-t.brand.betaBadge ו-t.hero.
+ * שמקשרת ישירות ל-Play Store. תוכן נפרד מ-t.brand.launchBadge ו-t.hero.
  * betaWarning — זו הכרזה תוספתית, לא תחליף להם.
  *
  * ממוקמת מחוץ ל-<section id="hero"> ב-app/page.tsx, לא בתוכו: כך היא לא
