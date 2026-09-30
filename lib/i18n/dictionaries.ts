@@ -277,6 +277,10 @@ export interface Dictionary {
       paragraph2: RichTextSegment[];
       paragraph3: string;
     };
+    /** שאלון המשוב האופציונלי בתוך האפליקציה — היוצא מן הכלל היחיד לעיקרון "הכול נשאר במכשיר" */
+    feedbackSurvey: { title: string; body: string };
+    /** רכישות תוך-אפליקתיות (שדרוג Pro) — מעובדות ע"י Google Play, לא על ידינו */
+    inAppPurchases: { title: string; body: string };
     thirdPartySharing: { title: string; body: string };
     dataDeletion: { title: string; body: string };
     minors: { title: string; body: string };
@@ -681,19 +685,25 @@ const he: Dictionary = {
     metaDescription:
       "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
     pageTitle: "מדיניות פרטיות — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 16.09.2026",
+    lastUpdated: "עודכן לאחרונה: 30.09.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
+    /*
+     * דצמבר 2026: נוסח הפסקה עודכן — הניסוח הקודם ("אנחנו לא מפעילים שרת
+     * שאוסף... את הנתונים האלה") היה סותר בפועל את התנהגות האפליקציה
+     * (שאלון משוב אופציונלי ששולח נתונים לשרת), מה שיצר אי-התאמה מול
+     * Google Play Data Safety. הפסקה כאן מציינת מפורשות את היוצא מן הכלל.
+     */
     dataPrinciple: {
       title: "עיקרון מרכזי: הנתונים שלך נשארים אצלך",
       body: [
         {
-          text: "Shift Smart היא אפליקציה מקומית (offline-first). כל הנתונים שאתם מזינים — עבודות, משמרות, שכר, הערות, תמונות שמצורפות למשמרות, הגדרות — נשמרים ",
+          text: "הנתונים שאתם מזינים (עבודות, משמרות, שכר, הערות, תמונות והגדרות) נשמרים ",
         },
         { text: "רק על המכשיר שלכם", format: "bold" },
         {
-          text: ", באחסון המקומי של האפליקציה. אנחנו לא מפעילים שרת שאוסף, מאחסן או מעבד את הנתונים האלה, ואיננו מוכרים או משתפים אותם עם צד שלישי.",
+          text: ". איננו מפעילים שרת שאוסף את נתוני המשמרות והשכר שלכם, ואיננו מוכרים או משתפים אותם. היוצא מן הכלל היחיד הוא שאלון המשוב האופציונלי, המתואר בהמשך.",
         },
       ],
     },
@@ -701,7 +711,8 @@ const he: Dictionary = {
     permissions: [
       {
         label: "מיקום (כולל ברקע):",
-        body: "משמש אך ורק כדי לזהות אוטומטית יציאה מאזור העבודה שהגדרתם (Geofencing), למשל לתזכורת \"שכחת להחתים יציאה?\" או לסיום משמרת אוטומטי אם הפעלתם את האפשרות. נתוני המיקום מעובדים על המכשיר בלבד ולא נשלחים לשום שרת חיצוני.",
+        /* עודכן: תיאור מדויק יותר של השימושים בפועל (אימות בהחתמה, בחירת מיקום במפה) ותלות ב-Google Maps */
+        body: "משמש לאימות מיקום בעת החתמה, לבחירת מיקום העבודה במפה, ו(רק אם הפעלתם את האפשרות) לזיהוי יציאה מאזור העבודה גם כשהאפליקציה סגורה, כדי להזכיר להחתים יציאה או לסיים משמרת אוטומטית. נתוני המיקום מעובדים ונשמרים במכשיר בלבד ולא נשלחים לשרת שלנו. הצגת המפה מתבצעת באמצעות Google Maps, ולכן Google מעבדת בקשות מפה לפי מדיניות הפרטיות שלה.",
       },
       {
         label: "התראות:",
@@ -709,7 +720,8 @@ const he: Dictionary = {
       },
       {
         label: "יומן (קריאה/כתיבה):",
-        body: "משמשת אך ורק לתכונת סנכרון המשמרות ליומן — ורק אם בחרתם להפעיל או להשתמש בתכונה זו. אירועי היומן נוצרים ונקראים מקומית על המכשיר בלבד, ואיננו שולחים שום נתון יומן לשרת חיצוני.",
+        /* עודכן: נוספה הבהרה מפורשת שגם משמרות מתוכננות (לא רק אירועים קיימים) נכתבות למכשיר בלבד */
+        body: "משמשת אך ורק לתכונת סנכרון המשמרות ליומן — ורק אם בחרתם להפעיל או להשתמש בתכונה זו. אירועי היומן נוצרים ונקראים מקומית על המכשיר בלבד, ואיננו שולחים שום נתון יומן לשרת חיצוני. משמרות מתוכננות נכתבות ליומן במכשיר בלבד.",
       },
       {
         label: "מצלמה/גלריה:",
@@ -746,6 +758,16 @@ const he: Dictionary = {
       ],
       paragraph3:
         "שום נתון שנאסף דרך התכונה הזו לא משותף עם שום צד שלישי — הוא נשמר ישירות בחשבון ה-Google Drive שלכם, בשליטתכם המלאה, וניתן למחוק אותו בכל עת ישירות מתוך ה-Drive. ניתוק/יציאה מחשבון ה-Google בהגדרות האפליקציה מבטלים את הגישה הזו.",
+    },
+    /* חדש: מתעד את שאלון המשוב האופציונלי, שהוא כרגע היוצא היחיד מהכלל "הכול נשאר במכשיר" */
+    feedbackSurvey: {
+      title: "שאלון משוב (אופציונלי)",
+      body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (בחירות, טקסט חופשי, גרסת האפליקציה ושפה) נשלחות לשרת שלנו המתארח ב-Cloudflare, ללא פרטים מזהים, ומשמשות לשיפור האפליקציה בלבד. אין חובה למלא את השאלון.",
+    },
+    /* חדש: מתעד את תשלומי ה-Pro תוך-אפליקתיים לצורך התאמה ל-Data Safety */
+    inAppPurchases: {
+      title: "רכישות בתוך האפליקציה",
+      body: "רכישות בתוך האפליקציה (שדרוג Pro) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום.",
     },
     thirdPartySharing: {
       title: "שיתוף עם צדדים שלישיים",
@@ -1210,19 +1232,20 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
     pageTitle: "Privacy Policy — Shift Smart",
-    lastUpdated: "Last updated: 16.09.2026",
+    lastUpdated: "Last updated: 30.09.2026",
     backToHome: "Back to home",
     intro:
       'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
+    /* Updated to match dataPrinciple in the Hebrew block: the previous wording ("we do not run a server that collects... this data") contradicted the app's actual behavior (the optional feedback survey sends data to a server), which created a mismatch with Google Play's Data Safety form. This wording states the exception explicitly. */
     dataPrinciple: {
       title: "Core Principle: Your Data Stays With You",
       body: [
         {
-          text: "Shift Smart is a local, offline-first app. All the data you enter — jobs, shifts, pay, notes, photos attached to shifts, settings — is stored ",
+          text: "The data you enter (jobs, shifts, pay, notes, photos, and settings) is stored ",
         },
         { text: "only on your device", format: "bold" },
         {
-          text: ", in the app's local storage. We do not run a server that collects, stores, or processes this data, and we do not sell or share it with any third party.",
+          text: ". We do not run a server that collects your shift and pay data, and we do not sell or share it. The one exception is the optional feedback survey, described below.",
         },
       ],
     },
@@ -1230,7 +1253,8 @@ const en: Dictionary = {
     permissions: [
       {
         label: "Location (including in the background):",
-        body: 'Used solely to automatically detect when you leave your defined workplace area (geofencing) — for example, for a "Forgot to clock out?" reminder or an automatic shift end if you enabled that option. Location data is processed on-device only and is never sent to any external server.',
+        /* Updated: more accurate description of the actual uses (verifying location at clock-in, picking the work location on a map) and the Google Maps dependency */
+        body: "Used to verify your location when clocking in, to pick the work location on a map, and — only if you enable it — to detect leaving the work area even when the app is closed, in order to remind you to clock out or end the shift automatically. Location data is processed and stored on your device only and is not sent to our server. The map is displayed using Google Maps, so Google processes map requests under its own privacy policy.",
       },
       {
         label: "Notifications:",
@@ -1238,7 +1262,8 @@ const en: Dictionary = {
       },
       {
         label: "Calendar (read/write):",
-        body: "Used solely for the shift-to-calendar sync feature — and only if you choose to enable or use it. Calendar events are created and read locally on your device only, and we never send any calendar data to an external server.",
+        /* Updated: explicitly clarifies that scheduled shifts, not just existing events, are written to the device only */
+        body: "Used solely for the shift-to-calendar sync feature — and only if you choose to enable or use it. Calendar events are created and read locally on your device only, and we never send any calendar data to an external server. Scheduled shifts are written to the device calendar only.",
       },
       {
         label: "Camera/Gallery:",
@@ -1275,6 +1300,16 @@ const en: Dictionary = {
       ],
       paragraph3:
         "No data collected through this feature is shared with any third party — it is stored directly in your Google Drive account, entirely under your control, and can be deleted at any time directly from your Drive. Disconnecting or signing out of the Google account in the app's settings revokes this access.",
+    },
+    /* New: documents the optional feedback survey, currently the one exception to the "everything stays on-device" principle */
+    feedbackSurvey: {
+      title: "Feedback Survey (Optional)",
+      body: "If you choose to complete the in-app feedback survey, your answers (selections, free text, app version and language) are sent to our server hosted on Cloudflare without identifying details and are used only to improve the app. Completing it is not required.",
+    },
+    /* New: documents in-app Pro purchases for Data Safety consistency */
+    inAppPurchases: {
+      title: "In-App Purchases",
+      body: "In-app purchases (Pro upgrade) are processed by Google Play. We do not receive or store payment details.",
     },
     thirdPartySharing: {
       title: "Sharing With Third Parties",

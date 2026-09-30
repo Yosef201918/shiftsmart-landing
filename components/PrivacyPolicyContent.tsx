@@ -85,6 +85,20 @@ export default function PrivacyPolicyContent() {
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
+          {privacy.feedbackSurvey.title}
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          {privacy.feedbackSurvey.body}
+        </p>
+
+        <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
+          {privacy.inAppPurchases.title}
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          {privacy.inAppPurchases.body}
+        </p>
+
+        <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
           {privacy.thirdPartySharing.title}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">
