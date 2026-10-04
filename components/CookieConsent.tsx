@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cookie } from "lucide-react";
 import Link from "next/link";
@@ -24,14 +24,15 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
  * לפני שהאפקט הראשון רץ בצד הלקוח מרנדרים null, במקום לרנדר את הבאנר
  * תמיד ואז להסתיר אותו, מה שהיה גורם להבהוב (flash) בטעינה.
  */
+/* תוקן: setState סינכרוני בתוך useEffect (כלל react-hooks/set-state-in-effect) הוחלף ב-useSyncExternalStore — false בשרת ובהידרציה, true מיד אחריה, ללא רינדור מדורג */
+const subscribeNoop = () => () => {};
+const getMountedSnapshot = () => true;
+const getMountedServerSnapshot = () => false;
+
 export default function CookieConsent() {
   const { t } = useLanguage();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(subscribeNoop, getMountedSnapshot, getMountedServerSnapshot);
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   if (!mounted) return null;
 

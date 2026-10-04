@@ -147,7 +147,7 @@ export default function Features() {
           viewport={VIEWPORT_ONCE}
         >
           <motion.p
-            className="font-mono text-xs tracking-[0.3em] text-neon-deep"
+            className="font-mono text-xs tracking-[0.3em] text-neon/60"
             variants={fadeUp}
           >
             {t.features.kicker}

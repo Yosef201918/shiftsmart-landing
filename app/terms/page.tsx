@@ -9,6 +9,8 @@ const defaultDictionary = dictionaries.he;
 export const metadata: Metadata = {
   title: defaultDictionary.terms.metaTitle,
   description: defaultDictionary.terms.metaDescription,
+  /* דורס את ה-canonical של ה-layout (שמצביע על דף הבית) */
+  alternates: { canonical: "/terms" },
 };
 
 /*

@@ -31,7 +31,7 @@ export default function WhatsNew() {
           viewport={VIEWPORT_ONCE}
         >
           <motion.p
-            className="font-mono text-xs tracking-[0.3em] text-neon-deep"
+            className="font-mono text-xs tracking-[0.3em] text-neon/60"
             variants={fadeUp}
           >
             {t.whatsNew.kicker}

@@ -50,7 +50,7 @@ export default function BetaSteps() {
       viewport={VIEWPORT_ONCE}
     >
       <motion.p
-        className="font-mono text-xs tracking-[0.3em] text-neon-deep"
+        className="font-mono text-xs tracking-[0.3em] text-neon/60"
         variants={fadeUp}
       >
         {t.betaSteps.kicker}
@@ -83,7 +83,7 @@ export default function BetaSteps() {
 
               <span className="min-w-0">
                 <span className="flex items-center gap-1.5">
-                  <span dir="ltr" className="font-mono text-[0.65rem] text-neon-deep">
+                  <span dir="ltr" className="font-mono text-[0.65rem] text-neon/60">
                     {number}
                   </span>
                   <span className="truncate font-display text-sm text-chalk sm:text-base">

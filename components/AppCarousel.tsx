@@ -85,7 +85,7 @@ export default function AppCarousel() {
         >
           <div className="max-w-2xl">
             <motion.p
-              className="font-mono text-xs tracking-[0.3em] text-neon-deep"
+              className="font-mono text-xs tracking-[0.3em] text-neon/60"
               variants={fadeUp}
             >
               {t.gallery.kicker}

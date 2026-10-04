@@ -30,7 +30,7 @@ export default function AppPoster() {
         whileInView="visible"
         viewport={VIEWPORT_ONCE}
       >
-        <p className="font-mono text-xs tracking-[0.3em] text-neon-deep">
+        <p className="font-mono text-xs tracking-[0.3em] text-neon/60">
           {t.appPoster.kicker}
         </p>
         <h2 className="mt-4 max-w-xl text-3xl font-extralight leading-tight text-chalk sm:text-4xl">

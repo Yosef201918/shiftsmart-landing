@@ -16,9 +16,10 @@ const siteUrl =
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000");
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+/* תאריך קבוע שמעודכן ידנית בכל שינוי תוכן מהותי — new Date() שינה אותו בכל בנייה ולכן גוגל התעלמה מהשדה */
+const lastModified = new Date("2026-10-04");
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: siteUrl,

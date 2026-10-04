@@ -130,6 +130,8 @@ export interface Dictionary {
     errorState: string;
     /** מוצג אם שליחת הביקורת החדשה נכשלה */
     submitError: string;
+    /** מוצג אם נשלחה ביקורת נוספת לפני שחלף זמן ההמתנה בין שליחות */
+    rateLimitError: string;
     modal: {
       title: string;
       nameLabel: string;
@@ -220,6 +222,8 @@ export interface Dictionary {
     toastMessage: string;
     /** מוצג אם השליחה ל-Supabase נכשלה */
     submitError: string;
+    /** מוצג אם נשלחה הצעה נוספת לפני שחלף זמן ההמתנה בין שליחות */
+    rateLimitError: string;
   };
   phoneShowcase: {
     /**
@@ -284,6 +288,11 @@ export interface Dictionary {
     thirdPartySharing: { title: string; body: string };
     dataDeletion: { title: string; body: string };
     minors: { title: string; body: string };
+    /** הנתונים שנאספים דרך אתר השיווק עצמו (טפסים, ניתוח תנועה, אחסון מקומי) — נפרד מהאפליקציה */
+    website: {
+      title: string;
+      items: [PermissionItem, PermissionItem, PermissionItem, PermissionItem];
+    };
     policyChanges: { title: string; body: string };
     /** אילו חוקי פרטיות חלים על האפליקציה, ולמה — נוסף לבקשת עמידה בדין */
     applicableLaw: { title: string; body: string };
@@ -432,7 +441,7 @@ const he: Dictionary = {
       },
       {
         title: "חיסכון בסוללה ופרטיות",
-        description: "עיצוב כהה, נתונים נשארים אך ורק במכשיר שלכם.",
+        description: "עיצוב כהה, והנתונים נשארים אצלכם במכשיר כברירת מחדל — גיבוי ל-Drive ומשוב הם אופציונליים.",
       },
       {
         title: "ניהול משרות",
@@ -474,6 +483,7 @@ const he: Dictionary = {
     emptyState: "היו הראשונים לכתוב ביקורת על הבטא!",
     errorState: "לא הצלחנו לטעון ביקורות כרגע. נסו לרענן את הדף.",
     submitError: "שליחת הביקורת נכשלה. בדקו את החיבור ונסו שוב.",
+    rateLimitError: "כבר שלחתם ביקורת לפני רגע. נסו שוב בעוד כחצי דקה.",
     modal: {
       title: "כתיבת ביקורת",
       nameLabel: "שם",
@@ -651,6 +661,7 @@ const he: Dictionary = {
     closeAria: "סגירת חלון הצעת הפיצ'ר",
     toastMessage: "תודה! ההצעה שלך נרשמה ותיבדק.",
     submitError: "שליחת ההצעה נכשלה. בדקו את החיבור ונסו שוב.",
+    rateLimitError: "כבר שלחתם הצעה לפני רגע. נסו שוב בעוד כחצי דקה.",
   },
   phoneShowcase: {
     mockupSrc: "/mockup-v2.jpg",
@@ -780,6 +791,27 @@ const he: Dictionary = {
     minors: {
       title: "קטינים",
       body: "האפליקציה אינה מיועדת לילדים מתחת לגיל 13, ואיננו אוספים ביודעין מידע מקטינים.",
+    },
+    website: {
+      title: "הנתונים באתר זה",
+      items: [
+        {
+          label: "ביקורות והצעות פיצ'ר:",
+          body: "כששולחים ביקורת דרך האתר, נשמרים במסד הנתונים שלנו (Supabase) השם שהוזן, הדירוג (1–5 כוכבים) ותוכן הביקורת. בהצעת פיצ'ר נשמרים השם ותיאור הרעיון. ביקורת מוצגת באתר (שם ותוכן) רק לאחר אישור ידני שלנו. אין חובה לשלוח אותן, ומומלץ לא לכלול בהן פרטים אישיים.",
+        },
+        {
+          label: "Vercel Analytics:",
+          body: "סטטיסטיקות תנועה אנונימיות לאתר (למשל צפיות בדפים), ללא שימוש בעוגיות.",
+        },
+        {
+          label: "Google Analytics:",
+          body: "תג Google נטען רק אם אישרתם עוגיות בבאנר ההסכמה, ומשמש לסטטיסטיקות שימוש באתר. אם דחיתם או לא בחרתם — הוא לא נטען.",
+        },
+        {
+          label: "אחסון מקומי בדפדפן:",
+          body: "נשמרות העדפת השפה שבחרתם והבחירה שלכם בבאנר העוגיות, כדי לזכור אותן בביקורים הבאים.",
+        },
+      ],
     },
     policyChanges: {
       title: "שינויים במדיניות זו",
@@ -967,7 +999,7 @@ const en: Dictionary = {
       },
       {
         title: "Battery Saving & Privacy",
-        description: "Dark design, and your data stays only on your device.",
+        description: "Dark design, and your data stays on your device by default — Drive backup and feedback are optional.",
       },
       {
         title: "Multiple Workplaces",
@@ -1009,6 +1041,7 @@ const en: Dictionary = {
     emptyState: "Be the first to review the Beta!",
     errorState: "We couldn't load reviews right now. Try refreshing the page.",
     submitError: "Couldn't submit your review. Check your connection and try again.",
+    rateLimitError: "You just submitted a review. Please try again in about half a minute.",
     modal: {
       title: "Write a Review",
       nameLabel: "Name",
@@ -1198,6 +1231,7 @@ const en: Dictionary = {
     closeAria: "Close feature request dialog",
     toastMessage: "Thank you! Your suggestion has been submitted for review.",
     submitError: "Couldn't submit your suggestion. Check your connection and try again.",
+    rateLimitError: "You just submitted a suggestion. Please try again in about half a minute.",
   },
   phoneShowcase: {
     mockupSrc: "/English screenshot1.png",
@@ -1322,6 +1356,27 @@ const en: Dictionary = {
     minors: {
       title: "Minors",
       body: "The app is not intended for children under the age of 13, and we do not knowingly collect information from minors.",
+    },
+    website: {
+      title: "Data on This Website",
+      items: [
+        {
+          label: "Reviews and feature requests:",
+          body: "When you submit a review through the site, the name you entered, the rating (1–5 stars), and the review text are stored in our database (Supabase). For a feature request, the name and the idea description are stored. A review is shown on the site (name and text) only after our manual approval. Submitting either is not required, and we recommend not including personal details in them.",
+        },
+        {
+          label: "Vercel Analytics:",
+          body: "Anonymous traffic statistics for the site (for example, page views), without the use of cookies.",
+        },
+        {
+          label: "Google Analytics:",
+          body: "The Google tag is loaded only if you accept cookies in the consent banner, and is used for website usage statistics. If you decline or make no choice, it is not loaded.",
+        },
+        {
+          label: "Browser local storage:",
+          body: "Your chosen language preference and your choice in the cookie banner are saved so they can be remembered on later visits.",
+        },
+      ],
     },
     policyChanges: {
       title: "Changes to This Policy",

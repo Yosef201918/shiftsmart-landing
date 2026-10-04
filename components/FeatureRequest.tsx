@@ -4,9 +4,13 @@ import { useEffect, useId, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Lightbulb, X } from "lucide-react";
 
+import { FORM_LIMITS, isCoolingDown, markSubmitted } from "@/lib/formGuards";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE, EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { supabase } from "@/lib/supabase";
+import { useDialogFocus } from "@/lib/useDialogFocus";
+
+const COOLDOWN_KEY = "shiftsmart-feature-request-last-submit";
 
 /*
  * שלב 21 — מקטע "הצעת פיצ'ר": כרטיס קריאה-לפעולה קטן שפותח מודאל עם טופס
@@ -26,22 +30,31 @@ export default function FeatureRequest() {
   const [isToastVisible, setIsToastVisible] = useState(false);
   const [name, setName] = useState("");
   const [feature, setFeature] = useState("");
+  // honeypot: שדה נסתר שרק בוטים ממלאים — ראו הטיפול ב-handleSubmit
+  const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [rateLimited, setRateLimited] = useState(false);
   const titleId = useId();
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setName("");
+    setFeature("");
+    setHoneypot("");
+    setSubmitError(false);
+    setRateLimited(false);
+  };
+
+  // מיקוד, מלכודת Tab, Escape והחזרת מיקוד לכפתור הפותח — ראו lib/useDialogFocus.ts
+  const { dialogRef, triggerRef } = useDialogFocus(isOpen, closeModal);
 
   useEffect(() => {
     if (!isOpen) return;
 
     document.body.style.overflow = "hidden";
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
 
@@ -51,19 +64,26 @@ export default function FeatureRequest() {
     return () => clearTimeout(timer);
   }, [isToastVisible]);
 
-  const closeModal = () => {
-    setIsOpen(false);
-    setName("");
-    setFeature("");
-    setSubmitError(false);
-  };
-
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!name.trim() || !feature.trim() || isSubmitting) return;
 
+    // בוט מילא את השדה הנסתר — מדמים הצלחה בשקט בלי לשלוח כלום ל-Supabase
+    if (honeypot) {
+      closeModal();
+      setIsToastVisible(true);
+      return;
+    }
+
+    // חסימת שליחה חוזרת מהירה (המתנה בצד הלקוח)
+    if (isCoolingDown(COOLDOWN_KEY)) {
+      setRateLimited(true);
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError(false);
+    setRateLimited(false);
 
     try {
       const { error } = await supabase.from("feature_requests").insert({
@@ -77,6 +97,7 @@ export default function FeatureRequest() {
         return;
       }
 
+      markSubmitted(COOLDOWN_KEY);
       closeModal();
       setIsToastVisible(true);
     } catch (unexpectedError) {
@@ -111,6 +132,7 @@ export default function FeatureRequest() {
         </motion.div>
 
         <motion.button
+          ref={triggerRef}
           type="button"
           onClick={() => setIsOpen(true)}
           variants={fadeUp}
@@ -149,6 +171,7 @@ export default function FeatureRequest() {
           {isOpen ? (
             <motion.div
               key="feature-dialog"
+              ref={dialogRef}
               role="dialog"
               aria-modal="true"
               aria-labelledby={titleId}
@@ -185,6 +208,7 @@ export default function FeatureRequest() {
                   <input
                     type="text"
                     required
+                    maxLength={FORM_LIMITS.name}
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     placeholder={t.featureRequest.namePlaceholder}
@@ -196,6 +220,7 @@ export default function FeatureRequest() {
                   {t.featureRequest.featureLabel}
                   <textarea
                     required
+                    maxLength={FORM_LIMITS.feature}
                     value={feature}
                     onChange={(event) => setFeature(event.target.value)}
                     placeholder={t.featureRequest.featurePlaceholder}
@@ -204,8 +229,23 @@ export default function FeatureRequest() {
                   />
                 </label>
 
+                {/* honeypot: מוסתר מעין ומקורא מסך, מוחרג מ-Tab (tabIndex=-1) — משתמש אמיתי לא ימלא אותו */}
+                <div aria-hidden="true" className="absolute start-0 top-0 size-px overflow-hidden opacity-0">
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(event) => setHoneypot(event.target.value)}
+                  />
+                </div>
+
                 {submitError ? (
                   <p className="text-sm text-amber-soft">{t.featureRequest.submitError}</p>
+                ) : null}
+                {rateLimited ? (
+                  <p role="alert" className="text-sm text-amber-soft">{t.featureRequest.rateLimitError}</p>
                 ) : null}
 
                 <button

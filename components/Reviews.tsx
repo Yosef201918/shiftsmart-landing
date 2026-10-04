@@ -4,9 +4,13 @@ import { useEffect, useId, useMemo, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Star, X } from "lucide-react";
 
+import { FORM_LIMITS, isCoolingDown, markSubmitted } from "@/lib/formGuards";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE, EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { supabase, type ReviewRow } from "@/lib/supabase";
+import { useDialogFocus } from "@/lib/useDialogFocus";
+
+const COOLDOWN_KEY = "shiftsmart-review-last-submit";
 
 /** כוכבים קבועים (לא אינטראקטיביים) — מציגים דירוג קיים בכרטיס ביקורת/ממוצע */
 function StaticStars({ rating, className = "size-4" }: { rating: number; className?: string }) {
@@ -67,6 +71,9 @@ export default function Reviews() {
   const [hoverRating, setHoverRating] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [rateLimited, setRateLimited] = useState(false);
+  // honeypot: שדה נסתר שרק בוטים ממלאים — ראו הטיפול ב-handleSubmit
+  const [honeypot, setHoneypot] = useState("");
   const titleId = useId();
 
   useEffect(() => {
@@ -141,18 +148,26 @@ export default function Reviews() {
     return (sum / reviews.length).toFixed(1);
   }, [reviews]);
 
+  const closeModal = () => {
+    setIsOpen(false);
+    setName("");
+    setReviewText("");
+    setSelectedRating(0);
+    setHoverRating(0);
+    setHoneypot("");
+    setSubmitError(false);
+    setRateLimited(false);
+  };
+
+  // מיקוד, מלכודת Tab, Escape והחזרת מיקוד לכפתור הפותח — ראו lib/useDialogFocus.ts
+  const { dialogRef, triggerRef } = useDialogFocus(isOpen, closeModal);
+
   useEffect(() => {
     if (!isOpen) return;
 
     document.body.style.overflow = "hidden";
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
 
@@ -162,21 +177,26 @@ export default function Reviews() {
     return () => clearTimeout(timer);
   }, [isToastVisible]);
 
-  const closeModal = () => {
-    setIsOpen(false);
-    setName("");
-    setReviewText("");
-    setSelectedRating(0);
-    setHoverRating(0);
-    setSubmitError(false);
-  };
-
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!reviewText.trim() || selectedRating === 0 || isSubmitting) return;
 
+    // בוט מילא את השדה הנסתר — מדמים הצלחה בשקט בלי לשלוח כלום ל-Supabase
+    if (honeypot) {
+      closeModal();
+      setIsToastVisible(true);
+      return;
+    }
+
+    // חסימת שליחה חוזרת מהירה (המתנה בצד הלקוח)
+    if (isCoolingDown(COOLDOWN_KEY)) {
+      setRateLimited(true);
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError(false);
+    setRateLimited(false);
 
     try {
       // status לא נשלח כלל — ברירת המחדל "pending" מוגדרת בטבלה עצמה
@@ -193,6 +213,7 @@ export default function Reviews() {
         return;
       }
 
+      markSubmitted(COOLDOWN_KEY);
       closeModal();
       setIsToastVisible(true);
     } catch (unexpectedError) {
@@ -219,7 +240,7 @@ export default function Reviews() {
         >
           <div className="max-w-2xl">
             <motion.p
-              className="font-mono text-xs tracking-[0.3em] text-neon-deep"
+              className="font-mono text-xs tracking-[0.3em] text-neon/60"
               variants={fadeUp}
             >
               {t.reviews.kicker}
@@ -249,6 +270,7 @@ export default function Reviews() {
           </div>
 
           <motion.button
+            ref={triggerRef}
             type="button"
             onClick={() => setIsOpen(true)}
             variants={fadeUp}
@@ -326,6 +348,7 @@ export default function Reviews() {
           {isOpen ? (
             <motion.div
               key="review-dialog"
+              ref={dialogRef}
               role="dialog"
               aria-modal="true"
               aria-labelledby={titleId}
@@ -355,6 +378,7 @@ export default function Reviews() {
                   <input
                     type="text"
                     required
+                    maxLength={FORM_LIMITS.name}
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     placeholder={t.reviews.modal.namePlaceholder}
@@ -397,6 +421,7 @@ export default function Reviews() {
                   {t.reviews.modal.reviewLabel}
                   <textarea
                     required
+                    maxLength={FORM_LIMITS.review}
                     value={reviewText}
                     onChange={(event) => setReviewText(event.target.value)}
                     placeholder={t.reviews.modal.reviewPlaceholder}
@@ -405,8 +430,23 @@ export default function Reviews() {
                   />
                 </label>
 
+                {/* honeypot: מוסתר מעין ומקורא מסך, מוחרג מ-Tab (tabIndex=-1) — משתמש אמיתי לא ימלא אותו */}
+                <div aria-hidden="true" className="absolute start-0 top-0 size-px overflow-hidden opacity-0">
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(event) => setHoneypot(event.target.value)}
+                  />
+                </div>
+
                 {submitError ? (
                   <p className="text-sm text-amber-soft">{t.reviews.submitError}</p>
+                ) : null}
+                {rateLimited ? (
+                  <p role="alert" className="text-sm text-amber-soft">{t.reviews.rateLimitError}</p>
                 ) : null}
 
                 <button

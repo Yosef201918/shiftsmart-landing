@@ -120,6 +120,23 @@ export default function PrivacyPolicyContent() {
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
+          {privacy.website.title}
+        </h2>
+        <ul className="mt-4 flex flex-col gap-3">
+          {privacy.website.items.map((item) => (
+            <li
+              key={item.label}
+              className="flex gap-3 text-base leading-relaxed text-mist"
+            >
+              <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-neon" />
+              <span>
+                <strong className="text-chalk">{item.label}</strong> {item.body}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
           {privacy.policyChanges.title}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">

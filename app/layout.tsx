@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo, JetBrains_Mono, Secular_One } from "next/font/google";
-import { unstable_cache } from "next/cache";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -10,7 +9,6 @@ import HtmlAttributesSync from "@/components/HtmlAttributesSync";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { dictionaries } from "@/lib/i18n/dictionaries";
 import { PLAY_STORE_URL, SITE_URL } from "@/lib/links";
-import { supabase } from "@/lib/supabase";
 
 /* גופן גוף — Heebo תומך בעברית ובעל טווח משקלים מלא */
 const heebo = Heebo({
@@ -91,6 +89,8 @@ const OG_IMAGE = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  /* חדש: canonical יחסי ל-metadataBase; דפי /privacy ו-/terms דורסים אותו בעצמם כדי לא לרשת את דף הבית */
+  alternates: { canonical: "/" },
   title: defaultDictionary.meta.title,
   description: defaultDictionary.meta.description,
   keywords: defaultDictionary.meta.keywords,
@@ -113,9 +113,14 @@ export const metadata: Metadata = {
     google: "ZtSkJ8cq55M33DeeZvYB6rpZAQ-kztLt5rD0Ktcr2nw",
   },
   /* שלב 32: עודכן ל-"ICON Chrome WED V1.png" — גרסה מתוקנת שמתקנת בעיות תצוגה שנותרו במובייל. הרווחים בשם הקובץ מקודדים כ-%20 */
+  /* עודכן: הקובץ המקורי (1536×1536, 2.6MB) הוחלף בגרסאות ממוזערות באותו מראה; המקור נשאר ב-public/ ללא שינוי */
   icons: {
-    icon: "/ICON%20Chrome%20WED%20V1.png",
-    apple: "/ICON%20Chrome%20WED%20V1.png",
+    icon: [
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   },
   /* שלב 30: מניפסט PWA — מאפשר התקנת האתר כאפליקציה */
   manifest: "/manifest.json",
@@ -127,34 +132,19 @@ export const viewport: Viewport = {
 };
 
 /*
- * תוקן: Google Search Console סימן את בלוק ה-AggregateRating כ"פריטים לא
- * תקינים" כי schema.org דורש ratingCount/reviewCount לצד ratingValue כדי
- * לאמת את המבנה — השדה הזה הושמט בכוונה בעבר כי לא רצינו להמציא מספר.
- * הפתרון: שולפים כאן את מספר הביקורות המאושרות האמיתי והממוצע האמיתי
- * מאותה טבלת reviews ב-Supabase שממנה Reviews.tsx כבר קורא בצד הלקוח,
- * ומציגים aggregateRating רק אם יש בפועל לפחות ביקורת מאושרת אחת לגבות
- * אותו — אחרת השדה כולו מושמט, בלי מספר מומצא. ה-unstable_cache שומר את
- * הדף בפרימור סטטי (השאילתה מתרעננת פעם בשעה) במקום להפוך את כל האתר
- * לדינמי-לחלוטין בכל בקשה, כי הפרויקט לא מפעיל את דגל cacheComponents.
+ * TODO: להוסיף aggregateRating בחזרה כשיהיו נתוני דירוג אמיתיים מ-Google Play.
+ * הוסר כי ביקורות שנאספות בטפסי האתר עצמו אינן מקור אמין לתוצאות עשירות
+ * של דירוג (ביקורות עצמיות), וגוגל עלולה להתייחס אליהן כבלתי מאומתות.
  */
-const getApprovedReviewStats = unstable_cache(
-  async () => {
-    const { data, error } = await supabase
-      .from("reviews")
-      .select("rating")
-      .eq("status", "approved");
-
-    if (error || !data || data.length === 0) return null;
-
-    const sum = data.reduce((total, review) => total + review.rating, 0);
-    return {
-      average: (sum / data.length).toFixed(1),
-      count: data.length,
-    };
-  },
-  ["homepage-approved-review-stats"],
-  { revalidate: 3600 },
-);
+const mobileApplicationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: defaultDictionary.brand.name,
+  description: defaultDictionary.meta.description,
+  operatingSystem: "Android",
+  applicationCategory: "BusinessApplication",
+  url: PLAY_STORE_URL,
+};
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -164,33 +154,11 @@ const organizationJsonLd = {
   logo: `${siteUrl}/ICON.jpg`,
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const reviewStats = await getApprovedReviewStats();
-
-  const mobileApplicationJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    name: defaultDictionary.brand.name,
-    description: defaultDictionary.meta.description,
-    operatingSystem: "Android",
-    applicationCategory: "BusinessApplication",
-    url: PLAY_STORE_URL,
-    ...(reviewStats
-      ? {
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: reviewStats.average,
-            ratingCount: reviewStats.count,
-            bestRating: "5",
-          },
-        }
-      : {}),
-  };
-
   return (
     <html
       lang="he"
