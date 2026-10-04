@@ -46,6 +46,48 @@
 }
 
 /* =========================================================================
+   תצוגות מקדימות זמניות של כיווני העיצוב (/design-a, /design-b).
+   טוקנים עם קידומת da-/db- בלבד, כך שאין להם שום השפעה על שאר האתר.
+   להסרה לפני מיזוג, או להחלפה במערכת העיצוב שתיבחר.
+   ========================================================================= */
+
+@theme {
+  /* A — חדר בקרה: ירוק-בקבוק עמוק בשכבות, מנטה אחד */
+  --color-da-bg: #050b08;
+  --color-da-surface: #0a1410;
+  --color-da-surface-2: #0f1c16;
+  --color-da-line: #1b2d24;
+  --color-da-line-strong: #2c4639;
+  --color-da-text: #e9f2ed;
+  --color-da-muted: #93ab9d;
+  --color-da-accent: #72e6a6;
+  --color-da-on-accent: #04130b;
+  --color-da-amber: #f0c875;
+
+  /* B — הסמל: אמרלד כהה, שנהב חם וירוק התג */
+  --color-db-bg: #04100c;
+  --color-db-surface: #0a1c15;
+  --color-db-line: #17342a;
+  --color-db-line-strong: #25503f;
+  --color-db-ivory: #f3efe4;
+  --color-db-muted: #b4c2b6;
+  --color-db-soft: #d5dcd3;
+  --color-db-accent: #3fd97a;
+  --color-db-on-accent: #03140a;
+  --color-db-ink: #0b1d14;
+  --color-db-ink-muted: #46574b;
+  --color-db-ink-green: #0d6b36;
+  --color-db-amber: #f0c875;
+}
+
+@theme inline {
+  --font-da-sans: var(--nf-da-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-da-mono: var(--nf-da-mono), ui-monospace, monospace;
+  --font-db-display: var(--nf-db-display), ui-serif, Georgia, serif;
+  --font-db-sans: var(--nf-db-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* =========================================================================
    Base
    ========================================================================= */
 
