@@ -2,10 +2,16 @@
 
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
+const OPTION_BASE =
+  "h-8 rounded-full px-3.5 text-xs font-medium transition-colors duration-200";
+const OPTION_ACTIVE = "bg-raised text-chalk ring-1 ring-inset ring-hair-lit";
+const OPTION_IDLE = "text-mist hover:text-chalk";
+
 /**
- * מתג שפה כפול-מצב בסגנון זכוכית: שני תוויות קבועות ("עברית" / "English"),
- * עם גלולת ניאון על הבחירה הפעילה. שני התוויות תמיד באותה שפה משלהן —
- * שם שפה בגוף ראשון אינו זקוק לתרגום.
+ * מתג שפה כפול-מצב: שני תוויות קבועות ("עברית" / "English"), כשהבחירה הפעילה
+ * מסומנת במשטח מוגבה ובמסגרת דקה — בלי צבע מבטא, כדי שהירוק יישמר לפעולה
+ * הראשית. שני התוויות תמיד באותה שפה משלהן — שם שפה בגוף ראשון אינו זקוק
+ * לתרגום.
  */
 export default function LanguageSwitcher() {
   const { lang, t, setLang } = useLanguage();
@@ -14,17 +20,13 @@ export default function LanguageSwitcher() {
     <div
       role="group"
       aria-label={t.languageSwitcher.groupAriaLabel}
-      className="panel flex items-center gap-0.5 rounded-full p-1 text-xs"
+      className="flex items-center gap-0.5 rounded-full border border-hair bg-panel p-0.5"
     >
       <button
         type="button"
         onClick={() => setLang("he")}
         aria-pressed={lang === "he"}
-        className={`rounded-full px-3 py-1.5 font-medium transition duration-300 ${
-          lang === "he"
-            ? "bg-neon text-[#021309] shadow-neon"
-            : "text-mist hover:text-chalk"
-        }`}
+        className={`${OPTION_BASE} ${lang === "he" ? OPTION_ACTIVE : OPTION_IDLE}`}
       >
         {t.languageSwitcher.hebrewLabel}
       </button>
@@ -32,11 +34,7 @@ export default function LanguageSwitcher() {
         type="button"
         onClick={() => setLang("en")}
         aria-pressed={lang === "en"}
-        className={`rounded-full px-3 py-1.5 font-medium transition duration-300 ${
-          lang === "en"
-            ? "bg-neon text-[#021309] shadow-neon"
-            : "text-mist hover:text-chalk"
-        }`}
+        className={`${OPTION_BASE} ${lang === "en" ? OPTION_ACTIVE : OPTION_IDLE}`}
       >
         {t.languageSwitcher.englishLabel}
       </button>

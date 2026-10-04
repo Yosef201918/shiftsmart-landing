@@ -26,71 +26,59 @@ const STEP_META: [StepMeta, StepMeta, StepMeta] = [
   { icon: Wallet },
 ];
 
-const HOVER_LIFT = {
-  y: -4,
-  transition: { duration: 0.25, ease: "easeOut" },
-} as const;
-
 /*
- * גרסה קומפקטית של מדריך שלושת השלבים. בשלב 16 המדריך הועבר ממקטע נפרד
- * (עם כרטיסי Bento גבוהים ומספרי רקע ענקיים) לתוך ה-Hero עצמו, מיד מתחת
- * לכפתורי הפעולה — כך שהמשתמש רואה את הדרך להצטרפות בלי לגלול. לשם כך
- * הכרטיסים כאן אופקיים וצפופים (אייקון + כותרת + תיאור קצר בשורה אחת עד
- * שתיים) במקום כרטיסים אנכיים גבוהים עם ריפוד גדול.
+ * מדריך שלושת השלבים. עיצוב מחדש: במקום שלושה כרטיסי זכוכית צפים, מיכל אחד
+ * עם מסגרת דקה ושלוש שורות (במובייל) או שלושה טורים (מ-sm) המופרדים בקו
+ * בעובי פיקסל. הצפיפות במובייל נשמרה — המדריך חייב להישאר גלוי בלי גלילה
+ * ב-375×812 (ראו PROJECT_MEMORY.md). התיאורים מוצגים במלואם, בלי קיצוץ שורות.
  */
 export default function BetaSteps() {
   const { t } = useLanguage();
 
   return (
     <motion.div
-      className="mt-4 lg:mt-10"
+      className="mt-6 sm:mt-8 lg:mt-14"
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
       viewport={VIEWPORT_ONCE}
     >
-      <motion.p
-        className="font-mono text-xs tracking-[0.3em] text-neon/60"
-        variants={fadeUp}
-      >
+      <motion.p className="eyebrow" variants={fadeUp}>
         {t.betaSteps.kicker}
       </motion.p>
-      <motion.h2
-        className="mt-2 font-display text-xl text-chalk sm:text-2xl"
-        variants={fadeUp}
-      >
+      <motion.h2 className="section-title mt-2" variants={fadeUp}>
         {t.betaSteps.titlePrefix}
         <span className="text-neon">{t.betaSteps.titleHighlight}</span>
         {t.betaSteps.titleSuffix}
       </motion.h2>
 
       <motion.div
-        className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3"
-        variants={staggerContainer}
+        className="panel mt-4 grid sm:mt-5 grid-cols-1 divide-y divide-hair overflow-hidden rounded-card sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+        variants={fadeUp}
       >
         {STEP_META.map(({ icon: Icon, href }, index) => {
           const { title, description } = t.betaSteps.steps[index];
           const number = String(index + 1).padStart(2, "0");
 
-          const cardClass =
-            "panel panel-rail edge-lit group flex items-center gap-3 rounded-xl p-3.5 transition-colors duration-500 hover:border-hair-lit sm:p-4";
+          const rowClass =
+            "flex items-start gap-3.5 p-3.5 transition-colors duration-200 -outline-offset-2 sm:p-5";
 
           const content = (
             <>
-              <span className="relative flex size-11 shrink-0 items-center justify-center rounded-xl border border-hair bg-abyss/60 transition duration-500 group-hover:border-neon-deep">
-                <Icon className="size-5 text-neon" strokeWidth={1.6} />
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-control border border-hair bg-raised">
+                <Icon className="size-[1.125rem] text-neon" strokeWidth={1.6} />
               </span>
 
               <span className="min-w-0">
-                <span className="flex items-center gap-1.5">
-                  <span dir="ltr" className="font-mono text-[0.65rem] text-neon/60">
+                <span className="flex items-baseline gap-2">
+                  <span dir="ltr" className="text-xs tabular-nums text-mist">
                     {number}
                   </span>
-                  <span className="truncate font-display text-sm text-chalk sm:text-base">
+                  <span className="text-[0.9375rem] font-medium text-chalk sm:text-base">
                     {title}
                   </span>
                 </span>
-                <span className="mt-0.5 line-clamp-2 block text-xs leading-snug text-mist">
+                <span className="mt-0.5 block text-[0.8125rem] leading-snug text-mist sm:text-sm">
                   {description}
                 </span>
               </span>
@@ -98,25 +86,18 @@ export default function BetaSteps() {
           );
 
           return href ? (
-            <motion.a
+            <a
               key={number}
               href={href}
               {...EXTERNAL_LINK_PROPS}
-              variants={fadeUp}
-              whileHover={HOVER_LIFT}
-              className={cardClass}
+              className={`${rowClass} hover:bg-raised/60`}
             >
               {content}
-            </motion.a>
+            </a>
           ) : (
-            <motion.div
-              key={number}
-              variants={fadeUp}
-              whileHover={HOVER_LIFT}
-              className={cardClass}
-            >
+            <div key={number} className={rowClass}>
               {content}
-            </motion.div>
+            </div>
           );
         })}
       </motion.div>

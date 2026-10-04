@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Heebo, JetBrains_Mono, Secular_One } from "next/font/google";
+import { Heebo } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -10,25 +10,16 @@ import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { dictionaries } from "@/lib/i18n/dictionaries";
 import { PLAY_STORE_URL, SITE_URL } from "@/lib/links";
 
-/* גופן גוף — Heebo תומך בעברית ובעל טווח משקלים מלא */
+/*
+ * גופן יחיד לכל האתר — Heebo (פונט משתנה, משקלים 100–900, עברית ולטינית מאותה
+ * משפחה). בגרסה הקודמת היו שלושה גופנים (Heebo, Secular One, JetBrains Mono);
+ * איחוד לגופן אחד מייצר מראה אחיד בעברית ובאנגלית, מחליף את הכותרות הכבדות
+ * והמשחקיות של Secular One בהיררכיה שנבנית ממשקל ומגודל, וחוסך שתי בקשות
+ * גופן. ללא ציון weight, next/font טוען את הקובץ המשתנה פעם אחת.
+ */
 const heebo = Heebo({
   variable: "--font-heebo",
   subsets: ["hebrew", "latin"],
-  display: "swap",
-});
-
-/* גופן כותרות — Secular One, גיאומטרי ובעל אופי */
-const secularOne = Secular_One({
-  variable: "--font-secular-one",
-  subsets: ["hebrew", "latin"],
-  weight: "400",
-  display: "swap",
-});
-
-/* גופן מונוספייס — לתוויות ולמספרים הטכניים בלוח הנתונים */
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
   display: "swap",
 });
 
@@ -127,7 +118,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#10b981",
+  themeColor: "#070908",
   colorScheme: "dark",
 };
 
@@ -163,13 +154,9 @@ export default function RootLayout({
     <html
       lang="he"
       dir="rtl"
-      className={`${heebo.variable} ${secularOne.variable} ${jetBrainsMono.variable} h-full antialiased`}
+      className={`${heebo.variable} h-full antialiased`}
     >
-      {/*
-        תמונת הרקע עברה לשכבה ייעודית ב-<Backdrop/> במקום background-attachment: fixed.
-        הסיבה: Safari ב-iOS לא תומך ב-fixed ושובר את הגלילה. אלמנט position:fixed
-        משיג את אותו אפקט "רקע נעוץ" בכל הדפדפנים, וגם מאפשר אופטימיזציה של התמונה.
-      */}
+      {/* שכבת הרקע (גרדיאנט עדין בלבד) יושבת ב-<Backdrop/> */}
       <body className="bg-void min-h-full flex flex-col">
         {/*
           JSON-LD בתוך <body>, לא בין <html> ל-<body>: ניסיון קודם למקם את

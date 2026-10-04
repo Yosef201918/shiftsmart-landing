@@ -88,12 +88,12 @@ export default function ShareButton({ className = "" }: ShareButtonProps) {
     <button
       type="button"
       onClick={handleShare}
-      className={`panel inline-flex h-11 w-fit shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-sm text-chalk transition duration-300 hover:-translate-y-0.5 hover:border-neon-deep hover:text-neon ${className}`}
+      className={`btn btn-secondary h-11 w-fit shrink-0 px-5 text-sm ${className}`}
     >
       {copied ? (
         <Check className="size-4 shrink-0 text-neon" strokeWidth={2} />
       ) : (
-        <Share2 className="size-4 shrink-0 text-neon" strokeWidth={1.9} />
+        <Share2 className="size-4 shrink-0 text-mist" strokeWidth={1.9} />
       )}
       {copied ? t.share.copiedLabel : t.share.buttonLabel}
     </button>

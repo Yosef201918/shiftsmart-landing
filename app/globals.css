@@ -1,48 +1,76 @@
 @import "tailwindcss";
 
 /* =========================================================================
-   Shift Smart — Design Tokens
-   שפה עיצובית: "לוח מכשירים" — שחור עמוק, זכוכית מטושטשת וקריאות ניאון ירוקות,
-   עם ענבר כמבטא משני שנשמר לאזהרות ולתוכן פרימיום בלבד.
+   Shift Smart — Design System
+   שפה עיצובית: כהה, נקי ויוקרתי. משטחים ניטרליים עמוקים עם גוון ירוק קלוש,
+   קווי מתאר בעובי פיקסל, צללים רכים, ומבטא ירוק מעודן אחד שנשמר לפעולות
+   ראשיות ולהדגשות מפתח בלבד. אין זכוכית מטושטשת, זוהר ניאון או קישוטי רקע.
+
+   שמות הטוקנים (neon, void, abyss...) נשמרו מהגרסה הקודמת כדי שכל רכיב קיים
+   יקבל את המראה החדש בלי שינוי קוד; "neon" הוא כעת המבטא המעודן.
    ========================================================================= */
 
 @theme {
-  /* משטחים */
-  --color-void: #03060b;
-  --color-abyss: #060b13;
-  --color-panel: #0a111b;
+  /* משטחים — מהעמוק לגבוה */
+  --color-void: #070908;
+  --color-abyss: #0a0d0c;
+  --color-panel: #0f1311;
+  --color-raised: #151a18;
 
-  /* קווי מתאר */
-  --color-hair: #1a2734;
-  --color-hair-lit: #2b4457;
+  /* קווי מתאר — עובי 1px בלבד */
+  --color-hair: #1d2421;
+  --color-hair-lit: #2c3632;
 
-  /* ניאון — המבטא הראשי */
-  --color-neon: #5cff9d;
-  --color-neon-soft: #a6ffcb;
-  --color-neon-deep: #0b7a45;
+  /* מבטא ירוק מעודן. שימוש חסכוני: כפתור ראשי, הדגשת מפתח, מצב פעיל */
+  --color-neon: #6fcf9b;
+  --color-neon-soft: #a9e6c6;
+  --color-neon-deep: #2c6a4b; /* דקורטיבי בלבד (פס גלילה, מסגרות) — לא לטקסט */
+  --color-on-accent: #04120a; /* טקסט על רקע מבטא (ניגודיות 10.1:1) */
 
-  /* ענבר — מבטא משני, במינון נמוך */
-  --color-amber: #ffc24d;
-  --color-amber-soft: #ffdb94;
-  --color-amber-deep: #6b4d10;
+  /* ענבר — אזהרות ותוכן משני בלבד */
+  --color-amber: #e6b85c;
+  --color-amber-soft: #efd6a0;
+  --color-amber-deep: #5c4614;
 
-  /* טיפוגרפיה */
-  --color-chalk: #eef4f2;
-  --color-mist: #9db0ab;
+  /* היררכיית טקסט ניטרלית */
+  --color-chalk: #eef1ef; /* ראשי */
+  --color-silver: #c3ccc8; /* משני חזק: פסקאות הובלה */
+  --color-mist: #9aa6a1; /* משני: תיאורים ותוויות (≥ 4.5:1 על כל המשטחים) */
 
-  /* צללים */
-  --shadow-panel: 0 24px 60px -24px rgb(0 0 0 / 0.9);
-  --shadow-neon: 0 0 28px -6px rgb(92 255 157 / 0.5);
+  /* סקאלת רדיוס אחת: control 12 / card 16 / sheet 24 (ושווה ערך ל-rounded-xl/2xl/3xl) */
+  --radius-control: 0.75rem;
+  --radius-card: 1rem;
+  --radius-sheet: 1.5rem;
+
+  /* סקאלת טיפוגרפיה. clamp מונע קפיצות בין מובייל לדסקטופ */
+  --text-display: clamp(1.625rem, 1rem + 3vw, 3.5rem);
+  --text-display--line-height: 1.12;
+  --text-display--letter-spacing: -0.02em;
+  --text-title: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+  --text-title--line-height: 1.2;
+  --text-title--letter-spacing: -0.01em;
+  --text-lead: clamp(1rem, 0.95rem + 0.3vw, 1.25rem);
+  --text-lead--line-height: 1.6;
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.4;
+
+  /* מרווחים */
+  --spacing-section: clamp(4rem, 3rem + 5vw, 7rem);
+
+  /* צללים רכים — בלי זוהר צבעוני */
+  --shadow-panel: 0 1px 0 0 rgb(255 255 255 / 0.03) inset, 0 16px 40px -24px rgb(0 0 0 / 0.7);
+  --shadow-cta: 0 8px 24px -12px rgb(111 207 155 / 0.45);
+  --shadow-neon: 0 8px 24px -12px rgb(111 207 155 / 0.45);
   --shadow-device:
-    0 45px 90px -32px rgb(0 0 0 / 0.95), 0 0 70px -20px rgb(92 255 157 / 0.4),
-    inset 0 1px 0 0 rgb(255 255 255 / 0.14);
+    0 40px 80px -40px rgb(0 0 0 / 0.85), 0 0 0 1px rgb(255 255 255 / 0.06);
 }
 
-/* משתני הגופנים מגיעים מ-next/font ולכן חייבים להישאר inline */
+/* משתנה הגופן מגיע מ-next/font ולכן חייב להישאר inline. גופן יחיד (Heebo) לכל התפקידים */
 @theme inline {
-  --font-display: var(--font-secular-one);
   --font-sans: var(--font-heebo);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-heebo);
+  /* מעבר: font-mono עדיין בשימוש בתוויות של מקטעים שטרם עוצבו (שלב 2) */
+  --font-mono: var(--font-heebo);
 }
 
 /* =========================================================================
@@ -65,6 +93,8 @@
     color-scheme: dark;
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-hair-lit) var(--color-void);
   }
 
   body {
@@ -75,26 +105,22 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  ::selection {
-    background-color: var(--color-neon);
-    color: #021309;
+  h1,
+  h2,
+  h3 {
+    font-weight: 500;
+    text-wrap: balance;
   }
 
+  ::selection {
+    background-color: var(--color-neon);
+    color: var(--color-on-accent);
+  }
+
+  /* מסגרת מיקוד גלויה. ללא border-radius: המסגרת עוקבת אחרי הצורה של האלמנט עצמו */
   :focus-visible {
     outline: 2px solid var(--color-neon);
     outline-offset: 3px;
-    border-radius: 6px;
-  }
-
-  /*
-   * פס גלילה דק ומודרני: מסלול כהה תואם לרקע, ואגודל ניאון-עמוק עדין
-   * שמבהיק לניאון המלא רק ב-hover — כדי שהוא יישאר ברקע ולא יתחרה בתוכן.
-   * html מקבל scrollbar-color/scrollbar-width לתמיכה ב-Firefox; שאר
-   * הדפדפנים (מבוססי Chromium/WebKit) משתמשים בפסאודו-אלמנטים למטה.
-   */
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-neon-deep) var(--color-void);
   }
 
   ::-webkit-scrollbar {
@@ -104,184 +130,133 @@
     background: var(--color-void);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-neon-deep);
+    background: var(--color-hair-lit);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-neon);
+    background: var(--color-neon-deep);
   }
 }
 
 /* =========================================================================
-   Components — זכוכית, מסגרות טכניות וזוהר
+   Components
    ========================================================================= */
 
 @layer components {
-  /* לוח זכוכית: שכבת שקיפות + טשטוש + הבהקה עליונה פנימית */
+  /* משטח: רקע אטום, מסגרת של פיקסל וצל רך (ללא טשטוש רקע) */
   .panel {
     position: relative;
-    isolation: isolate;
-    border: 1px solid color-mix(in oklab, var(--color-hair) 90%, transparent);
-    background:
-      linear-gradient(
-        155deg,
-        rgb(255 255 255 / 0.07) 0%,
-        rgb(255 255 255 / 0.02) 38%,
-        rgb(255 255 255 / 0) 72%
-      ),
-      rgb(4 8 14 / 0.55);
-    -webkit-backdrop-filter: blur(16px) saturate(135%);
-    backdrop-filter: blur(16px) saturate(135%);
-    box-shadow:
-      var(--shadow-panel),
-      inset 0 1px 0 0 rgb(255 255 255 / 0.07);
+    border: 1px solid var(--color-hair);
+    background-color: var(--color-panel);
+    box-shadow: var(--shadow-panel);
   }
 
-  /*
-   * קצה זכוכית "תופס אור": הילה בעובי פיקסל אחד בלבד שנוצרת מגרדיאנט
-   * וממוסכת לטבעת בעזרת mask-composite. זה מה שנותן לכרטיס את התחושה
-   * של זכוכית אמיתית במקום מסגרת שטוחה בצבע אחיד.
-   *
-   * אזהרה: .edge-lit תופסת את ::before, בדיוק כמו .brackets — אסור להשתמש
-   * בשתיהן על אותו אלמנט. שילוב עם .panel-rail (שתופסת ::after) תקין.
-   */
-  .edge-lit::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      145deg,
-      rgb(255 255 255 / 0.28) 0%,
-      rgb(255 255 255 / 0.05) 34%,
-      rgb(255 255 255 / 0) 62%
-    );
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  /* פס ניאון דק בראש הכרטיס שנדלק במעבר עכבר */
-  .panel-rail::after {
-    content: "";
-    position: absolute;
-    inset-block-start: -1px;
-    inset-inline: 1.75rem;
-    height: 1px;
-    background: linear-gradient(
-      to left,
-      transparent,
-      var(--color-neon),
-      transparent
-    );
-    opacity: 0.22;
-    transition: opacity 0.45s ease;
-    pointer-events: none;
-  }
-  .panel-rail:hover::after,
-  .panel-rail:focus-within::after {
-    opacity: 1;
-  }
-
-  /* סימני פינה טכניים — משתמשים בתכונות לוגיות כדי לכבד RTL */
-  .brackets::before,
-  .brackets::after {
-    content: "";
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    pointer-events: none;
-    border-color: color-mix(in oklab, var(--color-neon) 60%, transparent);
-  }
-  .brackets::before {
-    inset-block-start: -1px;
-    inset-inline-start: -1px;
-    border-block-start: 1px solid;
-    border-inline-start: 1px solid;
-  }
-  .brackets::after {
-    inset-block-end: -1px;
-    inset-inline-end: -1px;
-    border-block-end: 1px solid;
-    border-inline-end: 1px solid;
-  }
-
-  /* זוהר טקסט ניאון */
-  .neon-glow {
-    text-shadow:
-      0 0 18px rgb(92 255 157 / 0.55),
-      0 0 64px rgb(92 255 157 / 0.22);
-  }
-
-  /* קו הפרדה דק ומדורג */
+  /* קו הפרדה דק */
   .rule-hair {
     height: 1px;
-    background: linear-gradient(
-      to left,
-      transparent,
-      var(--color-hair-lit),
-      transparent
-    );
+    background-color: var(--color-hair);
   }
 
-  /* רשת "לוח מעגלים" שנשענת על תמונת הרקע */
-  .grid-weave {
-    background-image:
-      linear-gradient(to left, rgb(92 255 157 / 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(92 255 157 / 0.045) 1px, transparent 1px);
-    background-size: 68px 68px;
-    -webkit-mask-image: radial-gradient(
-      ellipse 85% 60% at 50% 0%,
-      #000 30%,
-      transparent 78%
-    );
-    mask-image: radial-gradient(
-      ellipse 85% 60% at 50% 0%,
-      #000 30%,
-      transparent 78%
-    );
+  /* ---------- כפתורים ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    border-radius: var(--radius-control);
+    font-weight: 500;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  /* פעולה ראשית — המקום העיקרי שבו המבטא מופיע כמשטח מלא */
+  .btn-primary {
+    background-color: var(--color-neon);
+    color: var(--color-on-accent);
+    box-shadow: var(--shadow-cta);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-neon-soft);
+  }
+
+  /* פעולה משנית — קו מתאר בלבד */
+  .btn-secondary {
+    border: 1px solid var(--color-hair-lit);
+    background-color: transparent;
+    color: var(--color-chalk);
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-raised);
+    border-color: color-mix(in oklab, var(--color-neon) 45%, var(--color-hair-lit));
+  }
+
+  /* ---------- תגית ---------- */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--color-hair);
+    border-radius: 999px;
+    background-color: var(--color-panel);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: var(--color-mist);
+  }
+
+  /* ---------- כותרות מקטע ---------- */
+  /* תווית קצרה מעל כותרת: אות רגילה, בלי ריווח אותיות (פוגע בקריאות העברית) */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    font-weight: 500;
+    color: var(--color-neon);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.25rem;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.6;
+  }
+
+  .section-title {
+    font-size: var(--text-title);
+    line-height: var(--text-title--line-height);
+    letter-spacing: var(--text-title--letter-spacing);
+    font-weight: 500;
+    color: var(--color-chalk);
   }
 }
 
 /* =========================================================================
    Motion
    הופעת אלמנטים בגלילה מנוהלת ע"י framer-motion (ראה lib/motion.ts).
-   כאן נשארות רק אנימציות אווירה רציפות.
+   כאן נשארת רק נקודת הסטטוס הרציפה.
    ========================================================================= */
 
 /*
- * טבעת ה-"פינג" של .beacon בנויה כ-::before נפרד שמתרחב ודועך, במקום
- * להנפיש box-shadow על הנקודה עצמה: box-shadow הוא תכונת ציור שנדרש
- * לחשב מחדש בכל פריים ואינה רצה על ה-GPU. transform+opacity על שכבה
- * נפרדת כן רצים על ה-GPU ומולחנים (compositing) בלי לגעת בציור.
+ * טבעת ה-"פינג" של .beacon בנויה כ-::before נפרד שמתרחב ודועך. transform+
+ * opacity על שכבה נפרדת רצים על ה-GPU ולא גורמים ל-repaint.
  */
 @keyframes beacon-ping {
   0% {
     transform: scale(1);
-    opacity: 0.55;
+    opacity: 0.45;
   }
   100% {
-    transform: scale(4);
+    transform: scale(3.2);
     opacity: 0;
-  }
-}
-
-@keyframes haze {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    opacity: 0.85;
-    transform: translate3d(0, -18px, 0) scale(1.06);
   }
 }
 
@@ -295,26 +270,7 @@
     inset: 0;
     border-radius: inherit;
     background-color: inherit;
-    animation: beacon-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
-    will-change: transform, opacity;
-  }
-  .haze {
-    animation: haze 14s ease-in-out infinite;
-    will-change: transform, opacity;
-  }
-}
-
-/*
- * במובייל (מתחת ל-sm, 640px) עוצרים את אנימציית .haze לגמרי: transform+
- * opacity רצים על ה-GPU ולא אמורים "לעלות" הרבה, אבל בשילוב עם blur ותמונת
- * הרקע שממילא נטענת ב-fixed, זו הפחתה אמיתית בעומס על מובייל חלש. האפקט
- * עצמו לא נעלם — ה-opacity הבסיסי (0.5, לפי keyframe ה-0%/100%) נשאר קבוע,
- * רק ההנפשה הרציפה מושבתת.
- */
-@media (max-width: 639.98px) {
-  .haze {
-    animation: none;
-    opacity: 0.5;
+    animation: beacon-ping 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 }
 
