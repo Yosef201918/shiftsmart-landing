@@ -685,7 +685,7 @@ const he: Dictionary = {
     metaDescription:
       "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
     pageTitle: "מדיניות פרטיות — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 30.09.2026",
+    lastUpdated: "עודכן לאחרונה: 04.10.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
@@ -703,7 +703,7 @@ const he: Dictionary = {
         },
         { text: "רק על המכשיר שלכם", format: "bold" },
         {
-          text: ". איננו מפעילים שרת שאוסף את נתוני המשמרות והשכר שלכם, ואיננו מוכרים או משתפים אותם. היוצא מן הכלל היחיד הוא שאלון המשוב האופציונלי, המתואר בהמשך.",
+          text: ". איננו מפעילים שרת שאוסף את נתוני המשמרות והשכר שלכם, ואיננו מוכרים או משתפים אותם. היוצאים מן הכלל הם שני אלה בלבד, והם אופציונליים: גיבוי לחשבון ה-Google Drive האישי שלכם, ושאלון המשוב, המתוארים בהמשך.",
         },
       ],
     },
@@ -753,7 +753,7 @@ const he: Dictionary = {
         { text: ". המשמעות: לאפליקציה יש גישה " },
         { text: "רק", format: "bold" },
         {
-          text: " לקובץ הגיבוי שהיא עצמה יצרה — היא לא יכולה לראות, לגשת או לנהל שום קובץ, תמונה, מסמך או תיקייה אחרים שכבר קיימים בחשבון ה-Drive שלכם.",
+          text: " לקבצי הגיבוי שהיא עצמה יצרה — היא לא יכולה לראות, לגשת או לנהל שום קובץ, תמונה, מסמך או תיקייה אחרים שכבר קיימים בחשבון ה-Drive שלכם. בכל גיבוי נוצר קובץ גיבוי חדש ומתוארך. האפליקציה שומרת עד 10 גיבויים אחרונים ומוחקת אוטומטית ישנים יותר, ורק קבצים שהאפליקציה עצמה יצרה. בעת שחזור אתם בוחרים איזה גיבוי לשחזר, ולפני כל שחזור נשמר במכשיר עותק ביטחון זמני של הנתונים הנוכחיים. ניתן למחוק כל קובץ גיבוי ישירות מתוך ה-Drive.",
         },
       ],
       paragraph3:
@@ -762,12 +762,12 @@ const he: Dictionary = {
     /* חדש: מתעד את שאלון המשוב האופציונלי, שהוא כרגע היוצא היחיד מהכלל "הכול נשאר במכשיר" */
     feedbackSurvey: {
       title: "שאלון משוב (אופציונלי)",
-      body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (בחירות, טקסט חופשי, גרסת האפליקציה ושפה) נשלחות לשרת שלנו המתארח ב-Cloudflare, ללא פרטים מזהים, ומשמשות לשיפור האפליקציה בלבד. אין חובה למלא את השאלון.",
+      body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (דירוג של 1–5 כוכבים, סימון בחירות, טקסט חופשי, גרסת האפליקציה ושפה) נשלחות לשרת שלנו המתארח ב-Cloudflare, ללא פרטים מזהים, ומשמשות לשיפור האפליקציה בלבד. כתובת ה-IP של המכשיר נחשפת טכנית לשרת בעת השליחה, ומשמשת רק להגבלת קצב נגד ספאם, ואינה נשמרת עם התשובות. אין חובה למלא את השאלון.",
     },
     /* חדש: מתעד את תשלומי ה-Pro תוך-אפליקתיים לצורך התאמה ל-Data Safety */
     inAppPurchases: {
       title: "רכישות בתוך האפליקציה",
-      body: "רכישות בתוך האפליקציה (שדרוג Pro) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום.",
+      body: "רכישות בתוך האפליקציה (שדרוג Pro) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום. סטטוס הרכישה נקבע לפי Google Play ונשמר גם במכשיר, כדי שהתכונות ימשיכו לעבוד. אינו כולל פרטי תשלום.",
     },
     thirdPartySharing: {
       title: "שיתוף עם צדדים שלישיים",
@@ -1232,7 +1232,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
     pageTitle: "Privacy Policy — Shift Smart",
-    lastUpdated: "Last updated: 30.09.2026",
+    lastUpdated: "Last updated: 04.10.2026",
     backToHome: "Back to home",
     intro:
       'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
@@ -1245,7 +1245,7 @@ const en: Dictionary = {
         },
         { text: "only on your device", format: "bold" },
         {
-          text: ". We do not run a server that collects your shift and pay data, and we do not sell or share it. The one exception is the optional feedback survey, described below.",
+          text: ". We do not run a server that collects your shift and pay data, and we do not sell or share it. The only exceptions are these two, both optional: backup to your own personal Google Drive account, and the feedback survey, both described below.",
         },
       ],
     },
@@ -1295,7 +1295,7 @@ const en: Dictionary = {
         { text: ". This means the app has access " },
         { text: "only", format: "bold" },
         {
-          text: " to the backup file it created itself — it cannot see, access, or manage any other file, photo, document, or folder already in your Drive account.",
+          text: " to the backup files it created itself — it cannot see, access, or manage any other file, photo, document, or folder already in your Drive account. Each backup creates a new, dated backup file. The app keeps up to the 10 most recent backups and automatically deletes older ones, and only files the app itself created. When restoring, you choose which backup to restore, and before every restore a temporary safety copy of your current data is saved on your device. You can delete any backup file directly from your Drive.",
         },
       ],
       paragraph3:
@@ -1304,12 +1304,12 @@ const en: Dictionary = {
     /* New: documents the optional feedback survey, currently the one exception to the "everything stays on-device" principle */
     feedbackSurvey: {
       title: "Feedback Survey (Optional)",
-      body: "If you choose to complete the in-app feedback survey, your answers (selections, free text, app version and language) are sent to our server hosted on Cloudflare without identifying details and are used only to improve the app. Completing it is not required.",
+      body: "If you choose to complete the in-app feedback survey, your answers (a 1–5 star rating, selected options, free text, app version and language) are sent to our server hosted on Cloudflare without identifying details and are used only to improve the app. Your device's IP address is technically exposed to the server when you submit, is used only for rate limiting against spam, and is not stored with your answers. Completing the survey is not required.",
     },
     /* New: documents in-app Pro purchases for Data Safety consistency */
     inAppPurchases: {
       title: "In-App Purchases",
-      body: "In-app purchases (Pro upgrade) are processed by Google Play. We do not receive or store payment details.",
+      body: "In-app purchases (Pro upgrade) are processed by Google Play. We do not receive or store payment details. The purchase status is determined by Google Play and is also stored on your device so that the features keep working. It does not include payment details.",
     },
     thirdPartySharing: {
       title: "Sharing With Third Parties",
