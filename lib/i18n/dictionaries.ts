@@ -696,7 +696,7 @@ const he: Dictionary = {
     metaDescription:
       "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
     pageTitle: "מדיניות פרטיות — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 04.10.2026",
+    lastUpdated: "עודכן לאחרונה: 06.10.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
@@ -773,7 +773,7 @@ const he: Dictionary = {
     /* חדש: מתעד את שאלון המשוב האופציונלי, שהוא כרגע היוצא היחיד מהכלל "הכול נשאר במכשיר" */
     feedbackSurvey: {
       title: "שאלון משוב (אופציונלי)",
-      body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (דירוג של 1–5 כוכבים, סימון בחירות, טקסט חופשי, גרסת האפליקציה ושפה) נשלחות לשרת שלנו המתארח ב-Cloudflare, ללא פרטים מזהים, ומשמשות לשיפור האפליקציה בלבד. כתובת ה-IP של המכשיר נחשפת טכנית לשרת בעת השליחה, ומשמשת רק להגבלת קצב נגד ספאם, ואינה נשמרת עם התשובות. אין חובה למלא את השאלון.",
+      body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (דירוג של 1–5 כוכבים, סימון בחירות, טקסט חופשי, גרסת האפליקציה ושפה) נשלחות לשרת שלנו המתארח ב-Cloudflare ומשמשות לשיפור האפליקציה בלבד. אם תבחרו להזין שם, הוא יישלח יחד עם התשובות. אם לא תזינו שם, המשוב אנונימי. כתובת ה-IP של המכשיר נחשפת טכנית לשרת בעת השליחה, ומשמשת רק להגבלת קצב נגד ספאם, ואינה נשמרת עם התשובות. אין חובה למלא את השאלון.",
     },
     /* חדש: מתעד את תשלומי ה-Pro תוך-אפליקתיים לצורך התאמה ל-Data Safety */
     inAppPurchases: {
@@ -1266,7 +1266,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
     pageTitle: "Privacy Policy — Shift Smart",
-    lastUpdated: "Last updated: 04.10.2026",
+    lastUpdated: "Last updated: 06.10.2026",
     backToHome: "Back to home",
     intro:
       'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
@@ -1338,7 +1338,7 @@ const en: Dictionary = {
     /* New: documents the optional feedback survey, currently the one exception to the "everything stays on-device" principle */
     feedbackSurvey: {
       title: "Feedback Survey (Optional)",
-      body: "If you choose to complete the in-app feedback survey, your answers (a 1–5 star rating, selected options, free text, app version and language) are sent to our server hosted on Cloudflare without identifying details and are used only to improve the app. Your device's IP address is technically exposed to the server when you submit, is used only for rate limiting against spam, and is not stored with your answers. Completing the survey is not required.",
+      body: "If you choose to complete the in-app feedback survey, your answers (a 1–5 star rating, selected options, free text, app version and language) are sent to our server hosted on Cloudflare and are used only to improve the app. If you choose to enter a name, it is sent together with your answers. If you do not enter a name, the feedback is anonymous. Your device's IP address is technically exposed to the server when you submit, is used only for rate limiting against spam, and is not stored with your answers. Completing the survey is not required.",
     },
     /* New: documents in-app Pro purchases for Data Safety consistency */
     inAppPurchases: {

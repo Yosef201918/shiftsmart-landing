@@ -17,7 +17,7 @@ const siteUrl =
       : "http://localhost:3000");
 
 /* תאריך קבוע שמעודכן ידנית בכל שינוי תוכן מהותי — new Date() שינה אותו בכל בנייה ולכן גוגל התעלמה מהשדה */
-const lastModified = new Date("2026-10-04");
+const lastModified = new Date("2026-10-06");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
