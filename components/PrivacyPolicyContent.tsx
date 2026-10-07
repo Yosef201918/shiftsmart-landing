@@ -7,6 +7,10 @@ import RichText from "@/components/RichText";
 import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/links";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
+/* עיצוב קישור האימייל — משותף לפסקת שאלון המשוב ולסעיף יצירת הקשר */
+const EMAIL_LINK_CLASS =
+  "text-neon underline decoration-neon-deep underline-offset-4 transition duration-300 hover:text-neon-soft";
+
 /*
  * תוכן דף מדיניות הפרטיות, כרכיב לקוח נפרד מ-app/privacy/page.tsx: ה-page
  * עצמו נשאר Server Component כדי שיוכל לייצא metadata (חובה ב-Next.js —
@@ -88,7 +92,11 @@ export default function PrivacyPolicyContent() {
           {privacy.feedbackSurvey.title}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">
-          {privacy.feedbackSurvey.body}
+          {privacy.feedbackSurvey.body}{" "}
+          {privacy.feedbackSurvey.deletionRequest}{" "}
+          <a href={CONTACT_MAILTO} dir="ltr" className={EMAIL_LINK_CLASS}>
+            {CONTACT_EMAIL}
+          </a>
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
@@ -155,11 +163,7 @@ export default function PrivacyPolicyContent() {
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">
           {privacy.contactBody}{" "}
-          <a
-            href={CONTACT_MAILTO}
-            dir="ltr"
-            className="text-neon underline decoration-neon-deep underline-offset-4 transition duration-300 hover:text-neon-soft"
-          >
+          <a href={CONTACT_MAILTO} dir="ltr" className={EMAIL_LINK_CLASS}>
             {CONTACT_EMAIL}
           </a>
         </p>

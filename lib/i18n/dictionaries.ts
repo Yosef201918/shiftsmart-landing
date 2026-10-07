@@ -282,7 +282,7 @@ export interface Dictionary {
       paragraph3: string;
     };
     /** שאלון המשוב האופציונלי בתוך האפליקציה — היוצא מן הכלל היחיד לעיקרון "הכול נשאר במכשיר" */
-    feedbackSurvey: { title: string; body: string };
+    feedbackSurvey: { title: string; body: string; deletionRequest: string };
     /** רכישות תוך-אפליקתיות (שדרוג Pro) — מעובדות ע"י Google Play, לא על ידינו */
     inAppPurchases: { title: string; body: string };
     thirdPartySharing: { title: string; body: string };
@@ -696,7 +696,7 @@ const he: Dictionary = {
     metaDescription:
       "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
     pageTitle: "מדיניות פרטיות — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 06.10.2026",
+    lastUpdated: "עודכן לאחרונה: 07.10.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
@@ -774,11 +774,12 @@ const he: Dictionary = {
     feedbackSurvey: {
       title: "שאלון משוב (אופציונלי)",
       body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (דירוג של 1–5 כוכבים, סימון בחירות, טקסט חופשי, גרסת האפליקציה ושפה) נשלחות לשרת שלנו המתארח ב-Cloudflare ומשמשות לשיפור האפליקציה בלבד. אם תבחרו להזין שם, הוא יישלח יחד עם התשובות. אם לא תזינו שם, המשוב אנונימי. כתובת ה-IP של המכשיר נחשפת טכנית לשרת בעת השליחה, ומשמשת רק להגבלת קצב נגד ספאם, ואינה נשמרת עם התשובות. אין חובה למלא את השאלון.",
+      deletionRequest: "לבקשת מחיקת משוב ששלחתם, פנו אלינו במייל:",
     },
     /* חדש: מתעד את תשלומי ה-Pro תוך-אפליקתיים לצורך התאמה ל-Data Safety */
     inAppPurchases: {
       title: "רכישות בתוך האפליקציה",
-      body: "רכישות בתוך האפליקציה (שדרוג Pro) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום. סטטוס הרכישה נקבע לפי Google Play ונשמר גם במכשיר, כדי שהתכונות ימשיכו לעבוד. אינו כולל פרטי תשלום.",
+      body: "רכישות בתוך האפליקציה (שדרוג Pro) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום. סטטוס הרכישה נקבע לפי Google Play ונשמר גם במכשיר, כדי שהתכונות ימשיכו לעבוד.",
     },
     thirdPartySharing: {
       title: "שיתוף עם צדדים שלישיים",
@@ -829,10 +830,10 @@ const he: Dictionary = {
     metaDescription:
       "תנאי השימוש באפליקציית Shift Smart — הסכמה לתנאים, תיאור השירות, אחריות המשתמש, קניין רוחני והגבלת אחריות.",
     pageTitle: "תנאי שימוש — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 17.08.2026",
+    lastUpdated: "עודכן לאחרונה: 07.10.2026",
     backToHome: "חזרה לדף הבית",
     intro:
-      "תנאי שימוש אלה (\"התנאים\") חלים על השימוש באפליקציית Shift Smart (\"האפליקציה\"). התקנת האפליקציה או השימוש בה מהווים הסכמה מלאה לתנאים אלה. אם אינכם מסכימים לתנאי מהם, אנא הימנעו משימוש באפליקציה.",
+      "תנאי שימוש אלה (\"התנאים\") חלים על השימוש באפליקציית Shift Smart (\"האפליקציה\"). התקנת האפליקציה או השימוש בה מהווים הסכמה מלאה לתנאים אלה. אם אינכם מסכימים לחלק כלשהו מתנאים אלה, אנא הימנעו משימוש באפליקציה.",
     serviceDescription: {
       title: "תיאור השירות",
       body: "Shift Smart היא אפליקציית אנדרואיד מקומית (offline-first) לניהול משמרות, שעון נוכחות וחישוב שכר. האפליקציה מסייעת לכם לעקוב אחרי שעות העבודה, לחשב שכר, שעות נוספות ותוספות בהתאם לנתונים שאתם מזינים, ולייצא דוחות וסיכומים. Shift Smart אינה שירות תשלומי שכר רשמי, אינה מחוברת למעסיק שלכם, ואינה מבצעת שום העברת כספים.",
@@ -1266,7 +1267,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
     pageTitle: "Privacy Policy — Shift Smart",
-    lastUpdated: "Last updated: 06.10.2026",
+    lastUpdated: "Last updated: 07.10.2026",
     backToHome: "Back to home",
     intro:
       'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
@@ -1339,11 +1340,12 @@ const en: Dictionary = {
     feedbackSurvey: {
       title: "Feedback Survey (Optional)",
       body: "If you choose to complete the in-app feedback survey, your answers (a 1–5 star rating, selected options, free text, app version and language) are sent to our server hosted on Cloudflare and are used only to improve the app. If you choose to enter a name, it is sent together with your answers. If you do not enter a name, the feedback is anonymous. Your device's IP address is technically exposed to the server when you submit, is used only for rate limiting against spam, and is not stored with your answers. Completing the survey is not required.",
+      deletionRequest: "To request deletion of feedback you have already sent, contact us by email:",
     },
     /* New: documents in-app Pro purchases for Data Safety consistency */
     inAppPurchases: {
       title: "In-App Purchases",
-      body: "In-app purchases (Pro upgrade) are processed by Google Play. We do not receive or store payment details. The purchase status is determined by Google Play and is also stored on your device so that the features keep working. It does not include payment details.",
+      body: "In-app purchases (Pro upgrade) are processed by Google Play. We do not receive or store payment details. The purchase status is determined by Google Play and is also stored on your device so that the features keep working.",
     },
     thirdPartySharing: {
       title: "Sharing With Third Parties",
@@ -1394,7 +1396,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's terms of service — agreement to the terms, service description, user responsibility, intellectual property, and limitation of liability.",
     pageTitle: "Terms of Service — Shift Smart",
-    lastUpdated: "Last updated: 17.08.2026",
+    lastUpdated: "Last updated: 07.10.2026",
     backToHome: "Back to home",
     intro:
       'These Terms of Service ("the Terms") govern your use of the Shift Smart app ("the app"). Installing or using the app constitutes your full agreement to these Terms. If you do not agree to any part of these Terms, please refrain from using the app.',
