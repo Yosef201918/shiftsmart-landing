@@ -286,7 +286,8 @@ export interface Dictionary {
     /** רכישות תוך-אפליקתיות (שדרוג Pro) — מעובדות ע"י Google Play, לא על ידינו */
     inAppPurchases: { title: string; body: string };
     thirdPartySharing: { title: string; body: string };
-    dataDeletion: { title: string; body: string };
+    /** requestNote נגמר בנקודתיים: אחריו מוצג קישור המייל (ראו PrivacyPolicyContent) */
+    dataDeletion: { title: string; body: string; requestNote: string };
     minors: { title: string; body: string };
     /** הנתונים שנאספים דרך אתר השיווק עצמו (טפסים, ניתוח תנועה, אחסון מקומי) — נפרד מהאפליקציה */
     website: {
@@ -307,7 +308,11 @@ export interface Dictionary {
     backToHome: string;
     intro: string;
     serviceDescription: { title: string; body: string };
+    /** גיל מינימלי וזיקה למדיניות הפרטיות */
+    eligibility: { title: string; body: string };
     openBeta: { title: string; body: RichTextSegment[] };
+    /** רכישת Pro: חד-פעמית כיום, תכונות עתידיות עשויות להיות נפרדות (כולל מנוי), החזרים */
+    purchases: { title: string; body: string };
     userResponsibilityTitle: string;
     userResponsibilityItems: [string, string, string];
     intellectualProperty: { title: string; body: string };
@@ -562,12 +567,12 @@ const he: Dictionary = {
       {
         title: "גרסת Pro",
         description:
-          "רבדים נוספים בתשלום מתוכננים לאחר סיום הבטא — כרגע נמצאים בפיתוח, ללא מחיר או תאריך סופיים.",
+          "שדרוג Pro כבר זמין ברכישה חד-פעמית. תכונות Pro נוספות נמצאות בתכנון, ולא בהכרח יהיו כלולות ברכישה הקיימת — ייתכן שיוצעו בנפרד, למשל במנוי, ללא מחיר או תאריך סופיים.",
       },
       {
         title: "גיבוי וסנכרון ל-Google Drive",
         description:
-          "גיבוי אוטומטי של הנתונים שלכם ישירות לחשבון ה-Google Drive, בנוסף לגיבוי הידני הקיים — בפיתוח פעיל.",
+          "גיבוי ידני ל-Google Drive כבר זמין. גיבוי אוטומטי וסנכרון נוספים לחשבון ה-Google Drive נמצאים בפיתוח פעיל.",
       },
     ],
   },
@@ -586,7 +591,7 @@ const he: Dictionary = {
       {
         question: "האם האפליקציה תישאר בחינם?",
         answer:
-          "כן — כל התכונות שזמינות היום ימשיכו להיות חינמיות גם אחרי הבטא. בעתיד ייתכן שנוסיף תכונות פרימיום אופציונליות, אבל שעון הנוכחות והחישובים הבסיסיים יישארו חינמיים תמיד.",
+          "שעון הנוכחות והחישובים הבסיסיים חינמיים, ואנחנו מתכוונים שיישארו כך. בנוסף יש שדרוג Pro אופציונלי ברכישה חד-פעמית דרך Google Play, שכולל את תכונות ה-Pro הקיימות היום. תכונות Pro חדשות בעתיד לא בהכרח יהיו כלולות ברכישה זו — ייתכן שיוצעו בנפרד, למשל במנוי — ונציין זאת בבירור לפני כל חיוב.",
       },
       {
         question: "מה עושים אם מצאתי באג?",
@@ -732,7 +737,7 @@ const he: Dictionary = {
       {
         label: "יומן (קריאה/כתיבה):",
         /* עודכן: נוספה הבהרה מפורשת שגם משמרות מתוכננות (לא רק אירועים קיימים) נכתבות למכשיר בלבד */
-        body: "משמשת אך ורק לתכונת סנכרון המשמרות ליומן — ורק אם בחרתם להפעיל או להשתמש בתכונה זו. אירועי היומן נוצרים ונקראים מקומית על המכשיר בלבד, ואיננו שולחים שום נתון יומן לשרת חיצוני. משמרות מתוכננות נכתבות ליומן במכשיר בלבד.",
+        body: "משמשת אך ורק לתכונת סנכרון המשמרות ליומן — ורק אם בחרתם להפעיל או להשתמש בתכונה זו. בעת סנכרון, משמרות מתוכננות נשמרות גם ביומן של המכשיר (ולא רק באפליקציה), ואירועי היומן נוצרים ונקראים מקומית על המכשיר בלבד. איננו שולחים שום נתון יומן לשרת חיצוני. אם היומן שבחרתם מסונכרן עם חשבון ענן (למשל Google), הסנכרון הזה מתבצע על ידי המכשיר או ספק היומן ולא על ידינו.",
       },
       {
         label: "מצלמה/גלריה:",
@@ -753,7 +758,7 @@ const he: Dictionary = {
         { text: "בנוסף לגיבוי המקומי לקובץ, האפליקציה מציעה תכונה " },
         { text: "אופציונלית", format: "bold" },
         {
-          text: " — כבויה כברירת מחדל ופועלת רק אם תפעילו אותה — לגיבוי ושחזור אותם הנתונים בדיוק (עבודות, משמרות ורשומות נלוות) לחשבון ה-Google Drive האישי שלכם. כדי להשתמש בה יש להתחבר במפורש עם חשבון Google ולאשר גישה במסך ההרשאות של Google עצמו.",
+          text: " — כבויה כברירת מחדל ופועלת רק אם תפעילו אותה — לגיבוי ושחזור של נתוני האפליקציה (עבודות, משמרות ורשומות נלוות) לחשבון ה-Google Drive האישי שלכם. הגיבוי כולל את נתוני האפליקציה בלבד ואינו כולל תמונות, קבלות או קבצים מצורפים, שנשארים במכשיר. כדי להשתמש בה יש להתחבר במפורש עם חשבון Google ולאשר גישה במסך ההרשאות של Google עצמו.",
         },
       ],
       paragraph2: [
@@ -773,13 +778,13 @@ const he: Dictionary = {
     /* חדש: מתעד את שאלון המשוב האופציונלי, שהוא כרגע היוצא היחיד מהכלל "הכול נשאר במכשיר" */
     feedbackSurvey: {
       title: "שאלון משוב (אופציונלי)",
-      body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (דירוג של 1–5 כוכבים, סימון בחירות, טקסט חופשי, גרסת האפליקציה ושפה) נשלחות לשרת שלנו המתארח ב-Cloudflare ומשמשות לשיפור האפליקציה בלבד. אם תבחרו להזין שם, הוא יישלח יחד עם התשובות. אם לא תזינו שם, המשוב אנונימי. כתובת ה-IP של המכשיר נחשפת טכנית לשרת בעת השליחה, ומשמשת רק להגבלת קצב נגד ספאם, ואינה נשמרת עם התשובות. אין חובה למלא את השאלון.",
+      body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (דירוג של 1–5 כוכבים, סימון בחירות, טקסט חופשי, גרסת האפליקציה, שפה ופלטפורמת המכשיר — למשל Android) נשלחות לשרת שלנו המתארח ב-Cloudflare (שירות ענן שעשוי לעבד מידע גם מחוץ לישראל) ומשמשות לשיפור האפליקציה בלבד. איננו אוספים או שולחים מזהה מכשיר. אם תבחרו להזין שם, הוא יישלח יחד עם התשובות. אם לא תזינו שם, המשוב אנונימי. כתובת ה-IP של המכשיר נחשפת טכנית לשרת בעת השליחה, ומשמשת רק להגבלת קצב נגד ספאם, ואינה נשמרת עם התשובות. אין חובה למלא את השאלון.",
       deletionRequest: "לבקשת מחיקת משוב ששלחתם, פנו אלינו במייל:",
     },
     /* חדש: מתעד את תשלומי ה-Pro תוך-אפליקתיים לצורך התאמה ל-Data Safety */
     inAppPurchases: {
       title: "רכישות בתוך האפליקציה",
-      body: "רכישות בתוך האפליקציה (שדרוג Pro) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום. סטטוס הרכישה נקבע לפי Google Play ונשמר גם במכשיר, כדי שהתכונות ימשיכו לעבוד.",
+      body: "רכישות בתוך האפליקציה (שדרוג Pro, רכישה חד-פעמית) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום. סטטוס הרכישה נקבע לפי Google Play ונשמר גם במכשיר, כדי שהתכונות ימשיכו לעבוד. פרטי הרכישה, ההחזרים ותכונות Pro עתידיות מפורטים בתנאי השימוש.",
     },
     thirdPartySharing: {
       title: "שיתוף עם צדדים שלישיים",
@@ -787,18 +792,20 @@ const he: Dictionary = {
     },
     dataDeletion: {
       title: "מחיקת נתונים",
-      body: "אתם יכולים למחוק עבודות, משמרות בודדות, או לאפס את כל נתוני האפליקציה בכל עת מתוך ההגדרות. מחיקה כזו היא מיידית ומלאה על המכשיר.",
+      body: "אתם יכולים למחוק עבודות, משמרות בודדות, או לאפס את כל נתוני האפליקציה בכל עת מתוך ההגדרות. מחיקה כזו היא מיידית ומלאה על המכשיר. גיבויים בחשבון ה-Google Drive שלכם ניתן למחוק ישירות משם.",
+      requestNote:
+        "נתונים שנשמרו אצלנו (משוב שנשלח מהאפליקציה, וביקורות או הצעות פיצ'ר שנשלחו דרך האתר): לבקשת עיון, תיקון או מחיקה, פנו אלינו במייל:",
     },
     minors: {
       title: "קטינים",
-      body: "האפליקציה אינה מיועדת לילדים מתחת לגיל 13, ואיננו אוספים ביודעין מידע מקטינים.",
+      body: "האפליקציה אינה מיועדת לילדים מתחת לגיל 13, ואיננו אוספים ביודעין מידע מילדים מתחת לגיל זה. מי שטרם מלאו לו 18 רשאי להשתמש בה רק בהסכמת הורה או אפוטרופוס.",
     },
     website: {
       title: "הנתונים באתר זה",
       items: [
         {
           label: "ביקורות והצעות פיצ'ר:",
-          body: "כששולחים ביקורת דרך האתר, נשמרים במסד הנתונים שלנו (Supabase) השם שהוזן, הדירוג (1–5 כוכבים) ותוכן הביקורת. בהצעת פיצ'ר נשמרים השם ותיאור הרעיון. ביקורת מוצגת באתר (שם ותוכן) רק לאחר אישור ידני שלנו. אין חובה לשלוח אותן, ומומלץ לא לכלול בהן פרטים אישיים.",
+          body: "כששולחים ביקורת דרך האתר, נשמרים במסד הנתונים שלנו (Supabase) השם שהוזן, הדירוג (1–5 כוכבים) ותוכן הביקורת. בהצעת פיצ'ר נשמרים השם ותיאור הרעיון. ביקורת מוצגת באתר (שם ותוכן) רק לאחר אישור ידני שלנו. אין חובה לשלוח אותן, ומומלץ לא לכלול בהן פרטים אישיים. שירות הענן של Supabase עשוי לאחסן מידע גם בשרתים מחוץ לישראל. לבקשת מחיקה, ראו את הסעיף \"מחיקת נתונים\" למעלה.",
         },
         {
           label: "Vercel Analytics:",
@@ -820,15 +827,16 @@ const he: Dictionary = {
     },
     applicableLaw: {
       title: "אילו חוקי פרטיות חלים על מדיניות זו",
-      body: "האפליקציה מיועדת בעיקרה למשתמשים בישראל ופותחה על ידי מפתח ישראלי, ולכן מדיניות זו כפופה לחוק הגנת הפרטיות הישראלי, כפי שתוקן בתיקון 13 (בתוקף מאוגוסט 2025), המחייב שקיפות לגבי איסוף ושימוש במידע אישי. תקנות ה-GDPR האירופי וה-CCPA האמריקאי (קליפורניה) אינן חלות על האפליקציה כיום, מכיוון שאיננו מעבדים באופן שיטתי מידע אישי של תושבי האיחוד האירופי או קליפורניה בהיקף שמפעיל את דרישות החוקים הללו. אם וכאשר בסיס המשתמשים יתרחב לאזורים אלו בהיקף משמעותי, נבחן את הנושא מחדש ונעדכן מדיניות זו בהתאם.",
+      body: "האפליקציה מיועדת בעיקרה למשתמשים בישראל ופותחה על ידי מפתח ישראלי, ולכן מדיניות זו כפופה לחוק הגנת הפרטיות הישראלי, כפי שתוקן בתיקון 13 (בתוקף מאוגוסט 2025), המחייב שקיפות לגבי איסוף ושימוש במידע אישי. האפליקציה אינה מכוונת לתושבי האיחוד האירופי או קליפורניה. אם וכאשר בסיס המשתמשים יתרחב לאזורים אלו בהיקף משמעותי, נבחן את הדרישות החלות עלינו ונעדכן מדיניות זו בהתאם.",
     },
     contactTitle: "יצירת קשר",
-    contactBody: "לשאלות בנוגע למדיניות פרטיות זו, ניתן ליצור קשר בכתובת:",
+    contactBody:
+      "Shift Smart מופעלת על ידי מפתח עצמאי בישראל. לשאלות בנוגע למדיניות פרטיות זו, ניתן ליצור קשר בכתובת:",
   },
   terms: {
     metaTitle: "תנאי שימוש — Shift Smart",
     metaDescription:
-      "תנאי השימוש באפליקציית Shift Smart — הסכמה לתנאים, תיאור השירות, אחריות המשתמש, קניין רוחני והגבלת אחריות.",
+      "תנאי השימוש באפליקציית Shift Smart — הסכמה לתנאים, תיאור השירות, גיל מינימלי, רכישות Pro, אחריות המשתמש, קניין רוחני והגבלת אחריות.",
     pageTitle: "תנאי שימוש — Shift Smart",
     lastUpdated: "עודכן לאחרונה: 07.10.2026",
     backToHome: "חזרה לדף הבית",
@@ -836,7 +844,11 @@ const he: Dictionary = {
       "תנאי שימוש אלה (\"התנאים\") חלים על השימוש באפליקציית Shift Smart (\"האפליקציה\"). התקנת האפליקציה או השימוש בה מהווים הסכמה מלאה לתנאים אלה. אם אינכם מסכימים לחלק כלשהו מתנאים אלה, אנא הימנעו משימוש באפליקציה.",
     serviceDescription: {
       title: "תיאור השירות",
-      body: "Shift Smart היא אפליקציית אנדרואיד מקומית (offline-first) לניהול משמרות, שעון נוכחות וחישוב שכר. האפליקציה מסייעת לכם לעקוב אחרי שעות העבודה, לחשב שכר, שעות נוספות ותוספות בהתאם לנתונים שאתם מזינים, ולייצא דוחות וסיכומים. Shift Smart אינה שירות תשלומי שכר רשמי, אינה מחוברת למעסיק שלכם, ואינה מבצעת שום העברת כספים.",
+      body: "Shift Smart היא אפליקציית אנדרואיד מקומית (offline-first) לניהול משמרות, שעון נוכחות וחישוב שכר. האפליקציה מסייעת לכם לעקוב אחרי שעות העבודה, לחשב שכר, שעות נוספות ותוספות בהתאם לנתונים שאתם מזינים, ולייצא דוחות וסיכומים. Shift Smart אינה שירות תשלומי שכר רשמי, אינה מחוברת למעסיק שלכם, ואינה מבצעת העברת כספים, למעט רכישת Pro האופציונלית המעובדת על ידי Google Play.",
+    },
+    eligibility: {
+      title: "גיל מינימלי ופרטיות",
+      body: "האפליקציה מיועדת למי שמלאו לו 18 שנים. קטינים מגיל 13 רשאים להשתמש בה רק בהסכמת הורה או אפוטרופוס שלהם, והאפליקציה אינה מיועדת לילדים מתחת לגיל 13. השימוש באפליקציה כפוף גם למדיניות הפרטיות באתר, המסבירה אילו נתונים נשמרים ואיפה.",
     },
     openBeta: {
       title: "גרסת בטא פתוחה",
@@ -847,6 +859,10 @@ const he: Dictionary = {
           text: " בחנות Google Play. המשמעות: ייתכנו תקלות, שגיאות חישוב, אובדן נתונים או שינויים תכופים בתכונות ובממשק. אנחנו לא מתחייבים לזמינות רצופה, לדיוק מוחלט של החישובים, או להמשך פיתוח וקיום השירות בצורתו הנוכחית. מומלץ לגבות את הנתונים שלכם באופן שוטף דרך תכונת הגיבוי שבאפליקציה.",
         },
       ],
+    },
+    purchases: {
+      title: "רכישות Pro",
+      body: "האפליקציה כוללת שדרוג Pro אופציונלי, הנרכש ברכישה חד-פעמית דרך Google Play. המחיר מוצג ב-Google Play לפני הרכישה, והרכישה כוללת את תכונות ה-Pro הקיימות במועד הרכישה. תכונות Pro חדשות שנוסיף בעתיד אינן בהכרח כלולות ברכישה זו, וייתכן שיוצעו בנפרד, לרבות במסגרת מנוי או בתשלום נוסף; במקרה כזה נציין זאת בבירור לפני כל חיוב. התשלום וההחזרים כפופים לתנאי Google Play ולמדיניות ההחזרים שלה (בדרך כלל ניתן לבקש החזר דרך Google בתוך 48 שעות מהרכישה), ובכל מקרה מבלי לגרוע מזכויותיכם לפי דיני הגנת הצרכן. לפניות בנושא רכישה ניתן לפנות אלינו גם במייל.",
     },
     userResponsibilityTitle: "אחריות המשתמש",
     userResponsibilityItems: [
@@ -860,7 +876,7 @@ const he: Dictionary = {
     },
     liability: {
       title: "הגבלת אחריות",
-      body: "האפליקציה מסופקת \"כפי שהיא\" (AS IS), ללא כל התחייבות לדיוק, זמינות רצופה או התאמה למטרה מסוימת. Shift Smart ומפתחיה לא יישאו באחריות לכל נזק — ישיר או עקיף — שייגרם כתוצאה משימוש באפליקציה, לרבות טעויות חישוב שכר, אובדן נתונים או אי-זמינות זמנית של השירות.",
+      body: "האפליקציה מסופקת \"כפי שהיא\" (AS IS), ללא התחייבות לדיוק, זמינות רצופה או התאמה למטרה מסוימת. במידה המרבית שהדין מתיר, Shift Smart ומפתחיה לא יישאו באחריות לנזק ישיר או עקיף שייגרם כתוצאה משימוש באפליקציה, לרבות טעויות חישוב שכר, אובדן נתונים או אי-זמינות זמנית של השירות. אין באמור כדי לפגוע בזכויות שהדין הקוגנטי, ובכלל זה דיני הגנת הצרכן, מקנה לכם ושאינן ניתנות להתניה, או באחריות שאי אפשר להגביל לפי דין.",
     },
     changes: {
       title: "שינויים באפליקציה ובתנאים",
@@ -868,10 +884,11 @@ const he: Dictionary = {
     },
     governingLaw: {
       title: "דין חל וסמכות שיפוט",
-      body: "תנאי שימוש אלה כפופים לדיני מדינת ישראל בלבד, וסמכות השיפוט הבלעדית בכל מחלוקת הנוגעת אליהם נתונה לבתי המשפט המוסמכים בישראל.",
+      body: "תנאי שימוש אלה כפופים לדיני מדינת ישראל. סמכות השיפוט בכל מחלוקת הנוגעת אליהם נתונה לבתי המשפט המוסמכים בישראל, וזאת מבלי לגרוע מכל זכות שהדין הקוגנטי מקנה לכם כצרכנים.",
     },
     contactTitle: "יצירת קשר",
-    contactBody: "לשאלות בנוגע לתנאי שימוש אלה, ניתן ליצור קשר בכתובת:",
+    contactBody:
+      "Shift Smart מופעלת על ידי מפתח עצמאי בישראל. לשאלות בנוגע לתנאי שימוש אלה, ניתן ליצור קשר בכתובת:",
   },
 };
 
@@ -1133,12 +1150,12 @@ const en: Dictionary = {
       {
         title: "Pro Tier",
         description:
-          "Additional paid tiers are planned for after the Beta — currently in development, with no final price or date yet.",
+          "The Pro upgrade is already available as a one-time purchase. Additional Pro features are being planned and are not necessarily included in the existing purchase — they may be offered separately, for example as a subscription, with no final price or date yet.",
       },
       {
         title: "Google Drive Backup & Sync",
         description:
-          "Automatic backup of your data straight to your Google Drive account, alongside the existing manual backup — actively in development.",
+          "Manual backup to Google Drive is already available. Automatic backup and sync to your Google Drive account are actively in development.",
       },
     ],
   },
@@ -1157,7 +1174,7 @@ const en: Dictionary = {
       {
         question: "Will the app stay free?",
         answer:
-          "Yes — every feature available today will stay free after the Beta too. We might add optional premium features down the line, but the core time clock and calculations will always be free.",
+          "The time clock and the core calculations are free, and we intend to keep them that way. There is also an optional Pro upgrade, bought as a one-time purchase through Google Play, which includes the Pro features that exist today. New Pro features added in the future are not necessarily included in this purchase — they may be offered separately, for example as a subscription — and we will state it clearly before any charge.",
       },
       {
         question: "What should I do if I find a bug?",
@@ -1298,7 +1315,7 @@ const en: Dictionary = {
       {
         label: "Calendar (read/write):",
         /* Updated: explicitly clarifies that scheduled shifts, not just existing events, are written to the device only */
-        body: "Used solely for the shift-to-calendar sync feature — and only if you choose to enable or use it. Calendar events are created and read locally on your device only, and we never send any calendar data to an external server. Scheduled shifts are written to the device calendar only.",
+        body: "Used solely for the shift-to-calendar sync feature — and only if you choose to enable or use it. When you sync, scheduled shifts are saved to your device's calendar as well (not only inside the app), and calendar events are created and read locally on your device only. We never send any calendar data to an external server. If the calendar you choose is synced to a cloud account (for example, Google), that sync is performed by your device or calendar provider, not by us.",
       },
       {
         label: "Camera/Gallery:",
@@ -1319,7 +1336,7 @@ const en: Dictionary = {
         { text: "In addition to the local file backup, the app offers an " },
         { text: "optional", format: "bold" },
         {
-          text: " feature — off by default and active only if you turn it on — to back up and restore the exact same data (jobs, shifts, and related records) to your personal Google Drive account. Using it requires you to explicitly sign in with a Google account and grant access on Google's own permission screen.",
+          text: " feature — off by default and active only if you turn it on — to back up and restore your app data (jobs, shifts, and related records) to your personal Google Drive account. The backup contains app data only — it does not include photos, receipts, or other attached files, which stay on your device. Using it requires you to explicitly sign in with a Google account and grant access on Google's own permission screen.",
         },
       ],
       paragraph2: [
@@ -1339,13 +1356,13 @@ const en: Dictionary = {
     /* New: documents the optional feedback survey, currently the one exception to the "everything stays on-device" principle */
     feedbackSurvey: {
       title: "Feedback Survey (Optional)",
-      body: "If you choose to complete the in-app feedback survey, your answers (a 1–5 star rating, selected options, free text, app version and language) are sent to our server hosted on Cloudflare and are used only to improve the app. If you choose to enter a name, it is sent together with your answers. If you do not enter a name, the feedback is anonymous. Your device's IP address is technically exposed to the server when you submit, is used only for rate limiting against spam, and is not stored with your answers. Completing the survey is not required.",
+      body: "If you choose to complete the in-app feedback survey, your answers (a 1–5 star rating, selected options, free text, app version, language, and device platform — for example, Android) are sent to our server hosted on Cloudflare (a cloud service that may process data outside Israel) and are used only to improve the app. We do not collect or send a device identifier. If you choose to enter a name, it is sent together with your answers. If you do not enter a name, the feedback is anonymous. Your device's IP address is technically exposed to the server when you submit, is used only for rate limiting against spam, and is not stored with your answers. Completing the survey is not required.",
       deletionRequest: "To request deletion of feedback you have already sent, contact us by email:",
     },
     /* New: documents in-app Pro purchases for Data Safety consistency */
     inAppPurchases: {
       title: "In-App Purchases",
-      body: "In-app purchases (Pro upgrade) are processed by Google Play. We do not receive or store payment details. The purchase status is determined by Google Play and is also stored on your device so that the features keep working.",
+      body: "In-app purchases (Pro upgrade, a one-time purchase) are processed by Google Play. We do not receive or store payment details. The purchase status is determined by Google Play and is also stored on your device so that the features keep working. Purchase details, refunds, and future Pro features are described in the Terms of Service.",
     },
     thirdPartySharing: {
       title: "Sharing With Third Parties",
@@ -1353,18 +1370,20 @@ const en: Dictionary = {
     },
     dataDeletion: {
       title: "Data Deletion",
-      body: "You can delete jobs, individual shifts, or reset all app data at any time from Settings. Such deletion is immediate and complete on your device.",
+      body: "You can delete jobs, individual shifts, or reset all app data at any time from Settings. Such deletion is immediate and complete on your device. Backups in your Google Drive account can be deleted directly from there.",
+      requestNote:
+        "Data we hold (feedback sent from the app, and reviews or feature requests submitted through the site): to request access, correction, or deletion, contact us by email:",
     },
     minors: {
       title: "Minors",
-      body: "The app is not intended for children under the age of 13, and we do not knowingly collect information from minors.",
+      body: "The app is not intended for children under the age of 13, and we do not knowingly collect information from children under that age. Anyone under 18 may use it only with the consent of a parent or legal guardian.",
     },
     website: {
       title: "Data on This Website",
       items: [
         {
           label: "Reviews and feature requests:",
-          body: "When you submit a review through the site, the name you entered, the rating (1–5 stars), and the review text are stored in our database (Supabase). For a feature request, the name and the idea description are stored. A review is shown on the site (name and text) only after our manual approval. Submitting either is not required, and we recommend not including personal details in them.",
+          body: "When you submit a review through the site, the name you entered, the rating (1–5 stars), and the review text are stored in our database (Supabase). For a feature request, the name and the idea description are stored. A review is shown on the site (name and text) only after our manual approval. Submitting either is not required, and we recommend not including personal details in them. Supabase's cloud service may store data on servers outside Israel. To request deletion, see the \"Data Deletion\" section above.",
         },
         {
           label: "Vercel Analytics:",
@@ -1386,15 +1405,16 @@ const en: Dictionary = {
     },
     applicableLaw: {
       title: "Which Privacy Laws Apply to This Policy",
-      body: "The app is primarily intended for users in Israel and was developed by an Israeli developer, so this policy is governed by Israel's Privacy Protection Law, as amended by Amendment 13 (in effect since August 2025), which requires transparency about the collection and use of personal data. The EU's GDPR and California's CCPA do not currently apply to the app, since we do not systematically process the personal data of EU or California residents at a scale that would trigger those laws. If and when our user base expands significantly into those regions, we will revisit this and update this policy accordingly.",
+      body: "The app is primarily intended for users in Israel and was developed by an Israeli developer, so this policy is governed by Israel's Privacy Protection Law, as amended by Amendment 13 (in effect since August 2025), which requires transparency about the collection and use of personal data. The app is not directed at residents of the European Union or California. If and when our user base expands significantly into those regions, we will review the requirements that apply to us and update this policy accordingly.",
     },
     contactTitle: "Contact Us",
-    contactBody: "For questions about this privacy policy, you can reach us at:",
+    contactBody:
+      "Shift Smart is operated by an independent developer in Israel. For questions about this privacy policy, you can reach us at:",
   },
   terms: {
     metaTitle: "Terms of Service — Shift Smart",
     metaDescription:
-      "Shift Smart's terms of service — agreement to the terms, service description, user responsibility, intellectual property, and limitation of liability.",
+      "Shift Smart's terms of service — agreement to the terms, service description, minimum age, Pro purchases, user responsibility, intellectual property, and limitation of liability.",
     pageTitle: "Terms of Service — Shift Smart",
     lastUpdated: "Last updated: 07.10.2026",
     backToHome: "Back to home",
@@ -1402,7 +1422,11 @@ const en: Dictionary = {
       'These Terms of Service ("the Terms") govern your use of the Shift Smart app ("the app"). Installing or using the app constitutes your full agreement to these Terms. If you do not agree to any part of these Terms, please refrain from using the app.',
     serviceDescription: {
       title: "Service Description",
-      body: "Shift Smart is a local, offline-first Android app for shift management, time tracking, and pay calculation. The app helps you track your work hours, calculate pay, overtime, and bonuses based on the data you enter, and export reports and summaries. Shift Smart is not an official payroll service, is not connected to your employer, and does not perform any transfer of funds.",
+      body: "Shift Smart is a local, offline-first Android app for shift management, time tracking, and pay calculation. The app helps you track your work hours, calculate pay, overtime, and bonuses based on the data you enter, and export reports and summaries. Shift Smart is not an official payroll service, is not connected to your employer, and does not perform any transfer of funds, other than the optional Pro purchase processed by Google Play.",
+    },
+    eligibility: {
+      title: "Minimum Age and Privacy",
+      body: "The app is intended for people aged 18 and over. Minors aged 13 and over may use it only with the consent of their parent or legal guardian, and the app is not intended for children under 13. Your use of the app is also subject to the privacy policy on this site, which explains what data is stored and where.",
     },
     openBeta: {
       title: "Open Beta",
@@ -1413,6 +1437,10 @@ const en: Dictionary = {
           text: " stage on Google Play. This means bugs, calculation errors, data loss, or frequent changes to features and the interface may occur. We do not guarantee continuous availability, absolute calculation accuracy, or continued development and maintenance of the service in its current form. We recommend backing up your data regularly using the app's backup feature.",
         },
       ],
+    },
+    purchases: {
+      title: "Pro Purchases",
+      body: "The app includes an optional Pro upgrade, bought as a one-time purchase through Google Play. The price is shown in Google Play before you buy, and the purchase includes the Pro features that exist at the time of purchase. New Pro features we add in the future are not necessarily included in this purchase and may be offered separately, including as a subscription or for an additional fee; in that case we will state it clearly before any charge. Payment and refunds are subject to Google Play's terms and refund policy (you can usually request a refund through Google within 48 hours of purchase), and in any case without limiting your rights under consumer protection law. For purchase-related questions you can also contact us by email.",
     },
     userResponsibilityTitle: "User Responsibility",
     userResponsibilityItems: [
@@ -1426,7 +1454,7 @@ const en: Dictionary = {
     },
     liability: {
       title: "Limitation of Liability",
-      body: 'The app is provided "as is," with no warranty of accuracy, continuous availability, or fitness for a particular purpose. Shift Smart and its developers shall not be liable for any damage — direct or indirect — resulting from use of the app, including pay calculation errors, data loss, or temporary unavailability of the service.',
+      body: "The app is provided \"as is,\" with no warranty of accuracy, continuous availability, or fitness for a particular purpose. To the maximum extent permitted by law, Shift Smart and its developers shall not be liable for any direct or indirect damage resulting from use of the app, including pay calculation errors, data loss, or temporary unavailability of the service. Nothing in this section limits rights that mandatory law, including consumer protection law, grants you and that cannot be waived, or any liability that cannot be limited by law.",
     },
     changes: {
       title: "Changes to the App and These Terms",
@@ -1434,10 +1462,11 @@ const en: Dictionary = {
     },
     governingLaw: {
       title: "Governing Law and Jurisdiction",
-      body: "These Terms of Service are governed exclusively by the laws of the State of Israel, and the courts of the State of Israel shall have exclusive jurisdiction over any dispute related to them.",
+      body: "These Terms of Service are governed by the laws of the State of Israel. The courts of the State of Israel that have competent jurisdiction shall hear any dispute related to them, without limiting any right that mandatory law grants you as a consumer.",
     },
     contactTitle: "Contact Us",
-    contactBody: "For questions about these Terms of Service, you can reach us at:",
+    contactBody:
+      "Shift Smart is operated by an independent developer in Israel. For questions about these Terms of Service, you can reach us at:",
   },
 };
 

@@ -45,10 +45,24 @@ export default function TermsOfServiceContent() {
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
+          {terms.eligibility.title}
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          {terms.eligibility.body}
+        </p>
+
+        <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
           {terms.openBeta.title}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">
           <RichText segments={terms.openBeta.body} />
+        </p>
+
+        <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
+          {terms.purchases.title}
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          {terms.purchases.body}
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">

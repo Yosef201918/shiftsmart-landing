@@ -117,7 +117,11 @@ export default function PrivacyPolicyContent() {
           {privacy.dataDeletion.title}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">
-          {privacy.dataDeletion.body}
+          {privacy.dataDeletion.body}{" "}
+          {privacy.dataDeletion.requestNote}{" "}
+          <a href={CONTACT_MAILTO} dir="ltr" className={EMAIL_LINK_CLASS}>
+            {CONTACT_EMAIL}
+          </a>
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
