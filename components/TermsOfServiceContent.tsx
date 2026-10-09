@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Home } from "lucide-react";
 
-import RichText from "@/components/RichText";
 import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/links";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -52,10 +51,10 @@ export default function TermsOfServiceContent() {
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
-          {terms.openBeta.title}
+          {terms.dataAndBackup.title}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">
-          <RichText segments={terms.openBeta.body} />
+          {terms.dataAndBackup.body}
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">

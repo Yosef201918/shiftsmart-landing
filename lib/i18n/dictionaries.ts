@@ -310,7 +310,8 @@ export interface Dictionary {
     serviceDescription: { title: string; body: string };
     /** גיל מינימלי וזיקה למדיניות הפרטיות */
     eligibility: { title: string; body: string };
-    openBeta: { title: string; body: RichTextSegment[] };
+    /** אחריות על נתונים וגיבוי — מחליף את סעיף הבטא הפתוחה הקודם */
+    dataAndBackup: { title: string; body: string };
     /** רכישת Pro: חד-פעמית כיום, תכונות עתידיות עשויות להיות נפרדות (כולל מנוי), החזרים */
     purchases: { title: string; body: string };
     userResponsibilityTitle: string;
@@ -323,6 +324,15 @@ export interface Dictionary {
     contactBody: string;
   };
 }
+
+/*
+ * סעיף הגיל — נוסח זהה בדיוק במדיניות הפרטיות ובתנאי השימוש, בכל שפה. מוגדר פעם אחת כאן
+ * כדי שלא ייווצר סטייה בין שני המסמכים.
+ */
+const AGE_CLAUSE_HE =
+  "האפליקציה מיועדת למי שמלאו לו 18 שנים. קטינים מגיל 13 רשאים להשתמש בה רק בהסכמת הורה או אפוטרופוס, והאפליקציה אינה מיועדת לילדים מתחת לגיל 13.";
+const AGE_CLAUSE_EN =
+  "The app is intended for people aged 18 and over. Minors aged 13 and over may use it only with the consent of a parent or legal guardian, and the app is not intended for children under 13.";
 
 const he: Dictionary = {
   meta: {
@@ -701,7 +711,7 @@ const he: Dictionary = {
     metaDescription:
       "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
     pageTitle: "מדיניות פרטיות — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 07.10.2026",
+    lastUpdated: "עודכן לאחרונה: 09.10.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
@@ -758,7 +768,7 @@ const he: Dictionary = {
         { text: "בנוסף לגיבוי המקומי לקובץ, האפליקציה מציעה תכונה " },
         { text: "אופציונלית", format: "bold" },
         {
-          text: " — כבויה כברירת מחדל ופועלת רק אם תפעילו אותה — לגיבוי ושחזור של נתוני האפליקציה (עבודות, משמרות ורשומות נלוות) לחשבון ה-Google Drive האישי שלכם. הגיבוי כולל את נתוני האפליקציה בלבד ואינו כולל תמונות, קבלות או קבצים מצורפים, שנשארים במכשיר. כדי להשתמש בה יש להתחבר במפורש עם חשבון Google ולאשר גישה במסך ההרשאות של Google עצמו.",
+          text: " — כבויה כברירת מחדל ופועלת רק אם תפעילו אותה — לגיבוי ושחזור של נתוני האפליקציה (עבודות, משמרות ורשומות נלוות) לחשבון ה-Google Drive האישי שלכם. הגיבוי כולל את נתוני האפליקציה (משמרות, עבודות, יעדים, הגדרות וכתובת המייל של חשבון Google המחובר). תמונות, קבלות וקבצים מצורפים אינם מגובים ונשארים במכשיר בלבד. לאחר שחזור במכשיר אחר או לאחר התקנה מחדש הם לא יהיו זמינים. כדי להשתמש בה יש להתחבר במפורש עם חשבון Google ולאשר גישה במסך ההרשאות של Google עצמו.",
         },
       ],
       paragraph2: [
@@ -798,7 +808,7 @@ const he: Dictionary = {
     },
     minors: {
       title: "קטינים",
-      body: "האפליקציה אינה מיועדת לילדים מתחת לגיל 13, ואיננו אוספים ביודעין מידע מילדים מתחת לגיל זה. מי שטרם מלאו לו 18 רשאי להשתמש בה רק בהסכמת הורה או אפוטרופוס.",
+      body: `${AGE_CLAUSE_HE} איננו אוספים ביודעין מידע מילדים מתחת לגיל 13.`,
     },
     website: {
       title: "הנתונים באתר זה",
@@ -838,7 +848,7 @@ const he: Dictionary = {
     metaDescription:
       "תנאי השימוש באפליקציית Shift Smart — הסכמה לתנאים, תיאור השירות, גיל מינימלי, רכישות Pro, אחריות המשתמש, קניין רוחני והגבלת אחריות.",
     pageTitle: "תנאי שימוש — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 07.10.2026",
+    lastUpdated: "עודכן לאחרונה: 09.10.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תנאי שימוש אלה (\"התנאים\") חלים על השימוש באפליקציית Shift Smart (\"האפליקציה\"). התקנת האפליקציה או השימוש בה מהווים הסכמה מלאה לתנאים אלה. אם אינכם מסכימים לחלק כלשהו מתנאים אלה, אנא הימנעו משימוש באפליקציה.",
@@ -848,17 +858,11 @@ const he: Dictionary = {
     },
     eligibility: {
       title: "גיל מינימלי ופרטיות",
-      body: "האפליקציה מיועדת למי שמלאו לו 18 שנים. קטינים מגיל 13 רשאים להשתמש בה רק בהסכמת הורה או אפוטרופוס שלהם, והאפליקציה אינה מיועדת לילדים מתחת לגיל 13. השימוש באפליקציה כפוף גם למדיניות הפרטיות באתר, המסבירה אילו נתונים נשמרים ואיפה.",
+      body: `${AGE_CLAUSE_HE} השימוש באפליקציה כפוף גם למדיניות הפרטיות באתר, המסבירה אילו נתונים נשמרים ואיפה.`,
     },
-    openBeta: {
-      title: "גרסת בטא פתוחה",
-      body: [
-        { text: "האפליקציה נמצאת כרגע בשלב " },
-        { text: "בטא פתוחה", format: "bold" },
-        {
-          text: " בחנות Google Play. המשמעות: ייתכנו תקלות, שגיאות חישוב, אובדן נתונים או שינויים תכופים בתכונות ובממשק. אנחנו לא מתחייבים לזמינות רצופה, לדיוק מוחלט של החישובים, או להמשך פיתוח וקיום השירות בצורתו הנוכחית. מומלץ לגבות את הנתונים שלכם באופן שוטף דרך תכונת הגיבוי שבאפליקציה.",
-        },
-      ],
+    dataAndBackup: {
+      title: "אחריות על נתונים וגיבוי",
+      body: "ייתכנו תקלות או שגיאות חישוב. מומלץ לגבות את הנתונים באופן שוטף דרך תכונת הגיבוי באפליקציה.",
     },
     purchases: {
       title: "רכישות Pro",
@@ -880,7 +884,7 @@ const he: Dictionary = {
     },
     changes: {
       title: "שינויים באפליקציה ובתנאים",
-      body: "אנחנו רשאים לעדכן, לשנות או להפסיק תכונות באפליקציה בכל עת, במיוחד בשלב הבטא. ייתכן שנעדכן גם את תנאי השימוש הללו מעת לעת — נעדכן את תאריך \"עודכן לאחרונה\" בראש העמוד בכל שינוי מהותי. המשך שימוש באפליקציה לאחר עדכון מהווה הסכמה לתנאים המעודכנים.",
+      body: "אנחנו רשאים לעדכן, לשנות או להפסיק תכונות באפליקציה בכל עת. ייתכן שנעדכן גם את תנאי השימוש הללו מעת לעת — נעדכן את תאריך \"עודכן לאחרונה\" בראש העמוד בכל שינוי מהותי. המשך שימוש באפליקציה לאחר עדכון מהווה הסכמה לתנאים המעודכנים.",
     },
     governingLaw: {
       title: "דין חל וסמכות שיפוט",
@@ -1284,7 +1288,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
     pageTitle: "Privacy Policy — Shift Smart",
-    lastUpdated: "Last updated: 07.10.2026",
+    lastUpdated: "Last updated: 09.10.2026",
     backToHome: "Back to home",
     intro:
       'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
@@ -1336,7 +1340,7 @@ const en: Dictionary = {
         { text: "In addition to the local file backup, the app offers an " },
         { text: "optional", format: "bold" },
         {
-          text: " feature — off by default and active only if you turn it on — to back up and restore your app data (jobs, shifts, and related records) to your personal Google Drive account. The backup contains app data only — it does not include photos, receipts, or other attached files, which stay on your device. Using it requires you to explicitly sign in with a Google account and grant access on Google's own permission screen.",
+          text: " feature — off by default and active only if you turn it on — to back up and restore your app data (jobs, shifts, and related records) to your personal Google Drive account. The backup includes the app's data (shifts, jobs, goals, settings, and the email address of the connected Google account). Photos, receipts, and attached files are not backed up and stay on your device only. After restoring on another device or after reinstalling, they will not be available. Using it requires you to explicitly sign in with a Google account and grant access on Google's own permission screen.",
         },
       ],
       paragraph2: [
@@ -1376,7 +1380,7 @@ const en: Dictionary = {
     },
     minors: {
       title: "Minors",
-      body: "The app is not intended for children under the age of 13, and we do not knowingly collect information from children under that age. Anyone under 18 may use it only with the consent of a parent or legal guardian.",
+      body: `${AGE_CLAUSE_EN} We do not knowingly collect information from children under 13.`,
     },
     website: {
       title: "Data on This Website",
@@ -1416,7 +1420,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's terms of service — agreement to the terms, service description, minimum age, Pro purchases, user responsibility, intellectual property, and limitation of liability.",
     pageTitle: "Terms of Service — Shift Smart",
-    lastUpdated: "Last updated: 07.10.2026",
+    lastUpdated: "Last updated: 09.10.2026",
     backToHome: "Back to home",
     intro:
       'These Terms of Service ("the Terms") govern your use of the Shift Smart app ("the app"). Installing or using the app constitutes your full agreement to these Terms. If you do not agree to any part of these Terms, please refrain from using the app.',
@@ -1426,17 +1430,11 @@ const en: Dictionary = {
     },
     eligibility: {
       title: "Minimum Age and Privacy",
-      body: "The app is intended for people aged 18 and over. Minors aged 13 and over may use it only with the consent of their parent or legal guardian, and the app is not intended for children under 13. Your use of the app is also subject to the privacy policy on this site, which explains what data is stored and where.",
+      body: `${AGE_CLAUSE_EN} Your use of the app is also subject to the privacy policy on this site, which explains what data is stored and where.`,
     },
-    openBeta: {
-      title: "Open Beta",
-      body: [
-        { text: "The app is currently in an " },
-        { text: "Open Beta", format: "bold" },
-        {
-          text: " stage on Google Play. This means bugs, calculation errors, data loss, or frequent changes to features and the interface may occur. We do not guarantee continuous availability, absolute calculation accuracy, or continued development and maintenance of the service in its current form. We recommend backing up your data regularly using the app's backup feature.",
-        },
-      ],
+    dataAndBackup: {
+      title: "Data Responsibility and Backup",
+      body: "Faults or calculation errors may occur. We recommend backing up your data regularly using the app's backup feature.",
     },
     purchases: {
       title: "Pro Purchases",
@@ -1458,7 +1456,7 @@ const en: Dictionary = {
     },
     changes: {
       title: "Changes to the App and These Terms",
-      body: 'We may update, change, or discontinue features in the app at any time, especially during the beta stage. We may also update these Terms of Service from time to time — we will update the "Last updated" date at the top of the page with every material change. Continued use of the app after an update constitutes acceptance of the updated Terms.',
+      body: 'We may update, change, or discontinue features in the app at any time. We may also update these Terms of Service from time to time — we will update the "Last updated" date at the top of the page with every material change. Continued use of the app after an update constitutes acceptance of the updated Terms.',
     },
     governingLaw: {
       title: "Governing Law and Jurisdiction",
