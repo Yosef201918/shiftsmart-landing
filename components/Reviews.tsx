@@ -141,7 +141,7 @@ export default function Reviews() {
   }, []);
 
   // ממוצע אמיתי מהביקורות שנטענו; כל עוד אין אף ביקורת מאושרת עדיין
-  // (בטא טרייה) מוצג הדירוג הבסיסי מהמילון במקום "0.0" מטעה.
+  // (אפליקציה חדשה) מוצג הדירוג הבסיסי מהמילון במקום "0.0" מטעה.
   const averageRating = useMemo(() => {
     if (reviews.length === 0) return null;
     const sum = reviews.reduce((total, review) => total + review.rating, 0);

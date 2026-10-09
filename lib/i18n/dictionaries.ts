@@ -68,7 +68,7 @@ export interface Dictionary {
     subtitle: string;
     audience: string;
     downloadCta: string;
-    betaWarning: string;
+    platformNotice: string;
   };
   whatsNew: {
     kicker: string;
@@ -85,7 +85,7 @@ export interface Dictionary {
     titleHighlight: string;
     body: string;
   };
-  betaSteps: {
+  quickStart: {
     kicker: string;
     titlePrefix: string;
     titleHighlight: string;
@@ -163,7 +163,7 @@ export interface Dictionary {
     titlePrefix: string;
     titleHighlight: string;
     subtitle: string;
-    milestones: [TitledItem, TitledItem, TitledItem, TitledItem];
+    milestones: [TitledItem, TitledItem, TitledItem];
   };
   faq: {
     kicker: string;
@@ -254,7 +254,7 @@ export interface Dictionary {
     acceptLabel: string;
     rejectLabel: string;
   };
-  openBetaBanner: {
+  launchBanner: {
     message: string;
     ctaLabel: string;
   };
@@ -310,7 +310,7 @@ export interface Dictionary {
     serviceDescription: { title: string; body: string };
     /** גיל מינימלי וזיקה למדיניות הפרטיות */
     eligibility: { title: string; body: string };
-    /** אחריות על נתונים וגיבוי — מחליף את סעיף הבטא הפתוחה הקודם */
+    /** אחריות על נתונים וגיבוי */
     dataAndBackup: { title: string; body: string };
     /** רכישת Pro: חד-פעמית כיום, תכונות עתידיות עשויות להיות נפרדות (כולל מנוי), החזרים */
     purchases: { title: string; body: string };
@@ -366,8 +366,8 @@ const he: Dictionary = {
       "נהלו את המשמרות שלכם, עקבו אחרי השעות וחשבו את השכר בקלות, ישירות מהטלפון.",
     audience: "מושלם למאבטחים סדרנים, מסעדות וכל מי שחי על משמרות.",
     downloadCta: "הורדה מ-Google Play",
-    betaWarning:
-      "שימו לב: זמין למכשירי אנדרואיד בלבד. אנחנו בגרסת בטא (Beta) – משתפרים כל הזמן!",
+    platformNotice:
+      "שימו לב: זמין למכשירי אנדרואיד בלבד.",
   },
   whatsNew: {
     kicker: "עדכונים",
@@ -377,19 +377,19 @@ const he: Dictionary = {
     badgeLabel: "חדש",
     items: [
       {
-        title: "תגיות משמרת מותאמות אישית",
+        title: "זיהוי חגים ותעריף 150%",
         description:
-          'בוחרים צבע ותעריף משלכם לכל תגית, כולל תגית שבת/מוצ"ש חכמה שמחשבת אוטומטית תעריף 150% גם במשמרת שלא נופלת בשבת בלוח השנה.',
+          "האפליקציה מזהה חגים ושבתות ומחשבת בהם אוטומטית תעריף של 150%.",
       },
       {
-        title: "סימון ימי מחלה וחופשה מהיומן",
+        title: "יעד כללי וצבירת חופשה ומחלה",
         description:
-          "מסמנים יום מחלה או חופשה ישירות מתוך תצוגת היומן, והיתרה השנתית שלכם מתעדכנת מיד.",
+          "מגדירים יעד כללי, ועוקבים אחרי צבירת ימי החופשה והמחלה שלכם.",
       },
       {
-        title: "עדכון ידני לסכום המשמרת",
+        title: "עד שתי תגיות ועריכת שעת התחלה",
         description:
-          "לא מסתדר עם החישוב האוטומטי? קובעים סכום סופי משלכם לכל משמרת, שמחליף את החישוב בכל מקום שהשכר מוצג.",
+          "בוחרים עד שתי תגיות לכל משמרת, ואפשר לערוך את שעת ההתחלה גם בזמן שהמשמרת רצה.",
       },
     ],
   },
@@ -399,7 +399,7 @@ const he: Dictionary = {
     titleHighlight: "שעון נוכחות דיגיטלי?",
     body: "שעון נוכחות דיגיטלי מחליף רישום ידני בפנקס או בזיכרון, ומתעד באופן מדויק מתי התחלתם ומתי סיימתם כל משמרת. עבור עובדים במשמרות — מאבטחים, סדרנים, צוותי מסעדות ועוד — זה ההבדל בין הערכה גסה של השכר לבין ידיעה מדויקת כמה שעות עבדתם וכמה זה שווה, בלי לחכות לתלוש כדי לגלות.",
   },
-  betaSteps: {
+  quickStart: {
     kicker: "התחלה מהירה",
     titlePrefix: "איך ",
     titleHighlight: "מתחילים",
@@ -448,7 +448,7 @@ const he: Dictionary = {
       },
       {
         title: "דוחות וגיבוי",
-        description: "סיכום חודשי מפורט, ייצוא לוואטסאפ/PDF, ומערכת גיבוי.",
+        description: "סיכום חודשי מפורט ושיתוף דוחות; ב-Pro: ייצוא Excel חודשי, דוח מס שנתי וגיבוי ל-Drive.",
       },
       {
         title: "וידוא מיקום חכם",
@@ -489,13 +489,13 @@ const he: Dictionary = {
     kicker: "דירוגים וביקורות",
     titlePrefix: "מה ",
     titleHighlight: "אומרים עלינו",
-    subtitle: "מבוסס על משתמשי הבטא שלנו",
+    subtitle: "מבוסס על ביקורות המשתמשים שלנו",
     averageRating: "4.9",
     ratingAriaLabel: (rating) => `דירוג ${rating} מתוך 5 כוכבים`,
     writeReviewCta: "כתוב ביקורת",
     toastMessage: "תודה! הביקורת שלך נשלחה לאישור.",
     loadingLabel: "טוען ביקורות...",
-    emptyState: "היו הראשונים לכתוב ביקורת על הבטא!",
+    emptyState: "היו הראשונים לכתוב ביקורת על האפליקציה!",
     errorState: "לא הצלחנו לטעון ביקורות כרגע. נסו לרענן את הדף.",
     submitError: "שליחת הביקורת נכשלה. בדקו את החיבור ונסו שוב.",
     rateLimitError: "כבר שלחתם ביקורת לפני רגע. נסו שוב בעוד כחצי דקה.",
@@ -562,17 +562,12 @@ const he: Dictionary = {
     titlePrefix: "מה מתוכנן ",
     titleHighlight: "להמשך?",
     subtitle:
-      "הבטא היא רק ההתחלה. אלה הדברים שנמצאים על שולחן העבודה שלנו עכשיו.",
+      "זו רק ההתחלה. אלה הדברים שנמצאים על שולחן העבודה שלנו עכשיו.",
     milestones: [
       {
         title: "גרסת iOS",
         description:
           "אותה אפליקציה בדיוק, עם אותם מסכים ואותם חישובים — גם למשתמשי אייפון.",
-      },
-      {
-        title: "יצירת דוחות מס ישירים",
-        description:
-          "הפקת דוח שנתי מסודר של שעות והכנסות, מוכן להגשה ולשליחה לרואה החשבון.",
       },
       {
         title: "גרסת Pro",
@@ -596,17 +591,17 @@ const he: Dictionary = {
       {
         question: "האם צריך תהליך הרשמה מיוחד כדי להוריד את האפליקציה?",
         answer:
-          "לא יותר — Shift Smart עברה לבטא פתוחה, כך שאפשר להוריד אותה ישירות מ-Google Play בלי שום קבוצת בודקים או תהליך הרשמה מוקדם. מורידים ומתחילים להשתמש מיד.",
+          "לא — מורידים את Shift Smart ישירות מ-Google Play, בלי שום תהליך הרשמה מוקדם. מורידים ומתחילים להשתמש מיד.",
       },
       {
-        question: "האם האפליקציה תישאר בחינם?",
+        question: "האם האפליקציה בחינם?",
         answer:
-          "שעון הנוכחות והחישובים הבסיסיים חינמיים, ואנחנו מתכוונים שיישארו כך. בנוסף יש שדרוג Pro אופציונלי ברכישה חד-פעמית דרך Google Play, שכולל את תכונות ה-Pro הקיימות היום. תכונות Pro חדשות בעתיד לא בהכרח יהיו כלולות ברכישה זו — ייתכן שיוצעו בנפרד, למשל במנוי — ונציין זאת בבירור לפני כל חיוב.",
+          "האפליקציה להורדה בחינם, כולל שעון הנוכחות והחישובים הבסיסיים. בנוסף יש שדרוג Pro אופציונלי ברכישה חד-פעמית דרך Google Play, הכולל גיבוי ושחזור ל-Google Drive (עד 10 גרסאות), ייצוא Excel חודשי ודוח מס שנתי. תכונות Pro חדשות בעתיד לא בהכרח יהיו כלולות ברכישה זו — ייתכן שיוצעו בנפרד, למשל במנוי — ונציין זאת בבירור לפני כל חיוב.",
       },
       {
         question: "מה עושים אם מצאתי באג?",
         answer:
-          "נשמח לדעת! אפשר לדווח לנו ישירות במקטע הביקורות למעלה בעמוד, או לשלוח לנו מייל ל-yoseffstor@gmail.com. כל דיווח עוזר לנו לשפר את הבטא לפני ההשקה הרשמית.",
+          "נשמח לדעת! אפשר לדווח לנו ישירות במקטע הביקורות למעלה בעמוד, או לשלוח לנו מייל ל-yoseffstor@gmail.com. כל דיווח עוזר לנו לשפר את האפליקציה.",
       },
       {
         question: "איך מחושבות שעות נוספות?",
@@ -652,7 +647,7 @@ const he: Dictionary = {
     socialInstagramAria: "עמוד האינסטגרם של Shift Smart",
     socialTiktokAria: "עמוד הטיקטוק של Shift Smart",
     copyright: (year) =>
-      `© ${year} Shift Smart. כל הזכויות שמורות. האפליקציה נמצאת בשלב בטא פתוחה והתכונות עשויות להשתנות.`,
+      `© ${year} Shift Smart. כל הזכויות שמורות.`,
   },
   stickyCta: {
     label: "הורידו את Shift Smart",
@@ -660,7 +655,7 @@ const he: Dictionary = {
   share: {
     buttonLabel: "שתף את האפליקציה",
     copiedLabel: "הועתק!",
-    title: "הצטרפו לבטא של Shift Smart!",
+    title: "הכירו את Shift Smart!",
     buildText: (siteUrl) =>
       `מה הולך? גם לך יוצא לעבור על תלוש המשכורת בסוף החודש ולתהות איך חישבו בדיוק את השעות הנוספות וההפסקות? 📉\nתכלס, חבל על האנרגיות שלך. בין כל הריצות בעבודה, הדוחות והלחץ היומיומי, הדבר האחרון שצריך זה כאב ראש מול גיליונות אקסל מסובכים או חישובים ידניים שלפעמים מפספסים אגורות חשובות.\nבדיוק בשביל זה פיתחנו את Shift Smart – שעון נוכחות חכם שפשוט עושה סדר בראש ובארנק. 📱✨\nמהיום יודעים בדיוק מה השכר המדויק, עד האגורה האחרונה, בלי ניירת ובלי ניחושים מיותרים. האפליקציה מרכזת הכל במקום אחד בצורה פשוטה, שקופה ונוחה שחוסכת לך המון זמן יקר ועצבים.\nשווה לגמרי לבדוק את זה ולראות איך אפשר להקל על עצמך את החיים כבר מהחודש הקרוב.\nכל הפרטים והורדה מהירה מחכים לך ממש כאן:\n${siteUrl}`,
   },
@@ -702,8 +697,8 @@ const he: Dictionary = {
     acceptLabel: "מאשר/ת",
     rejectLabel: "דוחה",
   },
-  openBetaBanner: {
-    message: "🎉 הבטא הפתוחה עלתה לאוויר — זמינה עכשיו לכולם ב-Google Play!",
+  launchBanner: {
+    message: "🎉 ההשקה בקרוב — הורידו את Shift Smart מ-Google Play!",
     ctaLabel: "הורידו עכשיו",
   },
   privacy: {
@@ -929,8 +924,8 @@ const en: Dictionary = {
     audience:
       "Perfect for security guards, stewards, restaurant staff, and anyone living life in shifts.",
     downloadCta: "Get it on Google Play",
-    betaWarning:
-      "Please note: Android devices only for now. We're in Beta — improving all the time!",
+    platformNotice:
+      "Please note: Android devices only for now.",
   },
   whatsNew: {
     kicker: "UPDATES",
@@ -940,19 +935,19 @@ const en: Dictionary = {
     badgeLabel: "NEW",
     items: [
       {
-        title: "Custom Shift Tags",
+        title: "Holiday Detection and 150% Rate",
         description:
-          "Pick your own color and rate for every tag, including a smart Shabbat/Motzash tag that automatically applies the 150% rate even on a shift that doesn't fall on Saturday by the calendar.",
+          "The app detects holidays and Saturdays and automatically applies a 150% rate to them.",
       },
       {
-        title: "Mark Sick & Vacation Days from the Calendar",
+        title: "General Goal, Vacation & Sick Accrual",
         description:
-          "Mark a sick or vacation day right from the calendar view, and your annual balance updates instantly.",
+          "Set a general goal, and track how your vacation and sick days accrue.",
       },
       {
-        title: "Manual Shift Amount Override",
+        title: "Up to Two Tags and Editable Start Time",
         description:
-          "Doesn't match the automatic calculation? Set your own final amount for any shift, and it replaces the calculation everywhere your pay is shown.",
+          "Choose up to two tags per shift, and edit the start time even while the shift is running.",
       },
     ],
   },
@@ -962,7 +957,7 @@ const en: Dictionary = {
     titleHighlight: "digital time clock?",
     body: "A digital time clock replaces manual notes in a paper log or your memory, accurately recording exactly when each shift started and ended. For shift workers — security guards, stewards, restaurant staff, and more — that's the difference between a rough guess at your pay and knowing exactly how many hours you worked and what they're worth, without waiting for a payslip to find out.",
   },
-  betaSteps: {
+  quickStart: {
     kicker: "GET STARTED",
     titlePrefix: "How do ",
     titleHighlight: "you get started",
@@ -1013,7 +1008,7 @@ const en: Dictionary = {
       {
         title: "Reports & Backup",
         description:
-          "Detailed monthly summaries, export to WhatsApp/PDF, and a full backup system.",
+          "Detailed monthly summaries and report sharing; in Pro: monthly Excel export, yearly tax report, and Drive backup.",
       },
       {
         title: "Smart Location Check",
@@ -1054,13 +1049,13 @@ const en: Dictionary = {
     kicker: "RATINGS & REVIEWS",
     titlePrefix: "What ",
     titleHighlight: "People Say",
-    subtitle: "Based on our beta testers",
+    subtitle: "Based on our users' reviews",
     averageRating: "4.9",
     ratingAriaLabel: (rating) => `Rated ${rating} out of 5 stars`,
     writeReviewCta: "Write a Review",
     toastMessage: "Thank you! Your review has been submitted for approval.",
     loadingLabel: "Loading reviews...",
-    emptyState: "Be the first to review the Beta!",
+    emptyState: "Be the first to review the app!",
     errorState: "We couldn't load reviews right now. Try refreshing the page.",
     submitError: "Couldn't submit your review. Check your connection and try again.",
     rateLimitError: "You just submitted a review. Please try again in about half a minute.",
@@ -1139,17 +1134,12 @@ const en: Dictionary = {
     titlePrefix: "What's ",
     titleHighlight: "Coming Next?",
     subtitle:
-      "The Beta is just the beginning. Here's what's on our desk right now.",
+      "This is just the beginning. Here's what's on our desk right now.",
     milestones: [
       {
         title: "iOS Version",
         description:
           "The exact same app, with the same screens and the same calculations — for iPhone users too.",
-      },
-      {
-        title: "Direct Tax Reports",
-        description:
-          "Generate a tidy annual report of hours and income, ready to file and send to your accountant.",
       },
       {
         title: "Pro Tier",
@@ -1173,17 +1163,17 @@ const en: Dictionary = {
       {
         question: "Do I need to sign up for anything special to download the app?",
         answer:
-          "Not anymore — Shift Smart is now in Open Beta, so you can download it straight from Google Play with no testers group or sign-up process. Just install it and get started right away.",
+          "No — you download Shift Smart straight from Google Play, with no sign-up process beforehand. Just install it and get started right away.",
       },
       {
-        question: "Will the app stay free?",
+        question: "Is the app free?",
         answer:
-          "The time clock and the core calculations are free, and we intend to keep them that way. There is also an optional Pro upgrade, bought as a one-time purchase through Google Play, which includes the Pro features that exist today. New Pro features added in the future are not necessarily included in this purchase — they may be offered separately, for example as a subscription — and we will state it clearly before any charge.",
+          "The app is free to download, including the time clock and the core calculations. There is also an optional Pro upgrade, bought as a one-time purchase through Google Play, which includes backup and restore to Google Drive (up to 10 versions), monthly Excel export, and a yearly tax report. New Pro features added in the future are not necessarily included in this purchase — they may be offered separately, for example as a subscription — and we will state it clearly before any charge.",
       },
       {
         question: "What should I do if I find a bug?",
         answer:
-          "We'd love to know! You can report it directly in the reviews section above, or email us at yoseffstor@gmail.com. Every report helps us improve the Beta before the official launch.",
+          "We'd love to know! You can report it directly in the reviews section above, or email us at yoseffstor@gmail.com. Every report helps us improve the app.",
       },
       {
         question: "How is overtime calculated?",
@@ -1229,7 +1219,7 @@ const en: Dictionary = {
     socialInstagramAria: "Shift Smart on Instagram",
     socialTiktokAria: "Shift Smart on TikTok",
     copyright: (year) =>
-      `© ${year} Shift Smart. All rights reserved. The app is currently in Open Beta and features may change.`,
+      `© ${year} Shift Smart. All rights reserved.`,
   },
   stickyCta: {
     label: "Download Shift Smart",
@@ -1237,7 +1227,7 @@ const en: Dictionary = {
   share: {
     buttonLabel: "Share App",
     copiedLabel: "Copied!",
-    title: "Join the Shift Smart Beta!",
+    title: "Meet Shift Smart!",
     buildText: (siteUrl) =>
       `What's going on? Do you also dread checking your payslip at the end of the month, wondering exactly how they calculated your overtime and breaks? 📉\nHonestly, it's not worth the energy. Between the running around at work, the reports, and the daily pressure, the last thing you need is a headache over complicated spreadsheets or manual calculations that sometimes miss important cents.\nThat's exactly why we built Shift Smart – a smart time clock that simply gets your head and your wallet in order. 📱✨\nFrom today, you'll know exactly what your pay is, down to the last cent, without paperwork and without unnecessary guesswork. The app brings everything together in one simple, transparent, convenient place that saves you tons of precious time and stress.\nIt's definitely worth checking out and seeing how you can make your life easier starting next month.\nAll the details and a quick download are waiting for you right here:\n${siteUrl}`,
   },
@@ -1279,8 +1269,8 @@ const en: Dictionary = {
     acceptLabel: "Accept",
     rejectLabel: "Reject",
   },
-  openBetaBanner: {
-    message: "🎉 Open Beta is live — available now on Google Play!",
+  launchBanner: {
+    message: "🎉 Launching soon — get Shift Smart on Google Play!",
     ctaLabel: "Download now",
   },
   privacy: {

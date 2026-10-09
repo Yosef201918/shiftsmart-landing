@@ -188,12 +188,16 @@ export default function AppCarousel() {
             onClick={() => scrollTo(index)}
             aria-label={t.gallery.goToSlideAria(index + 1)}
             aria-current={index === selectedIndex}
-            className={`h-1.5 w-7 origin-center rounded-full transition-[transform,background-color] duration-400 will-change-transform ${
-              index === selectedIndex
-                ? "scale-x-100 bg-neon"
-                : "scale-x-[0.214] bg-hair-lit hover:bg-mist"
-            }`}
-          />
+            className="group flex h-6 w-7 items-center justify-center"
+          >
+            <span
+              className={`block h-1.5 w-7 origin-center rounded-full transition-[transform,background-color] duration-400 will-change-transform ${
+                index === selectedIndex
+                  ? "scale-x-100 bg-neon"
+                  : "scale-x-[0.214] bg-hair-lit group-hover:bg-mist"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </section>

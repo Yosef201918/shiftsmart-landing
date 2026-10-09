@@ -8,7 +8,7 @@ import FeatureRequest from "@/components/FeatureRequest";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import MotionProvider from "@/components/MotionProvider";
-import OpenBetaBanner from "@/components/OpenBetaBanner";
+import LaunchBanner from "@/components/LaunchBanner";
 import PhoneShowcase from "@/components/PhoneShowcase";
 import Reviews from "@/components/Reviews";
 import Roadmap from "@/components/Roadmap";
@@ -30,8 +30,8 @@ export default function Home() {
 
       <MotionProvider>
         <main className="relative z-10 flex-1">
-          {/* מחוץ ל-<section id="hero"> בכוונה — ראו הסבר ב-OpenBetaBanner.tsx */}
-          <OpenBetaBanner />
+          {/* מחוץ ל-<section id="hero"> בכוונה — ראו הסבר ב-LaunchBanner.tsx */}
+          <LaunchBanner />
           <Hero />
           <AppPoster />
           <WhatsNew />

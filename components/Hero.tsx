@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Clock4, Download, Sparkles, TriangleAlert } from "lucide-react";
 
-import BetaSteps from "@/components/BetaSteps";
+import QuickStartSteps from "@/components/QuickStartSteps";
 import DirectionalArrow from "@/components/DirectionalArrow";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ShareButton from "@/components/ShareButton";
@@ -12,10 +12,10 @@ import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /*
- * שלב 16 — מדריך שלושת השלבים (BetaSteps) עבר לתוך ה-Hero עצמו, מיד מתחת
+ * שלב 16 — מדריך שלושת השלבים (QuickStartSteps) עבר לתוך ה-Hero עצמו, מיד מתחת
  * לכפתורי הפעולה: כותרת → פעולות → מדריך → אמון/אזהרה. כך המשתמש רואה את
  * הדרך להצטרפות בלי לגלול, במקום שהמדריך יישאר קבור במקטע נפרד למטה.
- * BetaSteps מוצג ברוחב מלא (מחוץ ל-max-w-3xl של טור הטקסט) כדי שהגריד בן
+ * QuickStartSteps מוצג ברוחב מלא (מחוץ ל-max-w-3xl של טור הטקסט) כדי שהגריד בן
  * שלוש העמודות שלו יקבל את כל רוחב ה-Hero. מוקאפ הטלפון (PhoneShowcase)
  * ממשיך לשבת אחרי המדריך בסדר הדף הכללי — כלומר עדיין "מתחת למדריך".
  */
@@ -54,7 +54,6 @@ export default function Hero() {
             {/* backdrop-blur מוקל במובייל: פעולת GPU יקרה, והתווית כאן נשארת גלויה לאורך כל הגלילה */}
             <span className="flex items-center gap-2 rounded-full border border-hair bg-abyss/70 px-3 py-1.5 text-xs text-mist backdrop-blur-sm sm:px-3.5 sm:backdrop-blur-md">
               <span className="beacon size-1.5 rounded-full bg-neon" />
-              {/* t.brand.betaBadge שונה ל-t.brand.launchBadge: "בטא פתוחה" הוחלף ב"ההשקה בקרוב" לבקשת המוצר */}
               <span className="hidden sm:inline">{t.brand.launchBadge}</span>
             </span>
           </div>
@@ -102,9 +101,7 @@ export default function Hero() {
 
           {/*
             ---------- קבוצת הפעולות ----------
-            שלב 43: הבטא עברה מסגורה לפתוחה, ולכן הוסר כפתור "הצטרפו לבטא
-            הסגורה" המשני — אין יותר קבוצת בודקים להצטרף אליה, רק הורדה
-            ישירה. נשאר כפתור יחיד, ברוחב מלא במובייל וברוחב תוכן בדסקטופ
+            כפתור יחיד של הורדה ישירה מ-Google Play, ברוחב מלא במובייל וברוחב תוכן בדסקטופ
             (בלי flex-row מיותר לילד בודד) — הזוהר והגודל שלו (h-14, shadow-
             neon) מספיקים כדי שלא "ייראה בודד" גם עם מרחב פנוי לצידו.
           */}
@@ -125,7 +122,7 @@ export default function Hero() {
         </motion.div>
 
         {/* ---------- מדריך שלושת השלבים — מיד מתחת לכפתורים, ברוחב מלא ---------- */}
-        <BetaSteps />
+        <QuickStartSteps />
 
         {/* ---------- אמון ואזהרה — מתחת למדריך ---------- */}
         <motion.div
@@ -153,7 +150,7 @@ export default function Hero() {
             <ShareButton />
           </motion.div>
 
-          {/* ---------- אזהרת פלטפורמה ובטא ---------- */}
+          {/* ---------- הערת פלטפורמה ---------- */}
           <motion.div
             className="mt-6 flex max-w-xl items-start gap-3 rounded-xl border border-amber-deep bg-amber/[0.06] px-5 py-4"
             variants={fadeUp}
@@ -163,7 +160,7 @@ export default function Hero() {
               strokeWidth={1.9}
             />
             <p className="text-sm leading-relaxed text-amber-soft">
-              {t.hero.betaWarning}
+              {t.hero.platformNotice}
             </p>
           </motion.div>
         </motion.div>

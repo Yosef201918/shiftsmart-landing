@@ -12,7 +12,7 @@ type DirectionalArrowProps = {
  * `rtl:rotate-180` מגיעה מ-Tailwind ומתבססת על התכונה `dir` (ו-`lang`) של
  * אלמנט אב — היא הופכת את החץ שמאלה כש-<html dir="rtl">, בדיוק "קדימה"
  * בכיוון קריאה מימין לשמאל. משתמשים בקומפוננטה הזו בכל מקום שהיה בעבר
- * ArrowLeft קבוע (Hero, BetaSteps, StickyCta) כדי שהאייקון יתאים אוטומטית
+ * ArrowLeft קבוע (Hero, QuickStartSteps, StickyCta) כדי שהאייקון יתאים אוטומטית
  * גם לעברית וגם לאנגלית.
  */
 export default function DirectionalArrow({

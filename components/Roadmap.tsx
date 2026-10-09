@@ -1,13 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Cloud,
-  Crown,
-  ReceiptText,
-  Smartphone,
-  type LucideIcon,
-} from "lucide-react";
+import { Cloud, Crown, Smartphone, type LucideIcon } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -18,9 +12,8 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
  * ועדיין לא זמינים: גרסת Pro (בפיתוח, בלי מחיר/תאריך) וגיבוי ל-Google Drive.
  */
 /** האייקון בלבד הוא מבנה קבוע — הכותרת והתיאור מגיעים מהמילון לפי אינדקס */
-const MILESTONE_ICONS: [LucideIcon, LucideIcon, LucideIcon, LucideIcon] = [
+const MILESTONE_ICONS: [LucideIcon, LucideIcon, LucideIcon] = [
   Smartphone,
-  ReceiptText,
   Crown,
   Cloud,
 ];

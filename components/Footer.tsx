@@ -163,7 +163,7 @@ export default function Footer() {
                   <a
                     href={href}
                     {...(external ? EXTERNAL_LINK_PROPS : {})}
-                    className="group inline-flex items-center gap-2.5 text-sm text-mist transition duration-300 hover:text-neon"
+                    className="group inline-flex min-h-6 items-center gap-2.5 text-sm text-mist transition duration-300 hover:text-neon"
                   >
                     <Icon
                       className="size-4 shrink-0 transition duration-300 group-hover:text-neon"

@@ -20,7 +20,7 @@ export default function TermsOfServiceContent() {
     <main className="relative z-10 mx-auto max-w-3xl px-4 py-12 sm:px-6">
       <Link
         href="/"
-        className="group inline-flex items-center gap-2 text-sm text-mist transition duration-300 hover:text-neon"
+        className="group inline-flex min-h-6 items-center gap-2 text-sm text-mist transition duration-300 hover:text-neon"
       >
         <Home className="size-4 shrink-0 transition duration-300 group-hover:text-neon" strokeWidth={1.75} />
         {terms.backToHome}
@@ -126,7 +126,7 @@ export default function TermsOfServiceContent() {
 
       <Link
         href="/"
-        className="group mt-6 inline-flex items-center gap-2 text-sm text-mist transition duration-300 hover:text-neon"
+        className="group mt-6 inline-flex min-h-6 items-center gap-2 text-sm text-mist transition duration-300 hover:text-neon"
       >
         <Home className="size-4 shrink-0 transition duration-300 group-hover:text-neon" strokeWidth={1.75} />
         {terms.backToHome}

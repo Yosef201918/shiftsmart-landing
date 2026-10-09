@@ -9,11 +9,10 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /*
  * המבנה החזותי של כל שלב (אייקון, קישור) הוא קבוע ואינו תלוי שפה — רק
- * הכותרת והתיאור מגיעים מהמילון, לפי אותו סדר אינדקסים ב-t.betaSteps.steps.
+ * הכותרת והתיאור מגיעים מהמילון, לפי אותו סדר אינדקסים ב-t.quickStart.steps.
  *
- * שלב 43: הבטא עברה מסגורה לפתוחה — שלב 1 כבר לא "הצטרפות לקבוצת בודקים"
- * (UserPlus) אלא הורדה ישירה מ-Google Play, ולכן href עבר לשם ואייקון
- * Download תפס את מקומו של UserPlus.
+ * שלב 1 הוא הורדה ישירה מ-Google Play, ולכן ה-href מצביע לשם והאייקון הוא
+ * Download.
  */
 type StepMeta = {
   icon: LucideIcon;
@@ -38,7 +37,7 @@ const HOVER_LIFT = {
  * הכרטיסים כאן אופקיים וצפופים (אייקון + כותרת + תיאור קצר בשורה אחת עד
  * שתיים) במקום כרטיסים אנכיים גבוהים עם ריפוד גדול.
  */
-export default function BetaSteps() {
+export default function QuickStartSteps() {
   const { t } = useLanguage();
 
   return (
@@ -53,15 +52,15 @@ export default function BetaSteps() {
         className="font-mono text-xs tracking-[0.3em] text-neon/60"
         variants={fadeUp}
       >
-        {t.betaSteps.kicker}
+        {t.quickStart.kicker}
       </motion.p>
       <motion.h2
         className="mt-2 font-display text-xl text-chalk sm:text-2xl"
         variants={fadeUp}
       >
-        {t.betaSteps.titlePrefix}
-        <span className="text-neon">{t.betaSteps.titleHighlight}</span>
-        {t.betaSteps.titleSuffix}
+        {t.quickStart.titlePrefix}
+        <span className="text-neon">{t.quickStart.titleHighlight}</span>
+        {t.quickStart.titleSuffix}
       </motion.h2>
 
       <motion.div
@@ -69,7 +68,7 @@ export default function BetaSteps() {
         variants={staggerContainer}
       >
         {STEP_META.map(({ icon: Icon, href }, index) => {
-          const { title, description } = t.betaSteps.steps[index];
+          const { title, description } = t.quickStart.steps[index];
           const number = String(index + 1).padStart(2, "0");
 
           const cardClass =
