@@ -351,7 +351,7 @@ const he: Dictionary = {
   },
   brand: {
     name: "Shift Smart",
-    launchBadge: "ההשקה בקרוב",
+    launchBadge: "זמינה עכשיו ב-Google Play",
   },
   languageSwitcher: {
     hebrewLabel: "עברית",
@@ -698,7 +698,7 @@ const he: Dictionary = {
     rejectLabel: "דוחה",
   },
   launchBanner: {
-    message: "🎉 ההשקה בקרוב — הורידו את Shift Smart מ-Google Play!",
+    message: "🎉 זמינה עכשיו ב-Google Play!",
     ctaLabel: "הורידו עכשיו",
   },
   privacy: {
@@ -908,7 +908,7 @@ const en: Dictionary = {
   },
   brand: {
     name: "Shift Smart",
-    launchBadge: "Launching Soon",
+    launchBadge: "Now available on Google Play",
   },
   languageSwitcher: {
     hebrewLabel: "עברית",
@@ -1270,7 +1270,7 @@ const en: Dictionary = {
     rejectLabel: "Reject",
   },
   launchBanner: {
-    message: "🎉 Launching soon — get Shift Smart on Google Play!",
+    message: "🎉 Now available on Google Play!",
     ctaLabel: "Download now",
   },
   privacy: {
