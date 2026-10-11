@@ -2,6 +2,8 @@ import path from "node:path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // לא חושפים X-Powered-By: Next.js
+  poweredByHeader: false,
   turbopack: {
     /*
      * קיים package-lock.json גם בתיקיית הבית של המשתמש, ולכן Next היה מסיק
