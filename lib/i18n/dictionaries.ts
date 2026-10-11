@@ -1182,7 +1182,7 @@ const en: Dictionary = {
     titlePrefix: "Want more? ",
     titleHighlight: "Go Pro",
     subtitle:
-      "One one-time purchase, not a subscription. The price is shown in Google Play before you buy.",
+      "A one-time purchase, not a subscription. The price is shown in Google Play before you buy.",
     items: [
       {
         title: "Google Drive backup with restore",
