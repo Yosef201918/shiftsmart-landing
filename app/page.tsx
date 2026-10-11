@@ -8,6 +8,7 @@ import FeatureRequest from "@/components/FeatureRequest";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import MotionProvider from "@/components/MotionProvider";
+import Pro from "@/components/Pro";
 import LaunchBanner from "@/components/LaunchBanner";
 import PhoneShowcase from "@/components/PhoneShowcase";
 import Reviews from "@/components/Reviews";
@@ -20,7 +21,7 @@ import WhatsNew from "@/components/WhatsNew";
  * מקטע עצמאי ולא בתוך ה-Hero עצמו, כדי לא לפגוע במאמץ משלב 16 לשמור על
  * מדריך שלושת השלבים גלוי בלי גלילה במובייל. סדר הקריאה בעמוד: הירו
  * (כותרת → פעולות → שיתוף → מדריך → אמון) → פוסטר המותג → מה חדש →
- * מוקאפ האפליקציה → יכולות → מה זה שעון נוכחות (AboutTimeTracking, תוכן
+ * מוקאפ האפליקציה → יכולות → Pro → מה זה שעון נוכחות (AboutTimeTracking, תוכן
  * SEO קצר) → ביקורות → גלריה → מפת דרכים → הצעת פיצ'ר → שאלות.
  */
 export default function Home() {
@@ -37,6 +38,7 @@ export default function Home() {
           <WhatsNew />
           <PhoneShowcase />
           <Features />
+          <Pro />
           <AboutTimeTracking />
           <Reviews />
           <AppCarousel />

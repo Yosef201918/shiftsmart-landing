@@ -158,6 +158,22 @@ export interface Dictionary {
      */
     shots: ShotItem[];
   };
+  pro: {
+    kicker: string;
+    titlePrefix: string;
+    titleHighlight: string;
+    subtitle: string;
+    items: [TitledItem, TitledItem, TitledItem];
+    /** שחזור הרכישה בהתקנה מחדש / מכשיר חדש */
+    restoreNote: string;
+    freeTitle: string;
+    freeLead: string;
+    /** התכונות שנשארות חינמיות — כדי ש-Pro לא ייראה כמי שלוקח תכונות קיימות */
+    freeItems: [string, string];
+    /** הרכישה החד-פעמית מכסה את תכונות היום; יכולות עתידיות עשויות להיות נפרדות */
+    futureNote: string;
+    ctaLabel: string;
+  };
   roadmap: {
     kicker: string;
     titlePrefix: string;
@@ -448,7 +464,8 @@ const he: Dictionary = {
       },
       {
         title: "דוחות וגיבוי",
-        description: "סיכום חודשי מפורט ושיתוף דוחות; ב-Pro: ייצוא Excel חודשי, דוח מס שנתי וגיבוי ל-Drive.",
+        description:
+          "סיכום חודשי, ייצוא PDF, שיתוף דוחות וגיבוי מקומי, בחינם. ב-Pro: ייצוא Excel חודשי, דוח שנתי מאוחד וגיבוי ל-Drive עם שחזור.",
       },
       {
         title: "וידוא מיקום חכם",
@@ -557,6 +574,37 @@ const he: Dictionary = {
       },
     ],
   },
+  pro: {
+    kicker: "PRO",
+    titlePrefix: "רוצים עוד? ",
+    titleHighlight: "שדרוג Pro",
+    subtitle:
+      "רכישה חד-פעמית אחת, לא מנוי. המחיר מוצג ב-Google Play לפני הרכישה.",
+    items: [
+      {
+        title: "גיבוי ל-Google Drive עם שחזור",
+        description:
+          "שומר את 10 הגרסאות האחרונות של הנתונים שלכם, ומאפשר לשחזר מכל גרסה שתבחרו.",
+      },
+      {
+        title: "ייצוא הדוח החודשי ל-Excel",
+        description: "מייצאים את הדוח החודשי לקובץ Excel בלחיצה אחת.",
+      },
+      {
+        title: "דוח שנתי מאוחד",
+        description:
+          "דוח שנתי (PDF או Excel) מפורט לפי חודשים, עם ניכויים ושכר נטו. שימושי לעונת המס.",
+      },
+    ],
+    restoreNote:
+      "אחרי הרכישה אפשר לשחזר אותה בהתקנה מחדש או במכשיר חדש.",
+    freeTitle: "נשאר חינם",
+    freeLead: "Pro מוסיף יכולות ולא לוקח אף תכונה קיימת. אלה נשארים חינמיים:",
+    freeItems: ["ייצוא הדוח החודשי ל-PDF", "גיבוי מקומי"],
+    futureNote:
+      "הרכישה החד-פעמית כוללת את תכונות ה-Pro הקיימות היום. יכולות מתקדמות נוספות בעתיד עשויות להיות מוצעות בנפרד, ונציין זאת בבירור לפני כל חיוב.",
+    ctaLabel: "הורדה מ-Google Play",
+  },
   roadmap: {
     kicker: "מפת דרכים",
     titlePrefix: "מה מתוכנן ",
@@ -596,7 +644,7 @@ const he: Dictionary = {
       {
         question: "האם האפליקציה בחינם?",
         answer:
-          "האפליקציה להורדה בחינם, כולל שעון הנוכחות והחישובים הבסיסיים. בנוסף יש שדרוג Pro אופציונלי ברכישה חד-פעמית דרך Google Play, הכולל גיבוי ושחזור ל-Google Drive (עד 10 גרסאות), ייצוא Excel חודשי ודוח מס שנתי. תכונות Pro חדשות בעתיד לא בהכרח יהיו כלולות ברכישה זו — ייתכן שיוצעו בנפרד, למשל במנוי — ונציין זאת בבירור לפני כל חיוב.",
+          "האפליקציה להורדה בחינם, כולל שעון הנוכחות, החישובים, ייצוא PDF של הדוח החודשי וגיבוי מקומי. בנוסף יש שדרוג Pro אופציונלי ברכישה חד-פעמית דרך Google Play, הכולל גיבוי ושחזור ל-Google Drive (עד 10 גרסאות), ייצוא Excel חודשי ודוח שנתי מאוחד. תכונות Pro חדשות בעתיד לא בהכרח יהיו כלולות ברכישה זו — ייתכן שיוצעו בנפרד, למשל במנוי — ונציין זאת בבירור לפני כל חיוב.",
       },
       {
         question: "מה עושים אם מצאתי באג?",
@@ -1008,7 +1056,7 @@ const en: Dictionary = {
       {
         title: "Reports & Backup",
         description:
-          "Detailed monthly summaries and report sharing; in Pro: monthly Excel export, yearly tax report, and Drive backup.",
+          "Monthly summary, PDF export, report sharing and local backup are free. In Pro: monthly Excel export, a consolidated annual report, and Drive backup with restore.",
       },
       {
         title: "Smart Location Check",
@@ -1129,6 +1177,38 @@ const en: Dictionary = {
       },
     ],
   },
+  pro: {
+    kicker: "PRO",
+    titlePrefix: "Want more? ",
+    titleHighlight: "Go Pro",
+    subtitle:
+      "One one-time purchase, not a subscription. The price is shown in Google Play before you buy.",
+    items: [
+      {
+        title: "Google Drive backup with restore",
+        description:
+          "Keeps the last 10 versions of your data and lets you restore from any version you choose.",
+      },
+      {
+        title: "Monthly report export to Excel",
+        description: "Export the monthly report to an Excel file in one tap.",
+      },
+      {
+        title: "Consolidated annual report",
+        description:
+          "An annual report (PDF or Excel) broken down by month, with deductions and net pay. Handy for tax season.",
+      },
+    ],
+    restoreNote:
+      "After purchase, you can restore it on a reinstall or on a new device.",
+    freeTitle: "Stays free",
+    freeLead:
+      "Pro adds capabilities and takes nothing away. These stay free:",
+    freeItems: ["Monthly report export to PDF", "Local backup"],
+    futureNote:
+      "The one-time purchase covers the Pro features available today. Additional advanced capabilities may be offered separately in the future, and we will state it clearly before any charge.",
+    ctaLabel: "Get it on Google Play",
+  },
   roadmap: {
     kicker: "Roadmap",
     titlePrefix: "What's ",
@@ -1168,7 +1248,7 @@ const en: Dictionary = {
       {
         question: "Is the app free?",
         answer:
-          "The app is free to download, including the time clock and the core calculations. There is also an optional Pro upgrade, bought as a one-time purchase through Google Play, which includes backup and restore to Google Drive (up to 10 versions), monthly Excel export, and a yearly tax report. New Pro features added in the future are not necessarily included in this purchase — they may be offered separately, for example as a subscription — and we will state it clearly before any charge.",
+          "The app is free to download, including the time clock, the calculations, monthly PDF export and local backup. There is also an optional Pro upgrade, bought as a one-time purchase through Google Play, which includes backup and restore to Google Drive (up to 10 versions), monthly Excel export, and a consolidated annual report. New Pro features added in the future are not necessarily included in this purchase — they may be offered separately, for example as a subscription — and we will state it clearly before any charge.",
       },
       {
         question: "What should I do if I find a bug?",
