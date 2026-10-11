@@ -6,6 +6,7 @@ import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
 import GoogleTag from "@/components/GoogleTag";
 import HtmlAttributesSync from "@/components/HtmlAttributesSync";
+import MotionProvider from "@/components/MotionProvider";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { dictionaries } from "@/lib/i18n/dictionaries";
 import { PLAY_STORE_URL, SITE_URL } from "@/lib/links";
@@ -210,7 +211,9 @@ export default function RootLayout({
           <HtmlAttributesSync />
           {children}
           {/* גלובלי בכל דף (כולל /privacy) — לא רק בדף הבית */}
-          <CookieConsent />
+          <MotionProvider>
+            <CookieConsent />
+          </MotionProvider>
         </LanguageProvider>
 
         {/* Vercel Web Analytics — נטען רק בפרודקשן ואינו מרנדר DOM */}
