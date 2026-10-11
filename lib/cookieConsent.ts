@@ -14,8 +14,13 @@ const listeners = new Set<() => void>();
 
 function readStoredConsent(): ConsentValue | null {
   if (typeof window === "undefined") return null;
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === "accepted" || stored === "rejected" ? stored : null;
+  // localStorage זורק SecurityError כשהאחסון חסום, וזה רץ בזמן import — בלי try/catch כל האפליקציה נופלת
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    return stored === "accepted" || stored === "rejected" ? stored : null;
+  } catch {
+    return null;
+  }
 }
 
 /* מאותחל פעם אחת בזמן טעינת המודול בדפדפן, לפני שכל קומפוננטה מתחילה לרנדר */
