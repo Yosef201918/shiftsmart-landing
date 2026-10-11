@@ -137,13 +137,13 @@ export default function Pro() {
           </motion.ul>
 
           <motion.p
-            className="mt-6 text-sm leading-relaxed text-mist"
+            className="mt-6 max-w-3xl text-sm leading-relaxed text-mist"
             variants={fadeUp}
           >
             {pro.restoreNote}
           </motion.p>
           <motion.p
-            className="mt-2 text-sm leading-relaxed text-mist"
+            className="mt-2 max-w-3xl text-sm leading-relaxed text-mist"
             variants={fadeUp}
           >
             {pro.futureNote}
