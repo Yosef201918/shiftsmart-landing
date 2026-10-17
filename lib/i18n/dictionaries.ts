@@ -706,7 +706,7 @@ const he: Dictionary = {
     metaDescription:
       "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
     pageTitle: "מדיניות פרטיות — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 09.10.2026",
+    lastUpdated: "עודכן לאחרונה: 18.10.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
@@ -724,7 +724,7 @@ const he: Dictionary = {
         },
         { text: "רק על המכשיר שלכם", format: "bold" },
         {
-          text: ". איננו מפעילים שרת שאוסף את נתוני המשמרות והשכר שלכם, ואיננו מוכרים או משתפים אותם. היוצאים מן הכלל הם שני אלה בלבד, והם אופציונליים: גיבוי לחשבון ה-Google Drive האישי שלכם, ושאלון המשוב, המתוארים בהמשך.",
+          text: ". איננו מפעילים שרת שאוסף את נתוני המשמרות והשכר שלכם, ואיננו מוכרים או משתפים אותם. היוצאים מן הכלל הם שלושה אלה בלבד, והם אופציונליים: גיבוי לחשבון ה-Google Drive האישי שלכם, שאלון המשוב, וחיפוש כתובת או בחירת מקום העבודה במפה (הנשלחים לשירות המיקום של Google), המתוארים בהמשך.",
         },
       ],
     },
@@ -733,7 +733,7 @@ const he: Dictionary = {
       {
         label: "מיקום (כולל ברקע):",
         /* עודכן: תיאור מדויק יותר של השימושים בפועל (אימות בהחתמה, בחירת מיקום במפה) ותלות ב-Google Maps */
-        body: "משמש לאימות מיקום בעת החתמה, לבחירת מיקום העבודה במפה, ו(רק אם הפעלתם את האפשרות) לזיהוי יציאה מאזור העבודה גם כשהאפליקציה סגורה, כדי להזכיר להחתים יציאה או לסיים משמרת אוטומטית. נתוני המיקום מעובדים ונשמרים במכשיר בלבד ולא נשלחים לשרת שלנו. הצגת המפה מתבצעת באמצעות Google Maps, ולכן Google מעבדת בקשות מפה לפי מדיניות הפרטיות שלה.",
+        body: "משמש לאימות מיקום בעת החתמה, לבחירת מיקום העבודה במפה, ו(רק אם הפעלתם את האפשרות) לזיהוי יציאה מאזור העבודה גם כשהאפליקציה סגורה, כדי להזכיר להחתים יציאה או לסיים משמרת אוטומטית. נתוני המיקום של המכשיר מעובדים ונשמרים במכשיר בלבד ולא נשלחים לשרת שלנו. כאשר מחפשים כתובת או בוחרים את מקום העבודה במפה, הכתובת או הנקודה נשלחות לשירות המיקום של Google כדי למצוא את המקום. הכתובת שנמצאה נשמרת רק בטלפון. הצגת המפה והבקשות האלה מתבצעות באמצעות Google, והן כפופות למדיניות הפרטיות שלה.",
       },
       {
         label: "התראות:",
@@ -1278,7 +1278,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
     pageTitle: "Privacy Policy — Shift Smart",
-    lastUpdated: "Last updated: 09.10.2026",
+    lastUpdated: "Last updated: 18.10.2026",
     backToHome: "Back to home",
     intro:
       'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
@@ -1291,7 +1291,7 @@ const en: Dictionary = {
         },
         { text: "only on your device", format: "bold" },
         {
-          text: ". We do not run a server that collects your shift and pay data, and we do not sell or share it. The only exceptions are these two, both optional: backup to your own personal Google Drive account, and the feedback survey, both described below.",
+          text: ". We do not run a server that collects your shift and pay data, and we do not sell or share it. The only exceptions are these three, all optional: backup to your own personal Google Drive account, the feedback survey, and searching for an address or picking your workplace on the map (which are sent to Google's location service), all described below.",
         },
       ],
     },
@@ -1300,7 +1300,7 @@ const en: Dictionary = {
       {
         label: "Location (including in the background):",
         /* Updated: more accurate description of the actual uses (verifying location at clock-in, picking the work location on a map) and the Google Maps dependency */
-        body: "Used to verify your location when clocking in, to pick the work location on a map, and — only if you enable it — to detect leaving the work area even when the app is closed, in order to remind you to clock out or end the shift automatically. Location data is processed and stored on your device only and is not sent to our server. The map is displayed using Google Maps, so Google processes map requests under its own privacy policy.",
+        body: "Used to verify your location when clocking in, to pick the work location on a map, and — only if you enable it — to detect leaving the work area even when the app is closed, in order to remind you to clock out or end the shift automatically. Your device's location data is processed and stored on your device only and is not sent to our server. When you search for an address or pick your workplace on the map, the address or point is sent to Google's location service to find the place. The resulting address is stored only on your phone. The map and these requests are handled by Google and are subject to its own privacy policy.",
       },
       {
         label: "Notifications:",
