@@ -4,6 +4,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // לא חושפים X-Powered-By: Next.js
   poweredByHeader: false,
+  // תמונות מותאמות נשמרות שנה במקום revalidate בכל ביקור (הקבצים משתנים רק עם שם חדש)
+  images: { minimumCacheTTL: 31536000 },
   turbopack: {
     /*
      * קיים package-lock.json גם בתיקיית הבית של המשתמש, ולכן Next היה מסיק
