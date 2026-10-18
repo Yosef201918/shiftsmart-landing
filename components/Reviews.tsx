@@ -179,7 +179,7 @@ export default function Reviews() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!reviewText.trim() || selectedRating === 0 || isSubmitting) return;
+    if (!name.trim() || !reviewText.trim() || selectedRating === 0 || isSubmitting) return;
 
     // בוט מילא את השדה הנסתר — מדמים הצלחה בשקט בלי לשלוח כלום ל-Supabase
     if (honeypot) {

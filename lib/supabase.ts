@@ -6,7 +6,7 @@ import { createClient } from "@supabase/supabase-js";
  * לא בקוד), ולכן שדה זה לא נשלח בכלל בהוספת ביקורת חדשה.
  */
 export interface ReviewRow {
-  id: string;
+  id: number;
   name: string;
   rating: number;
   content: string;
@@ -19,9 +19,10 @@ export type NewReview = Pick<ReviewRow, "name" | "rating" | "content">;
 
 /** שורה בטבלת feature_requests ב-Supabase — שתי עמודות טקסט פשוטות בלבד */
 export interface FeatureRequestRow {
-  id: string;
+  id: number;
   name: string;
   feature_text: string;
+  status: "pending" | "approved" | "rejected";
   created_at: string;
 }
 
