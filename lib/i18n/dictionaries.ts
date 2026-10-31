@@ -283,6 +283,8 @@ export interface Dictionary {
     };
     /** שאלון המשוב האופציונלי בתוך האפליקציה — היוצא מן הכלל היחיד לעיקרון "הכול נשאר במכשיר" */
     feedbackSurvey: { title: string; body: string; deletionRequest: string };
+    /** דיווח תקלה / הצעת פיצ'ר מתוך הגדרות האפליקציה, כולל תמונה אופציונלית שמגיעה אלינו בטלגרם */
+    bugReports: { title: string; body: string; deletionRequest: string };
     /** רכישות תוך-אפליקתיות (שדרוג Pro) — מעובדות ע"י Google Play, לא על ידינו */
     inAppPurchases: { title: string; body: string };
     thirdPartySharing: { title: string; body: string };
@@ -706,7 +708,7 @@ const he: Dictionary = {
     metaDescription:
       "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
     pageTitle: "מדיניות פרטיות — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 18.10.2026",
+    lastUpdated: "עודכן לאחרונה: 31.10.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
@@ -785,6 +787,11 @@ const he: Dictionary = {
       title: "שאלון משוב (אופציונלי)",
       body: "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (דירוג של 1–5 כוכבים, סימון בחירות, טקסט חופשי, גרסת האפליקציה, שפה ופלטפורמת המכשיר — למשל Android) נשלחות לשרת שלנו המתארח ב-Cloudflare (שירות ענן שעשוי לעבד מידע גם מחוץ לישראל) ומשמשות לשיפור האפליקציה בלבד. איננו אוספים או שולחים מזהה מכשיר. אם תבחרו להזין שם, הוא יישלח יחד עם התשובות. אם לא תזינו שם, המשוב אנונימי. כתובת ה-IP של המכשיר נחשפת טכנית לשרת בעת השליחה, ומשמשת רק להגבלת קצב נגד ספאם, ואינה נשמרת עם התשובות. אין חובה למלא את השאלון.",
       deletionRequest: "לבקשת מחיקת משוב ששלחתם, פנו אלינו במייל:",
+    },
+    bugReports: {
+      title: "דיווח על תקלה או הצעת פיצ'ר (אופציונלי)",
+      body: "אם בחרתם לשלוח דיווח על תקלה מתוך ההגדרות, נשלחים לשרת שלנו המתארח ב-Cloudflare התיאור שכתבתם, דגם המכשיר, גרסת מערכת ההפעלה, גרסת האפליקציה והשפה. אם בחרתם לצרף תמונה (למשל צילום מסך), היא מועברת דרך השרת ישירות אלינו בהודעת Telegram ואינה נשמרת בשרת. הדיווח עצמו נשמר בשרת לצורך תיקון התקלה בלבד. בהצעת פיצ'ר נשלחים רק הטקסט, התמונה (אם צורפה), גרסת האפליקציה והשפה, בלי פרטי מכשיר. אל תצרפו תמונה שיש בה פרטים אישיים שאינכם רוצים לשתף.",
+      deletionRequest: "לבקשת מחיקת דיווח, פנו אלינו במייל:",
     },
     /* חדש: מתעד את תשלומי ה-Pro תוך-אפליקתיים לצורך התאמה ל-Data Safety */
     inAppPurchases: {
@@ -1278,7 +1285,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
     pageTitle: "Privacy Policy — Shift Smart",
-    lastUpdated: "Last updated: 18.10.2026",
+    lastUpdated: "Last updated: 31.10.2026",
     backToHome: "Back to home",
     intro:
       'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
@@ -1352,6 +1359,11 @@ const en: Dictionary = {
       title: "Feedback Survey (Optional)",
       body: "If you choose to complete the in-app feedback survey, your answers (a 1–5 star rating, selected options, free text, app version, language, and device platform — for example, Android) are sent to our server hosted on Cloudflare (a cloud service that may process data outside Israel) and are used only to improve the app. We do not collect or send a device identifier. If you choose to enter a name, it is sent together with your answers. If you do not enter a name, the feedback is anonymous. Your device's IP address is technically exposed to the server when you submit, is used only for rate limiting against spam, and is not stored with your answers. Completing the survey is not required.",
       deletionRequest: "To request deletion of feedback you have already sent, contact us by email:",
+    },
+    bugReports: {
+      title: "Bug reports and feature ideas (optional)",
+      body: "If you choose to send a bug report from Settings, the description you wrote, the device model, OS version, app version and language are sent to our server hosted on Cloudflare. If you choose to attach an image (e.g. a screenshot), it is passed through the server directly to us as a Telegram message and is not stored on the server. The report itself is stored on the server only to fix the problem. A feature idea sends only the text, the image (if attached), app version and language, without device details. Do not attach an image containing personal details you do not want to share.",
+      deletionRequest: "To request deletion of a report, email us:",
     },
     /* New: documents in-app Pro purchases for Data Safety consistency */
     inAppPurchases: {

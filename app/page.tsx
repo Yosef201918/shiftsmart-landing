@@ -4,7 +4,6 @@ import AppPoster from "@/components/AppPoster";
 import Backdrop from "@/components/Backdrop";
 import Faq from "@/components/Faq";
 import Features from "@/components/Features";
-import FeatureRequest from "@/components/FeatureRequest";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import MotionProvider from "@/components/MotionProvider";
@@ -41,7 +40,6 @@ export default function Home() {
           <Reviews />
           <AppCarousel />
           <Roadmap />
-          <FeatureRequest />
           <Faq />
         </main>
 

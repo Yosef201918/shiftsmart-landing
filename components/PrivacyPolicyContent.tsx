@@ -100,6 +100,17 @@ export default function PrivacyPolicyContent() {
         </p>
 
         <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
+          {privacy.bugReports.title}
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-mist">
+          {privacy.bugReports.body}{" "}
+          {privacy.bugReports.deletionRequest}{" "}
+          <a href={CONTACT_MAILTO} dir="ltr" className={EMAIL_LINK_CLASS}>
+            {CONTACT_EMAIL}
+          </a>
+        </p>
+
+        <h2 className="mt-10 font-display text-xl text-chalk sm:text-2xl">
           {privacy.inAppPurchases.title}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-mist">
