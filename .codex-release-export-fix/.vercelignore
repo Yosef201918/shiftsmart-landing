@@ -1,0 +1,18 @@
+# Deployment contains the website, not local research or QA artifacts.
+/assets/
+/supabase/
+/.codex-attachments/
+/docs/
+/output/
+/.playwright-cli/
+/scripts/
+/WEBSITE_IMPROVEMENT_PLAN.*
+/PROJECT_MEMORY.md
+/AGENTS.md
+/CLAUDE.md
+/README.md
+/.env*
+/*.tsbuildinfo
+/.git/
+/node_modules/
+/.next/

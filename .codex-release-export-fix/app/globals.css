@@ -1,0 +1,414 @@
+@import "tailwindcss";
+
+.skip-to-content {
+  position: fixed;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 200;
+  transform: translateY(calc(-100% - 2rem));
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: #5cff9d;
+  color: #021309;
+  font-weight: 700;
+}
+
+.skip-to-content:focus {
+  transform: none;
+}
+
+/* =========================================================================
+   Shift Smart — Design Tokens
+   שפה עיצובית: "לוח מכשירים" — שחור עמוק, זכוכית מטושטשת וקריאות ניאון ירוקות,
+   עם ענבר כמבטא משני שנשמר לאזהרות ולתוכן פרימיום בלבד.
+   ========================================================================= */
+
+@theme {
+  /* משטחים */
+  --color-void: #03060b;
+  --color-abyss: #060b13;
+  --color-panel: #0a111b;
+
+  /* קווי מתאר */
+  --color-hair: #1a2734;
+  --color-hair-lit: #2b4457;
+
+  /* ניאון — המבטא הראשי */
+  --color-neon: #5cff9d;
+  --color-neon-soft: #a6ffcb;
+  --color-neon-deep: #0b7a45;
+
+  /* ענבר — מבטא משני, במינון נמוך */
+  --color-amber: #ffc24d;
+  --color-amber-soft: #ffdb94;
+  --color-amber-deep: #6b4d10;
+
+  /* טיפוגרפיה */
+  --color-chalk: #eef4f2;
+  --color-mist: #9db0ab;
+
+  /* צללים */
+  --shadow-panel: 0 24px 60px -24px rgb(0 0 0 / 0.9);
+  --shadow-neon: 0 0 28px -6px rgb(92 255 157 / 0.5);
+  --shadow-device:
+    0 45px 90px -32px rgb(0 0 0 / 0.95), 0 0 70px -20px rgb(92 255 157 / 0.4),
+    inset 0 1px 0 0 rgb(255 255 255 / 0.14);
+}
+
+/* משתני הגופנים מגיעים מ-next/font ולכן חייבים להישאר inline */
+@theme inline {
+  --font-display: var(--font-secular-one);
+  --font-sans: var(--font-heebo);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+
+@layer base {
+  html,
+  body {
+    /*
+     * רשת ביטחון נגד גלילה אופקית. clip עדיף על hidden כי הוא לא יוצר
+     * מיכל גלילה חדש, ולכן לא שובר position: sticky ולא את הגלילה החלקה.
+     * ההצהרה הראשונה היא נפילה אחורה לדפדפנים שלא מכירים clip.
+     */
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-chalk);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-neon);
+    color: #021309;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-neon);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /*
+   * פס גלילה דק ומודרני: מסלול כהה תואם לרקע, ואגודל ניאון-עמוק עדין
+   * שמבהיק לניאון המלא רק ב-hover — כדי שהוא יישאר ברקע ולא יתחרה בתוכן.
+   * html מקבל scrollbar-color/scrollbar-width לתמיכה ב-Firefox; שאר
+   * הדפדפנים (מבוססי Chromium/WebKit) משתמשים בפסאודו-אלמנטים למטה.
+   */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neon-deep) var(--color-void);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-neon-deep);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-neon);
+  }
+}
+
+/* =========================================================================
+   Components — זכוכית, מסגרות טכניות וזוהר
+   ========================================================================= */
+
+@layer components {
+  /* לוח זכוכית: שכבת שקיפות + טשטוש + הבהקה עליונה פנימית */
+  .panel {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid color-mix(in oklab, var(--color-hair) 90%, transparent);
+    background:
+      linear-gradient(
+        155deg,
+        rgb(255 255 255 / 0.07) 0%,
+        rgb(255 255 255 / 0.02) 38%,
+        rgb(255 255 255 / 0) 72%
+      ),
+      rgb(4 8 14 / 0.55);
+    -webkit-backdrop-filter: blur(16px) saturate(135%);
+    backdrop-filter: blur(16px) saturate(135%);
+    box-shadow:
+      var(--shadow-panel),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.07);
+  }
+
+  /*
+   * קצה זכוכית "תופס אור": הילה בעובי פיקסל אחד בלבד שנוצרת מגרדיאנט
+   * וממוסכת לטבעת בעזרת mask-composite. זה מה שנותן לכרטיס את התחושה
+   * של זכוכית אמיתית במקום מסגרת שטוחה בצבע אחיד.
+   *
+   * אזהרה: .edge-lit תופסת את ::before, בדיוק כמו .brackets — אסור להשתמש
+   * בשתיהן על אותו אלמנט. שילוב עם .panel-rail (שתופסת ::after) תקין.
+   */
+  .edge-lit::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      145deg,
+      rgb(255 255 255 / 0.28) 0%,
+      rgb(255 255 255 / 0.05) 34%,
+      rgb(255 255 255 / 0) 62%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* פס ניאון דק בראש הכרטיס שנדלק במעבר עכבר */
+  .panel-rail::after {
+    content: "";
+    position: absolute;
+    inset-block-start: -1px;
+    inset-inline: 1.75rem;
+    height: 1px;
+    background: linear-gradient(
+      to left,
+      transparent,
+      var(--color-neon),
+      transparent
+    );
+    opacity: 0.22;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+  }
+  .panel-rail:hover::after,
+  .panel-rail:focus-within::after {
+    opacity: 1;
+  }
+
+  /* סימני פינה טכניים — משתמשים בתכונות לוגיות כדי לכבד RTL */
+  .brackets::before,
+  .brackets::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
+    border-color: color-mix(in oklab, var(--color-neon) 60%, transparent);
+  }
+  .brackets::before {
+    inset-block-start: -1px;
+    inset-inline-start: -1px;
+    border-block-start: 1px solid;
+    border-inline-start: 1px solid;
+  }
+  .brackets::after {
+    inset-block-end: -1px;
+    inset-inline-end: -1px;
+    border-block-end: 1px solid;
+    border-inline-end: 1px solid;
+  }
+
+  /* זוהר טקסט ניאון */
+  .neon-glow {
+    text-shadow:
+      0 0 18px rgb(92 255 157 / 0.55),
+      0 0 64px rgb(92 255 157 / 0.22);
+  }
+
+  /* קו הפרדה דק ומדורג */
+  .rule-hair {
+    height: 1px;
+    background: linear-gradient(
+      to left,
+      transparent,
+      var(--color-hair-lit),
+      transparent
+    );
+  }
+
+  /* רשת "לוח מעגלים" שנשענת על תמונת הרקע */
+  .grid-weave {
+    background-image:
+      linear-gradient(to left, rgb(92 255 157 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(92 255 157 / 0.045) 1px, transparent 1px);
+    background-size: 68px 68px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 85% 60% at 50% 0%,
+      #000 30%,
+      transparent 78%
+    );
+    mask-image: radial-gradient(
+      ellipse 85% 60% at 50% 0%,
+      #000 30%,
+      transparent 78%
+    );
+  }
+}
+
+/* =========================================================================
+   Motion
+   הופעת אלמנטים בגלילה מנוהלת ע"י framer-motion (ראה lib/motion.ts).
+   כאן נשארות רק אנימציות אווירה רציפות.
+   ========================================================================= */
+
+/*
+ * טבעת ה-"פינג" של .beacon בנויה כ-::before נפרד שמתרחב ודועך, במקום
+ * להנפיש box-shadow על הנקודה עצמה: box-shadow הוא תכונת ציור שנדרש
+ * לחשב מחדש בכל פריים ואינה רצה על ה-GPU. transform+opacity על שכבה
+ * נפרדת כן רצים על ה-GPU ומולחנים (compositing) בלי לגעת בציור.
+ */
+@keyframes beacon-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes haze {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate3d(0, -18px, 0) scale(1.06);
+  }
+}
+
+@layer components {
+  .beacon {
+    position: relative;
+  }
+  .beacon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: inherit;
+    animation: beacon-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+    will-change: transform, opacity;
+  }
+  .haze {
+    animation: haze 14s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+}
+
+/*
+ * במובייל (מתחת ל-sm, 640px) עוצרים את אנימציית .haze לגמרי: transform+
+ * opacity רצים על ה-GPU ולא אמורים "לעלות" הרבה, אבל בשילוב עם blur ותמונת
+ * הרקע שממילא נטענת ב-fixed, זו הפחתה אמיתית בעומס על מובייל חלש. האפקט
+ * עצמו לא נעלם — ה-opacity הבסיסי (0.5, לפי keyframe ה-0%/100%) נשאר קבוע,
+ * רק ההנפשה הרציפה מושבתת.
+ */
+@media (max-width: 639.98px) {
+  .haze {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Translucent footer surfaces keep the page background visible. */
+.brand-app-icon {
+  border: 1px solid rgb(255 255 255 / 18%);
+  box-shadow: 0 2px 0 rgb(255 255 255 / 9%) inset, 0 8px 20px rgb(0 0 0 / 32%);
+  object-fit: cover;
+}
+.footer-shell {
+  overflow: hidden;
+  border: 1px solid rgb(126 170 149 / 23%);
+  border-radius: 28px;
+  background: linear-gradient(130deg, rgb(17 28 27 / 38%), rgb(8 15 18 / 28%) 65%);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 5%) inset;
+}
+.footer-download-panel {
+  border: 1px solid rgb(92 255 157 / 13%);
+  background: linear-gradient(145deg, rgb(92 255 157 / 3%), rgb(0 0 0 / 6%));
+}
+.footer-download-button {
+  color: #062013;
+  background: linear-gradient(180deg, #66d993, #3cbe73);
+  border: 1px solid #79d99d;
+  box-shadow: 0 4px 0 #16834a, 0 10px 24px rgb(0 0 0 / 25%), 0 1px 0 #9ce4b8 inset;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.footer-download-button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #16834a, 0 14px 28px rgb(0 0 0 / 30%); }
+.footer-download-button:active { transform: translateY(2px); box-shadow: 0 2px 0 #16834a; }
+.footer-social-link { display: flex; min-width: 66px; flex-direction: column; align-items: center; padding: 3px; }
+.footer-social-tile {
+  position: relative;
+  display: flex;
+  width: 54px;
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 4px 0 var(--tile-edge), 0 9px 15px rgb(0 0 0 / 35%), 0 1px 0 rgb(255 255 255 / 35%) inset;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.footer-social-tile svg { filter: drop-shadow(0 2px 1px rgb(0 0 0 / 28%)); }
+.footer-social-facebook { --tile-edge: #164384; background: linear-gradient(145deg, #5295ff, #1765d0); }
+.footer-social-instagram { --tile-edge: #77305c; background: radial-gradient(circle at 20% 110%, #ffcf66, #ee5962 48%, #9b41bb 83%); }
+.footer-social-tiktok { --tile-edge: #23474c; background: linear-gradient(145deg, #344449, #11191d); }
+.footer-social-tiktok svg { filter: drop-shadow(2px 1px 0 #ed3c70) drop-shadow(-1px -1px 0 #25f4ee); }
+.footer-social-link:hover .footer-social-tile { transform: translateY(-3px) rotate(-3deg); }
+.footer-social-link:active .footer-social-tile { transform: translateY(2px); }
+.footer-shell a:focus-visible { outline: 2px solid #5cff9d; outline-offset: 5px; }
+
+/* Quieter surfaces for the next-release preview; brand colors stay unchanged. */
+.feature-surface {
+  border: 1px solid rgb(157 176 171 / 17%);
+  background: rgb(8 17 20 / 78%);
+}
+.feature-surface:hover { border-color: rgb(157 176 171 / 32%); }
+.faq-row { background: rgb(3 6 11 / 55%); }
+.faq-row:has(button[aria-expanded="true"]) { background: rgb(12 24 25 / 78%); }
+/* Next-release pass 2: compact steps and a clear, restrained plan comparison. */
+.quick-start-step {
+  border-top: 1px solid rgb(157 176 171 / 24%);
+  background: rgb(5 13 16 / 62%);
+}
+a.quick-start-step:hover { background: rgb(14 29 25 / 85%); }
+
