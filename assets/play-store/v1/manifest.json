@@ -1,0 +1,380 @@
+[
+  {
+    "order": 1,
+    "id": "01-clock-idle",
+    "lang": "he",
+    "title": "מתחילים משמרת. בלחיצה אחת.",
+    "source": "../../app-captures/retake-01/he/01b-clock-idle.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/he/01-clock-idle.png",
+    "sourceSha256": "5be67dcf8978e78779d8f22bb3ea3ef22e40d7e1e8c0318e834c2ba6daafbdb2",
+    "outputSha256": "6697e47e215815366b1283136baa0d1272bfa26007dadab371710efc7c7a16d3",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 2,
+    "id": "02-active-shift",
+    "lang": "he",
+    "title": "עוקבים אחרי השעות. בזמן אמת.",
+    "source": "../../app-captures/he/01-active-shift.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/he/02-active-shift.png",
+    "sourceSha256": "a133250d5da7b05f379d559fa1ac53109e0e6f36701a2ceee623d6d304cc4481",
+    "outputSha256": "15d432dcbede32c93aa84ff5d31cd85fbb8e6eb80bd4c426854d14f9f069ea5b",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 3,
+    "id": "05-monthly-summary",
+    "lang": "he",
+    "title": "רואים את החודש. מבינים את התמונה.",
+    "source": "../../app-captures/he/04-monthly-summary.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/he/03-monthly-summary.png",
+    "sourceSha256": "dcd5eb822558c53d974066e7f00ae877b5c8fd2e31ebab86b74b0de92b92b6ce",
+    "outputSha256": "e2217423fd0636020c7ed7a1226a57e3c1c9460877db4e6e432b5c0ece8246dd",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 4,
+    "id": "03-workplaces",
+    "lang": "he",
+    "title": "כמה עבודות. מקום אחד.",
+    "source": "../../app-captures/he/02-workplaces.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/he/04-workplaces.png",
+    "sourceSha256": "fb9929fe4343d45e734121cc1bbef2ad89018e9c3d7e48e1e4eb2b25ee918669",
+    "outputSha256": "23c5b9bd7b387dead07649c434b191212a5b8fda124aed98a535d648926a8022",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 5,
+    "id": "04-history",
+    "lang": "he",
+    "title": "כל משמרת. עם כל הפרטים.",
+    "source": "../../app-captures/he/03b-history-shift-cards.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/he/05-history.png",
+    "sourceSha256": "83f9c3d82694f83028537a8fa62478b1ef1aa245719f6aecbb3af98150e188dd",
+    "outputSha256": "1aa5724b3e7dcd19167aa7f0c57e0eca2d360929bb9dd5f1a65aa1c8f0ba705f",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 6,
+    "id": "06-calendar",
+    "lang": "he",
+    "title": "מתכננים מראש. מגיעים מוכנים.",
+    "source": "../../app-captures/retake-01/he/05-calendar-month-selected.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/he/06-calendar.png",
+    "sourceSha256": "04ec8bba83296acf11446b5ec236364d486043a849d95672be487d008725a7f3",
+    "outputSha256": "83d1f8c54e5cb92b8150b2bcd1e91b8b61f9593d3d768fed89d7d855e4b97ddc",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 7,
+    "id": "07-preferences",
+    "lang": "he",
+    "title": "מגדירים פעם אחת. עובדים בדרך שלכם.",
+    "source": "../../app-captures/retake-01/he/07-settings-preferences.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/he/07-preferences.png",
+    "sourceSha256": "abf29d80ba70eb6ab47383b97ff3fb2af34e5bc3dc50648fb2a57f06cb6fe937",
+    "outputSha256": "85668d4d74f3a6573d9a65135f4faacebfa3dcb07e0d7c17171ba42e0b43591b",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 1,
+    "id": "01-clock-idle",
+    "lang": "en",
+    "title": "Start your shift. With one tap.",
+    "source": "../../app-captures/retake-01/en/01b-clock-idle.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/en/01-clock-idle.png",
+    "sourceSha256": "ad5e1d96d8698deba80dd8fabe3c0bc233ca9720c3c1130e7e16983c0621af24",
+    "outputSha256": "d822533e8f1e11bb9677ca4584a53d24e6fb9e5b8ffe57808304b6103d513a4b",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 2,
+    "id": "02-active-shift",
+    "lang": "en",
+    "title": "Track your hours. As you work.",
+    "source": "../../app-captures/en/01-active-shift.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/en/02-active-shift.png",
+    "sourceSha256": "a370a57817d3ab8bd1552490b570c4282edb09ea533dbd0c9bc50b3f2126f6c8",
+    "outputSha256": "f330fd882d3c0452322ade620e671f95c93d3fb1d47eb65731706f5ff2f96f4a",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 3,
+    "id": "05-monthly-summary",
+    "lang": "en",
+    "title": "Your month. At a glance.",
+    "source": "../../app-captures/en/04-monthly-summary.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/en/03-monthly-summary.png",
+    "sourceSha256": "0906648b402ce55f90eaeff535413fb5a6d5093b5b6e69650dd2ceadcfa37a18",
+    "outputSha256": "0ec1ba1d678fe5f0a3b30b2ab1c66724c8ac70d3753b29f31da7ad1dfe25fe85",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 4,
+    "id": "03-workplaces",
+    "lang": "en",
+    "title": "Multiple jobs. One place.",
+    "source": "../../app-captures/en/02-workplaces.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/en/04-workplaces.png",
+    "sourceSha256": "a13b32f9ca76b7a9b83398818178b1ec3f7fb95d8734a6cc67b0d9c65ff77a63",
+    "outputSha256": "9d4cf09d9622c071d6c5d3c01cec7df0fbc9fb90bca7a1b8a5c423fb74b57ebf",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 5,
+    "id": "04-history",
+    "lang": "en",
+    "title": "Every shift. Every detail.",
+    "source": "../../app-captures/en/03b-history-shift-cards.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/en/05-history.png",
+    "sourceSha256": "2d1650b52d1a52dfbfed2a5e3900411cfdd5c63a5e881e1b3db679c936e999ea",
+    "outputSha256": "82e7a71bb062d1fef062620c4f170cb0bda38dd6af97a3e85ee34ced0ef11e00",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 6,
+    "id": "06-calendar",
+    "lang": "en",
+    "title": "Plan ahead. Stay organized.",
+    "source": "../../app-captures/retake-01/en/05-calendar-month-selected.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/en/06-calendar.png",
+    "sourceSha256": "72b40da66731c0481242a9b5972c03406644a806d1a4af3a954fc34eb0ae50ff",
+    "outputSha256": "8e7c6b729468fd5f41fe4759f341f9549a51b4dc1287c4e8347740688579a802",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  },
+  {
+    "order": 7,
+    "id": "07-preferences",
+    "lang": "en",
+    "title": "Your preferences. Your way.",
+    "source": "../../app-captures/retake-01/en/07-settings-preferences.png",
+    "sourceVersion": "1.8.1",
+    "freshness": "recapture-required-target-1.8.3",
+    "exportStatus": "design-draft-not-for-upload-source-refresh-required",
+    "target": {
+      "width": 1080,
+      "height": 1920,
+      "format": "PNG RGB",
+      "screen": {
+        "left": 189,
+        "top": 300,
+        "width": 702,
+        "height": 1560
+      }
+    },
+    "file": "drafts/en/07-preferences.png",
+    "sourceSha256": "2612b8d2850d92a7e643cdaa18c0f1e5becdf64bf34c68c3adc37f2297951f1a",
+    "outputSha256": "4fbc4565930b78125a01ba27987b6bb2be69b6ffb58957a0aff3b98267952f92",
+    "sourcePixelVerification": "Exact RGB equality after uniform 0.65 Lanczos3 resampling",
+    "compositingApproval": "User explicitly approved deterministic code compositing 2026-11-01",
+    "targetAppVersion": "1.8.3"
+  }
+]

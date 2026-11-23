@@ -1,0 +1,352 @@
+[
+  {
+    "id": "01-clock-idle",
+    "lang": "he",
+    "title": [
+      "מתחילים משמרת.",
+      "בלחיצה אחת."
+    ],
+    "source": "../../app-captures/play-183-dark/he/01-clock-idle.png",
+    "file": "he/01-clock-idle.png",
+    "sourceSha256": "cdf5f8740e21cbc746b5e505a74c2a683ebe968bce86300d775e07b53a67ae6c",
+    "outputSha256": "7daf28e5dfbd3232f6d6737ce9e9cfcfc605481b59c050aa516c1df63e6cc541",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "02-active-shift",
+    "lang": "he",
+    "title": [
+      "עוקבים אחרי השעות.",
+      "בזמן אמת."
+    ],
+    "source": "../../app-captures/play-183-dark/he/02-active-shift.png",
+    "file": "he/02-active-shift.png",
+    "sourceSha256": "dcabe403eeba8531f64f394fd175aadeb12af1558e95b66d9f9aef3a9640e7be",
+    "outputSha256": "39cbbbf69ef8ac900d792e41e0bbae8b365ad37deab38ef2bf07cb68037558e3",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "03-monthly-summary",
+    "lang": "he",
+    "title": [
+      "רואים את החודש.",
+      "מבינים את התמונה."
+    ],
+    "source": "../../app-captures/play-183-dark/he/03-monthly-summary.png",
+    "file": "he/03-monthly-summary.png",
+    "sourceSha256": "65be9b288c14285e45c73046a892301e95984e626b2704db60e55f8d7e8b3210",
+    "outputSha256": "7337cac97610ba91022ad687b21df52e575803268f9a5f135bf3d3edec45f3fc",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "04-workplaces",
+    "lang": "he",
+    "title": [
+      "כמה עבודות.",
+      "מקום אחד."
+    ],
+    "source": "../../app-captures/play-183-dark/he/04-workplaces.png",
+    "file": "he/04-workplaces.png",
+    "sourceSha256": "90e22ef5d5007dee3629c2b02539a0379de839885e2bbe7af7838e6fae7c5ab7",
+    "outputSha256": "8e7120778f8c0b4e104a7a7d953d2d9d1d426d37abcba78e4c9a80f4763a041b",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "05-history",
+    "lang": "he",
+    "title": [
+      "כל משמרת.",
+      "עם כל הפרטים."
+    ],
+    "source": "../../app-captures/play-183-dark/he/05-history.png",
+    "file": "he/05-history.png",
+    "sourceSha256": "3c6d097aa968e79db6c5ea46ce7135456cd5067190c69bd4bab0ee57ba2553bc",
+    "outputSha256": "d698198d49873ad94758df69aca028f5fb9915ae8c6e961a6824bf5e6529cde9",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "06-calendar",
+    "lang": "he",
+    "title": [
+      "מתכננים מראש.",
+      "מגיעים מוכנים."
+    ],
+    "source": "../../app-captures/play-183-dark/he/06b-calendar-details.png",
+    "file": "he/06-calendar.png",
+    "sourceSha256": "f2caf5050053154531144785bfab6b77051c8dd0624093384fed64c0537844c3",
+    "outputSha256": "ca8307b8e7085dae3bbc3a8983f454e179adfce33fcd5dfe606ed720d13fa01f",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "07-preferences",
+    "lang": "he",
+    "title": [
+      "מגדירים פעם אחת.",
+      "עובדים בדרך שלכם."
+    ],
+    "source": "../../app-captures/play-183-dark/he/07-preferences.png",
+    "file": "he/07-preferences.png",
+    "sourceSha256": "8619756e0a37191d14813e0d09a269ec44fd8b04ee1fab4b80c256abf83bab44",
+    "outputSha256": "5fd6eb6bf6f87c57fca4a41e97afe9d0b474e39be19d4256406144615bcd5297",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "01-clock-idle",
+    "lang": "en",
+    "title": [
+      "Start your shift.",
+      "With one tap."
+    ],
+    "source": "../../app-captures/play-183-dark/en/01-clock-idle.png",
+    "file": "en/01-clock-idle.png",
+    "sourceSha256": "dc5ab787c7e3e49471663b5992a4a1c2111a829b000ecc53a2c70dc53d9c4507",
+    "outputSha256": "8f03d7f26944d8d9611fcb7d008fe64489d39d18c1a74e3ba5c8345456eca585",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "02-active-shift",
+    "lang": "en",
+    "title": [
+      "Track your hours.",
+      "As you work."
+    ],
+    "source": "../../app-captures/play-183-dark/en/02-active-shift.png",
+    "file": "en/02-active-shift.png",
+    "sourceSha256": "95fabef34691158825f988f3b77fdb1f7cdc0b5ae4eb406d56fbd231848c9c7b",
+    "outputSha256": "a3a3202642b2e247ef60f4f6e50f2a585b11a88d5db2713eefd6701450d35826",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "03-monthly-summary",
+    "lang": "en",
+    "title": [
+      "Your month.",
+      "At a glance."
+    ],
+    "source": "../../app-captures/play-183-dark/en/03-monthly-summary.png",
+    "file": "en/03-monthly-summary.png",
+    "sourceSha256": "6974b8e4662a8d4336d2371b3c31959399f9a42f77b8db0f386bfd72ed1e5f0b",
+    "outputSha256": "770e2c76255de4c7bd30a50b37431bef236a8b5db41b8ed167f4418c46dfee0a",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "04-workplaces",
+    "lang": "en",
+    "title": [
+      "Multiple jobs.",
+      "One place."
+    ],
+    "source": "../../app-captures/play-183-dark/en/04-workplaces.png",
+    "file": "en/04-workplaces.png",
+    "sourceSha256": "c3ff89e007b4b60a8e3c9716b15002186fb5b5f6ffad7f0e95648832e8fb1b0b",
+    "outputSha256": "1fc8524133b8384b1eb33cd71718aaaf974406d625e5b08245e48370feb915a1",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "05-history",
+    "lang": "en",
+    "title": [
+      "Every shift.",
+      "Every detail."
+    ],
+    "source": "../../app-captures/play-183-dark/en/05-history.png",
+    "file": "en/05-history.png",
+    "sourceSha256": "f04a88429f7f3750a9ee96b284a5e7d71df9a752f5df7db9b4ec1d77fb374180",
+    "outputSha256": "61a1fd9b89eed7d6c0979d08f81eed37fc97d0467daaffaa05f24c83fd729f67",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "06-calendar",
+    "lang": "en",
+    "title": [
+      "Plan ahead.",
+      "Stay organized."
+    ],
+    "source": "../../app-captures/play-183-dark/en/06b-calendar-details.png",
+    "file": "en/06-calendar.png",
+    "sourceSha256": "7af11b2bcf24c7d469b3487b15d065d82a7515fc8c95ee354044ac6d2929b65d",
+    "outputSha256": "639b6eb2e64b3748fec4597703c52ddf2ea2a296f8588486d9857d9ab88ec7ad",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  },
+  {
+    "id": "07-preferences",
+    "lang": "en",
+    "title": [
+      "Your preferences.",
+      "Your way."
+    ],
+    "source": "../../app-captures/play-183-dark/en/07-preferences.png",
+    "file": "en/07-preferences.png",
+    "sourceSha256": "ba50db96f9b0c4dc09a37055a417d304bcd271474ea6b53c0316f51315d7182e",
+    "outputSha256": "66e9e931ce79c6eb9ad3ee2ad7617a72a60b45aa79378f5994f59500e7e492a3",
+    "width": 1080,
+    "height": 1920,
+    "channels": 3,
+    "alpha": false,
+    "screen": {
+      "left": 180,
+      "top": 270,
+      "width": 720,
+      "height": 1600
+    },
+    "pixelVerification": "התאמה מלאה למקור לאחר הקטנה אחידה ביחס 2/3",
+    "status": "מאושר על ידי המשתמש; טרם פורסם",
+    "method": "חיבור בקוד שאושר, ללא יצירת תמונות או ממשק ב־AI"
+  }
+]

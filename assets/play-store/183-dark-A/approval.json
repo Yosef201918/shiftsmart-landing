@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-01",
+  "userStatement": "זה מאושר",
+  "scope": "תוכן ועיצוב של 14 תמונות בסגנון A במצב כהה, בעברית ובאנגלית",
+  "publicationAuthorized": false,
+  "files": [
+    {
+      "file": "he/01-clock-idle.png",
+      "sha256": "7daf28e5dfbd3232f6d6737ce9e9cfcfc605481b59c050aa516c1df63e6cc541"
+    },
+    {
+      "file": "he/02-active-shift.png",
+      "sha256": "39cbbbf69ef8ac900d792e41e0bbae8b365ad37deab38ef2bf07cb68037558e3"
+    },
+    {
+      "file": "he/03-monthly-summary.png",
+      "sha256": "7337cac97610ba91022ad687b21df52e575803268f9a5f135bf3d3edec45f3fc"
+    },
+    {
+      "file": "he/04-workplaces.png",
+      "sha256": "8e7120778f8c0b4e104a7a7d953d2d9d1d426d37abcba78e4c9a80f4763a041b"
+    },
+    {
+      "file": "he/05-history.png",
+      "sha256": "d698198d49873ad94758df69aca028f5fb9915ae8c6e961a6824bf5e6529cde9"
+    },
+    {
+      "file": "he/06-calendar.png",
+      "sha256": "ca8307b8e7085dae3bbc3a8983f454e179adfce33fcd5dfe606ed720d13fa01f"
+    },
+    {
+      "file": "he/07-preferences.png",
+      "sha256": "5fd6eb6bf6f87c57fca4a41e97afe9d0b474e39be19d4256406144615bcd5297"
+    },
+    {
+      "file": "en/01-clock-idle.png",
+      "sha256": "8f03d7f26944d8d9611fcb7d008fe64489d39d18c1a74e3ba5c8345456eca585"
+    },
+    {
+      "file": "en/02-active-shift.png",
+      "sha256": "a3a3202642b2e247ef60f4f6e50f2a585b11a88d5db2713eefd6701450d35826"
+    },
+    {
+      "file": "en/03-monthly-summary.png",
+      "sha256": "770e2c76255de4c7bd30a50b37431bef236a8b5db41b8ed167f4418c46dfee0a"
+    },
+    {
+      "file": "en/04-workplaces.png",
+      "sha256": "1fc8524133b8384b1eb33cd71718aaaf974406d625e5b08245e48370feb915a1"
+    },
+    {
+      "file": "en/05-history.png",
+      "sha256": "61a1fd9b89eed7d6c0979d08f81eed37fc97d0467daaffaa05f24c83fd729f67"
+    },
+    {
+      "file": "en/06-calendar.png",
+      "sha256": "639b6eb2e64b3748fec4597703c52ddf2ea2a296f8588486d9857d9ab88ec7ad"
+    },
+    {
+      "file": "en/07-preferences.png",
+      "sha256": "66e9e931ce79c6eb9ad3ee2ad7617a72a60b45aa79378f5994f59500e7e492a3"
+    }
+  ],
+  "package": {
+    "file": "shift-smart-google-play-183-dark-A.zip",
+    "sha256": "ede856395a0ef230d31243d9268c0b0325b1d285d014f5be1e38815281b3f14c"
+  }
+}
