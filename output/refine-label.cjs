@@ -1,0 +1,1 @@
+const fs=require('fs');let s=fs.readFileSync('lib/i18n/dictionaries.ts','utf8').replace('title: "דוחות וגיבוי"','title: "דוחות וסיכומים"').replace('title: "Reports and backup"','title: "Reports and summaries"');fs.writeFileSync('lib/i18n/dictionaries.ts',s);

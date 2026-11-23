@@ -1,0 +1,9 @@
+{
+  "installation": "Portable TEMP-only; no Windows service",
+  "listen": "127.0.0.1:55432",
+  "source": "https://www.postgresql.org/download/windows/",
+  "vendor": "https://www.enterprisedb.com/download-postgresql-binaries",
+  "version": "17.11",
+  "sha256": "80379B2C04D51C30225532E0AE04509899141E9957ED096FE749D7FD9DF8F82F",
+  "archive": "https://get.enterprisedb.com/postgresql/postgresql-17.11-5-windows-x64-binaries.zip"
+}

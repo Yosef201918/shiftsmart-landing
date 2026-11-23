@@ -1,0 +1,2396 @@
+[
+  {
+    "path": "he.meta.title",
+    "text": "Shift Smart – שעון נוכחות וניהול משמרות"
+  },
+  {
+    "path": "he.meta.description",
+    "text": "נהלו משמרות, תעדו שעות עבודה וקבלו אומדן שכר לפי התעריפים שלכם. Shift Smart זמינה לאנדרואיד להורדה בחינם מ-Google Play."
+  },
+  {
+    "path": "he.meta.keywords.0",
+    "text": "ניהול משמרות"
+  },
+  {
+    "path": "he.meta.keywords.1",
+    "text": "שעון נוכחות"
+  },
+  {
+    "path": "he.meta.keywords.2",
+    "text": "מעקב שעות עבודה"
+  },
+  {
+    "path": "he.meta.keywords.3",
+    "text": "דוח שעות"
+  },
+  {
+    "path": "he.meta.keywords.4",
+    "text": "Shift Smart"
+  },
+  {
+    "path": "he.meta.ogDescription",
+    "text": "מעקב אחר משמרות, שעות עבודה ושכר משוער בטלפון. הורידו את Shift Smart בחינם מ-Google Play."
+  },
+  {
+    "path": "he.brand.name",
+    "text": "Shift Smart"
+  },
+  {
+    "path": "he.brand.launchBadge",
+    "text": "זמינה עכשיו ב-Google Play"
+  },
+  {
+    "path": "he.languageSwitcher.hebrewLabel",
+    "text": "עברית"
+  },
+  {
+    "path": "he.languageSwitcher.englishLabel",
+    "text": "English"
+  },
+  {
+    "path": "he.languageSwitcher.groupAriaLabel",
+    "text": "בחירת שפה"
+  },
+  {
+    "path": "he.hero.kicker",
+    "text": "המשמרות שלכם. בשליטה מלאה."
+  },
+  {
+    "path": "he.hero.planNote",
+    "text": "מתחילים בחינם · שדרוג Pro לבחירה"
+  },
+  {
+    "path": "he.hero.titleLine1",
+    "text": "עובדים במשמרות?"
+  },
+  {
+    "path": "he.hero.titleLine2",
+    "text": "יש דרך חכמה יותר."
+  },
+  {
+    "path": "he.hero.subtitle",
+    "text": "נהלו את המשמרות, עקבו אחרי שעות העבודה וראו את השכר המשוער לפי התעריף שלכם."
+  },
+  {
+    "path": "he.hero.audience",
+    "text": "למאבטחים, סדרנים, צוותי מסעדות ולכל מי שעובד במשמרות."
+  },
+  {
+    "path": "he.hero.downloadCta",
+    "text": "הורדה מ-Google Play"
+  },
+  {
+    "path": "he.hero.platformNotice",
+    "text": "זמין לאנדרואיד דרך Google Play."
+  },
+  {
+    "path": "he.plans.kicker",
+    "text": "חינם ו-PRO"
+  },
+  {
+    "path": "he.plans.title",
+    "text": "מה בחינם ומה כלול ב-Pro"
+  },
+  {
+    "path": "he.plans.subtitle",
+    "text": "שעון הנוכחות וחישובי הבסיס זמינים בחינם. אפשר לשדרג ל-Pro מתוך האפליקציה אם צריכים כלי דוחות וגיבוי נוספים."
+  },
+  {
+    "path": "he.plans.options.0.title",
+    "text": "השימוש החינמי"
+  },
+  {
+    "path": "he.plans.options.0.description",
+    "text": "למעקב השוטף אחרי המשמרות"
+  },
+  {
+    "path": "he.plans.options.0.items.0",
+    "text": "החתמת כניסה ויציאה"
+  },
+  {
+    "path": "he.plans.options.0.items.1",
+    "text": "חישוב שעות ואומדן שכר לפי ההגדרות שלכם"
+  },
+  {
+    "path": "he.plans.options.1.title",
+    "text": "שדרוג Pro"
+  },
+  {
+    "path": "he.plans.options.1.description",
+    "text": "תוספת בתשלום חד־פעמי דרך Google Play"
+  },
+  {
+    "path": "he.plans.options.1.items.0",
+    "text": "גיבוי ושחזור ל-Google Drive"
+  },
+  {
+    "path": "he.plans.options.1.items.1",
+    "text": "ייצוא דוחות חודשיים ל-Excel"
+  },
+  {
+    "path": "he.plans.options.1.items.2",
+    "text": "דוח סיכום משמרות שנתי"
+  },
+  {
+    "path": "he.plans.purchaseNote",
+    "text": "המחיר מוצג לפני הרכישה באפליקציה. הרכישה כוללת את תכונות Pro הקיימות במועד הרכישה; תכונות חדשות בעתיד עשויות להיות מוצעות בנפרד. פרטי התשלום יוצגו לפני כל חיוב."
+  },
+  {
+    "path": "he.whatsNew.kicker",
+    "text": "עדכונים"
+  },
+  {
+    "path": "he.whatsNew.titlePrefix",
+    "text": "מה חדש "
+  },
+  {
+    "path": "he.whatsNew.titleHighlight",
+    "text": "באפליקציה?"
+  },
+  {
+    "path": "he.whatsNew.subtitle",
+    "text": "העדכונים האחרונים"
+  },
+  {
+    "path": "he.whatsNew.badgeLabel",
+    "text": "חדש"
+  },
+  {
+    "path": "he.whatsNew.items.0.title",
+    "text": "תעריפי שבת וחג: 150% ו-200%"
+  },
+  {
+    "path": "he.whatsNew.items.0.description",
+    "text": "האפליקציה מזהה שבתות וחגים ומחילה אוטומטית תעריף של 150% או 200%, לפי סוג היום."
+  },
+  {
+    "path": "he.whatsNew.items.1.title",
+    "text": "יעד כללי וצבירת חופשה ומחלה"
+  },
+  {
+    "path": "he.whatsNew.items.1.description",
+    "text": "מגדירים יעד כללי, ועוקבים אחרי צבירת ימי החופשה והמחלה שלכם."
+  },
+  {
+    "path": "he.whatsNew.items.2.title",
+    "text": "עד שתי תגיות ועריכת שעת התחלה"
+  },
+  {
+    "path": "he.whatsNew.items.2.description",
+    "text": "בוחרים עד שתי תגיות לכל משמרת, ואפשר לערוך את שעת ההתחלה גם בזמן שהמשמרת רצה."
+  },
+  {
+    "path": "he.aboutTimeTracking.kicker",
+    "text": "מעקב שעות"
+  },
+  {
+    "path": "he.aboutTimeTracking.titlePrefix",
+    "text": "מה זה בעצם "
+  },
+  {
+    "path": "he.aboutTimeTracking.titleHighlight",
+    "text": "שעון נוכחות דיגיטלי?"
+  },
+  {
+    "path": "he.aboutTimeTracking.body",
+    "text": "מחתימים כניסה ויציאה בטלפון, והמשמרות נשמרות במקום אחד. השכר המשוער מחושב לפי השעות, התעריפים וההגדרות שלכם. בסוף החודש אפשר לעבור על הרישום ולהשוות לתלוש השכר."
+  },
+  {
+    "path": "he.quickStart.kicker",
+    "text": "התחלה מהירה"
+  },
+  {
+    "path": "he.quickStart.titlePrefix",
+    "text": "איך "
+  },
+  {
+    "path": "he.quickStart.titleHighlight",
+    "text": "מתחילים"
+  },
+  {
+    "path": "he.quickStart.titleSuffix",
+    "text": "?"
+  },
+  {
+    "path": "he.quickStart.subtitle",
+    "text": "מההורדה ועד למשמרת הראשונה."
+  },
+  {
+    "path": "he.quickStart.steps.0.title",
+    "text": "מורידים את האפליקציה"
+  },
+  {
+    "path": "he.quickStart.steps.0.description",
+    "text": "מתקינים את Shift Smart מ-Google Play."
+  },
+  {
+    "path": "he.quickStart.steps.0.linkLabel",
+    "text": "לחנות Google Play"
+  },
+  {
+    "path": "he.quickStart.steps.1.title",
+    "text": "מגדירים עבודה ותעריף"
+  },
+  {
+    "path": "he.quickStart.steps.1.description",
+    "text": "מוסיפים מקום עבודה ומזינים תעריף לשעה."
+  },
+  {
+    "path": "he.quickStart.steps.2.title",
+    "text": "מחתימים כניסה ויציאה"
+  },
+  {
+    "path": "he.quickStart.steps.2.description",
+    "text": "עוקבים אחרי שעות העבודה והשכר המשוער."
+  },
+  {
+    "path": "he.features.kicker",
+    "text": "יכולות האפליקציה"
+  },
+  {
+    "path": "he.features.titlePrefix",
+    "text": "מה אפשר לעשות "
+  },
+  {
+    "path": "he.features.titleHighlight",
+    "text": "באפליקציה"
+  },
+  {
+    "path": "he.features.items.0.title",
+    "text": "החתמה בטביעת אצבע"
+  },
+  {
+    "path": "he.features.items.0.description",
+    "text": "מאמתים כניסה ויציאה בטביעת אצבע. ביציאה דרך הווידג׳ט מתבקש אישור."
+  },
+  {
+    "path": "he.features.items.1.title",
+    "text": "חישוב שכר וטיפים"
+  },
+  {
+    "path": "he.features.items.1.description",
+    "text": "מרכזים שעות, טיפים ותוספות לפי התעריפים שהגדרתם."
+  },
+  {
+    "path": "he.features.items.2.title",
+    "text": "יומן משמרות"
+  },
+  {
+    "path": "he.features.items.2.description",
+    "text": "מתכננים משמרות ומסנכרנים ליומן שנבחר במכשיר, כולל Google Calendar."
+  },
+  {
+    "path": "he.features.items.3.title",
+    "text": "צליל בהחתמה"
+  },
+  {
+    "path": "he.features.items.3.description",
+    "text": "שומעים צליל אישור בהחתמת כניסה או יציאה."
+  },
+  {
+    "path": "he.features.items.4.title",
+    "text": "דוחות וגיבוי"
+  },
+  {
+    "path": "he.features.items.4.description",
+    "text": "צופים בסיכום החודשי ומשתפים דוחות. ב-Pro: ייצוא Excel חודשי, דוח שנתי וגיבוי ל-Drive."
+  },
+  {
+    "path": "he.features.items.5.title",
+    "text": "תיעוד מיקום"
+  },
+  {
+    "path": "he.features.items.5.description",
+    "text": "שומרים את המיקום שבו התחילה המשמרת."
+  },
+  {
+    "path": "he.features.items.6.title",
+    "text": "עיצוב כהה ופרטיות"
+  },
+  {
+    "path": "he.features.items.6.description",
+    "text": "הנתונים נשמרים במכשיר כברירת מחדל. גיבוי ל-Drive ושליחת משוב הם לבחירתכם."
+  },
+  {
+    "path": "he.features.items.7.title",
+    "text": "כמה מקומות עבודה"
+  },
+  {
+    "path": "he.features.items.7.description",
+    "text": "מגדירים לכל עבודה תעריף משלה ומשמרות בוקר, צהריים, ערב או לילה."
+  },
+  {
+    "path": "he.features.items.8.title",
+    "text": "פירוט ניכויים"
+  },
+  {
+    "path": "he.features.items.8.description",
+    "text": "מגדירים אחוזים לביטוח לאומי, מס בריאות, פנסיה, קרן השתלמות ומס הכנסה, ורואים את השפעתם על אומדן הנטו."
+  },
+  {
+    "path": "he.features.items.9.title",
+    "text": "ווידג׳ט למסך הבית"
+  },
+  {
+    "path": "he.features.items.9.description",
+    "text": "מתחילים ומסיימים משמרת ישירות ממסך הבית ורואים אם השעון פועל."
+  },
+  {
+    "path": "he.features.items.10.title",
+    "text": "סיכום בסיום המשמרת"
+  },
+  {
+    "path": "he.features.items.10.description",
+    "text": "עוברים לסיכום השעות ומוסיפים הערות, למשל על טיפים שקיבלתם."
+  },
+  {
+    "path": "he.features.items.11.title",
+    "text": "תבניות משמרת וימי חופשה"
+  },
+  {
+    "path": "he.features.items.11.description",
+    "text": "יוצרים משמרות לפי דפוס שבועי ועוקבים אחרי ימי החופשה והמחלה."
+  },
+  {
+    "path": "he.reviews.kicker",
+    "text": "דירוגים וביקורות"
+  },
+  {
+    "path": "he.reviews.titlePrefix",
+    "text": "מה "
+  },
+  {
+    "path": "he.reviews.titleHighlight",
+    "text": "אומרים עלינו"
+  },
+  {
+    "path": "he.reviews.subtitle",
+    "text": "לפי הביקורות שנכתבו באתר"
+  },
+  {
+    "path": "he.reviews.ratingAriaLabel",
+    "text": "דירוג 5 מתוך 5 כוכבים",
+    "generatedExample": true
+  },
+  {
+    "path": "he.reviews.writeReviewCta",
+    "text": "כתבו ביקורת"
+  },
+  {
+    "path": "he.reviews.toastMessage",
+    "text": "תודה! הביקורת נשלחה ותוצג לאחר אישור."
+  },
+  {
+    "path": "he.reviews.loadingLabel",
+    "text": "טוען ביקורות..."
+  },
+  {
+    "path": "he.reviews.emptyState",
+    "text": "היו הראשונים לכתוב ביקורת על האפליקציה!"
+  },
+  {
+    "path": "he.reviews.errorState",
+    "text": "לא הצלחנו לטעון ביקורות כרגע. נסו לרענן את הדף."
+  },
+  {
+    "path": "he.reviews.validationError",
+    "text": "כתבו שם וביקורת: עד 60 תווים בשם ועד 500 תווים בביקורת. השדות לא יכולים להיות ריקים."
+  },
+  {
+    "path": "he.reviews.submitError",
+    "text": "שליחת הביקורת נכשלה. בדקו את החיבור ונסו שוב."
+  },
+  {
+    "path": "he.reviews.rateLimitError",
+    "text": "נשלחו כמה בקשות בזמן קצר. המתינו מעט ונסו שוב."
+  },
+  {
+    "path": "he.reviews.modal.title",
+    "text": "כתיבת ביקורת"
+  },
+  {
+    "path": "he.reviews.modal.nameLabel",
+    "text": "שם"
+  },
+  {
+    "path": "he.reviews.modal.namePlaceholder",
+    "text": "השם שלכם"
+  },
+  {
+    "path": "he.reviews.modal.ratingLabel",
+    "text": "דירוג"
+  },
+  {
+    "path": "he.reviews.modal.ratingAria",
+    "text": "דירוג 5 כוכבים",
+    "generatedExample": true
+  },
+  {
+    "path": "he.reviews.modal.reviewLabel",
+    "text": "הביקורת שלכם"
+  },
+  {
+    "path": "he.reviews.modal.reviewPlaceholder",
+    "text": "ספרו לנו איך הייתה החוויה שלכם עם האפליקציה..."
+  },
+  {
+    "path": "he.reviews.modal.submitCta",
+    "text": "שליחת ביקורת"
+  },
+  {
+    "path": "he.reviews.modal.submittingLabel",
+    "text": "שולחים את הביקורת…"
+  },
+  {
+    "path": "he.reviews.modal.ratingRequired",
+    "text": "בחרו דירוג כוכבים לפני השליחה."
+  },
+  {
+    "path": "he.reviews.modal.closeAria",
+    "text": "סגירת חלון הביקורת"
+  },
+  {
+    "path": "he.gallery.kicker",
+    "text": "מסכי האפליקציה"
+  },
+  {
+    "path": "he.gallery.titlePrefix",
+    "text": "הצצה "
+  },
+  {
+    "path": "he.gallery.titleHighlight",
+    "text": "לאפליקציה"
+  },
+  {
+    "path": "he.gallery.prevAria",
+    "text": "המסך הקודם"
+  },
+  {
+    "path": "he.gallery.nextAria",
+    "text": "המסך הבא"
+  },
+  {
+    "path": "he.gallery.goToSlideAria",
+    "text": "מעבר למסך 5",
+    "generatedExample": true
+  },
+  {
+    "path": "he.gallery.shots.0.src",
+    "text": "/marketing/v1/he/01-clock-idle.webp"
+  },
+  {
+    "path": "he.gallery.shots.0.alt",
+    "text": "מתחילים משמרת. בלחיצה אחת. — מסך עם נתוני הדגמה"
+  },
+  {
+    "path": "he.gallery.shots.1.src",
+    "text": "/marketing/v1/he/02-active-shift.webp"
+  },
+  {
+    "path": "he.gallery.shots.1.alt",
+    "text": "עוקבים אחרי השעות. בזמן אמת. — מסך עם נתוני הדגמה"
+  },
+  {
+    "path": "he.gallery.shots.2.src",
+    "text": "/marketing/v1/he/03-workplaces.webp"
+  },
+  {
+    "path": "he.gallery.shots.2.alt",
+    "text": "כמה עבודות. מקום אחד. — מסך עם נתוני הדגמה"
+  },
+  {
+    "path": "he.gallery.shots.3.src",
+    "text": "/marketing/v1/he/04-history.webp"
+  },
+  {
+    "path": "he.gallery.shots.3.alt",
+    "text": "כל משמרת. עם כל הפרטים. — מסך עם נתוני הדגמה"
+  },
+  {
+    "path": "he.gallery.shots.4.src",
+    "text": "/marketing/v1/he/05-monthly-summary.webp"
+  },
+  {
+    "path": "he.gallery.shots.4.alt",
+    "text": "רואים את החודש. מבינים את התמונה. — מסך עם נתוני הדגמה"
+  },
+  {
+    "path": "he.gallery.shots.5.src",
+    "text": "/marketing/v1/he/06-calendar.webp"
+  },
+  {
+    "path": "he.gallery.shots.5.alt",
+    "text": "מתכננים מראש. מגיעים מוכנים. — מסך עם נתוני הדגמה"
+  },
+  {
+    "path": "he.gallery.shots.6.src",
+    "text": "/marketing/v1/he/07-preferences.webp"
+  },
+  {
+    "path": "he.gallery.shots.6.alt",
+    "text": "מגדירים פעם אחת. עובדים בדרך שלכם. — מסך עם נתוני הדגמה"
+  },
+  {
+    "path": "he.roadmap.kicker",
+    "text": "מפת דרכים"
+  },
+  {
+    "path": "he.roadmap.titlePrefix",
+    "text": "מה מתוכנן "
+  },
+  {
+    "path": "he.roadmap.titleHighlight",
+    "text": "להמשך?"
+  },
+  {
+    "path": "he.roadmap.subtitle",
+    "text": "אלה התכונות שמתוכננות להמשך. עדיין אין תאריכי השקה סופיים."
+  },
+  {
+    "path": "he.roadmap.milestones.0.title",
+    "text": "גרסת iOS"
+  },
+  {
+    "path": "he.roadmap.milestones.0.description",
+    "text": "גרסה למשתמשי iPhone נמצאת בתכנון. כיום האפליקציה זמינה לאנדרואיד."
+  },
+  {
+    "path": "he.roadmap.milestones.1.title",
+    "text": "גיבוי אוטומטי וסנכרון ל-Google Drive"
+  },
+  {
+    "path": "he.roadmap.milestones.1.description",
+    "text": "גיבוי ידני ל-Google Drive כבר זמין ב-Pro. גיבוי אוטומטי וסנכרון עדיין אינם זמינים ונמצאים בתכנון."
+  },
+  {
+    "path": "he.faq.kicker",
+    "text": "FAQ"
+  },
+  {
+    "path": "he.faq.titlePrefix",
+    "text": "שאלות "
+  },
+  {
+    "path": "he.faq.titleHighlight",
+    "text": "ותשובות"
+  },
+  {
+    "path": "he.faq.subtitle",
+    "text": "תשובות על ההורדה, המשמרות וחישובי השכר. לשאלות נוספות אפשר לפנות אלינו במייל."
+  },
+  {
+    "path": "he.faq.items.0.question",
+    "text": "איך מורידים את האפליקציה?"
+  },
+  {
+    "path": "he.faq.items.0.answer",
+    "text": "לוחצים על כפתור ההורדה באתר ומתקינים את Shift Smart מ-Google Play במכשיר אנדרואיד."
+  },
+  {
+    "path": "he.faq.items.1.question",
+    "text": "האם האפליקציה בחינם?"
+  },
+  {
+    "path": "he.faq.items.1.answer",
+    "text": "כן. ההורדה, שעון הנוכחות וחישובי הבסיס זמינים בחינם. שדרוג Pro בתשלום חד-פעמי מוסיף גיבוי ושחזור ל-Google Drive (עד 10 גרסאות), ייצוא Excel חודשי וסיכום משמרות שנתי לקראת עונת המס. המחיר מוצג באפליקציה לפני הרכישה. תכונות חדשות בעתיד עשויות להיות מוצעות בנפרד, גם במנוי; פרטי התשלום יוצגו מראש."
+  },
+  {
+    "path": "he.faq.items.2.question",
+    "text": "מה עושים אם מצאתי באג?"
+  },
+  {
+    "path": "he.faq.items.2.answer",
+    "text": "מצאתם תקלה? שלחו לנו מייל ל-yoseffstor@gmail.com עם תיאור הבעיה, דגם המכשיר וצילום מסך אם אפשר. כך נוכל לבדוק מה קרה ולעזור."
+  },
+  {
+    "path": "he.faq.items.3.question",
+    "text": "איך מחושבות שעות נוספות?"
+  },
+  {
+    "path": "he.faq.items.3.answer",
+    "text": "לפי סף יום העבודה ואחוזי התוספת שהגדרתם באפליקציה. שעות שמעבר לסף מחושבות בתעריף המתאים ונכללות בסיכום החודשי."
+  },
+  {
+    "path": "he.faq.items.4.question",
+    "text": "מה קורה אם שכחתי להחתים כניסה או יציאה?"
+  },
+  {
+    "path": "he.faq.items.4.answer",
+    "text": "אפשר להוסיף משמרת או לתקן אותה ידנית ביומן. בוחרים תאריך ומזינים את שעות ההתחלה והסיום. הסיכום החודשי מתעדכן בהתאם."
+  },
+  {
+    "path": "he.faq.items.5.question",
+    "text": "אפשר לנהל כמה מקומות עבודה במקביל?"
+  },
+  {
+    "path": "he.faq.items.5.answer",
+    "text": "כן. מגדירים לכל מקום עבודה תעריף ואורך משמרת משלו. הדוח החודשי מציג פירוט לפי מקום עבודה וגם סיכום כולל של השעות והשכר המשוער."
+  },
+  {
+    "path": "he.faq.items.6.question",
+    "text": "למה להשתמש באפליקציה במקום לרשום שעות?"
+  },
+  {
+    "path": "he.faq.items.6.answer",
+    "text": "האפליקציה מרכזת את זמני הכניסה והיציאה ומחשבת שעות ושכר משוער לפי ההגדרות שלכם. כך אפשר לעבור על המשמרות והסיכום החודשי בלי לרכז את הרישום ידנית."
+  },
+  {
+    "path": "he.faq.items.7.question",
+    "text": "על מה מבוסס חישוב השכר?"
+  },
+  {
+    "path": "he.faq.items.7.answer",
+    "text": "על השעות שרשמתם, התעריף של כל מקום עבודה והגדרות התוספות והניכויים שלכם. שעות נוספות מחושבות לפי הסף והאחוזים שהגדרתם. הסיכום הוא אומדן שמאפשר להשוות את הרישום לתלוש השכר."
+  },
+  {
+    "path": "he.faq.items.8.question",
+    "text": "האם האפליקציה זמינה בעברית?"
+  },
+  {
+    "path": "he.faq.items.8.answer",
+    "text": "כן. האפליקציה זמינה בעברית ובאנגלית. הממשק העברי מותאם לקריאה מימין לשמאל."
+  },
+  {
+    "path": "he.footer.tagline",
+    "text": "ניהול משמרות ושעון נוכחות חכם"
+  },
+  {
+    "path": "he.footer.followUs",
+    "text": "עקבו אחרינו"
+  },
+  {
+    "path": "he.footer.linksAriaLabel",
+    "text": "קישורים ויצירת קשר"
+  },
+  {
+    "path": "he.footer.linkPlayStore",
+    "text": "הורדה מ‑Google Play"
+  },
+  {
+    "path": "he.footer.linkPrivacyPolicy",
+    "text": "מדיניות פרטיות"
+  },
+  {
+    "path": "he.footer.linkTermsOfService",
+    "text": "תנאי שימוש"
+  },
+  {
+    "path": "he.footer.socialFacebookAria",
+    "text": "עמוד הפייסבוק של Shift Smart"
+  },
+  {
+    "path": "he.footer.socialInstagramAria",
+    "text": "עמוד האינסטגרם של Shift Smart"
+  },
+  {
+    "path": "he.footer.socialTiktokAria",
+    "text": "עמוד הטיקטוק של Shift Smart"
+  },
+  {
+    "path": "he.footer.copyright",
+    "text": "© 2026 Shift Smart. כל הזכויות שמורות.",
+    "generatedExample": true
+  },
+  {
+    "path": "he.stickyCta.label",
+    "text": "הורידו את Shift Smart"
+  },
+  {
+    "path": "he.share.buttonLabel",
+    "text": "שתף את האפליקציה"
+  },
+  {
+    "path": "he.share.copiedLabel",
+    "text": "הועתק!"
+  },
+  {
+    "path": "he.share.manualCopyLabel",
+    "text": "לא הצלחנו להעתיק אוטומטית. אפשר לבחור ולהעתיק את הטקסט כאן:"
+  },
+  {
+    "path": "he.share.title",
+    "text": "הכירו את Shift Smart!"
+  },
+  {
+    "path": "he.share.buildText",
+    "text": "Shift Smart לניהול משמרות ושעות עבודה. אפשר להחתים כניסה ויציאה ולראות שכר משוער לפי התעריף שמגדירים. האפליקציה זמינה לאנדרואיד, עם שימוש בסיסי בחינם ושדרוג Pro לבחירה.\nלפרטים ולהורדה: https://www.shift-smartapp.com",
+    "generatedExample": true
+  },
+  {
+    "path": "he.featureRequest.buttonLabel",
+    "text": "הצעת פיצ'ר"
+  },
+  {
+    "path": "he.featureRequest.modalTitle",
+    "text": "הצעת פיצ'ר"
+  },
+  {
+    "path": "he.featureRequest.modalSubtitle",
+    "text": "איזו אפשרות חסרה לכם באפליקציה? כתבו לנו מה הייתם רוצים להוסיף."
+  },
+  {
+    "path": "he.featureRequest.nameLabel",
+    "text": "שם"
+  },
+  {
+    "path": "he.featureRequest.namePlaceholder",
+    "text": "השם שלכם"
+  },
+  {
+    "path": "he.featureRequest.featureLabel",
+    "text": "איזה פיצ'ר תרצו לראות?"
+  },
+  {
+    "path": "he.featureRequest.featurePlaceholder",
+    "text": "ספרו לנו על הרעיון שלכם..."
+  },
+  {
+    "path": "he.featureRequest.submitCta",
+    "text": "שליחת הצעה"
+  },
+  {
+    "path": "he.featureRequest.submittingLabel",
+    "text": "שולחים את ההצעה…"
+  },
+  {
+    "path": "he.featureRequest.closeAria",
+    "text": "סגירת חלון הצעת הפיצ'ר"
+  },
+  {
+    "path": "he.featureRequest.toastMessage",
+    "text": "תודה! ההצעה נשלחה ותיבדק."
+  },
+  {
+    "path": "he.featureRequest.validationError",
+    "text": "הזינו שם והצעה עם תוכן גלוי: עד 60 תווים בשם ועד 1,000 בהצעה."
+  },
+  {
+    "path": "he.featureRequest.submitError",
+    "text": "שליחת ההצעה נכשלה. בדקו את החיבור ונסו שוב."
+  },
+  {
+    "path": "he.featureRequest.rateLimitError",
+    "text": "נשלחו כמה בקשות בזמן קצר. המתינו מעט ונסו שוב."
+  },
+  {
+    "path": "he.phoneShowcase.mockupSrc",
+    "text": "/marketing/v1/he/01-clock-idle.webp"
+  },
+  {
+    "path": "he.phoneShowcase.mockupAlt",
+    "text": "מתחילים משמרת. בלחיצה אחת. — מסך עם נתוני הדגמה"
+  },
+  {
+    "path": "he.appPoster.kicker",
+    "text": "האפליקציה"
+  },
+  {
+    "path": "he.appPoster.titlePrefix",
+    "text": "הכירו את "
+  },
+  {
+    "path": "he.appPoster.titleHighlight",
+    "text": "Shift Smart"
+  },
+  {
+    "path": "he.appPoster.imageSrc",
+    "text": "/marketing/brand-v3/he.png"
+  },
+  {
+    "path": "he.appPoster.imageAlt",
+    "text": "פוסטר Shift Smart: המשמרות שלך. בשליטה. עובדים במשמרות? יש דרך חכמה יותר. נהלו את המשמרות שלכם, עקבו אחרי השעות וחשבו את השכר בקלות וישירות מהנייד. משמרות, שעות, שכר ודוחות."
+  },
+  {
+    "path": "he.cookieConsent.heading",
+    "text": "אנחנו משתמשים בעוגיות"
+  },
+  {
+    "path": "he.cookieConsent.body",
+    "text": "באישורכם נפעיל את Google Analytics למדידת השימוש באתר. בחירת השפה וההעדפה שלכם נשמרות בדפדפן. לפרטים ראו את"
+  },
+  {
+    "path": "he.cookieConsent.privacyLinkLabel",
+    "text": "מדיניות הפרטיות"
+  },
+  {
+    "path": "he.cookieConsent.acceptLabel",
+    "text": "מאשר/ת"
+  },
+  {
+    "path": "he.cookieConsent.rejectLabel",
+    "text": "דוחה"
+  },
+  {
+    "path": "he.launchBanner.message",
+    "text": "🎉 זמינה עכשיו ב-Google Play!"
+  },
+  {
+    "path": "he.launchBanner.ctaLabel",
+    "text": "הורידו עכשיו"
+  },
+  {
+    "path": "he.privacy.metaTitle",
+    "text": "מדיניות פרטיות — Shift Smart"
+  },
+  {
+    "path": "he.privacy.metaDescription",
+    "text": "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך."
+  },
+  {
+    "path": "he.privacy.pageTitle",
+    "text": "מדיניות פרטיות — Shift Smart"
+  },
+  {
+    "path": "he.privacy.lastUpdated",
+    "text": "עודכן לאחרונה: 01.11.2026"
+  },
+  {
+    "path": "he.privacy.backToHome",
+    "text": "חזרה לדף הבית"
+  },
+  {
+    "path": "he.privacy.intro",
+    "text": "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך."
+  },
+  {
+    "path": "he.privacy.dataPrinciple.title",
+    "text": "עיקרון מרכזי: הנתונים שלך נשארים אצלך"
+  },
+  {
+    "path": "he.privacy.dataPrinciple.body.0.text",
+    "text": "הנתונים שאתם מזינים (עבודות, משמרות, שכר, הערות, תמונות והגדרות) נשמרים "
+  },
+  {
+    "path": "he.privacy.dataPrinciple.body.1.text",
+    "text": "רק על המכשיר שלכם"
+  },
+  {
+    "path": "he.privacy.dataPrinciple.body.1.format",
+    "text": "bold"
+  },
+  {
+    "path": "he.privacy.dataPrinciple.body.2.text",
+    "text": ". איננו מפעילים שרת שאוסף את נתוני המשמרות והשכר שלכם ואיננו מוכרים אותם. פעולות שאתם בוחרים לבצע עשויות להעביר מידע מחוץ למכשיר: למשל גיבוי לחשבון Google Drive שלכם, שליחת משוב, חיפוש כתובת או בחירת מקום במפה באמצעות Google, שיתוף דוחות וקבצים וסנכרון באמצעות ספק היומן שבחרתם. השימושים האלה מפורטים בהמשך."
+  },
+  {
+    "path": "he.privacy.permissionsTitle",
+    "text": "אילו הרשאות האפליקציה מבקשת ולמה"
+  },
+  {
+    "path": "he.privacy.permissions.0.label",
+    "text": "מיקום (כולל ברקע):"
+  },
+  {
+    "path": "he.privacy.permissions.0.body",
+    "text": "משמש לאימות מיקום בעת החתמה, לבחירת מיקום העבודה במפה, ו(רק אם הפעלתם את האפשרות) לזיהוי יציאה מאזור העבודה גם כשהאפליקציה סגורה, כדי להזכיר להחתים יציאה או לסיים משמרת אוטומטית. נתוני המיקום של המכשיר מעובדים ונשמרים במכשיר בלבד ולא נשלחים לשרת שלנו. כאשר מחפשים כתובת או בוחרים את מקום העבודה במפה, הכתובת או הנקודה נשלחות לשירות המיקום של Google כדי למצוא את המקום. הכתובת שנמצאה נשמרת רק בטלפון. הצגת המפה והבקשות האלה מתבצעות באמצעות Google, והן כפופות למדיניות הפרטיות שלה."
+  },
+  {
+    "path": "he.privacy.permissions.1.label",
+    "text": "התראות:"
+  },
+  {
+    "path": "he.privacy.permissions.1.body",
+    "text": "משמשות לתזכורות משמרת מתוכננת, אישורי סיום משמרת, והתראות יעד שכר. כל ההתראות הן מקומיות (Local Notifications) — לא נעשה שימוש בשירותי Push מרוחקים."
+  },
+  {
+    "path": "he.privacy.permissions.2.label",
+    "text": "יומן (קריאה/כתיבה):"
+  },
+  {
+    "path": "he.privacy.permissions.2.body",
+    "text": "משמשת אך ורק לתכונת סנכרון המשמרות ליומן — ורק אם בחרתם להפעיל או להשתמש בתכונה זו. בעת סנכרון, משמרות מתוכננות נשמרות גם ביומן של המכשיר (ולא רק באפליקציה), ואירועי היומן נוצרים ונקראים מקומית על המכשיר בלבד. איננו שולחים שום נתון יומן לשרת חיצוני. אם היומן שבחרתם מסונכרן עם חשבון ענן (למשל Google), הסנכרון הזה מתבצע על ידי המכשיר או ספק היומן ולא על ידינו."
+  },
+  {
+    "path": "he.privacy.permissions.3.label",
+    "text": "מצלמה/גלריה:"
+  },
+  {
+    "path": "he.privacy.permissions.3.body",
+    "text": "משמשות רק אם בחרתם לצרף תמונה (למשל קבלה או תלוש) למשמרת בהיסטוריה. התמונה נשמרת מקומית על המכשיר."
+  },
+  {
+    "path": "he.privacy.permissions.4.label",
+    "text": "אימות ביומטרי (טביעת אצבע/פנים):"
+  },
+  {
+    "path": "he.privacy.permissions.4.body",
+    "text": "משמש לאימות בהחתמת כניסה ויציאה, בהתאם להגדרות באפליקציה. ביציאה מהווידג׳ט מתבקש אישור. איננו מקבלים או שומרים נתונים ביומטריים; האימות הביומטרי מתבצע על ידי מערכת ההפעלה של המכשיר."
+  },
+  {
+    "path": "he.privacy.backup.title",
+    "text": "גיבוי ושחזור"
+  },
+  {
+    "path": "he.privacy.backup.body",
+    "text": "האפליקציה מאפשרת לכם לייצא גיבוי של הנתונים שלכם לקובץ, ולשתף אותו (לדוגמה לענן האישי שלכם או לאחסון אחר) לפי בחירתכם בלבד. אנחנו לא מקבלים או שומרים עותק מהגיבוי הזה בשום שלב."
+  },
+  {
+    "path": "he.privacy.driveBackup.title",
+    "text": "גיבוי אופציונלי ל-Google Drive"
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph1.0.text",
+    "text": "בנוסף לגיבוי המקומי לקובץ, האפליקציה מציעה תכונה "
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph1.1.text",
+    "text": "אופציונלית"
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph1.1.format",
+    "text": "bold"
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph1.2.text",
+    "text": " — כבויה כברירת מחדל ופועלת רק אם תפעילו אותה — לגיבוי ושחזור של נתוני האפליקציה (עבודות, משמרות ורשומות נלוות) לחשבון ה-Google Drive האישי שלכם. הגיבוי כולל את נתוני האפליקציה (משמרות, עבודות, יעדים, הגדרות וכתובת המייל של חשבון Google המחובר). תמונות, קבלות וקבצים מצורפים אינם מגובים ונשארים במכשיר בלבד. לאחר שחזור במכשיר אחר או לאחר התקנה מחדש הם לא יהיו זמינים. כדי להשתמש בה יש להתחבר במפורש עם חשבון Google ולאשר גישה במסך ההרשאות של Google עצמו."
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph2.0.text",
+    "text": "התכונה משתמשת בהרשאת ה-Drive המוגבלת של Google הידועה בשם "
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph2.1.text",
+    "text": "drive.file"
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph2.1.format",
+    "text": "code"
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph2.2.text",
+    "text": ". המשמעות: לאפליקציה יש גישה "
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph2.3.text",
+    "text": "רק"
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph2.3.format",
+    "text": "bold"
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph2.4.text",
+    "text": " לקבצי הגיבוי שהיא עצמה יצרה — היא לא יכולה לראות, לגשת או לנהל שום קובץ, תמונה, מסמך או תיקייה אחרים שכבר קיימים בחשבון ה-Drive שלכם. בכל גיבוי נוצר קובץ גיבוי חדש ומתוארך. האפליקציה שומרת עד 10 גיבויים אחרונים ומוחקת אוטומטית ישנים יותר, ורק קבצים שהאפליקציה עצמה יצרה. בעת שחזור אתם בוחרים איזה גיבוי לשחזר, ולפני כל שחזור נשמר במכשיר עותק ביטחון זמני של הנתונים הנוכחיים. ניתן למחוק כל קובץ גיבוי ישירות מתוך ה-Drive."
+  },
+  {
+    "path": "he.privacy.driveBackup.paragraph3",
+    "text": "שום נתון שנאסף דרך התכונה הזו לא משותף עם שום צד שלישי — הוא נשמר ישירות בחשבון ה-Google Drive שלכם, בשליטתכם המלאה, וניתן למחוק אותו בכל עת ישירות מתוך ה-Drive. ניתוק/יציאה מחשבון ה-Google בהגדרות האפליקציה מבטלים את הגישה הזו."
+  },
+  {
+    "path": "he.privacy.feedbackSurvey.title",
+    "text": "שאלון משוב (אופציונלי)"
+  },
+  {
+    "path": "he.privacy.feedbackSurvey.body",
+    "text": "אם בחרתם למלא את שאלון המשוב בתוך האפליקציה, התשובות שלכם (דירוג של 1–5 כוכבים, סימון בחירות, טקסט חופשי, גרסת האפליקציה, שפה ופלטפורמת המכשיר — למשל Android) נשלחות לשרת שלנו המתארח ב-Cloudflare (שירות ענן שעשוי לעבד מידע גם מחוץ לישראל) ומשמשות לשיפור האפליקציה בלבד. איננו אוספים או שולחים מזהה מכשיר. אם תבחרו להזין שם, הוא יישלח יחד עם התשובות. אם לא תזינו שם, המשוב אנונימי. כתובת ה-IP של המכשיר נחשפת טכנית לשרת בעת השליחה, ומשמשת רק להגבלת קצב נגד ספאם, ואינה נשמרת עם התשובות. אין חובה למלא את השאלון."
+  },
+  {
+    "path": "he.privacy.feedbackSurvey.deletionRequest",
+    "text": "לבקשת מחיקת משוב ששלחתם, פנו אלינו במייל:"
+  },
+  {
+    "path": "he.privacy.inAppPurchases.title",
+    "text": "רכישות בתוך האפליקציה"
+  },
+  {
+    "path": "he.privacy.inAppPurchases.body",
+    "text": "רכישות בתוך האפליקציה (שדרוג Pro, רכישה חד-פעמית) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום. סטטוס הרכישה נקבע לפי Google Play ונשמר גם במכשיר, כדי שהתכונות ימשיכו לעבוד. פרטי הרכישה, ההחזרים ותכונות Pro עתידיות מפורטים בתנאי השימוש."
+  },
+  {
+    "path": "he.privacy.thirdPartySharing.title",
+    "text": "שיתוף עם צדדים שלישיים"
+  },
+  {
+    "path": "he.privacy.thirdPartySharing.body",
+    "text": "האפליקציה מאפשרת לכם לשתף דוחות (PDF/טקסט) בעצמכם דרך אפליקציות אחרות המותקנות על המכשיר (למשל וואטסאפ, מייל) — זו פעולה יזומה שלכם, ואנחנו לא מעורבים בהעברת המידע הזה ולא רואים אותו."
+  },
+  {
+    "path": "he.privacy.dataDeletion.title",
+    "text": "מחיקת נתונים"
+  },
+  {
+    "path": "he.privacy.dataDeletion.body",
+    "text": "אתם יכולים למחוק עבודות, משמרות בודדות, או לאפס את כל נתוני האפליקציה בכל עת מתוך ההגדרות. מחיקה כזו היא מיידית ומלאה על המכשיר. גיבויים בחשבון ה-Google Drive שלכם ניתן למחוק ישירות משם."
+  },
+  {
+    "path": "he.privacy.dataDeletion.requestNote",
+    "text": "נתונים שנשמרו אצלנו (משוב שנשלח מהאפליקציה, וביקורות או הצעות פיצ'ר שנשלחו דרך האתר): לבקשת עיון, תיקון או מחיקה, פנו אלינו במייל:"
+  },
+  {
+    "path": "he.privacy.minors.title",
+    "text": "קטינים"
+  },
+  {
+    "path": "he.privacy.minors.body",
+    "text": "האפליקציה מיועדת למי שמלאו לו 18 שנים. קטינים מגיל 13 רשאים להשתמש בה רק בהסכמת הורה או אפוטרופוס, והאפליקציה אינה מיועדת לילדים מתחת לגיל 13. איננו אוספים ביודעין מידע מילדים מתחת לגיל 13."
+  },
+  {
+    "path": "he.privacy.website.title",
+    "text": "הנתונים באתר זה"
+  },
+  {
+    "path": "he.privacy.website.items.0.label",
+    "text": "ביקורות והצעות פיצ'ר:"
+  },
+  {
+    "path": "he.privacy.website.items.0.body",
+    "text": "כששולחים ביקורת דרך האתר, נשמרים במסד הנתונים שלנו (Supabase) השם שהוזן, הדירוג (1–5 כוכבים) ותוכן הביקורת. בהצעת פיצ'ר נשמרים השם ותיאור הרעיון. ביקורת מוצגת באתר (שם ותוכן) רק לאחר אישור ידני שלנו. אין חובה לשלוח אותן, ומומלץ לא לכלול בהן פרטים אישיים. שירות הענן של Supabase עשוי לאחסן מידע גם בשרתים מחוץ לישראל. לבקשת מחיקה, ראו את הסעיף \"מחיקת נתונים\" למעלה."
+  },
+  {
+    "path": "he.privacy.website.items.1.label",
+    "text": "Vercel Analytics:"
+  },
+  {
+    "path": "he.privacy.website.items.1.body",
+    "text": "סטטיסטיקות תנועה אנונימיות לאתר (למשל צפיות בדפים), ללא שימוש בעוגיות."
+  },
+  {
+    "path": "he.privacy.website.items.2.label",
+    "text": "Google Analytics:"
+  },
+  {
+    "path": "he.privacy.website.items.2.body",
+    "text": "תג Google נטען רק אם אישרתם עוגיות בבאנר ההסכמה, ומשמש לסטטיסטיקות שימוש באתר. אם דחיתם או לא בחרתם — הוא לא נטען."
+  },
+  {
+    "path": "he.privacy.website.items.3.label",
+    "text": "אחסון מקומי בדפדפן:"
+  },
+  {
+    "path": "he.privacy.website.items.3.body",
+    "text": "בחירת שפה ידנית והבחירה בבאנר העוגיות נשמרות כדי לזכור אותן בביקורים הבאים. בנוסף, זמני שליחת טפסים נשמרים זמנית ב-sessionStorage לצורך הגבלת שליחות חוזרות במהלך סשן הדפדפן."
+  },
+  {
+    "path": "he.privacy.policyChanges.title",
+    "text": "שינויים במדיניות זו"
+  },
+  {
+    "path": "he.privacy.policyChanges.body",
+    "text": "ייתכן שנעדכן מדיניות זו מעת לעת עם הוספת פיצ'רים לאפליקציה. נעדכן את תאריך \"עודכן לאחרונה\" בראש העמוד בכל שינוי מהותי."
+  },
+  {
+    "path": "he.privacy.applicableLaw.title",
+    "text": "אילו חוקי פרטיות חלים על מדיניות זו"
+  },
+  {
+    "path": "he.privacy.applicableLaw.body",
+    "text": "האפליקציה מיועדת בעיקרה למשתמשים בישראל ופותחה על ידי מפתח ישראלי, ולכן מדיניות זו כפופה לחוק הגנת הפרטיות הישראלי, כפי שתוקן בתיקון 13 (בתוקף מאוגוסט 2025), המחייב שקיפות לגבי איסוף ושימוש במידע אישי. האפליקציה אינה מכוונת לתושבי האיחוד האירופי או קליפורניה. אם וכאשר בסיס המשתמשים יתרחב לאזורים אלו בהיקף משמעותי, נבחן את הדרישות החלות עלינו ונעדכן מדיניות זו בהתאם."
+  },
+  {
+    "path": "he.privacy.contactTitle",
+    "text": "יצירת קשר"
+  },
+  {
+    "path": "he.privacy.contactBody",
+    "text": "Shift Smart מופעלת על ידי מפתח עצמאי בישראל. לשאלות בנוגע למדיניות פרטיות זו, ניתן ליצור קשר בכתובת:"
+  },
+  {
+    "path": "he.terms.metaTitle",
+    "text": "תנאי שימוש — Shift Smart"
+  },
+  {
+    "path": "he.terms.metaDescription",
+    "text": "תנאי השימוש באפליקציית Shift Smart — הסכמה לתנאים, תיאור השירות, גיל מינימלי, רכישות Pro, אחריות המשתמש, קניין רוחני והגבלת אחריות."
+  },
+  {
+    "path": "he.terms.pageTitle",
+    "text": "תנאי שימוש — Shift Smart"
+  },
+  {
+    "path": "he.terms.lastUpdated",
+    "text": "עודכן לאחרונה: 09.10.2026"
+  },
+  {
+    "path": "he.terms.backToHome",
+    "text": "חזרה לדף הבית"
+  },
+  {
+    "path": "he.terms.intro",
+    "text": "תנאי שימוש אלה (\"התנאים\") חלים על השימוש באפליקציית Shift Smart (\"האפליקציה\"). התקנת האפליקציה או השימוש בה מהווים הסכמה מלאה לתנאים אלה. אם אינכם מסכימים לחלק כלשהו מתנאים אלה, אנא הימנעו משימוש באפליקציה."
+  },
+  {
+    "path": "he.terms.serviceDescription.title",
+    "text": "תיאור השירות"
+  },
+  {
+    "path": "he.terms.serviceDescription.body",
+    "text": "Shift Smart היא אפליקציית אנדרואיד מקומית (offline-first) לניהול משמרות, שעון נוכחות וחישוב שכר. האפליקציה מסייעת לכם לעקוב אחרי שעות העבודה, לחשב שכר, שעות נוספות ותוספות בהתאם לנתונים שאתם מזינים, ולייצא דוחות וסיכומים. Shift Smart אינה שירות תשלומי שכר רשמי, אינה מחוברת למעסיק שלכם, ואינה מבצעת העברת כספים, למעט רכישת Pro האופציונלית המעובדת על ידי Google Play."
+  },
+  {
+    "path": "he.terms.eligibility.title",
+    "text": "גיל מינימלי ופרטיות"
+  },
+  {
+    "path": "he.terms.eligibility.body",
+    "text": "האפליקציה מיועדת למי שמלאו לו 18 שנים. קטינים מגיל 13 רשאים להשתמש בה רק בהסכמת הורה או אפוטרופוס, והאפליקציה אינה מיועדת לילדים מתחת לגיל 13. השימוש באפליקציה כפוף גם למדיניות הפרטיות באתר, המסבירה אילו נתונים נשמרים ואיפה."
+  },
+  {
+    "path": "he.terms.dataAndBackup.title",
+    "text": "אחריות על נתונים וגיבוי"
+  },
+  {
+    "path": "he.terms.dataAndBackup.body",
+    "text": "ייתכנו תקלות או שגיאות חישוב. מומלץ לגבות את הנתונים באופן שוטף דרך תכונת הגיבוי באפליקציה."
+  },
+  {
+    "path": "he.terms.purchases.title",
+    "text": "רכישות Pro"
+  },
+  {
+    "path": "he.terms.purchases.body",
+    "text": "האפליקציה כוללת שדרוג Pro אופציונלי, הנרכש ברכישה חד-פעמית דרך Google Play. המחיר מוצג ב-Google Play לפני הרכישה, והרכישה כוללת את תכונות ה-Pro הקיימות במועד הרכישה. תכונות Pro חדשות שנוסיף בעתיד אינן בהכרח כלולות ברכישה זו, וייתכן שיוצעו בנפרד, לרבות במסגרת מנוי או בתשלום נוסף; במקרה כזה נציין זאת בבירור לפני כל חיוב. התשלום וההחזרים כפופים לתנאי Google Play ולמדיניות ההחזרים שלה (בדרך כלל ניתן לבקש החזר דרך Google בתוך 48 שעות מהרכישה), ובכל מקרה מבלי לגרוע מזכויותיכם לפי דיני הגנת הצרכן. לפניות בנושא רכישה ניתן לפנות אלינו גם במייל."
+  },
+  {
+    "path": "he.terms.userResponsibilityTitle",
+    "text": "אחריות המשתמש"
+  },
+  {
+    "path": "he.terms.userResponsibilityItems.0",
+    "text": "אתם אחראים להזין נתונים מדויקים — שעות עבודה, תעריף שעתי ותוספות — שכן דיוק החישובים תלוי לחלוטין בנתונים שהזנתם."
+  },
+  {
+    "path": "he.terms.userResponsibilityItems.1",
+    "text": "Shift Smart היא כלי עזר בלבד ואינה תחליף לתלוש השכר הרשמי או לבדיקה מול המעסיק שלכם. חובה לוודא כל תשלום שכר בפועל מול המעסיק ומול תלוש השכר הרשמי."
+  },
+  {
+    "path": "he.terms.userResponsibilityItems.2",
+    "text": "אתם אחראים לשימוש חוקי באפליקציה בלבד, ולא להשתמש בה בניגוד לכל דין או להסכם העסקה שלכם."
+  },
+  {
+    "path": "he.terms.intellectualProperty.title",
+    "text": "קניין רוחני"
+  },
+  {
+    "path": "he.terms.intellectualProperty.body",
+    "text": "כל הזכויות באפליקציה — לרבות הקוד, העיצוב, הלוגו והתוכן — שייכות לבעלי Shift Smart. אין להעתיק, להנדס לאחור, להפיץ מחדש או ליצור יצירות נגזרות מהאפליקציה ללא אישור מראש ובכתב."
+  },
+  {
+    "path": "he.terms.liability.title",
+    "text": "הגבלת אחריות"
+  },
+  {
+    "path": "he.terms.liability.body",
+    "text": "האפליקציה מסופקת \"כפי שהיא\" (AS IS), ללא התחייבות לדיוק, זמינות רצופה או התאמה למטרה מסוימת. במידה המרבית שהדין מתיר, Shift Smart ומפתחיה לא יישאו באחריות לנזק ישיר או עקיף שייגרם כתוצאה משימוש באפליקציה, לרבות טעויות חישוב שכר, אובדן נתונים או אי-זמינות זמנית של השירות. אין באמור כדי לפגוע בזכויות שהדין הקוגנטי, ובכלל זה דיני הגנת הצרכן, מקנה לכם ושאינן ניתנות להתניה, או באחריות שאי אפשר להגביל לפי דין."
+  },
+  {
+    "path": "he.terms.changes.title",
+    "text": "שינויים באפליקציה ובתנאים"
+  },
+  {
+    "path": "he.terms.changes.body",
+    "text": "אנחנו רשאים לעדכן, לשנות או להפסיק תכונות באפליקציה בכל עת. ייתכן שנעדכן גם את תנאי השימוש הללו מעת לעת — נעדכן את תאריך \"עודכן לאחרונה\" בראש העמוד בכל שינוי מהותי. המשך שימוש באפליקציה לאחר עדכון מהווה הסכמה לתנאים המעודכנים."
+  },
+  {
+    "path": "he.terms.governingLaw.title",
+    "text": "דין חל וסמכות שיפוט"
+  },
+  {
+    "path": "he.terms.governingLaw.body",
+    "text": "תנאי שימוש אלה כפופים לדיני מדינת ישראל. סמכות השיפוט בכל מחלוקת הנוגעת אליהם נתונה לבתי המשפט המוסמכים בישראל, וזאת מבלי לגרוע מכל זכות שהדין הקוגנטי מקנה לכם כצרכנים."
+  },
+  {
+    "path": "he.terms.contactTitle",
+    "text": "יצירת קשר"
+  },
+  {
+    "path": "he.terms.contactBody",
+    "text": "Shift Smart מופעלת על ידי מפתח עצמאי בישראל. לשאלות בנוגע לתנאי שימוש אלה, ניתן ליצור קשר בכתובת:"
+  },
+  {
+    "path": "en.meta.title",
+    "text": "Shift Smart – Time Clock & Shift Management"
+  },
+  {
+    "path": "en.meta.description",
+    "text": "Manage shifts, record work hours, and estimate pay using your rates. Shift Smart is available for Android, free to download from Google Play."
+  },
+  {
+    "path": "en.meta.keywords.0",
+    "text": "shift management"
+  },
+  {
+    "path": "en.meta.keywords.1",
+    "text": "time clock"
+  },
+  {
+    "path": "en.meta.keywords.2",
+    "text": "work hours tracking"
+  },
+  {
+    "path": "en.meta.keywords.3",
+    "text": "hours report"
+  },
+  {
+    "path": "en.meta.keywords.4",
+    "text": "Shift Smart"
+  },
+  {
+    "path": "en.meta.ogDescription",
+    "text": "Track shifts, work hours, and estimated pay on your phone. Download Shift Smart free from Google Play."
+  },
+  {
+    "path": "en.brand.name",
+    "text": "Shift Smart"
+  },
+  {
+    "path": "en.brand.launchBadge",
+    "text": "Now available on Google Play"
+  },
+  {
+    "path": "en.languageSwitcher.hebrewLabel",
+    "text": "עברית"
+  },
+  {
+    "path": "en.languageSwitcher.englishLabel",
+    "text": "English"
+  },
+  {
+    "path": "en.languageSwitcher.groupAriaLabel",
+    "text": "Language selection"
+  },
+  {
+    "path": "en.hero.kicker",
+    "text": "Your shifts. In control."
+  },
+  {
+    "path": "en.hero.planNote",
+    "text": "Start free · Optional Pro upgrade"
+  },
+  {
+    "path": "en.hero.titleLine1",
+    "text": "Work shifts?"
+  },
+  {
+    "path": "en.hero.titleLine2",
+    "text": "There's a smarter way."
+  },
+  {
+    "path": "en.hero.subtitle",
+    "text": "Manage your shifts, track your work hours, and see estimated pay based on your hourly rate."
+  },
+  {
+    "path": "en.hero.audience",
+    "text": "For security guards, stewards, restaurant staff, and anyone who works shifts."
+  },
+  {
+    "path": "en.hero.downloadCta",
+    "text": "Get it on Google Play"
+  },
+  {
+    "path": "en.hero.platformNotice",
+    "text": "Available for Android on Google Play."
+  },
+  {
+    "path": "en.plans.kicker",
+    "text": "FREE & PRO"
+  },
+  {
+    "path": "en.plans.title",
+    "text": "What’s free and what’s included in Pro"
+  },
+  {
+    "path": "en.plans.subtitle",
+    "text": "The time clock and core calculations are free. You can upgrade to Pro inside the app if you need additional reporting and backup tools."
+  },
+  {
+    "path": "en.plans.options.0.title",
+    "text": "Free use"
+  },
+  {
+    "path": "en.plans.options.0.description",
+    "text": "For keeping track of your shifts"
+  },
+  {
+    "path": "en.plans.options.0.items.0",
+    "text": "Clock in and out"
+  },
+  {
+    "path": "en.plans.options.0.items.1",
+    "text": "Track hours and estimated pay based on your settings"
+  },
+  {
+    "path": "en.plans.options.1.title",
+    "text": "Pro upgrade"
+  },
+  {
+    "path": "en.plans.options.1.description",
+    "text": "An optional one-time purchase through Google Play"
+  },
+  {
+    "path": "en.plans.options.1.items.0",
+    "text": "Google Drive backup and restore"
+  },
+  {
+    "path": "en.plans.options.1.items.1",
+    "text": "Monthly Excel reports"
+  },
+  {
+    "path": "en.plans.options.1.items.2",
+    "text": "A yearly shift summary report"
+  },
+  {
+    "path": "en.plans.purchaseNote",
+    "text": "The price is shown in the app before purchase. The purchase includes the Pro features available at the time you buy; future features may be offered separately. Payment details will be shown before any charge."
+  },
+  {
+    "path": "en.whatsNew.kicker",
+    "text": "UPDATES"
+  },
+  {
+    "path": "en.whatsNew.titlePrefix",
+    "text": "What’s "
+  },
+  {
+    "path": "en.whatsNew.titleHighlight",
+    "text": "new?"
+  },
+  {
+    "path": "en.whatsNew.subtitle",
+    "text": "Recent updates"
+  },
+  {
+    "path": "en.whatsNew.badgeLabel",
+    "text": "NEW"
+  },
+  {
+    "path": "en.whatsNew.items.0.title",
+    "text": "Saturday and holiday rates: 150% and 200%"
+  },
+  {
+    "path": "en.whatsNew.items.0.description",
+    "text": "The app detects Saturdays and holidays and automatically applies a 150% or 200% rate, depending on the day."
+  },
+  {
+    "path": "en.whatsNew.items.1.title",
+    "text": "General Goal, Vacation & Sick Accrual"
+  },
+  {
+    "path": "en.whatsNew.items.1.description",
+    "text": "Set a general goal, and track how your vacation and sick days accrue."
+  },
+  {
+    "path": "en.whatsNew.items.2.title",
+    "text": "Up to Two Tags and Editable Start Time"
+  },
+  {
+    "path": "en.whatsNew.items.2.description",
+    "text": "Choose up to two tags per shift, and edit the start time even while the shift is running."
+  },
+  {
+    "path": "en.aboutTimeTracking.kicker",
+    "text": "TIME TRACKING"
+  },
+  {
+    "path": "en.aboutTimeTracking.titlePrefix",
+    "text": "What is a "
+  },
+  {
+    "path": "en.aboutTimeTracking.titleHighlight",
+    "text": "digital time clock?"
+  },
+  {
+    "path": "en.aboutTimeTracking.body",
+    "text": "Clock in and out on your phone and keep your shifts in one place. Estimated pay is calculated using your hours, rates, and settings. At the end of the month, review your records and compare them with your payslip."
+  },
+  {
+    "path": "en.quickStart.kicker",
+    "text": "GET STARTED"
+  },
+  {
+    "path": "en.quickStart.titlePrefix",
+    "text": "How do "
+  },
+  {
+    "path": "en.quickStart.titleHighlight",
+    "text": "you get started"
+  },
+  {
+    "path": "en.quickStart.titleSuffix",
+    "text": "?"
+  },
+  {
+    "path": "en.quickStart.subtitle",
+    "text": "From download to your first shift."
+  },
+  {
+    "path": "en.quickStart.steps.0.title",
+    "text": "Download the app"
+  },
+  {
+    "path": "en.quickStart.steps.0.description",
+    "text": "Install Shift Smart from Google Play."
+  },
+  {
+    "path": "en.quickStart.steps.0.linkLabel",
+    "text": "Go to Google Play"
+  },
+  {
+    "path": "en.quickStart.steps.1.title",
+    "text": "Set your job and rate"
+  },
+  {
+    "path": "en.quickStart.steps.1.description",
+    "text": "Add a workplace and enter your hourly rate."
+  },
+  {
+    "path": "en.quickStart.steps.2.title",
+    "text": "Clock in and out"
+  },
+  {
+    "path": "en.quickStart.steps.2.description",
+    "text": "Track your work hours and estimated pay."
+  },
+  {
+    "path": "en.features.kicker",
+    "text": "APP FEATURES"
+  },
+  {
+    "path": "en.features.titlePrefix",
+    "text": "What you can do "
+  },
+  {
+    "path": "en.features.titleHighlight",
+    "text": "with Shift Smart"
+  },
+  {
+    "path": "en.features.items.0.title",
+    "text": "Fingerprint clock-in"
+  },
+  {
+    "path": "en.features.items.0.description",
+    "text": "Verify clock-in and clock-out with your fingerprint. Clocking out through the widget asks for confirmation."
+  },
+  {
+    "path": "en.features.items.1.title",
+    "text": "Pay and tips"
+  },
+  {
+    "path": "en.features.items.1.description",
+    "text": "Keep track of hours, tips, and extra pay using the rates you set."
+  },
+  {
+    "path": "en.features.items.2.title",
+    "text": "Shift calendar"
+  },
+  {
+    "path": "en.features.items.2.description",
+    "text": "Plan shifts and sync them to a calendar selected on your device, including Google Calendar."
+  },
+  {
+    "path": "en.features.items.3.title",
+    "text": "Clock-in sound"
+  },
+  {
+    "path": "en.features.items.3.description",
+    "text": "Hear a confirmation sound when you clock in or out."
+  },
+  {
+    "path": "en.features.items.4.title",
+    "text": "Reports and backup"
+  },
+  {
+    "path": "en.features.items.4.description",
+    "text": "View monthly summaries and share reports. Pro adds monthly Excel export, a yearly report, and Drive backup."
+  },
+  {
+    "path": "en.features.items.5.title",
+    "text": "Location records"
+  },
+  {
+    "path": "en.features.items.5.description",
+    "text": "Save the location where your shift started."
+  },
+  {
+    "path": "en.features.items.6.title",
+    "text": "Dark design and privacy"
+  },
+  {
+    "path": "en.features.items.6.description",
+    "text": "Your data stays on your device by default. Drive backup and sending feedback are optional."
+  },
+  {
+    "path": "en.features.items.7.title",
+    "text": "Multiple workplaces"
+  },
+  {
+    "path": "en.features.items.7.description",
+    "text": "Set a rate for each workplace and define morning, afternoon, evening, or night shifts."
+  },
+  {
+    "path": "en.features.items.8.title",
+    "text": "Deduction breakdown"
+  },
+  {
+    "path": "en.features.items.8.description",
+    "text": "Set rates for National Insurance, health tax, pension, study fund, and income tax, and see their effect on estimated net pay."
+  },
+  {
+    "path": "en.features.items.9.title",
+    "text": "Home screen widget"
+  },
+  {
+    "path": "en.features.items.9.description",
+    "text": "Start and stop a shift from your home screen and see whether the clock is running."
+  },
+  {
+    "path": "en.features.items.10.title",
+    "text": "End-of-shift summary"
+  },
+  {
+    "path": "en.features.items.10.description",
+    "text": "Review your hours and add notes, such as tips you received."
+  },
+  {
+    "path": "en.features.items.11.title",
+    "text": "Shift templates and time off"
+  },
+  {
+    "path": "en.features.items.11.description",
+    "text": "Create shifts from a weekly pattern and track vacation and sick days."
+  },
+  {
+    "path": "en.reviews.kicker",
+    "text": "RATINGS & REVIEWS"
+  },
+  {
+    "path": "en.reviews.titlePrefix",
+    "text": "What "
+  },
+  {
+    "path": "en.reviews.titleHighlight",
+    "text": "People Say"
+  },
+  {
+    "path": "en.reviews.subtitle",
+    "text": "Based on reviews submitted on this website"
+  },
+  {
+    "path": "en.reviews.ratingAriaLabel",
+    "text": "Rated 5 out of 5 stars",
+    "generatedExample": true
+  },
+  {
+    "path": "en.reviews.writeReviewCta",
+    "text": "Write a Review"
+  },
+  {
+    "path": "en.reviews.toastMessage",
+    "text": "Thank you! Your review has been submitted for approval."
+  },
+  {
+    "path": "en.reviews.loadingLabel",
+    "text": "Loading reviews..."
+  },
+  {
+    "path": "en.reviews.emptyState",
+    "text": "Be the first to review the app!"
+  },
+  {
+    "path": "en.reviews.errorState",
+    "text": "We couldn't load reviews right now. Try refreshing the page."
+  },
+  {
+    "path": "en.reviews.validationError",
+    "text": "Enter your name and review: up to 60 characters for the name and 500 for the review. Neither field can be blank."
+  },
+  {
+    "path": "en.reviews.submitError",
+    "text": "Couldn't submit your review. Check your connection and try again."
+  },
+  {
+    "path": "en.reviews.rateLimitError",
+    "text": "Several requests were sent in a short time. Please wait and try again."
+  },
+  {
+    "path": "en.reviews.modal.title",
+    "text": "Write a Review"
+  },
+  {
+    "path": "en.reviews.modal.nameLabel",
+    "text": "Name"
+  },
+  {
+    "path": "en.reviews.modal.namePlaceholder",
+    "text": "What's your name?"
+  },
+  {
+    "path": "en.reviews.modal.ratingLabel",
+    "text": "Rating"
+  },
+  {
+    "path": "en.reviews.modal.ratingAria",
+    "text": "Rate 5 stars",
+    "generatedExample": true
+  },
+  {
+    "path": "en.reviews.modal.reviewLabel",
+    "text": "Your Review"
+  },
+  {
+    "path": "en.reviews.modal.reviewPlaceholder",
+    "text": "Tell us about your experience with the app..."
+  },
+  {
+    "path": "en.reviews.modal.submitCta",
+    "text": "Submit Review"
+  },
+  {
+    "path": "en.reviews.modal.submittingLabel",
+    "text": "Submitting your review…"
+  },
+  {
+    "path": "en.reviews.modal.ratingRequired",
+    "text": "Choose a star rating before submitting."
+  },
+  {
+    "path": "en.reviews.modal.closeAria",
+    "text": "Close review dialog"
+  },
+  {
+    "path": "en.gallery.kicker",
+    "text": "GALLERY"
+  },
+  {
+    "path": "en.gallery.titlePrefix",
+    "text": "A Look "
+  },
+  {
+    "path": "en.gallery.titleHighlight",
+    "text": "Inside the App"
+  },
+  {
+    "path": "en.gallery.prevAria",
+    "text": "Previous screen"
+  },
+  {
+    "path": "en.gallery.nextAria",
+    "text": "Next screen"
+  },
+  {
+    "path": "en.gallery.goToSlideAria",
+    "text": "Go to screen 5",
+    "generatedExample": true
+  },
+  {
+    "path": "en.gallery.shots.0.src",
+    "text": "/marketing/v1/en/01-clock-idle.webp"
+  },
+  {
+    "path": "en.gallery.shots.0.alt",
+    "text": "Start your shift. With one tap. — screen showing demo data"
+  },
+  {
+    "path": "en.gallery.shots.1.src",
+    "text": "/marketing/v1/en/02-active-shift.webp"
+  },
+  {
+    "path": "en.gallery.shots.1.alt",
+    "text": "Track your hours. As you work. — screen showing demo data"
+  },
+  {
+    "path": "en.gallery.shots.2.src",
+    "text": "/marketing/v1/en/03-workplaces.webp"
+  },
+  {
+    "path": "en.gallery.shots.2.alt",
+    "text": "Multiple jobs. One place. — screen showing demo data"
+  },
+  {
+    "path": "en.gallery.shots.3.src",
+    "text": "/marketing/v1/en/04-history.webp"
+  },
+  {
+    "path": "en.gallery.shots.3.alt",
+    "text": "Every shift. Every detail. — screen showing demo data"
+  },
+  {
+    "path": "en.gallery.shots.4.src",
+    "text": "/marketing/v1/en/05-monthly-summary.webp"
+  },
+  {
+    "path": "en.gallery.shots.4.alt",
+    "text": "Your month. At a glance. — screen showing demo data"
+  },
+  {
+    "path": "en.gallery.shots.5.src",
+    "text": "/marketing/v1/en/06-calendar.webp"
+  },
+  {
+    "path": "en.gallery.shots.5.alt",
+    "text": "Plan ahead. Stay organized. — screen showing demo data"
+  },
+  {
+    "path": "en.gallery.shots.6.src",
+    "text": "/marketing/v1/en/07-preferences.webp"
+  },
+  {
+    "path": "en.gallery.shots.6.alt",
+    "text": "Your preferences. Your way. — screen showing demo data"
+  },
+  {
+    "path": "en.roadmap.kicker",
+    "text": "Roadmap"
+  },
+  {
+    "path": "en.roadmap.titlePrefix",
+    "text": "What's "
+  },
+  {
+    "path": "en.roadmap.titleHighlight",
+    "text": "Coming Next?"
+  },
+  {
+    "path": "en.roadmap.subtitle",
+    "text": "Features planned for future updates. Release dates have not been finalized."
+  },
+  {
+    "path": "en.roadmap.milestones.0.title",
+    "text": "iOS Version"
+  },
+  {
+    "path": "en.roadmap.milestones.0.description",
+    "text": "An iPhone version is planned. The app is currently available for Android."
+  },
+  {
+    "path": "en.roadmap.milestones.1.title",
+    "text": "Automatic Google Drive backup & sync"
+  },
+  {
+    "path": "en.roadmap.milestones.1.description",
+    "text": "Manual Google Drive backup is already available in Pro. Automatic backup and sync are planned and are not available yet."
+  },
+  {
+    "path": "en.faq.kicker",
+    "text": "FAQ"
+  },
+  {
+    "path": "en.faq.titlePrefix",
+    "text": "Frequently Asked "
+  },
+  {
+    "path": "en.faq.titleHighlight",
+    "text": "Questions"
+  },
+  {
+    "path": "en.faq.subtitle",
+    "text": "Answers about downloading the app, tracking shifts, and calculating pay. Email us if you have another question."
+  },
+  {
+    "path": "en.faq.items.0.question",
+    "text": "How do I download the app?"
+  },
+  {
+    "path": "en.faq.items.0.answer",
+    "text": "Use a download button on this website to open Google Play and install Shift Smart on your Android device."
+  },
+  {
+    "path": "en.faq.items.1.question",
+    "text": "Is the app free?"
+  },
+  {
+    "path": "en.faq.items.1.answer",
+    "text": "Yes. Downloading the app, using the time clock, and core calculations are free. An optional one-time Pro purchase adds Google Drive backup and restore (up to 10 versions), monthly Excel export, and a yearly shift summary for tax season. The price appears in the app before purchase. Future features may be sold separately, including by subscription; payment details will be shown in advance."
+  },
+  {
+    "path": "en.faq.items.2.question",
+    "text": "What should I do if I find a bug?"
+  },
+  {
+    "path": "en.faq.items.2.answer",
+    "text": "Found a bug? Email yoseffstor@gmail.com with a description of the problem, your device model, and a screenshot if possible so we can investigate and help."
+  },
+  {
+    "path": "en.faq.items.3.question",
+    "text": "How is overtime calculated?"
+  },
+  {
+    "path": "en.faq.items.3.answer",
+    "text": "Overtime uses the workday threshold and extra-pay percentages you set in the app. Hours beyond the threshold are calculated at the corresponding rate and included in the monthly summary."
+  },
+  {
+    "path": "en.faq.items.4.question",
+    "text": "What if I forget to clock in or out?"
+  },
+  {
+    "path": "en.faq.items.4.answer",
+    "text": "Add or edit the shift manually in the calendar. Choose a date and enter the start and end times. The monthly summary updates accordingly."
+  },
+  {
+    "path": "en.faq.items.5.question",
+    "text": "Can I manage several workplaces at once?"
+  },
+  {
+    "path": "en.faq.items.5.answer",
+    "text": "Yes. Set a rate and shift length for each workplace. The monthly report shows a breakdown by workplace and a combined summary of hours and estimated pay."
+  },
+  {
+    "path": "en.faq.items.6.question",
+    "text": "Why use an app instead of writing down my hours?"
+  },
+  {
+    "path": "en.faq.items.6.answer",
+    "text": "The app keeps your clock-in and clock-out records together and calculates hours and estimated pay using your settings. You can review your shifts and monthly summary without compiling the records by hand."
+  },
+  {
+    "path": "en.faq.items.7.question",
+    "text": "What is the pay estimate based on?"
+  },
+  {
+    "path": "en.faq.items.7.answer",
+    "text": "Your recorded hours, each workplace’s hourly rate, and your extra-pay and deduction settings. Overtime uses the threshold and percentages you set. The summary is an estimate you can compare with your payslip."
+  },
+  {
+    "path": "en.faq.items.8.question",
+    "text": "Is the app available in Hebrew?"
+  },
+  {
+    "path": "en.faq.items.8.answer",
+    "text": "Yes. The app is available in Hebrew and English. The Hebrew interface supports right-to-left reading."
+  },
+  {
+    "path": "en.footer.tagline",
+    "text": "Smart shift management and time clock"
+  },
+  {
+    "path": "en.footer.followUs",
+    "text": "Follow us"
+  },
+  {
+    "path": "en.footer.linksAriaLabel",
+    "text": "Links and contact"
+  },
+  {
+    "path": "en.footer.linkPlayStore",
+    "text": "Get it on Google Play"
+  },
+  {
+    "path": "en.footer.linkPrivacyPolicy",
+    "text": "Privacy Policy"
+  },
+  {
+    "path": "en.footer.linkTermsOfService",
+    "text": "Terms of Service"
+  },
+  {
+    "path": "en.footer.socialFacebookAria",
+    "text": "Shift Smart on Facebook"
+  },
+  {
+    "path": "en.footer.socialInstagramAria",
+    "text": "Shift Smart on Instagram"
+  },
+  {
+    "path": "en.footer.socialTiktokAria",
+    "text": "Shift Smart on TikTok"
+  },
+  {
+    "path": "en.footer.copyright",
+    "text": "© 2026 Shift Smart. All rights reserved.",
+    "generatedExample": true
+  },
+  {
+    "path": "en.stickyCta.label",
+    "text": "Download Shift Smart"
+  },
+  {
+    "path": "en.share.buttonLabel",
+    "text": "Share App"
+  },
+  {
+    "path": "en.share.copiedLabel",
+    "text": "Copied!"
+  },
+  {
+    "path": "en.share.manualCopyLabel",
+    "text": "Automatic copying failed. You can select and copy the text below:"
+  },
+  {
+    "path": "en.share.title",
+    "text": "Meet Shift Smart!"
+  },
+  {
+    "path": "en.share.buildText",
+    "text": "Shift Smart helps you keep track of shifts and work hours. You can clock in and out and see estimated pay based on your hourly rate. It’s available for Android, with free core features and an optional Pro upgrade.\nDetails and download: https://www.shift-smartapp.com",
+    "generatedExample": true
+  },
+  {
+    "path": "en.featureRequest.buttonLabel",
+    "text": "Suggest a Feature"
+  },
+  {
+    "path": "en.featureRequest.modalTitle",
+    "text": "Suggest a Feature"
+  },
+  {
+    "path": "en.featureRequest.modalSubtitle",
+    "text": "What’s missing from the app? Tell us what you’d like to add."
+  },
+  {
+    "path": "en.featureRequest.nameLabel",
+    "text": "Name"
+  },
+  {
+    "path": "en.featureRequest.namePlaceholder",
+    "text": "What's your name?"
+  },
+  {
+    "path": "en.featureRequest.featureLabel",
+    "text": "What feature would you like to see?"
+  },
+  {
+    "path": "en.featureRequest.featurePlaceholder",
+    "text": "Tell us about your idea..."
+  },
+  {
+    "path": "en.featureRequest.submitCta",
+    "text": "Submit Suggestion"
+  },
+  {
+    "path": "en.featureRequest.submittingLabel",
+    "text": "Submitting your suggestion…"
+  },
+  {
+    "path": "en.featureRequest.closeAria",
+    "text": "Close feature request dialog"
+  },
+  {
+    "path": "en.featureRequest.toastMessage",
+    "text": "Thank you! Your suggestion has been submitted for review."
+  },
+  {
+    "path": "en.featureRequest.validationError",
+    "text": "Enter a name and suggestion with visible text: up to 60 characters for the name and 1,000 for the suggestion."
+  },
+  {
+    "path": "en.featureRequest.submitError",
+    "text": "Couldn't submit your suggestion. Check your connection and try again."
+  },
+  {
+    "path": "en.featureRequest.rateLimitError",
+    "text": "Several requests were sent in a short time. Please wait and try again."
+  },
+  {
+    "path": "en.phoneShowcase.mockupSrc",
+    "text": "/marketing/v1/en/01-clock-idle.webp"
+  },
+  {
+    "path": "en.phoneShowcase.mockupAlt",
+    "text": "Start your shift. With one tap. — screen showing demo data"
+  },
+  {
+    "path": "en.appPoster.kicker",
+    "text": "THE APP"
+  },
+  {
+    "path": "en.appPoster.titlePrefix",
+    "text": "Meet "
+  },
+  {
+    "path": "en.appPoster.titleHighlight",
+    "text": "Shift Smart"
+  },
+  {
+    "path": "en.appPoster.imageSrc",
+    "text": "/marketing/brand-v3/en.png"
+  },
+  {
+    "path": "en.appPoster.imageAlt",
+    "text": "Shift Smart: Your shifts. In control. Work shifts? There’s a smarter way. Manage your shifts, track your hours, and calculate your pay easily right from your phone. Shifts, hours, pay and reports."
+  },
+  {
+    "path": "en.cookieConsent.heading",
+    "text": "We use cookies"
+  },
+  {
+    "path": "en.cookieConsent.body",
+    "text": "With your permission, we’ll use Google Analytics to measure website usage. Your language and consent preferences are saved in your browser. For details, see our"
+  },
+  {
+    "path": "en.cookieConsent.privacyLinkLabel",
+    "text": "Privacy Policy"
+  },
+  {
+    "path": "en.cookieConsent.acceptLabel",
+    "text": "Accept"
+  },
+  {
+    "path": "en.cookieConsent.rejectLabel",
+    "text": "Reject"
+  },
+  {
+    "path": "en.launchBanner.message",
+    "text": "🎉 Now available on Google Play!"
+  },
+  {
+    "path": "en.launchBanner.ctaLabel",
+    "text": "Download now"
+  },
+  {
+    "path": "en.privacy.metaTitle",
+    "text": "Privacy Policy — Shift Smart"
+  },
+  {
+    "path": "en.privacy.metaDescription",
+    "text": "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored."
+  },
+  {
+    "path": "en.privacy.pageTitle",
+    "text": "Privacy Policy — Shift Smart"
+  },
+  {
+    "path": "en.privacy.lastUpdated",
+    "text": "Last updated: 01.11.2026"
+  },
+  {
+    "path": "en.privacy.backToHome",
+    "text": "Back to home"
+  },
+  {
+    "path": "en.privacy.intro",
+    "text": "Thank you for using Shift Smart (\"the app\"). This policy explains what data the app uses and how."
+  },
+  {
+    "path": "en.privacy.dataPrinciple.title",
+    "text": "Core Principle: Your Data Stays With You"
+  },
+  {
+    "path": "en.privacy.dataPrinciple.body.0.text",
+    "text": "The data you enter (jobs, shifts, pay, notes, photos, and settings) is stored "
+  },
+  {
+    "path": "en.privacy.dataPrinciple.body.1.text",
+    "text": "only on your device"
+  },
+  {
+    "path": "en.privacy.dataPrinciple.body.1.format",
+    "text": "bold"
+  },
+  {
+    "path": "en.privacy.dataPrinciple.body.2.text",
+    "text": ". We do not run a server that collects your shift and pay data, and we do not sell it. Actions you choose may transfer information outside your device, such as backing up to your Google Drive, sending feedback, finding an address or selecting a place through Google, sharing reports and files, or syncing through your selected calendar provider. These uses are described below."
+  },
+  {
+    "path": "en.privacy.permissionsTitle",
+    "text": "What Permissions the App Requests, and Why"
+  },
+  {
+    "path": "en.privacy.permissions.0.label",
+    "text": "Location (including in the background):"
+  },
+  {
+    "path": "en.privacy.permissions.0.body",
+    "text": "Used to verify your location when clocking in, to pick the work location on a map, and — only if you enable it — to detect leaving the work area even when the app is closed, in order to remind you to clock out or end the shift automatically. Your device's location data is processed and stored on your device only and is not sent to our server. When you search for an address or pick your workplace on the map, the address or point is sent to Google's location service to find the place. The resulting address is stored only on your phone. The map and these requests are handled by Google and are subject to its own privacy policy."
+  },
+  {
+    "path": "en.privacy.permissions.1.label",
+    "text": "Notifications:"
+  },
+  {
+    "path": "en.privacy.permissions.1.body",
+    "text": "Used for scheduled shift reminders, clock-out confirmations, and pay-goal alerts. All notifications are local (Local Notifications) — no remote push service is used."
+  },
+  {
+    "path": "en.privacy.permissions.2.label",
+    "text": "Calendar (read/write):"
+  },
+  {
+    "path": "en.privacy.permissions.2.body",
+    "text": "Used solely for the shift-to-calendar sync feature — and only if you choose to enable or use it. When you sync, scheduled shifts are saved to your device's calendar as well (not only inside the app), and calendar events are created and read locally on your device only. We never send any calendar data to an external server. If the calendar you choose is synced to a cloud account (for example, Google), that sync is performed by your device or calendar provider, not by us."
+  },
+  {
+    "path": "en.privacy.permissions.3.label",
+    "text": "Camera/Gallery:"
+  },
+  {
+    "path": "en.privacy.permissions.3.body",
+    "text": "Used only if you choose to attach a photo (for example, a receipt or payslip) to a shift in your history. The photo is stored locally on your device."
+  },
+  {
+    "path": "en.privacy.permissions.4.label",
+    "text": "Biometric authentication (fingerprint/face):"
+  },
+  {
+    "path": "en.privacy.permissions.4.body",
+    "text": "Used to verify clock-in and clock-out according to your app settings. Clocking out through the widget asks for confirmation. We do not receive or store biometric data; biometric verification is performed by your device’s operating system."
+  },
+  {
+    "path": "en.privacy.backup.title",
+    "text": "Backup & Restore"
+  },
+  {
+    "path": "en.privacy.backup.body",
+    "text": "The app lets you export a backup of your data to a file and share it (for example, to your personal cloud or other storage) entirely at your own discretion. We never receive or keep a copy of this backup at any stage."
+  },
+  {
+    "path": "en.privacy.driveBackup.title",
+    "text": "Optional Google Drive Backup"
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph1.0.text",
+    "text": "In addition to the local file backup, the app offers an "
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph1.1.text",
+    "text": "optional"
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph1.1.format",
+    "text": "bold"
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph1.2.text",
+    "text": " feature — off by default and active only if you turn it on — to back up and restore your app data (jobs, shifts, and related records) to your personal Google Drive account. The backup includes the app's data (shifts, jobs, goals, settings, and the email address of the connected Google account). Photos, receipts, and attached files are not backed up and stay on your device only. After restoring on another device or after reinstalling, they will not be available. Using it requires you to explicitly sign in with a Google account and grant access on Google's own permission screen."
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph2.0.text",
+    "text": "The feature uses Google's restricted Drive permission known as "
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph2.1.text",
+    "text": "drive.file"
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph2.1.format",
+    "text": "code"
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph2.2.text",
+    "text": ". This means the app has access "
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph2.3.text",
+    "text": "only"
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph2.3.format",
+    "text": "bold"
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph2.4.text",
+    "text": " to the backup files it created itself — it cannot see, access, or manage any other file, photo, document, or folder already in your Drive account. Each backup creates a new, dated backup file. The app keeps up to the 10 most recent backups and automatically deletes older ones, and only files the app itself created. When restoring, you choose which backup to restore, and before every restore a temporary safety copy of your current data is saved on your device. You can delete any backup file directly from your Drive."
+  },
+  {
+    "path": "en.privacy.driveBackup.paragraph3",
+    "text": "No data collected through this feature is shared with any third party — it is stored directly in your Google Drive account, entirely under your control, and can be deleted at any time directly from your Drive. Disconnecting or signing out of the Google account in the app's settings revokes this access."
+  },
+  {
+    "path": "en.privacy.feedbackSurvey.title",
+    "text": "Feedback Survey (Optional)"
+  },
+  {
+    "path": "en.privacy.feedbackSurvey.body",
+    "text": "If you choose to complete the in-app feedback survey, your answers (a 1–5 star rating, selected options, free text, app version, language, and device platform — for example, Android) are sent to our server hosted on Cloudflare (a cloud service that may process data outside Israel) and are used only to improve the app. We do not collect or send a device identifier. If you choose to enter a name, it is sent together with your answers. If you do not enter a name, the feedback is anonymous. Your device's IP address is technically exposed to the server when you submit, is used only for rate limiting against spam, and is not stored with your answers. Completing the survey is not required."
+  },
+  {
+    "path": "en.privacy.feedbackSurvey.deletionRequest",
+    "text": "To request deletion of feedback you have already sent, contact us by email:"
+  },
+  {
+    "path": "en.privacy.inAppPurchases.title",
+    "text": "In-App Purchases"
+  },
+  {
+    "path": "en.privacy.inAppPurchases.body",
+    "text": "In-app purchases (Pro upgrade, a one-time purchase) are processed by Google Play. We do not receive or store payment details. The purchase status is determined by Google Play and is also stored on your device so that the features keep working. Purchase details, refunds, and future Pro features are described in the Terms of Service."
+  },
+  {
+    "path": "en.privacy.thirdPartySharing.title",
+    "text": "Sharing With Third Parties"
+  },
+  {
+    "path": "en.privacy.thirdPartySharing.body",
+    "text": "The app lets you share reports (PDF/text) yourself through other apps installed on your device (for example, WhatsApp or email) — this is an action you initiate, and we are not involved in transmitting this information and do not see it."
+  },
+  {
+    "path": "en.privacy.dataDeletion.title",
+    "text": "Data Deletion"
+  },
+  {
+    "path": "en.privacy.dataDeletion.body",
+    "text": "You can delete jobs, individual shifts, or reset all app data at any time from Settings. Such deletion is immediate and complete on your device. Backups in your Google Drive account can be deleted directly from there."
+  },
+  {
+    "path": "en.privacy.dataDeletion.requestNote",
+    "text": "Data we hold (feedback sent from the app, and reviews or feature requests submitted through the site): to request access, correction, or deletion, contact us by email:"
+  },
+  {
+    "path": "en.privacy.minors.title",
+    "text": "Minors"
+  },
+  {
+    "path": "en.privacy.minors.body",
+    "text": "The app is intended for people aged 18 and over. Minors aged 13 and over may use it only with the consent of a parent or legal guardian, and the app is not intended for children under 13. We do not knowingly collect information from children under 13."
+  },
+  {
+    "path": "en.privacy.website.title",
+    "text": "Data on This Website"
+  },
+  {
+    "path": "en.privacy.website.items.0.label",
+    "text": "Reviews and feature requests:"
+  },
+  {
+    "path": "en.privacy.website.items.0.body",
+    "text": "When you submit a review through the site, the name you entered, the rating (1–5 stars), and the review text are stored in our database (Supabase). For a feature request, the name and the idea description are stored. A review is shown on the site (name and text) only after our manual approval. Submitting either is not required, and we recommend not including personal details in them. Supabase's cloud service may store data on servers outside Israel. To request deletion, see the \"Data Deletion\" section above."
+  },
+  {
+    "path": "en.privacy.website.items.1.label",
+    "text": "Vercel Analytics:"
+  },
+  {
+    "path": "en.privacy.website.items.1.body",
+    "text": "Anonymous traffic statistics for the site (for example, page views), without the use of cookies."
+  },
+  {
+    "path": "en.privacy.website.items.2.label",
+    "text": "Google Analytics:"
+  },
+  {
+    "path": "en.privacy.website.items.2.body",
+    "text": "The Google tag is loaded only if you accept cookies in the consent banner, and is used for website usage statistics. If you decline or make no choice, it is not loaded."
+  },
+  {
+    "path": "en.privacy.website.items.3.label",
+    "text": "Browser local storage:"
+  },
+  {
+    "path": "en.privacy.website.items.3.body",
+    "text": "Your manual language choice and cookie-banner choice are saved for later visits. Form submission times are also saved temporarily in sessionStorage to limit repeated submissions during the browser session."
+  },
+  {
+    "path": "en.privacy.policyChanges.title",
+    "text": "Changes to This Policy"
+  },
+  {
+    "path": "en.privacy.policyChanges.body",
+    "text": "We may update this policy from time to time as features are added to the app. We will update the \"Last updated\" date at the top of the page with every material change."
+  },
+  {
+    "path": "en.privacy.applicableLaw.title",
+    "text": "Which Privacy Laws Apply to This Policy"
+  },
+  {
+    "path": "en.privacy.applicableLaw.body",
+    "text": "The app is primarily intended for users in Israel and was developed by an Israeli developer, so this policy is governed by Israel's Privacy Protection Law, as amended by Amendment 13 (in effect since August 2025), which requires transparency about the collection and use of personal data. The app is not directed at residents of the European Union or California. If and when our user base expands significantly into those regions, we will review the requirements that apply to us and update this policy accordingly."
+  },
+  {
+    "path": "en.privacy.contactTitle",
+    "text": "Contact Us"
+  },
+  {
+    "path": "en.privacy.contactBody",
+    "text": "Shift Smart is operated by an independent developer in Israel. For questions about this privacy policy, you can reach us at:"
+  },
+  {
+    "path": "en.terms.metaTitle",
+    "text": "Terms of Service — Shift Smart"
+  },
+  {
+    "path": "en.terms.metaDescription",
+    "text": "Shift Smart's terms of service — agreement to the terms, service description, minimum age, Pro purchases, user responsibility, intellectual property, and limitation of liability."
+  },
+  {
+    "path": "en.terms.pageTitle",
+    "text": "Terms of Service — Shift Smart"
+  },
+  {
+    "path": "en.terms.lastUpdated",
+    "text": "Last updated: 09.10.2026"
+  },
+  {
+    "path": "en.terms.backToHome",
+    "text": "Back to home"
+  },
+  {
+    "path": "en.terms.intro",
+    "text": "These Terms of Service (\"the Terms\") govern your use of the Shift Smart app (\"the app\"). Installing or using the app constitutes your full agreement to these Terms. If you do not agree to any part of these Terms, please refrain from using the app."
+  },
+  {
+    "path": "en.terms.serviceDescription.title",
+    "text": "Service Description"
+  },
+  {
+    "path": "en.terms.serviceDescription.body",
+    "text": "Shift Smart is a local, offline-first Android app for shift management, time tracking, and pay calculation. The app helps you track your work hours, calculate pay, overtime, and bonuses based on the data you enter, and export reports and summaries. Shift Smart is not an official payroll service, is not connected to your employer, and does not perform any transfer of funds, other than the optional Pro purchase processed by Google Play."
+  },
+  {
+    "path": "en.terms.eligibility.title",
+    "text": "Minimum Age and Privacy"
+  },
+  {
+    "path": "en.terms.eligibility.body",
+    "text": "The app is intended for people aged 18 and over. Minors aged 13 and over may use it only with the consent of a parent or legal guardian, and the app is not intended for children under 13. Your use of the app is also subject to the privacy policy on this site, which explains what data is stored and where."
+  },
+  {
+    "path": "en.terms.dataAndBackup.title",
+    "text": "Data Responsibility and Backup"
+  },
+  {
+    "path": "en.terms.dataAndBackup.body",
+    "text": "Faults or calculation errors may occur. We recommend backing up your data regularly using the app's backup feature."
+  },
+  {
+    "path": "en.terms.purchases.title",
+    "text": "Pro Purchases"
+  },
+  {
+    "path": "en.terms.purchases.body",
+    "text": "The app includes an optional Pro upgrade, bought as a one-time purchase through Google Play. The price is shown in Google Play before you buy, and the purchase includes the Pro features that exist at the time of purchase. New Pro features we add in the future are not necessarily included in this purchase and may be offered separately, including as a subscription or for an additional fee; in that case we will state it clearly before any charge. Payment and refunds are subject to Google Play's terms and refund policy (you can usually request a refund through Google within 48 hours of purchase), and in any case without limiting your rights under consumer protection law. For purchase-related questions you can also contact us by email."
+  },
+  {
+    "path": "en.terms.userResponsibilityTitle",
+    "text": "User Responsibility"
+  },
+  {
+    "path": "en.terms.userResponsibilityItems.0",
+    "text": "You are responsible for entering accurate data — work hours, hourly rate, and bonuses — since the accuracy of all calculations depends entirely on the data you provide."
+  },
+  {
+    "path": "en.terms.userResponsibilityItems.1",
+    "text": "Shift Smart is a helper tool only and is not a substitute for your official payslip or for checking with your employer. You must verify every actual pay payment against your employer and your official payslip."
+  },
+  {
+    "path": "en.terms.userResponsibilityItems.2",
+    "text": "You are responsible for using the app only lawfully, and not in violation of any law or your employment agreement."
+  },
+  {
+    "path": "en.terms.intellectualProperty.title",
+    "text": "Intellectual Property"
+  },
+  {
+    "path": "en.terms.intellectualProperty.body",
+    "text": "All rights in the app — including the code, design, logo, and content — belong to the owners of Shift Smart. You may not copy, reverse-engineer, redistribute, or create derivative works from the app without prior written permission."
+  },
+  {
+    "path": "en.terms.liability.title",
+    "text": "Limitation of Liability"
+  },
+  {
+    "path": "en.terms.liability.body",
+    "text": "The app is provided \"as is,\" with no warranty of accuracy, continuous availability, or fitness for a particular purpose. To the maximum extent permitted by law, Shift Smart and its developers shall not be liable for any direct or indirect damage resulting from use of the app, including pay calculation errors, data loss, or temporary unavailability of the service. Nothing in this section limits rights that mandatory law, including consumer protection law, grants you and that cannot be waived, or any liability that cannot be limited by law."
+  },
+  {
+    "path": "en.terms.changes.title",
+    "text": "Changes to the App and These Terms"
+  },
+  {
+    "path": "en.terms.changes.body",
+    "text": "We may update, change, or discontinue features in the app at any time. We may also update these Terms of Service from time to time — we will update the \"Last updated\" date at the top of the page with every material change. Continued use of the app after an update constitutes acceptance of the updated Terms."
+  },
+  {
+    "path": "en.terms.governingLaw.title",
+    "text": "Governing Law and Jurisdiction"
+  },
+  {
+    "path": "en.terms.governingLaw.body",
+    "text": "These Terms of Service are governed by the laws of the State of Israel. The courts of the State of Israel that have competent jurisdiction shall hear any dispute related to them, without limiting any right that mandatory law grants you as a consumer."
+  },
+  {
+    "path": "en.terms.contactTitle",
+    "text": "Contact Us"
+  },
+  {
+    "path": "en.terms.contactBody",
+    "text": "Shift Smart is operated by an independent developer in Israel. For questions about these Terms of Service, you can reach us at:"
+  }
+]

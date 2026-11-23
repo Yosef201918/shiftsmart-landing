@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-28T15:41:41.318Z",
+  "postgres": "PostgreSQL 17.11 on x86_64-windows, compiled by msvc-19.44.35229, 64-bit",
+  "endpoint": "127.0.0.1:55432",
+  "database": "shiftsmart_form_qa",
+  "productionTouched": false,
+  "races": [
+    {
+      "label": "simultaneous first submissions",
+      "connections": 20,
+      "accepted": 1,
+      "limited": 19
+    },
+    {
+      "label": "one remaining quota slot",
+      "connections": 20,
+      "accepted": 1,
+      "limited": 19
+    },
+    {
+      "label": "rolling boundary with one expired slot",
+      "connections": 20,
+      "accepted": 1,
+      "limited": 19
+    }
+  ],
+  "checks": [
+    "temporary SQL logic and rollback",
+    "RLS-enabled fixture tables",
+    "RPC and private schema inaccessible to public roles",
+    "direct inserts blocked for anon/authenticated",
+    "service-role feature submission succeeds after cutover"
+  ],
+  "counts": {
+    "reviews": 3,
+    "features": 1
+  }
+}

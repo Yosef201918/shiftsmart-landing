@@ -1,0 +1,936 @@
+{
+  "framework": {
+    "name": "Next.js",
+    "slug": "nextjs"
+  },
+  "basePath": "C:\\Users\\USER\\Desktop\\shiftsmart-landing",
+  "fileCount": 113,
+  "totalSize": 40095037,
+  "ignoredCount": 100,
+  "ignored": [
+    ".env.local",
+    ".git",
+    ".gitignore",
+    ".next",
+    ".playwright-cli\\console-2026-10-27T15-39-32-997Z.log",
+    ".playwright-cli\\console-2026-10-27T15-41-17-686Z.log",
+    ".playwright-cli\\console-2026-10-28T15-44-41-605Z.log",
+    ".playwright-cli\\page-2026-10-27T15-41-17-805Z.yml",
+    ".playwright-cli\\page-2026-10-27T15-41-44-144Z.yml",
+    ".playwright-cli\\page-2026-10-27T15-47-47-201Z.yml",
+    ".playwright-cli\\page-2026-10-27T15-48-09-823Z.yml",
+    ".playwright-cli\\page-2026-10-28T15-44-41-726Z.yml",
+    ".playwright-cli\\page-2026-10-28T15-47-25-260Z.yml",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "PROJECT_MEMORY.md",
+    "README.md",
+    "WEBSITE_IMPROVEMENT_PLAN.html",
+    "WEBSITE_IMPROVEMENT_PLAN.md",
+    "assets\\app-captures",
+    "assets\\marketing-concepts",
+    "docs\\COPY_REVIEW_2026-11-01.md",
+    "docs\\DOWNLOAD_MEASUREMENT.md",
+    "docs\\FORM_PROTECTION_NEXT_STEPS.md",
+    "docs\\LOCAL_POSTGRES_QA.md",
+    "docs\\LOCAL_QUALITY_CHECK_2026-10-31.md",
+    "docs\\RELEASE_READINESS.md",
+    "docs\\SERVER_FORM_RATE_LIMIT_ROLLOUT.md",
+    "docs\\SYSTEM_AUDIT_2026-10-27.md",
+    "docs\\applied-public-permissions.sql",
+    "docs\\applied-visible-form-content.sql",
+    "docs\\proposed-disable-direct-form-inserts.sql",
+    "docs\\proposed-public-permissions.sql",
+    "docs\\proposed-server-form-ratelimit.sql",
+    "docs\\proposed-visible-form-content.sql",
+    "docs\\restore-public-permissions-baseline.sql",
+    "docs\\rollback-visible-form-content.sql",
+    "docs\\verify-public-permissions.sql",
+    "docs\\verify-rate-sql-temporary.sql",
+    "docs\\verify-visible-form-content.sql",
+    "docs\\verify-visible-form-inserts.sql",
+    "node_modules",
+    "output\\analytics-qa-error.log",
+    "output\\analytics-qa.log",
+    "output\\approved-artwork-gallery.png",
+    "output\\approved-artwork-mobile.png",
+    "output\\approved-artwork-site.png",
+    "output\\brand-poster-v3-site.png",
+    "output\\check-form-validation-browser.js",
+    "output\\copy-inventory.json",
+    "output\\form-validation-feature-mobile.png",
+    "output\\form-validation-review.png",
+    "output\\forms-small-viewport.png",
+    "output\\forms-updated.png",
+    "output\\gallery-drag-fixed.png",
+    "output\\hero-copy-updated.png",
+    "output\\lighthouse-after.report.html",
+    "output\\lighthouse-after.report.json",
+    "output\\lighthouse-baseline.report.html",
+    "output\\lighthouse-baseline.report.json",
+    "output\\marketing-gallery.png",
+    "output\\mobile-preview-error.log",
+    "output\\mobile-preview.log",
+    "output\\performance-preview-error.log",
+    "output\\performance-preview.log",
+    "output\\plans-desktop.png",
+    "output\\plans-mobile.png",
+    "output\\postgres-qa-runtime.json",
+    "output\\preview-server-error.log",
+    "output\\preview-server.log",
+    "output\\quality-preview.jpg",
+    "output\\rate-postgres-qa-report.json",
+    "output\\rate-qa-report.html",
+    "output\\rate-qa-report.png",
+    "output\\rate-report-server-error.log",
+    "output\\rate-report-server.log",
+    "output\\reviews-corrected.png",
+    "output\\share-updated.png",
+    "output\\stage-1-preview.png",
+    "output\\text-preview-error.log",
+    "output\\text-preview.log",
+    "output\\vercel-deploy-manifest.json",
+    "scripts\\build-improvement-plan.mjs",
+    "scripts\\build-marketing-assets.mjs",
+    "scripts\\build-og-image.mjs",
+    "scripts\\build-rate-qa-report.mjs",
+    "scripts\\check-download-consent.mjs",
+    "scripts\\check-form-flows.mjs",
+    "scripts\\check-language-preference.mjs",
+    "scripts\\check-rate-sql-local.mjs",
+    "scripts\\check-rate-sql-postgres.mjs",
+    "scripts\\check-server-form-route.mjs",
+    "scripts\\check-share-flows.mjs",
+    "scripts\\export-copy-inventory.mjs",
+    "scripts\\local-postgres-qa.ps1",
+    "scripts\\prepare-rate-sql-check.mjs",
+    "scripts\\preview-analytics-isolated.mjs",
+    "scripts\\preview-marketing-gallery.mjs",
+    "scripts\\serve-rate-qa-report.mjs",
+    "tsconfig.tsbuildinfo"
+  ],
+  "directories": [
+    {
+      "path": "public",
+      "fileCount": 49,
+      "size": 39565579
+    },
+    {
+      "path": "package-lock.json",
+      "fileCount": 1,
+      "size": 252078
+    },
+    {
+      "path": "components",
+      "fileCount": 31,
+      "size": 138140
+    },
+    {
+      "path": "lib",
+      "fileCount": 12,
+      "size": 105659
+    },
+    {
+      "path": "app",
+      "fileCount": 8,
+      "size": 29133
+    },
+    {
+      "path": "next.config.ts",
+      "fileCount": 1,
+      "size": 1842
+    },
+    {
+      "path": "package.json",
+      "fileCount": 1,
+      "size": 837
+    },
+    {
+      "path": "tsconfig.json",
+      "fileCount": 1,
+      "size": 666
+    },
+    {
+      "path": "eslint.config.mjs",
+      "fileCount": 1,
+      "size": 465
+    },
+    {
+      "path": "next-env.d.ts",
+      "fileCount": 1,
+      "size": 288
+    },
+    {
+      "path": ".vercelignore",
+      "fileCount": 1,
+      "size": 256
+    },
+    {
+      "path": "postcss.config.mjs",
+      "fileCount": 1,
+      "size": 94
+    },
+    {
+      "path": ".playwright-cli",
+      "fileCount": 1,
+      "size": 0
+    },
+    {
+      "path": "assets",
+      "fileCount": 1,
+      "size": 0
+    },
+    {
+      "path": "docs",
+      "fileCount": 1,
+      "size": 0
+    },
+    {
+      "path": "output",
+      "fileCount": 1,
+      "size": 0
+    },
+    {
+      "path": "scripts",
+      "fileCount": 1,
+      "size": 0
+    }
+  ],
+  "largestFiles": [
+    {
+      "path": "public/ICON Chrome WED V1.png",
+      "size": 2596592,
+      "mode": 33206,
+      "sha": "bd26698a1ca71de0f8a3b4db2ce783f642d08858"
+    },
+    {
+      "path": "public/marketing/brand-v3/he.png",
+      "size": 1813996,
+      "mode": 33206,
+      "sha": "dbb0c6f4955adf01ae94d4e543ce6501beaa233b"
+    },
+    {
+      "path": "public/marketing/brand-v3/en.png",
+      "size": 1809694,
+      "mode": 33206,
+      "sha": "3f2d84d7bb539fc8e6be591d42bf151b5930042b"
+    },
+    {
+      "path": "public/Sharing image2.png",
+      "size": 1462310,
+      "mode": 33206,
+      "sha": "de25861536952d86302e34c03ac0a028c800055d"
+    },
+    {
+      "path": "public/Sharing image.png",
+      "size": 1452532,
+      "mode": 33206,
+      "sha": "ce3745dfc46c8340524fa7eeea10b5355c7b5e34"
+    },
+    {
+      "path": "public/English screenshot6.png",
+      "size": 1439692,
+      "mode": 33206,
+      "sha": "c3c7cad6b555e11aa8c5607e9f024eced6fc61b0"
+    },
+    {
+      "path": "public/English screenshot7.png",
+      "size": 1410460,
+      "mode": 33206,
+      "sha": "8572a2eb89d5874eb6ff2e7fa5b6b877899dcf9e"
+    },
+    {
+      "path": "public/English screenshot4.png",
+      "size": 1406970,
+      "mode": 33206,
+      "sha": "9911c729bd05dfaf36725b0d17f0f0237b1ea823"
+    },
+    {
+      "path": "public/English screenshot1.png",
+      "size": 1353700,
+      "mode": 33206,
+      "sha": "184a4634dce797847da9d058cf9eedd63cfbf5af"
+    },
+    {
+      "path": "public/English screenshot5.png",
+      "size": 1348000,
+      "mode": 33206,
+      "sha": "9602a9bf5b4b14c1df1e1264d0cafcb914f4d5ad"
+    }
+  ],
+  "files": [
+    {
+      "path": ".playwright-cli",
+      "size": 0,
+      "mode": 16822
+    },
+    {
+      "path": ".vercelignore",
+      "size": 256,
+      "mode": 33206,
+      "sha": "ada1f43083cceb013f76124387c9c06cff435d71"
+    },
+    {
+      "path": "app/api/forms/route.ts",
+      "size": 1263,
+      "mode": 33206,
+      "sha": "c1261fb77e9103e34a31a45c1e9721f63a0c6c4a"
+    },
+    {
+      "path": "app/globals.css",
+      "size": 10522,
+      "mode": 33206,
+      "sha": "a828263fdd7ce9f811992079b0906081bfd07319"
+    },
+    {
+      "path": "app/layout.tsx",
+      "size": 11156,
+      "mode": 33206,
+      "sha": "c64934c7f55829ae88063783109b58d3742b59ab"
+    },
+    {
+      "path": "app/page.tsx",
+      "size": 1722,
+      "mode": 33206,
+      "sha": "cb8a2879162fe4fd8d2889e5ff80a3ecfa582d15"
+    },
+    {
+      "path": "app/privacy/page.tsx",
+      "size": 1363,
+      "mode": 33206,
+      "sha": "3b906a22efe309fa20c1b234023890c19ce14205"
+    },
+    {
+      "path": "app/robots.ts",
+      "size": 593,
+      "mode": 33206,
+      "sha": "d925e06331832fac753592c56c32dadd42b44581"
+    },
+    {
+      "path": "app/sitemap.ts",
+      "size": 1488,
+      "mode": 33206,
+      "sha": "04932dfe61e06b29039383221210b549dc58871b"
+    },
+    {
+      "path": "app/terms/page.tsx",
+      "size": 1026,
+      "mode": 33206,
+      "sha": "79e5d7a030ddefe919d3e92e2226588554e78350"
+    },
+    {
+      "path": "assets",
+      "size": 0,
+      "mode": 16822
+    },
+    {
+      "path": "components/AboutTimeTracking.tsx",
+      "size": 2038,
+      "mode": 33206,
+      "sha": "72b5ed1f228da5b2dc1349c438749c6b1844b68a"
+    },
+    {
+      "path": "components/AppCarousel.tsx",
+      "size": 8714,
+      "mode": 33206,
+      "sha": "ecf3ab7be812f225eb55fbf4b981a2fb6eb9e0d6"
+    },
+    {
+      "path": "components/AppPoster.tsx",
+      "size": 3247,
+      "mode": 33206,
+      "sha": "a5ba6a4fc77395a7d62bebc1dbdd557ab5d2c656"
+    },
+    {
+      "path": "components/Backdrop.tsx",
+      "size": 3459,
+      "mode": 33206,
+      "sha": "44a1f0e6da35e276138f1cdc32c83a030535cc65"
+    },
+    {
+      "path": "components/CookieConsent.tsx",
+      "size": 4672,
+      "mode": 33206,
+      "sha": "ad174934fd1f4f7ad59e3932ce13d066c235102a"
+    },
+    {
+      "path": "components/DirectionalArrow.tsx",
+      "size": 1088,
+      "mode": 33206,
+      "sha": "8c0f21eef13864520c3d9a788b2ca65cf2a87bbc"
+    },
+    {
+      "path": "components/DownloadTracking.tsx",
+      "size": 1791,
+      "mode": 33206,
+      "sha": "dfe8e688424777ff76de028d467e589b926e97bd"
+    },
+    {
+      "path": "components/Faq.tsx",
+      "size": 5419,
+      "mode": 33206,
+      "sha": "baca0e6effb3baf456fdaf49b2d3e377a76314d4"
+    },
+    {
+      "path": "components/FeatureRequest.tsx",
+      "size": 13705,
+      "mode": 33206,
+      "sha": "6080c9078d50889f2361d32f4dd1a15a9f66ee55"
+    },
+    {
+      "path": "components/Features.tsx",
+      "size": 7986,
+      "mode": 33206,
+      "sha": "cc3aa387c4cd04e016cd94fec4e838a3caed53e8"
+    },
+    {
+      "path": "components/Footer.tsx",
+      "size": 6870,
+      "mode": 33206,
+      "sha": "f5a1ec3b8730f4453ff0c70038f4312f6780189a"
+    },
+    {
+      "path": "components/GoogleTag.tsx",
+      "size": 1376,
+      "mode": 33206,
+      "sha": "4098e10c84329bd6766f6a42e1f20e7f9e634d0b"
+    },
+    {
+      "path": "components/Hero.tsx",
+      "size": 7803,
+      "mode": 33206,
+      "sha": "1e905ef3bcbce5310605e4d06e1716349233e1e2"
+    },
+    {
+      "path": "components/HtmlAttributesSync.tsx",
+      "size": 1278,
+      "mode": 33206,
+      "sha": "fcbc2802de61f9b522a254ebe1461f2f3c499e38"
+    },
+    {
+      "path": "components/LanguageSwitcher.tsx",
+      "size": 1523,
+      "mode": 33206,
+      "sha": "8969b57d21f8929d569e040ea56294303fc3ab76"
+    },
+    {
+      "path": "components/LaunchBanner.tsx",
+      "size": 2079,
+      "mode": 33206,
+      "sha": "a51a3d1145a9d790cee17f16cddd4ab5eb5f91f2"
+    },
+    {
+      "path": "components/MotionProvider.tsx",
+      "size": 606,
+      "mode": 33206,
+      "sha": "825e07c475c4fc44dbeb58fd880a2a22fdd233c2"
+    },
+    {
+      "path": "components/OverlayPortal.tsx",
+      "size": 558,
+      "mode": 33206,
+      "sha": "f1db6929f05435398e34d1a1c9d01177f41c998d"
+    },
+    {
+      "path": "components/PhoneShowcase.tsx",
+      "size": 1704,
+      "mode": 33206,
+      "sha": "cc85f7da841002b9c0198cb7c8465fd0e0f5de95"
+    },
+    {
+      "path": "components/Plans.tsx",
+      "size": 1620,
+      "mode": 33206,
+      "sha": "f07f23547ecb71140780ebf4849e61d03212dd93"
+    },
+    {
+      "path": "components/PrivacyPolicyContent.tsx",
+      "size": 7260,
+      "mode": 33206,
+      "sha": "e3342f4c919cca8d51c6114097ab67fa0977e2b2"
+    },
+    {
+      "path": "components/QuickStartSteps.tsx",
+      "size": 4521,
+      "mode": 33206,
+      "sha": "130b4aa355c47d4d12410b59baad111acd0abe6b"
+    },
+    {
+      "path": "components/Reviews.tsx",
+      "size": 22833,
+      "mode": 33206,
+      "sha": "21b84a72e7188e9f6bdd55df1e9e3ad151979b1d"
+    },
+    {
+      "path": "components/RichText.tsx",
+      "size": 1176,
+      "mode": 33206,
+      "sha": "1e1e7488c0e569d4f208b6f22981fde3585f326b"
+    },
+    {
+      "path": "components/Roadmap.tsx",
+      "size": 4120,
+      "mode": 33206,
+      "sha": "134a1e7c6b0b207ff7f67935477e2b99913af139"
+    },
+    {
+      "path": "components/ShareButton.tsx",
+      "size": 5918,
+      "mode": 33206,
+      "sha": "20b59837c48eafd5ebeed7f30a68644433208c90"
+    },
+    {
+      "path": "components/SkipToContent.tsx",
+      "size": 430,
+      "mode": 33206,
+      "sha": "33c0575ad465f8f3bb68b40c78c38ccff8a666ff"
+    },
+    {
+      "path": "components/SocialIcons.tsx",
+      "size": 1725,
+      "mode": 33206,
+      "sha": "41f330fbe0ebc8e1e4ae2f72b36caa9f3f69357e"
+    },
+    {
+      "path": "components/StickyCta.tsx",
+      "size": 3779,
+      "mode": 33206,
+      "sha": "f89d5b08cb4b64d13672d449040cb6e48e673ee2"
+    },
+    {
+      "path": "components/TermsOfServiceContent.tsx",
+      "size": 4922,
+      "mode": 33206,
+      "sha": "3417e0aa574c5f8e14a0db1751ab449f9554448a"
+    },
+    {
+      "path": "components/WhatsNew.tsx",
+      "size": 3920,
+      "mode": 33206,
+      "sha": "824b574f86922a2ac453ed1eeffc455bb36ceaa4"
+    },
+    {
+      "path": "docs",
+      "size": 0,
+      "mode": 16822
+    },
+    {
+      "path": "eslint.config.mjs",
+      "size": 465,
+      "mode": 33206,
+      "sha": "44d5bed565a8dd284af3e17f3b16a1c752008d0e"
+    },
+    {
+      "path": "lib/cookieConsent.ts",
+      "size": 1984,
+      "mode": 33206,
+      "sha": "c150bd7a268cdb050e04ccea7738896e06e033e5"
+    },
+    {
+      "path": "lib/formGuards.ts",
+      "size": 1693,
+      "mode": 33206,
+      "sha": "81cb32cd315766b0e75bd539d6860ed86b737c5c"
+    },
+    {
+      "path": "lib/i18n/dictionaries.ts",
+      "size": 80665,
+      "mode": 33206,
+      "sha": "fcfaad30f192a8d37f36e8b36de079ce2552c4d7"
+    },
+    {
+      "path": "lib/i18n/LanguageContext.tsx",
+      "size": 3601,
+      "mode": 33206,
+      "sha": "a8994145846441f05670dd1cdc730c5b11ab4c1f"
+    },
+    {
+      "path": "lib/i18n/resolveLanguage.ts",
+      "size": 498,
+      "mode": 33206,
+      "sha": "58e16672dd2aea3bfdb9a7d1b281a09f3624ed81"
+    },
+    {
+      "path": "lib/links.ts",
+      "size": 1204,
+      "mode": 33206,
+      "sha": "8f9560b5a553e58ac2f8af09758f6167c655f2a7"
+    },
+    {
+      "path": "lib/marketingAssets.ts",
+      "size": 2809,
+      "mode": 33206,
+      "sha": "fad8cd9c175e936206d6ae7f9d3353a026586548"
+    },
+    {
+      "path": "lib/motion.ts",
+      "size": 1826,
+      "mode": 33206,
+      "sha": "6cd31b334172bc7e5498d5a6c83e09fc147727bf"
+    },
+    {
+      "path": "lib/server/formSubmission.ts",
+      "size": 4594,
+      "mode": 33206,
+      "sha": "bcff8fdb6ffabc66969d3e6c178d6f6bd00383d5"
+    },
+    {
+      "path": "lib/submitFormViaServer.ts",
+      "size": 437,
+      "mode": 33206,
+      "sha": "442db7d2a54cf3208d9c21c39c3381d64ae26f24"
+    },
+    {
+      "path": "lib/supabase.ts",
+      "size": 2773,
+      "mode": 33206,
+      "sha": "11e12abe736751d71184504e6c99e5396009a840"
+    },
+    {
+      "path": "lib/useDialogFocus.ts",
+      "size": 3575,
+      "mode": 33206,
+      "sha": "a6a2beadcf1d2a926ec927cbfdc5d5c468618d34"
+    },
+    {
+      "path": "next-env.d.ts",
+      "size": 288,
+      "mode": 33206,
+      "sha": "915946e261450f4fb6aab2ca862c8b440b748240"
+    },
+    {
+      "path": "next.config.ts",
+      "size": 1842,
+      "mode": 33206,
+      "sha": "b87fd947dd616fd2ec6fa6ca31a5971ed1f4dd7b"
+    },
+    {
+      "path": "output",
+      "size": 0,
+      "mode": 16822
+    },
+    {
+      "path": "package-lock.json",
+      "size": 252078,
+      "mode": 33206,
+      "sha": "98a65696bf9b1712ddb308d4dfb47a609b160081"
+    },
+    {
+      "path": "package.json",
+      "size": 837,
+      "mode": 33206,
+      "sha": "d3379975085ec7c707cbc3f77a1b04cb7e654e68"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "size": 94,
+      "mode": 33206,
+      "sha": "8f8be689e9af58f80351df6e6b551146822f42a4"
+    },
+    {
+      "path": "public/app-ads.txt",
+      "size": 59,
+      "mode": 33206,
+      "sha": "050e32c5e3d17de5212f869b2907f9f6a9adaeeb"
+    },
+    {
+      "path": "public/apple-touch-icon.png",
+      "size": 51758,
+      "mode": 33206,
+      "sha": "e8c06f6840723359cb49170b9791b8c85b6b1a3e"
+    },
+    {
+      "path": "public/background.png",
+      "size": 824019,
+      "mode": 33206,
+      "sha": "5e7d390d96dbf0cca5499433a47e2df147972dbc"
+    },
+    {
+      "path": "public/English screenshot1.png",
+      "size": 1353700,
+      "mode": 33206,
+      "sha": "184a4634dce797847da9d058cf9eedd63cfbf5af"
+    },
+    {
+      "path": "public/English screenshot2.png",
+      "size": 1330608,
+      "mode": 33206,
+      "sha": "8b004dc8c5a57bb85b64eedbeadffdb6d44c40ab"
+    },
+    {
+      "path": "public/English screenshot3.png",
+      "size": 1313785,
+      "mode": 33206,
+      "sha": "2e9f808b9dc550228477ff166acd229d0a99fbf0"
+    },
+    {
+      "path": "public/English screenshot4.png",
+      "size": 1406970,
+      "mode": 33206,
+      "sha": "9911c729bd05dfaf36725b0d17f0f0237b1ea823"
+    },
+    {
+      "path": "public/English screenshot5.png",
+      "size": 1348000,
+      "mode": 33206,
+      "sha": "9602a9bf5b4b14c1df1e1264d0cafcb914f4d5ad"
+    },
+    {
+      "path": "public/English screenshot6.png",
+      "size": 1439692,
+      "mode": 33206,
+      "sha": "c3c7cad6b555e11aa8c5607e9f024eced6fc61b0"
+    },
+    {
+      "path": "public/English screenshot7.png",
+      "size": 1410460,
+      "mode": 33206,
+      "sha": "8572a2eb89d5874eb6ff2e7fa5b6b877899dcf9e"
+    },
+    {
+      "path": "public/favicon-48.png",
+      "size": 4781,
+      "mode": 33206,
+      "sha": "21ee85c5940a15ca5877c53daa02ad74b69bf26c"
+    },
+    {
+      "path": "public/file.svg",
+      "size": 391,
+      "mode": 33206,
+      "sha": "fb380eeffe87d50b597383664c02982964d0d28c"
+    },
+    {
+      "path": "public/globe.svg",
+      "size": 1035,
+      "mode": 33206,
+      "sha": "2eba23b01a46733bb8423e6d38ebf5f7e95abec5"
+    },
+    {
+      "path": "public/ICON Chrome WED V1.png",
+      "size": 2596592,
+      "mode": 33206,
+      "sha": "bd26698a1ca71de0f8a3b4db2ce783f642d08858"
+    },
+    {
+      "path": "public/icon-192.png",
+      "size": 58306,
+      "mode": 33206,
+      "sha": "41c061e70195914876a9f7f5442e4465ca7a4423"
+    },
+    {
+      "path": "public/icon-512.png",
+      "size": 393726,
+      "mode": 33206,
+      "sha": "5cb921ab63a316d8af1a5d4b5f55a97fc66ef86c"
+    },
+    {
+      "path": "public/ICON.jpg",
+      "size": 143274,
+      "mode": 33206,
+      "sha": "d14af10cfab059ceddd11e247b9cac655f565dca"
+    },
+    {
+      "path": "public/manifest.json",
+      "size": 502,
+      "mode": 33206,
+      "sha": "f8c20b71978b07e6dfddddbf2ef33c1b55b02fd2"
+    },
+    {
+      "path": "public/marketing/brand-v3/en.png",
+      "size": 1809694,
+      "mode": 33206,
+      "sha": "3f2d84d7bb539fc8e6be591d42bf151b5930042b"
+    },
+    {
+      "path": "public/marketing/brand-v3/en.webp",
+      "size": 1288150,
+      "mode": 33206,
+      "sha": "247a5c099b09612c55fbf0e73b0849ffb9896eb2"
+    },
+    {
+      "path": "public/marketing/brand-v3/he.png",
+      "size": 1813996,
+      "mode": 33206,
+      "sha": "dbb0c6f4955adf01ae94d4e543ce6501beaa233b"
+    },
+    {
+      "path": "public/marketing/brand-v3/he.webp",
+      "size": 1270548,
+      "mode": 33206,
+      "sha": "a6429f73a9c5082c9f6b2ba87e645fb7a1e33334"
+    },
+    {
+      "path": "public/marketing/v1/en/01-clock-idle.webp",
+      "size": 1097472,
+      "mode": 33206,
+      "sha": "47d8f5d13bd62c72a67d8654e569165ce4c0425f"
+    },
+    {
+      "path": "public/marketing/v1/en/02-active-shift.webp",
+      "size": 1055960,
+      "mode": 33206,
+      "sha": "5de89d2700fee6dca291aa392541fabc0c873ab9"
+    },
+    {
+      "path": "public/marketing/v1/en/03-workplaces.webp",
+      "size": 1047330,
+      "mode": 33206,
+      "sha": "e3f5dc190287eb7761a8c6714bb20d0b55ffeb7f"
+    },
+    {
+      "path": "public/marketing/v1/en/04-history.webp",
+      "size": 1108882,
+      "mode": 33206,
+      "sha": "8973ff3312f1ef1397607831914e641f8b5daff8"
+    },
+    {
+      "path": "public/marketing/v1/en/05-monthly-summary.webp",
+      "size": 1132604,
+      "mode": 33206,
+      "sha": "eb488ee9efd0d6b9b4269d23a64b82f55dbd7f97"
+    },
+    {
+      "path": "public/marketing/v1/en/06-calendar.webp",
+      "size": 1132132,
+      "mode": 33206,
+      "sha": "c9818707aaedec0b68cbfc1f5b51fac6dc7a9246"
+    },
+    {
+      "path": "public/marketing/v1/en/07-preferences.webp",
+      "size": 1104830,
+      "mode": 33206,
+      "sha": "2cc2afa880e02f331c22fd81a146e43c8273ea7c"
+    },
+    {
+      "path": "public/marketing/v1/he/01-clock-idle.webp",
+      "size": 1073502,
+      "mode": 33206,
+      "sha": "31ba16928bb3266b773cd913b049ead3b66eef68"
+    },
+    {
+      "path": "public/marketing/v1/he/02-active-shift.webp",
+      "size": 1060872,
+      "mode": 33206,
+      "sha": "394f169cab5c917a6c6706aa149cc782ccd87163"
+    },
+    {
+      "path": "public/marketing/v1/he/03-workplaces.webp",
+      "size": 1022292,
+      "mode": 33206,
+      "sha": "addf0afd84db2f9127affaea7da9a8777db5a4a2"
+    },
+    {
+      "path": "public/marketing/v1/he/04-history.webp",
+      "size": 1104894,
+      "mode": 33206,
+      "sha": "c5f0cd86fde35c8dfd08ed9895d7fb53a6d5867e"
+    },
+    {
+      "path": "public/marketing/v1/he/05-monthly-summary.webp",
+      "size": 1113944,
+      "mode": 33206,
+      "sha": "b34d2bead1fcaa2f8a3c57a2f49fae99e17a25e5"
+    },
+    {
+      "path": "public/marketing/v1/he/06-calendar.webp",
+      "size": 1096382,
+      "mode": 33206,
+      "sha": "e3f345f33950fc3d4a57650206811f17c75a5cc8"
+    },
+    {
+      "path": "public/marketing/v1/he/07-preferences.webp",
+      "size": 1082916,
+      "mode": 33206,
+      "sha": "87b854600b8632b0ccccb2c7c1313c3a6eebf4c9"
+    },
+    {
+      "path": "public/mockup-v2.jpg",
+      "size": 166257,
+      "mode": 33206,
+      "sha": "7a880143e21b4666a6ae4e38bd8e4d2d11aef37c"
+    },
+    {
+      "path": "public/next.svg",
+      "size": 1375,
+      "mode": 33206,
+      "sha": "3f3e95622612b989c5bd6a03299a308c6f3c7e6b"
+    },
+    {
+      "path": "public/og-image.png",
+      "size": 577516,
+      "mode": 33206,
+      "sha": "bc3ac4ac94aea84a20e8814073ab8001d96450ee"
+    },
+    {
+      "path": "public/Screenshot 1.jpg",
+      "size": 126349,
+      "mode": 33206,
+      "sha": "7e59c6495449bda79803ce605759aaf38e4db622"
+    },
+    {
+      "path": "public/Screenshot 2.jpg",
+      "size": 141756,
+      "mode": 33206,
+      "sha": "5604f33a801c2519c22f79660fc3f02b1cc97285"
+    },
+    {
+      "path": "public/Screenshot 3.jpg",
+      "size": 132412,
+      "mode": 33206,
+      "sha": "c8f35a3e71ba99fde7be57ad3fa05035d71ad3e5"
+    },
+    {
+      "path": "public/Screenshot 4.jpg",
+      "size": 139044,
+      "mode": 33206,
+      "sha": "a6d668b7fb0c2759624c7a9f0b9d497b474a098e"
+    },
+    {
+      "path": "public/Screenshot 5.jpg",
+      "size": 131322,
+      "mode": 33206,
+      "sha": "ca503062d00501005d00d3e5bfb82dfbd397ba81"
+    },
+    {
+      "path": "public/Screenshot 6.jpg",
+      "size": 140135,
+      "mode": 33206,
+      "sha": "8e8367a20db393804df87fa160a9b97172f9e646"
+    },
+    {
+      "path": "public/Sharing image.png",
+      "size": 1452532,
+      "mode": 33206,
+      "sha": "ce3745dfc46c8340524fa7eeea10b5355c7b5e34"
+    },
+    {
+      "path": "public/Sharing image2.png",
+      "size": 1462310,
+      "mode": 33206,
+      "sha": "de25861536952d86302e34c03ac0a028c800055d"
+    },
+    {
+      "path": "public/vercel.svg",
+      "size": 128,
+      "mode": 33206,
+      "sha": "cebb8852d58c8886be3e9051a26957f42bb82f1a"
+    },
+    {
+      "path": "public/window.svg",
+      "size": 385,
+      "mode": 33206,
+      "sha": "54c48e0daa6caa317fe1b4c419007fd93e948db9"
+    },
+    {
+      "path": "scripts",
+      "size": 0,
+      "mode": 16822
+    },
+    {
+      "path": "tsconfig.json",
+      "size": 666,
+      "mode": 33206,
+      "sha": "3cce6f8b2540d983756b909e9e5c181034da4c38"
+    }
+  ]
+}
