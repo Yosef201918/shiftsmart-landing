@@ -1,0 +1,73 @@
+- main [ref=e2]:
+  - link "לאתר Shift Smart" [ref=e4] [cursor=pointer]:
+    - /url: /
+  - paragraph [ref=e5]: שליחת הסקר תשמור תשובה אמיתית. כתובת מייל תישמר רק אם תבחרו במפורש לקבל עדכוני iPhone.
+  - generic [ref=e6]:
+    - paragraph [ref=e7]: בודקים ביקוש · iPHONE
+    - heading "עובדים במשמרות עם iPhone?" [level=1] [ref=e10]
+    - paragraph [ref=e11]: אנחנו בודקים ביקוש לגרסת iPhone של Shift Smart. שלוש תשובות קצרות יעזרו לנו לתעדף את הפיתוח.
+    - paragraph [ref=e12]: 3 שאלות · פחות מדקה · ללא שם או טלפון
+    - paragraph [ref=e13]: גרסת iPhone עדיין אינה זמינה ואין תאריך השקה.
+  - generic [ref=e14]:
+    - group "באיזה מכשיר אתם משתמשים?" [ref=e15]:
+      - paragraph [aria-hidden] [ref=e17]:
+        - generic [ref=e18]: "01"
+        - text: באיזה מכשיר אתם משתמשים?
+      - generic [ref=e19]:
+        - generic [ref=e20] [cursor=pointer]:
+          - radio "iPhone" [ref=e21]
+          - text: iPhone
+        - generic [ref=e22] [cursor=pointer]:
+          - radio "Android" [ref=e23]
+          - text: Android
+        - generic [ref=e24] [cursor=pointer]:
+          - radio "שניהם" [ref=e25]
+          - text: שניהם
+        - generic [ref=e26] [cursor=pointer]:
+          - radio "אחר" [ref=e27]
+          - text: אחר
+    - group "האם אתם עובדים במשמרות?" [ref=e28]:
+      - paragraph [aria-hidden] [ref=e30]:
+        - generic [ref=e31]: "02"
+        - text: האם אתם עובדים במשמרות?
+      - generic [ref=e32]:
+        - generic [ref=e33] [cursor=pointer]:
+          - radio "כן" [ref=e34]
+          - text: כן
+        - generic [ref=e35] [cursor=pointer]:
+          - radio "לא כרגע" [ref=e36]
+          - text: לא כרגע
+    - group "אם תהיה גרסת iPhone, תרצו לנסות אותה?" [ref=e37]:
+      - paragraph [aria-hidden] [ref=e39]:
+        - generic [ref=e40]: "03"
+        - text: אם תהיה גרסת iPhone, תרצו לנסות אותה?
+      - generic [ref=e41]:
+        - generic [ref=e42] [cursor=pointer]:
+          - radio "כן, רוצה לנסות" [ref=e43]
+          - text: כן, רוצה לנסות
+        - generic [ref=e44] [cursor=pointer]:
+          - radio "אולי, צריך עוד פרטים" [ref=e45]
+          - text: אולי, צריך עוד פרטים
+        - generic [ref=e46] [cursor=pointer]:
+          - radio "לא רלוונטי לי" [ref=e47]
+          - text: לא רלוונטי לי
+    - generic [ref=e48]:
+      - text: מה הכי חשוב לכם שיהיה באפליקציה?
+      - generic [ref=e49]: לא חובה · עד 500 תווים · בלי פרטים אישיים
+      - textbox "מה הכי חשוב לכם שיהיה באפליקציה? לא חובה · עד 500 תווים · בלי פרטים אישיים" [ref=e50]
+    - generic [ref=e52] [cursor=pointer]:
+      - checkbox "רוצה לקבל בעתיד עדכון במייל על גרסת iPhone (לא חובה). כתובת המייל תישמר למטרה זו בלבד; כרגע לא נשלח מייל אוטומטי." [ref=e53]
+      - text: רוצה לקבל בעתיד עדכון במייל על גרסת iPhone (לא חובה). כתובת המייל תישמר למטרה זו בלבד; כרגע לא נשלח מייל אוטומטי.
+    - button "בדיקת התשובות" [ref=e54]
+  - generic [ref=e55]:
+    - heading "מכירים עוד מישהו שעובד במשמרות?" [level=2] [ref=e56]
+    - paragraph [ref=e57]: כשהסקר ייפתח, תוכלו לשלוח את הקישור גם מחוץ לאתר.
+    - generic [ref=e58]:
+      - button "שיתוף במכשיר" [ref=e59]
+      - link "שיתוף ב-WhatsApp" [ref=e63] [cursor=pointer]:
+        - /url: https://wa.me/?text=%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%20%D7%91%D7%9E%D7%A9%D7%9E%D7%A8%D7%95%D7%AA%20%D7%A2%D7%9D%20iPhone%3F%20%D7%A2%D7%96%D7%A8%D7%95%20%D7%9C%D7%A0%D7%95%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%91%D7%99%D7%A7%D7%95%D7%A9%20%D7%9C%D7%92%D7%A8%D7%A1%D7%AA%20iPhone%20%D7%A9%D7%9C%20Shift%20Smart.%20%D7%A1%D7%A7%D7%A8%20%D7%A7%D7%A6%D7%A8%2C%20%D7%9C%D7%9C%D7%90%20%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%D7%94%D7%A9%D7%A7%D7%94%20%D7%9E%D7%95%D7%91%D7%98%D7%97%3A%0Ahttps%3A%2F%2Fwww.shift-smartapp.com%2Fiphone%3Fsource%3Dwhatsapp
+      - button "העתקת קישור" [ref=e64]
+    - status [ref=e68]
+    - paragraph [ref=e69]: "לאינסטגרם: מדביקים את הקישור במדבקת קישור בסטורי. הכפתורים כאן אינם מפרסמים דבר אוטומטית."
+  - link "מדיניות פרטיות" [ref=e71] [cursor=pointer]:
+    - /url: /privacy

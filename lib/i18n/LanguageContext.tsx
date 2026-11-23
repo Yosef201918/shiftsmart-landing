@@ -10,6 +10,7 @@ import {
 } from "react";
 
 import { dictionaries, type Dictionary, type Lang } from "./dictionaries";
+import { resolveLanguage } from "./resolveLanguage";
 
 const STORAGE_KEY = "shiftsmart-lang";
 const DEFAULT_LANG: Lang = "he";
@@ -29,8 +30,19 @@ const listeners = new Set<() => void>();
 
 function readStoredLang(): Lang {
   if (typeof window === "undefined") return DEFAULT_LANG;
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === "he" || stored === "en" ? stored : DEFAULT_LANG;
+  let saved: string | null = null;
+  try {
+    saved = window.localStorage.getItem(STORAGE_KEY);
+  } catch {
+    // A blocked store must not prevent using the device language.
+  }
+  let preferred: readonly string[] = [];
+  try {
+    preferred = navigator.languages?.length ? navigator.languages : [navigator.language];
+  } catch {
+    // Keep the Hebrew default when language preferences are unavailable.
+  }
+  return resolveLanguage(saved, preferred);
 }
 
 /* מאותחל פעם אחת בזמן טעינת המודול בדפדפן, לפני שכל קומפוננטה מתחילה לרנדר */

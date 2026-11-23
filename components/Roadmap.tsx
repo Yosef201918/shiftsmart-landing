@@ -1,30 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cloud, Crown, Smartphone, type LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpLeft, Smartphone, type LucideIcon } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-/*
- * "מערכת תזכורות חכמה" הוסרה ממפת הדרכים כי כבר שולבה באפליקציה (רצף
- * תזכורות למשמרות מתוכננות + Geofencing) — נוספו במקומה שני יעדים אמיתיים
- * ועדיין לא זמינים: גרסת Pro (בפיתוח, בלי מחיר/תאריך) וגיבוי ל-Google Drive.
- */
 /** האייקון בלבד הוא מבנה קבוע — הכותרת והתיאור מגיעים מהמילון לפי אינדקס */
-const MILESTONE_ICONS: [LucideIcon, LucideIcon, LucideIcon] = [
+const MILESTONE_ICONS: [LucideIcon] = [
   Smartphone,
-  Crown,
-  Cloud,
 ];
 
 export default function Roadmap() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <section
       id="roadmap"
-      className="relative scroll-mt-16 px-5 pb-28 sm:px-8 lg:px-12 lg:pb-40"
+      className="relative scroll-mt-16 px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28"
     >
       <div className="mx-auto w-full max-w-3xl">
         {/* ---------- כותרת המקטע ---------- */}
@@ -63,7 +57,7 @@ export default function Roadmap() {
           אבסולוטי ידני: CSS Grid הופך את סדר העמודות בהתאם ל-dir.
         */}
         <motion.ol
-          className="mt-14"
+          className="mt-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -75,7 +69,7 @@ export default function Roadmap() {
 
             return (
               <motion.li
-                key={title}
+                key={index}
                 className={`grid grid-cols-[auto_1fr] gap-5 sm:gap-7 ${
                   isLast ? "" : "pb-6"
                 }`}
@@ -95,13 +89,17 @@ export default function Roadmap() {
                 </div>
 
                 {/* הכרטיס */}
-                <div className="panel edge-lit rounded-2xl p-6 transition-colors duration-500 hover:border-hair-lit sm:p-7">
+                <div className="feature-surface rounded-2xl p-6 transition-colors duration-500 hover:border-hair-lit sm:p-7">
                   <h3 className="font-display text-xl text-chalk sm:text-2xl">
                     {title}
                   </h3>
                   <p className="mt-3 text-base leading-relaxed text-mist">
                     {description}
                   </p>
+                  <Link href="/iphone?source=website" className="mt-5 inline-flex min-h-11 items-center gap-3 rounded-full border border-neon/25 px-5 text-sm text-neon transition-colors hover:bg-neon/10">
+                    {lang === "he" ? "רוצים גרסת iPhone? ענו על הסקר" : "Want an iPhone version? Take the survey"}
+                    <ArrowUpLeft aria-hidden="true" className="size-4 ltr:rotate-90" />
+                  </Link>
                 </div>
               </motion.li>
             );

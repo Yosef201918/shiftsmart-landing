@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, Share2 } from "lucide-react";
 
 import { SITE_URL } from "@/lib/links";
@@ -10,8 +10,6 @@ type ShareButtonProps = {
   className?: string;
 };
 
-/* נתיב תמונת השיתוף הייעודית ב-public/ (יש רווח בשם הקובץ, לכן %20 בנתיב ה-fetch) */
-const SHARE_IMAGE_PATH = "/Sharing%20image.png";
 /* שם קובץ אמיתי לתמונה המשותפת — נדרש כדי שאפליקציות היעד (וואטסאפ וכו') יזהו אותה כתמונה תקינה */
 const SHARE_IMAGE_FILENAME = "shiftsmart.png";
 
@@ -30,65 +28,87 @@ const SHARE_IMAGE_FILENAME = "shiftsmart.png";
 export default function ShareButton({ className = "" }: ShareButtonProps) {
   const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
+  const [manualCopy, setManualCopy] = useState(false);
+  const sharingLock = useRef(false);
+  const imageRef = useRef<{ path: string; file: File } | null>(null);
+  const imagePath = encodeURI(t.appPoster.imageSrc);
 
   // שלב 24: כתובת האתר עצמה חייבת להופיע בטקסט כדי שוואטסאפ ימשוך את תמונת ה-OG
   const shareText = t.share.buildText(SITE_URL);
 
-  /*
-   * מביא את תמונת ה-OG הקיימת מהשרת עצמו (fetch יחסי, לא מפנה לדומיין
-   * חיצוני) וממיר אותה ל-File. מוחזר null בכל כשל — קריאה, המרה, או קובץ
-   * ריק — כדי שהקורא (handleShare) יידע ליפול חזרה לשיתוף טקסט בלבד בלי
-   * לזרוק שגיאה.
-   */
-  const getShareImageFile = async (): Promise<File | null> => {
+  // מכינים את התמונה מראש: המתנה לרשת בלחיצה עלולה לבטל את הרשאת השיתוף הזמנית.
+  useEffect(() => {
+    imageRef.current = null;
+    if (typeof navigator.share !== "function") return;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    void (async () => {
+      try {
+        const response = await fetch(imagePath, { signal: controller.signal });
+        if (!response.ok) return;
+        const blob = await response.blob();
+        if (!controller.signal.aborted && blob.size > 0) {
+          imageRef.current = { path: imagePath, file: new File([blob], SHARE_IMAGE_FILENAME, { type: "image/png" }) };
+        }
+      } catch {
+        // תמונה חסרה אינה חוסמת שיתוף של הקישור והטקסט.
+      } finally {
+        clearTimeout(timeout);
+      }
+    })();
+    return () => { controller.abort(); clearTimeout(timeout); };
+  }, [imagePath]);
+
+  useEffect(() => {
+    if (!copied) return;
+    const timeout = setTimeout(() => setCopied(false), 2500);
+    return () => clearTimeout(timeout);
+  }, [copied]);
+
+  const copyShareText = async () => {
     try {
-      const response = await fetch(SHARE_IMAGE_PATH);
-      if (!response.ok) return null;
-
-      const blob = await response.blob();
-      if (blob.size === 0) return null;
-
-      return new File([blob], SHARE_IMAGE_FILENAME, { type: "image/png" });
+      await navigator.clipboard.writeText(shareText);
+      setCopied(true);
+      setManualCopy(false);
     } catch {
-      return null;
+      // חסימת הלוח מוצגת למשתמש עם טקסט שאפשר להעתיק ידנית.
+      setManualCopy(true);
     }
   };
 
   const handleShare = async () => {
-    if (typeof navigator !== "undefined" && navigator.share) {
-      const imageFile = await getShareImageFile();
-      const canShareWithImage =
-        imageFile !== null &&
-        typeof navigator.canShare === "function" &&
-        navigator.canShare({ files: [imageFile] });
-
-      try {
-        await navigator.share(
-          canShareWithImage
-            ? { title: t.share.title, text: shareText, files: [imageFile as File] }
-            : { title: t.share.title, text: shareText },
-        );
-      } catch {
-        // המשתמש סגר את דיאלוג השיתוף המקורי — לא כשל אמיתי, אין מה לטפל
-      }
-      return;
-    }
-
+    if (sharingLock.current) return;
+    sharingLock.current = true;
+    setIsSharing(true);
+    setManualCopy(false);
     try {
-      await navigator.clipboard.writeText(shareText);
-      setCopied(true);
-      // חוזרים למצב הרגיל אחרי 2.5 שניות כדי שהכפתור יהיה שמיש שוב
-      setTimeout(() => setCopied(false), 2500);
-    } catch {
-      // כשל בהעתקה (הרשאות/דפדפן ישן) — נכשל בשקט, אין ל-API הזה fallback נוסף
+      if (typeof navigator.share === "function") {
+        const imageFile = imageRef.current?.path === imagePath ? imageRef.current.file : null;
+        const canShareWithImage = imageFile !== null && typeof navigator.canShare === "function" && navigator.canShare({ files: [imageFile] });
+        // הקריאה מתבצעת בתוך פעולת המשתמש, ללא await שקודם לה.
+        await navigator.share(canShareWithImage
+          ? { title: t.share.title, text: shareText, files: [imageFile] }
+          : { title: t.share.title, text: shareText });
+      } else {
+        await copyShareText();
+      }
+    } catch (error) {
+      if (!(error instanceof Error && error.name === "AbortError")) await copyShareText();
+    } finally {
+      sharingLock.current = false;
+      setIsSharing(false);
     }
   };
 
   return (
+    <div className="flex max-w-xl flex-col items-start gap-3">
     <button
       type="button"
       onClick={handleShare}
-      className={`panel inline-flex h-11 w-fit shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-sm text-chalk transition duration-300 hover:-translate-y-0.5 hover:border-neon-deep hover:text-neon ${className}`}
+      disabled={isSharing}
+      aria-busy={isSharing}
+      className={`panel inline-flex h-11 w-fit shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-sm text-chalk transition duration-300 hover:-translate-y-0.5 hover:border-neon-deep hover:text-neon disabled:cursor-wait disabled:opacity-60 ${className}`}
     >
       {copied ? (
         <Check className="size-4 shrink-0 text-neon" strokeWidth={2} />
@@ -97,5 +117,13 @@ export default function ShareButton({ className = "" }: ShareButtonProps) {
       )}
       {copied ? t.share.copiedLabel : t.share.buttonLabel}
     </button>
+    <span role="status" className="sr-only">{copied ? t.share.copiedLabel : ""}</span>
+    {manualCopy ? (
+      <label className="flex w-full flex-col gap-2 text-sm text-mist">
+        <span role="status">{t.share.manualCopyLabel}</span>
+        <textarea readOnly value={shareText} rows={5} onFocus={(event) => event.currentTarget.select()} className="w-full rounded-xl border border-hair bg-abyss px-4 py-3 text-base text-chalk" />
+      </label>
+    ) : null}
+    </div>
   );
 }

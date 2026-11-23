@@ -1,0 +1,77 @@
+[  310836ms] [LOG] [Fast Refresh] rebuilding @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  310874ms] [LOG] [Fast Refresh] done in 15ms @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  311927ms] [LOG] [Fast Refresh] rebuilding @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  311954ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  311967ms] [LOG] [Fast Refresh] done in 85ms @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  312629ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  312692ms] [LOG] [HMR] connected @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  313077ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  313078ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  313078ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  313079ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  313079ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  313797ms] [WARNING] Image with src "/marketing/brand-v3/he.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  389370ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  389392ms] [LOG] [HMR] connected @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  389682ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  389682ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  389682ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  389683ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  389683ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  390414ms] [WARNING] Image with src "/marketing/brand-v3/he.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  505931ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  505956ms] [LOG] [HMR] connected @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  506504ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  506504ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  506504ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  506504ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  506505ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  974989ms] [LOG] [Fast Refresh] rebuilding @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  975008ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  975262ms] [LOG] [Fast Refresh] done in 66ms @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  975324ms] [LOG] [Fast Refresh] done in 66ms @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  975409ms] [LOG] [Fast Refresh] done in 66ms @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  975854ms] [LOG] [Fast Refresh] rebuilding @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  975885ms] [LOG] [Fast Refresh] done in 134ms @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  976371ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  976431ms] [LOG] [HMR] connected @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  977199ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  977200ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  977200ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  977200ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[  977201ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1015369ms] [LOG] [Fast Refresh] rebuilding @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1015405ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1015418ms] [LOG] [Fast Refresh] done in 92ms @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1016198ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1016252ms] [LOG] [HMR] connected @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1016688ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1016689ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1016689ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /} @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1016689ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 1016690ms] [LOG] %c[Vercel Web Analytics]%c [view] http://127.0.0.1:3001/#brand-poster color: rgb(120, 120, 120) color: inherit {o: http://127.0.0.1:3001/#brand-poster, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 2.0.1, dp: /} /_vercel/insights/view @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:776
+[ 2757943ms] [ERROR] Supabase Realtime Error: CHANNEL_ERROR @ http://127.0.0.1:3001/_next/static/chunks/node_modules_next_dist_1e8vcs8._.js:1052
+[ 2757958ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://127.0.0.1:3001/__nextjs_original-stack-frames:0

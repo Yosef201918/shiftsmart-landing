@@ -152,7 +152,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: defaultDictionary.brand.name,
   url: siteUrl,
-  logo: `${siteUrl}/ICON.jpg`,
+  logo: `${siteUrl}/icon-512.png`,
 };
 
 export default function RootLayout({
@@ -217,7 +217,7 @@ export default function RootLayout({
         </LanguageProvider>
 
         {/* Vercel Web Analytics — נטען רק בפרודקשן ואינו מרנדר DOM */}
-        <Analytics />
+        {process.env.VERCEL === "1" ? <Analytics /> : null}
         {/* Google tag — נטען רק אחרי הסכמת עוגיות, ראו components/GoogleTag.tsx */}
         <GoogleTag />
       </body>

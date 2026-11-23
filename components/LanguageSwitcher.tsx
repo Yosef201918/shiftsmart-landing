@@ -20,7 +20,7 @@ export default function LanguageSwitcher() {
         type="button"
         onClick={() => setLang("he")}
         aria-pressed={lang === "he"}
-        className={`rounded-full px-3 py-1.5 font-medium transition duration-300 ${
+        className={`min-h-11 rounded-full px-3 py-1.5 font-medium transition duration-300 ${
           lang === "he"
             ? "bg-neon text-[#021309] shadow-neon"
             : "text-mist hover:text-chalk"
@@ -32,7 +32,7 @@ export default function LanguageSwitcher() {
         type="button"
         onClick={() => setLang("en")}
         aria-pressed={lang === "en"}
-        className={`rounded-full px-3 py-1.5 font-medium transition duration-300 ${
+        className={`min-h-11 rounded-full px-3 py-1.5 font-medium transition duration-300 ${
           lang === "en"
             ? "bg-neon text-[#021309] shadow-neon"
             : "text-mist hover:text-chalk"

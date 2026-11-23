@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+.skip-to-content {
+  position: fixed;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 200;
+  transform: translateY(calc(-100% - 2rem));
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: #5cff9d;
+  color: #021309;
+  font-weight: 700;
+}
+
+.skip-to-content:focus {
+  transform: none;
+}
+
 /* =========================================================================
    Shift Smart — Design Tokens
    שפה עיצובית: "לוח מכשירים" — שחור עמוק, זכוכית מטושטשת וקריאות ניאון ירוקות,
@@ -330,3 +347,68 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Translucent footer surfaces keep the page background visible. */
+.brand-app-icon {
+  border: 1px solid rgb(255 255 255 / 18%);
+  box-shadow: 0 2px 0 rgb(255 255 255 / 9%) inset, 0 8px 20px rgb(0 0 0 / 32%);
+  object-fit: cover;
+}
+.footer-shell {
+  overflow: hidden;
+  border: 1px solid rgb(126 170 149 / 23%);
+  border-radius: 28px;
+  background: linear-gradient(130deg, rgb(17 28 27 / 38%), rgb(8 15 18 / 28%) 65%);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 5%) inset;
+}
+.footer-download-panel {
+  border: 1px solid rgb(92 255 157 / 13%);
+  background: linear-gradient(145deg, rgb(92 255 157 / 3%), rgb(0 0 0 / 6%));
+}
+.footer-download-button {
+  color: #062013;
+  background: linear-gradient(180deg, #66d993, #3cbe73);
+  border: 1px solid #79d99d;
+  box-shadow: 0 4px 0 #16834a, 0 10px 24px rgb(0 0 0 / 25%), 0 1px 0 #9ce4b8 inset;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.footer-download-button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #16834a, 0 14px 28px rgb(0 0 0 / 30%); }
+.footer-download-button:active { transform: translateY(2px); box-shadow: 0 2px 0 #16834a; }
+.footer-social-link { display: flex; min-width: 66px; flex-direction: column; align-items: center; padding: 3px; }
+.footer-social-tile {
+  position: relative;
+  display: flex;
+  width: 54px;
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 4px 0 var(--tile-edge), 0 9px 15px rgb(0 0 0 / 35%), 0 1px 0 rgb(255 255 255 / 35%) inset;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.footer-social-tile svg { filter: drop-shadow(0 2px 1px rgb(0 0 0 / 28%)); }
+.footer-social-facebook { --tile-edge: #164384; background: linear-gradient(145deg, #5295ff, #1765d0); }
+.footer-social-instagram { --tile-edge: #77305c; background: radial-gradient(circle at 20% 110%, #ffcf66, #ee5962 48%, #9b41bb 83%); }
+.footer-social-tiktok { --tile-edge: #23474c; background: linear-gradient(145deg, #344449, #11191d); }
+.footer-social-tiktok svg { filter: drop-shadow(2px 1px 0 #ed3c70) drop-shadow(-1px -1px 0 #25f4ee); }
+.footer-social-link:hover .footer-social-tile { transform: translateY(-3px) rotate(-3deg); }
+.footer-social-link:active .footer-social-tile { transform: translateY(2px); }
+.footer-shell a:focus-visible { outline: 2px solid #5cff9d; outline-offset: 5px; }
+
+/* Quieter surfaces for the next-release preview; brand colors stay unchanged. */
+.feature-surface {
+  border: 1px solid rgb(157 176 171 / 17%);
+  background: rgb(8 17 20 / 78%);
+}
+.feature-surface:hover { border-color: rgb(157 176 171 / 32%); }
+.faq-row { background: rgb(3 6 11 / 55%); }
+.faq-row:has(button[aria-expanded="true"]) { background: rgb(12 24 25 / 78%); }
+/* Next-release pass 2: compact steps and a clear, restrained plan comparison. */
+.quick-start-step {
+  border-top: 1px solid rgb(157 176 171 / 24%);
+  background: rgb(5 13 16 / 62%);
+}
+a.quick-start-step:hover { background: rgb(14 29 25 / 85%); }
+

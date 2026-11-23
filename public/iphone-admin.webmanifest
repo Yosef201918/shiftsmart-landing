@@ -1,0 +1,18 @@
+{
+  "id": "/admin/iphone",
+  "name": "Shift Smart — תוצאות סקר iPhone",
+  "short_name": "תוצאות iPhone",
+  "description": "קישור ישיר ללוח התוצאות הפרטי של סקר iPhone",
+  "start_url": "/admin/iphone",
+  "scope": "/admin/iphone",
+  "display": "browser",
+  "background_color": "#071012",
+  "theme_color": "#06110e",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

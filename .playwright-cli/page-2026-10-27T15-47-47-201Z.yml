@@ -1,0 +1,303 @@
+- generic [active] [ref=f3e1]:
+  - main [ref=f3e2]:
+    - link "🎉 זמינה עכשיו ב-Google Play! הורידו עכשיו" [ref=f3e4] [cursor=pointer]:
+      - /url: https://play.google.com/store/apps/details?id=com.yosefgabaydev.shiftsmart
+      - generic [ref=f3e6]: 🎉 זמינה עכשיו ב-Google Play!
+      - generic [ref=f3e7]: הורידו עכשיו
+    - generic [ref=f3e11]:
+      - generic [ref=f3e12]:
+        - generic [ref=f3e13]: Shift Smart
+        - generic [ref=f3e19]:
+          - group "בחירת שפה" [ref=f3e20]:
+            - button "עברית" [pressed] [ref=f3e21]
+            - button "English" [ref=f3e22]
+          - generic [ref=f3e23]: זמינה עכשיו ב-Google Play
+      - generic [ref=f3e26]:
+        - paragraph [ref=f3e27]: המשמרות שלכם. בשליטה מלאה.
+        - heading "עובדים במשמרות? יש דרך חכמה יותר." [level=1] [ref=f3e31]:
+          - generic [ref=f3e32]: עובדים במשמרות?
+          - generic [ref=f3e33]: יש דרך חכמה יותר.
+        - paragraph [ref=f3e34]: נהלו את המשמרות, עקבו אחרי שעות העבודה וראו את השכר המשוער לפי התעריף שלכם.
+        - link "הורדה מ-Google Play" [ref=f3e36] [cursor=pointer]:
+          - /url: https://play.google.com/store/apps/details?id=com.yosefgabaydev.shiftsmart
+      - paragraph [ref=f3e42]:
+        - link "מתחילים בחינם · שדרוג Pro לבחירה" [ref=f3e43] [cursor=pointer]:
+          - /url: "#plans"
+      - generic [ref=f3e44]:
+        - paragraph [ref=f3e45]: התחלה מהירה
+        - heading "איך מתחילים?" [level=2] [ref=f3e46]
+        - generic [ref=f3e47]:
+          - link "01 מורידים את האפליקציה מתקינים את Shift Smart מ-Google Play." [ref=f3e48] [cursor=pointer]:
+            - /url: https://play.google.com/store/apps/details?id=com.yosefgabaydev.shiftsmart
+            - generic [ref=f3e53]:
+              - generic [ref=f3e54]:
+                - generic [ref=f3e55]: "01"
+                - generic [ref=f3e56]: מורידים את האפליקציה
+              - generic [ref=f3e57]: מתקינים את Shift Smart מ-Google Play.
+          - generic [ref=f3e63]:
+            - generic [ref=f3e64]:
+              - generic [ref=f3e65]: "02"
+              - generic [ref=f3e66]: מגדירים עבודה ותעריף
+            - generic [ref=f3e67]: מוסיפים מקום עבודה ומזינים תעריף לשעה.
+          - generic [ref=f3e73]:
+            - generic [ref=f3e74]:
+              - generic [ref=f3e75]: "03"
+              - generic [ref=f3e76]: מחתימים כניסה ויציאה
+            - generic [ref=f3e77]: עוקבים אחרי שעות העבודה והשכר המשוער.
+      - generic [ref=f3e78]:
+        - paragraph [ref=f3e79]: למאבטחים, סדרנים, צוותי מסעדות ולכל מי שעובד במשמרות.
+        - generic [ref=f3e81]:
+          - button "שתף את האפליקציה" [ref=f3e82]
+          - status [ref=f3e89]
+        - paragraph [ref=f3e93]: זמין לאנדרואיד דרך Google Play.
+    - generic [ref=f3e95]:
+      - paragraph [ref=f3e96]: האפליקציה
+      - heading "הכירו את Shift Smart" [level=2] [ref=f3e97]
+      - 'img "פוסטר Shift Smart: המשמרות שלך. בשליטה. עובדים במשמרות? יש דרך חכמה יותר. נהלו את המשמרות שלכם, עקבו אחרי השעות וחשבו את השכר בקלות וישירות מהנייד. משמרות, שעות, שכר ודוחות." [ref=f3e99]'
+    - link [ref=f3e105] [cursor=pointer]:
+      - /url: /marketing/v1/he/01-clock-idle.webp
+      - img "מתחילים משמרת. בלחיצה אחת. — מסך עם נתוני הדגמה" [ref=f3e106]
+    - generic [ref=f3e108]:
+      - generic [ref=f3e109]:
+        - paragraph [ref=f3e110]: עדכונים
+        - heading "מה חדש באפליקציה?" [level=2] [ref=f3e111]
+        - paragraph [ref=f3e112]: העדכונים האחרונים
+      - generic [ref=f3e113]:
+        - article [ref=f3e114]:
+          - generic [ref=f3e115]: חדש
+          - heading "זיהוי חגים ותעריף 150%" [level=3] [ref=f3e121]
+          - paragraph [ref=f3e122]: האפליקציה מזהה חגים ושבתות ומחשבת בהם אוטומטית תעריף של 150%.
+        - article [ref=f3e123]:
+          - generic [ref=f3e124]: חדש
+          - heading "יעד כללי וצבירת חופשה ומחלה" [level=3] [ref=f3e129]
+          - paragraph [ref=f3e130]: מגדירים יעד כללי, ועוקבים אחרי צבירת ימי החופשה והמחלה שלכם.
+        - article [ref=f3e131]:
+          - generic [ref=f3e132]: חדש
+          - heading "עד שתי תגיות ועריכת שעת התחלה" [level=3] [ref=f3e136]
+          - paragraph [ref=f3e137]: בוחרים עד שתי תגיות לכל משמרת, ואפשר לערוך את שעת ההתחלה גם בזמן שהמשמרת רצה.
+    - generic [ref=f3e139]:
+      - generic [ref=f3e140]:
+        - paragraph [ref=f3e141]: 01 — 12
+        - heading "מה אפשר לעשות באפליקציה" [level=2] [ref=f3e142]
+      - generic [ref=f3e143]:
+        - article [ref=f3e144]:
+          - generic [ref=f3e155]:
+            - heading "החתמה בטביעת אצבע" [level=3] [ref=f3e156]
+            - paragraph [ref=f3e157]: מחתימים כניסה ויציאה באמצעות טביעת האצבע.
+        - article [ref=f3e158]:
+          - generic [ref=f3e162]:
+            - heading "חישוב שכר וטיפים" [level=3] [ref=f3e163]
+            - paragraph [ref=f3e164]: מרכזים שעות, טיפים ותוספות לפי התעריפים שהגדרתם.
+        - article [ref=f3e165]:
+          - generic [ref=f3e173]:
+            - heading "יומן משמרות" [level=3] [ref=f3e174]
+            - paragraph [ref=f3e175]: מתכננים משמרות באפליקציה ומסנכרנים עם יומן Google.
+        - article [ref=f3e176]:
+          - generic [ref=f3e182]:
+            - heading "צליל בהחתמה" [level=3] [ref=f3e183]
+            - paragraph [ref=f3e184]: שומעים צליל אישור בהחתמת כניסה או יציאה.
+        - article [ref=f3e185]:
+          - generic [ref=f3e193]:
+            - heading "דוחות וגיבוי" [level=3] [ref=f3e194]
+            - paragraph [ref=f3e195]: "צופים בסיכום החודשי ומשתפים דוחות. ב-Pro: ייצוא Excel חודשי, דוח שנתי וגיבוי ל-Drive."
+        - article [ref=f3e196]:
+          - generic [ref=f3e202]:
+            - heading "תיעוד מיקום" [level=3] [ref=f3e203]
+            - paragraph [ref=f3e204]: שומרים את המיקום שבו התחילה המשמרת.
+        - article [ref=f3e205]:
+          - generic [ref=f3e211]:
+            - heading "עיצוב כהה ופרטיות" [level=3] [ref=f3e212]
+            - paragraph [ref=f3e213]: הנתונים נשמרים במכשיר כברירת מחדל. גיבוי ל-Drive ושליחת משוב הם לבחירתכם.
+        - article [ref=f3e214]:
+          - generic [ref=f3e219]:
+            - heading "כמה מקומות עבודה" [level=3] [ref=f3e220]
+            - paragraph [ref=f3e221]: מגדירים לכל עבודה תעריף משלה ומשמרות בוקר, צהריים, ערב או לילה.
+        - article [ref=f3e222]:
+          - generic [ref=f3e227]:
+            - heading "פירוט ניכויים" [level=3] [ref=f3e228]
+            - paragraph [ref=f3e229]: מגדירים אחוזים לביטוח לאומי, מס בריאות, פנסיה, קרן השתלמות ומס הכנסה, ורואים את השפעתם על אומדן הנטו.
+        - article [ref=f3e230]:
+          - generic [ref=f3e237]:
+            - heading "ווידג׳ט למסך הבית" [level=3] [ref=f3e238]
+            - paragraph [ref=f3e239]: מתחילים ומסיימים משמרת ישירות ממסך הבית ורואים אם השעון פועל.
+        - article [ref=f3e240]:
+          - generic [ref=f3e244]:
+            - heading "סיכום בסיום המשמרת" [level=3] [ref=f3e245]
+            - paragraph [ref=f3e246]: עוברים לסיכום השעות ומוסיפים הערות, למשל על טיפים שקיבלתם.
+        - article [ref=f3e247]:
+          - generic [ref=f3e251]:
+            - heading "תבניות משמרת וימי חופשה" [level=3] [ref=f3e252]
+            - paragraph [ref=f3e253]: יוצרים משמרות לפי דפוס שבועי ועוקבים אחרי ימי החופשה והמחלה.
+    - region [ref=f3e254]:
+      - generic [ref=f3e255]:
+        - paragraph [ref=f3e256]: חינם ו-PRO
+        - heading "מה כלול, ומה אפשר להוסיף" [level=2] [ref=f3e257]
+        - paragraph [ref=f3e258]: שעון הנוכחות וחישובי הבסיס זמינים בחינם. אפשר לשדרג ל-Pro מתוך האפליקציה אם צריכים כלי דוחות וגיבוי נוספים.
+        - generic [ref=f3e259]:
+          - article [ref=f3e260]:
+            - heading "השימוש החינמי" [level=3] [ref=f3e261]
+            - paragraph [ref=f3e262]: למעקב השוטף אחרי המשמרות
+            - list [ref=f3e263]:
+              - listitem [ref=f3e264]:
+                - generic [ref=f3e267]: החתמת כניסה ויציאה
+              - listitem [ref=f3e268]:
+                - generic [ref=f3e271]: חישוב שעות ואומדן שכר לפי ההגדרות שלכם
+          - article [ref=f3e272]:
+            - heading "שדרוג Pro" [level=3] [ref=f3e273]
+            - paragraph [ref=f3e274]: תוספת בתשלום חד־פעמי דרך Google Play
+            - list [ref=f3e275]:
+              - listitem [ref=f3e276]:
+                - generic [ref=f3e279]: גיבוי ושחזור ל-Google Drive
+              - listitem [ref=f3e280]:
+                - generic [ref=f3e283]: ייצוא דוחות חודשיים ל-Excel
+              - listitem [ref=f3e284]:
+                - generic [ref=f3e287]: דוח שנתי מאוחד
+        - paragraph [ref=f3e288]: המחיר מוצג לפני הרכישה באפליקציה. הרכישה כוללת את תכונות Pro הקיימות במועד הרכישה; תכונות חדשות בעתיד עשויות להיות מוצעות בנפרד. פרטי התשלום יוצגו לפני כל חיוב.
+    - generic [ref=f3e290]:
+      - paragraph [ref=f3e295]: למה זה חשוב
+      - heading "מה זה בעצם שעון נוכחות דיגיטלי?" [level=2] [ref=f3e296]
+      - paragraph [ref=f3e297]: במקום לרשום שעות בפנקס, מחתימים כניסה ויציאה בטלפון. Shift Smart מרכזת את המשמרות ומחשבת שכר משוער לפי השעות והתעריפים שהגדרתם. בסוף החודש אפשר לעבור על הרישום ולהשוות אותו לתלוש השכר.
+    - generic [ref=f3e300]:
+      - generic [ref=f3e301]:
+        - paragraph [ref=f3e302]: דירוגים וביקורות
+        - heading "מה אומרים עלינו" [level=2] [ref=f3e303]
+      - button "כתבו ביקורת" [ref=f3e304]
+    - generic [ref=f3e321]:
+      - generic [ref=f3e323]:
+        - generic [ref=f3e324]:
+          - paragraph [ref=f3e325]: מסכי האפליקציה
+          - heading "הצצה לאפליקציה" [level=2] [ref=f3e326]
+        - generic [ref=f3e327]:
+          - button "המסך הקודם" [ref=f3e328]
+          - button "המסך הבא" [ref=f3e331]
+      - generic [ref=f3e336]:
+        - link [ref=f3e339] [cursor=pointer]:
+          - /url: /marketing/v1/he/01-clock-idle.webp
+          - img "מתחילים משמרת. בלחיצה אחת. — מסך עם נתוני הדגמה" [ref=f3e340]
+        - link [ref=f3e343] [cursor=pointer]:
+          - /url: /marketing/v1/he/02-active-shift.webp
+          - img "עוקבים אחרי השעות. בזמן אמת. — מסך עם נתוני הדגמה" [ref=f3e344]
+        - link [ref=f3e347] [cursor=pointer]:
+          - /url: /marketing/v1/he/03-workplaces.webp
+          - img "כמה עבודות. מקום אחד. — מסך עם נתוני הדגמה" [ref=f3e348]
+        - link [ref=f3e351] [cursor=pointer]:
+          - /url: /marketing/v1/he/04-history.webp
+          - img "כל משמרת. עם כל הפרטים. — מסך עם נתוני הדגמה" [ref=f3e352]
+        - link [ref=f3e355] [cursor=pointer]:
+          - /url: /marketing/v1/he/05-monthly-summary.webp
+          - img "רואים את החודש. מבינים את התמונה. — מסך עם נתוני הדגמה" [ref=f3e356]
+        - link [ref=f3e359] [cursor=pointer]:
+          - /url: /marketing/v1/he/06-calendar.webp
+          - img "מתכננים מראש. מגיעים מוכנים. — מסך עם נתוני הדגמה" [ref=f3e360]
+        - link [ref=f3e363] [cursor=pointer]:
+          - /url: /marketing/v1/he/07-preferences.webp
+          - img "מגדירים פעם אחת. עובדים בדרך שלכם. — מסך עם נתוני הדגמה" [ref=f3e364]
+      - generic [ref=f3e365]:
+        - button "מעבר למסך 1" [ref=f3e366]
+        - button "מעבר למסך 2" [ref=f3e368]
+        - button "מעבר למסך 3" [ref=f3e370]
+        - button "מעבר למסך 4" [ref=f3e372]
+        - button "מעבר למסך 5" [ref=f3e374]
+        - button "מעבר למסך 6" [ref=f3e376]
+        - button "מעבר למסך 7" [ref=f3e378]
+    - generic [ref=f3e381]:
+      - generic [ref=f3e382]:
+        - paragraph [ref=f3e383]: מפת דרכים
+        - heading "מה מתוכנן להמשך?" [level=2] [ref=f3e384]
+        - paragraph [ref=f3e385]: התוכניות להמשך פיתוח האפליקציה. אין עדיין תאריכי השקה סופיים.
+      - list [ref=f3e386]:
+        - listitem [ref=f3e387]:
+          - generic [ref=f3e393]:
+            - heading "גרסת iOS" [level=3] [ref=f3e394]
+            - paragraph [ref=f3e395]: גרסה למשתמשי iPhone נמצאת בתכנון. כיום האפליקציה זמינה לאנדרואיד.
+        - listitem [ref=f3e396]:
+          - generic [ref=f3e402]:
+            - heading "הרחבת יכולות Pro" [level=3] [ref=f3e403]
+            - paragraph [ref=f3e404]: שדרוג Pro כבר זמין ברכישה חד-פעמית. תכונות Pro נוספות נמצאות בתכנון, ולא בהכרח יהיו כלולות ברכישה הקיימת — ייתכן שיוצעו בנפרד, למשל במנוי, ללא מחיר או תאריך סופיים.
+        - listitem [ref=f3e405]:
+          - generic [ref=f3e410]:
+            - heading "גיבוי וסנכרון ל-Google Drive" [level=3] [ref=f3e411]
+            - paragraph [ref=f3e412]: גיבוי ידני ל-Google Drive כבר זמין. גיבוי אוטומטי וסנכרון נוספים לחשבון ה-Google Drive נמצאים בפיתוח פעיל.
+    - generic [ref=f3e414]:
+      - generic [ref=f3e419]:
+        - heading "הצעת פיצ'ר" [level=2] [ref=f3e420]
+        - paragraph [ref=f3e421]: יש לכם רעיון שיהפוך את Shift Smart לטובה יותר? נשמח לשמוע.
+      - button "הצעת פיצ'ר" [ref=f3e422]
+    - generic [ref=f3e424]:
+      - generic [ref=f3e425]:
+        - paragraph [ref=f3e426]: FAQ
+        - heading "שאלות ותשובות" [level=2] [ref=f3e427]
+        - paragraph [ref=f3e428]: תשובות על ההורדה, המשמרות וחישובי השכר. לשאלות נוספות אפשר לפנות אלינו במייל.
+      - generic [ref=f3e429]:
+        - generic [ref=f3e430]:
+          - heading [level=3] [ref=f3e431]:
+            - button "איך מורידים את האפליקציה?" [expanded] [ref=f3e432]
+          - region "איך מורידים את האפליקציה?" [ref=f3e437]:
+            - paragraph [ref=f3e440]: מורידים את Shift Smart מ-Google Play למכשיר אנדרואיד. אין צורך בהרשמה מוקדמת להורדה.
+        - generic [ref=f3e441]:
+          - heading [level=3] [ref=f3e442]:
+            - button "האם האפליקציה בחינם?" [ref=f3e443]
+          - paragraph [ref=f3e449]: האפליקציה להורדה בחינם, כולל שעון הנוכחות והחישובים הבסיסיים. בנוסף יש שדרוג Pro אופציונלי ברכישה חד-פעמית דרך Google Play, הכולל גיבוי ושחזור ל-Google Drive (עד 10 גרסאות), ייצוא Excel חודשי ודוח מס שנתי. תכונות Pro חדשות בעתיד לא בהכרח יהיו כלולות ברכישה זו — ייתכן שיוצעו בנפרד, למשל במנוי — ונציין זאת בבירור לפני כל חיוב.
+        - generic [ref=f3e450]:
+          - heading [level=3] [ref=f3e451]:
+            - button "מה עושים אם מצאתי באג?" [ref=f3e452]
+          - paragraph [ref=f3e458]: מצאתם תקלה? שלחו לנו מייל ל-yoseffstor@gmail.com עם תיאור הבעיה, דגם המכשיר וצילום מסך אם אפשר. כך נוכל לבדוק מה קרה ולעזור.
+        - generic [ref=f3e459]:
+          - heading [level=3] [ref=f3e460]:
+            - button "איך מחושבות שעות נוספות?" [ref=f3e461]
+          - paragraph [ref=f3e467]: בכל משמרת האפליקציה משווה את סך השעות שנצברו לאורך יום העבודה שהגדרתם. כל שעה מעבר לסף מסומנת בנפרד ומחושבת לפי אחוז התוספת שקבעתם, כך שהסכום שמופיע בסיכום החודשי כבר כולל אותן ואין צורך בחישוב ידני.
+        - generic [ref=f3e468]:
+          - heading [level=3] [ref=f3e469]:
+            - button "מה קורה אם שכחתי להחתים כניסה או יציאה?" [ref=f3e470]
+          - paragraph [ref=f3e476]: אפשר להוסיף או לתקן משמרת ידנית בכל רגע. נכנסים ליומן, בוחרים את התאריך הרלוונטי ומזינים את שעות ההתחלה והסיום. הסיכום החודשי וסך ההכנסות מתעדכנים מיד, בלי לפגוע בשאר המשמרות.
+        - generic [ref=f3e477]:
+          - heading [level=3] [ref=f3e478]:
+            - button "אפשר לנהל כמה מקומות עבודה במקביל?" [ref=f3e479]
+          - paragraph [ref=f3e485]: כן. מגדירים לכל מקום עבודה תעריף שעתי ואורך משמרת משלו, וכל משמרת משויכת למקום שבו עבדתם בפועל. הדוח החודשי מציג פילוח נפרד לכל מקום עבודה וגם סיכום כולל של כל השעות וההכנסות יחד.
+        - generic [ref=f3e486]:
+          - heading [level=3] [ref=f3e487]:
+            - button "למה להשתמש באפליקציה במקום לרשום שעות?" [ref=f3e488]
+          - paragraph [ref=f3e494]: האפליקציה מרכזת את זמני הכניסה והיציאה ומחשבת שעות ושכר משוער לפי ההגדרות שלכם. כך אפשר לעבור על המשמרות והסיכום החודשי בלי לרכז את הרישום ידנית.
+        - generic [ref=f3e495]:
+          - heading [level=3] [ref=f3e496]:
+            - button "על מה מבוסס חישוב השכר?" [ref=f3e497]
+          - paragraph [ref=f3e503]: על השעות שרשמתם, התעריף של כל מקום עבודה והגדרות התוספות והניכויים שלכם. שעות נוספות מחושבות לפי הסף והאחוזים שהגדרתם. הסיכום הוא אומדן שמאפשר להשוות את הרישום לתלוש השכר.
+        - generic [ref=f3e504]:
+          - heading [level=3] [ref=f3e505]:
+            - button "האם האפליקציה זמינה בעברית?" [ref=f3e506]
+          - paragraph [ref=f3e512]: כן. האפליקציה זמינה בעברית ובאנגלית. הממשק העברי מותאם לקריאה מימין לשמאל.
+  - contentinfo [ref=f3e513]:
+    - generic [ref=f3e514]:
+      - generic [ref=f3e516]:
+        - generic [ref=f3e517]:
+          - generic [ref=f3e523]:
+            - paragraph [ref=f3e524]: Shift Smart
+            - paragraph [ref=f3e525]: ניהול משמרות ושעון נוכחות חכם
+          - generic [ref=f3e526]:
+            - paragraph [ref=f3e527]: עקבו אחרינו
+            - list [ref=f3e528]:
+              - listitem [ref=f3e529]:
+                - link "עמוד הפייסבוק של Shift Smart" [ref=f3e530] [cursor=pointer]:
+                  - /url: https://www.facebook.com/profile.php?id=61593217317936
+              - listitem [ref=f3e533]:
+                - link "עמוד האינסטגרם של Shift Smart" [ref=f3e534] [cursor=pointer]:
+                  - /url: https://www.instagram.com/shiftsmart.app/
+              - listitem [ref=f3e538]:
+                - link "עמוד הטיקטוק של Shift Smart" [ref=f3e539] [cursor=pointer]:
+                  - /url: https://www.tiktok.com/@shiftsmart.app
+        - navigation "קישורים ויצירת קשר" [ref=f3e542]:
+          - list [ref=f3e543]:
+            - listitem [ref=f3e544]:
+              - link "הורדה מ‑Google Play" [ref=f3e545] [cursor=pointer]:
+                - /url: https://play.google.com/store/apps/details?id=com.yosefgabaydev.shiftsmart
+            - listitem [ref=f3e550]:
+              - link "yoseffstor@gmail.com" [ref=f3e551] [cursor=pointer]:
+                - /url: mailto:yoseffstor@gmail.com
+            - listitem [ref=f3e556]:
+              - link "מדיניות פרטיות" [ref=f3e557] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=f3e562]:
+              - link "תנאי שימוש" [ref=f3e563] [cursor=pointer]:
+                - /url: /terms
+      - paragraph [ref=f3e569]: © 2026 Shift Smart. כל הזכויות שמורות.
+  - button "Open Next.js Dev Tools" [ref=f3e575] [cursor=pointer]

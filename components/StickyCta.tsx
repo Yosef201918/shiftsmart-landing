@@ -64,8 +64,9 @@ export default function StickyCta() {
         >
           <a
             href={PLAY_STORE_URL}
+            data-download-placement="sticky_cta"
             {...EXTERNAL_LINK_PROPS}
-            className="panel edge-lit pointer-events-auto inline-flex h-14 items-center justify-center gap-2.5 rounded-full px-7 text-base text-chalk shadow-neon transition duration-300 hover:border-neon-deep hover:text-neon"
+            className="feature-surface pointer-events-auto inline-flex h-14 items-center justify-center gap-2.5 rounded-full px-7 text-base text-chalk shadow-lg transition duration-200 hover:border-neon-deep hover:text-neon"
           >
             <Download className="size-5 shrink-0 text-neon" strokeWidth={1.75} />
             {t.stickyCta.label}

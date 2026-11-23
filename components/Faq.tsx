@@ -49,7 +49,7 @@ export default function Faq() {
 
         {/* ---------- אקורדיון ---------- */}
         <motion.div
-          className="mt-12 flex flex-col gap-4"
+          className="mt-10 flex flex-col border-t border-hair-lit/60"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -62,9 +62,9 @@ export default function Faq() {
 
             return (
               <motion.div
-                key={question}
+                key={index}
                 variants={fadeUp}
-                className="panel panel-rail brackets overflow-hidden rounded-2xl transition-colors duration-500 hover:border-hair-lit"
+                className="faq-row overflow-hidden border-b border-hair-lit/60"
               >
                 <h3>
                   <button
@@ -76,7 +76,7 @@ export default function Faq() {
                     className="flex w-full items-center justify-between gap-4 px-6 py-5 text-start sm:px-7"
                   >
                     <span
-                      className={`font-display text-lg transition-colors duration-300 sm:text-xl ${
+                      className={`text-lg font-medium transition-colors duration-200 sm:text-xl ${
                         isOpen ? "text-neon" : "text-chalk"
                       }`}
                     >
@@ -87,7 +87,7 @@ export default function Faq() {
                       aria-hidden="true"
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="flex size-8 shrink-0 items-center justify-center rounded-full border border-hair bg-abyss/60"
+                      className="flex size-8 shrink-0 items-center justify-center rounded-full bg-white/[0.04]"
                     >
                       <ChevronDown
                         className={`size-4 transition-colors duration-300 ${

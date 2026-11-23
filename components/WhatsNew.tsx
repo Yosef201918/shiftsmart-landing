@@ -1,16 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CalendarHeart, PenLine, Tags, type LucideIcon } from "lucide-react";
+import { MessageSquare, ReceiptText, Smartphone, type LucideIcon } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /** האייקון בלבד הוא מבנה קבוע — הכותרת והתיאור מגיעים מהמילון לפי אינדקס */
 const UPDATE_ICONS: [LucideIcon, LucideIcon, LucideIcon] = [
-  Tags,
-  CalendarHeart,
-  PenLine,
+  MessageSquare,
+  ReceiptText,
+  Smartphone,
 ];
 
 export default function WhatsNew() {
@@ -19,7 +19,7 @@ export default function WhatsNew() {
   return (
     <section
       id="whats-new"
-      className="relative scroll-mt-16 px-5 pb-28 sm:px-8 lg:px-12 lg:pb-40"
+      className="relative scroll-mt-16 px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28"
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* ---------- כותרת המקטע ---------- */}
@@ -55,7 +55,7 @@ export default function WhatsNew() {
 
         {/* ---------- כרטיסי העדכונים ---------- */}
         <motion.div
-          className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+          className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -66,7 +66,7 @@ export default function WhatsNew() {
 
             return (
               <motion.article
-                key={title}
+                key={index}
                 variants={fadeUp}
                 /*
                  * ההרמה ב-hover מנוהלת ע"י framer-motion (transform בלבד),
@@ -77,7 +77,7 @@ export default function WhatsNew() {
                   y: -6,
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                className="panel panel-rail edge-lit group relative flex flex-col rounded-2xl p-7 transition-colors duration-500 hover:border-hair-lit"
+                className="feature-surface group relative flex flex-col rounded-2xl p-7 transition-colors duration-500 hover:border-hair-lit"
               >
                 {/* תג "חדש" — פינה עליונה, מתהפך אוטומטית לפי RTL/LTR */}
                 <span className="absolute end-6 top-6 rounded-full border border-neon-deep/70 bg-neon/[0.1] px-2.5 py-1 font-mono text-[0.65rem] tracking-[0.2em] text-neon">
@@ -102,3 +102,4 @@ export default function WhatsNew() {
     </section>
   );
 }
+

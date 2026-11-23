@@ -5,6 +5,16 @@ export const FORM_LIMITS = {
   feature: 1000,
 } as const;
 
+// רווחים, תווי בקרה ותווי כיווניות לבדם אינם שם או תוכן.
+// הבדיקה אינה מסירה תווי כיווניות מתוך טקסט תקין בעברית ובשפות אחרות.
+export function isValidFormText(value: string, maxLength: number): boolean {
+  const text = value.trim();
+  return text.length <= maxLength && text.replace(
+    /[\u0000-\u0020\u007f-\u00a0\u00ad\u034f\u061c\u1680\u180e\u2000-\u200f\u2028-\u202f\u205f\u2060-\u206f\u3000\ufeff]/gu,
+    "",
+  ).length > 0;
+}
+
 /* זמן המתנה מינימלי בין שתי שליחות מאותו טופס באותו דפדפן */
 const COOLDOWN_MS = 30_000;
 

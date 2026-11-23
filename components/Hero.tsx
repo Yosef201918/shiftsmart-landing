@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock4, Download, Sparkles, TriangleAlert } from "lucide-react";
+import Image from "next/image";
+import { Download, Sparkles, Smartphone } from "lucide-react";
 
 import QuickStartSteps from "@/components/QuickStartSteps";
 import DirectionalArrow from "@/components/DirectionalArrow";
@@ -30,29 +31,26 @@ export default function Hero() {
       <div className="mx-auto w-full max-w-6xl">
         {/* ---------- סרגל מותג ---------- */}
         <motion.header
-          className="flex items-center justify-between gap-4"
+          className="flex items-center justify-between gap-2 sm:gap-4"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
         >
-          <div className="flex items-center gap-3">
-            <span className="panel brackets flex size-11 items-center justify-center rounded-xl">
-              <Clock4 className="size-5 text-neon" strokeWidth={1.75} />
-            </span>
-            <span className="font-display text-lg tracking-wide text-chalk">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Image src="/icon-192.png" alt="" width={48} height={48} className="brand-app-icon size-10 rounded-[14px] sm:size-12" />
+            <span className="whitespace-nowrap font-display text-sm tracking-wide text-chalk sm:text-lg">
               {t.brand.name}
             </span>
           </div>
 
           {/*
-            קבוצת מתג השפה ותווית ההשקה, יחד בקצה הנגדי למותג. במובייל
-            התווית מציגה רק את הנקודה הירוקה כדי לפנות מקום למתג השפה —
-            שלושת האלמנטים יחד היו נדחסים אל מתחת לרוחב 375px.
+            במובייל חיווי הזמינות מופיע בפס העליון בלבד, כדי להשאיר מקום
+            לשם האפליקציה ולמתג השפה גם ברוחב 320px.
           */}
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
-            {/* backdrop-blur מוקל במובייל: פעולת GPU יקרה, והתווית כאן נשארת גלויה לאורך כל הגלילה */}
-            <span className="flex items-center gap-2 rounded-full border border-hair bg-abyss/70 px-3 py-1.5 text-xs text-mist backdrop-blur-sm sm:px-3.5 sm:backdrop-blur-md">
+            {/* חיווי נוסף בדסקטופ בלבד. */}
+            <span className="hidden items-center gap-2 rounded-full border border-hair bg-abyss/70 px-3 py-1.5 text-xs text-mist sm:flex sm:px-3.5 sm:backdrop-blur-md">
               <span className="beacon size-1.5 rounded-full bg-neon" />
               <span className="hidden sm:inline">{t.brand.launchBadge}</span>
             </span>
@@ -60,44 +58,31 @@ export default function Hero() {
         </motion.header>
 
         {/* ---------- תוכן ההירו: כותרת ופעולות ---------- */}
-        <motion.div
+        <div
           className="mt-4 max-w-3xl lg:mt-14"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_ONCE}
         >
-          <motion.p
+          <p
             className="flex items-center gap-2.5 text-sm text-neon-soft"
-            variants={fadeUp}
           >
             <Sparkles className="size-4 shrink-0" strokeWidth={1.75} />
             {t.hero.kicker}
-          </motion.p>
+          </p>
 
-          {/*
-            שתי השורות באותו גודל בדיוק — ההיררכיה נוצרת ממשקל, מגופן ומצבע.
-            במובייל הגודל נשמר על 1.2rem: נבחר בעבר כך שגם השורה האנגלית
-            הקריטית ביותר תיכנס בשורה אחת בתוך מיכל של 335px במובייל 375×812
-            בלי לדחוף את מדריך שלושת השלבים מתחת לקפל — הגודל מתאים גם
-            לעברית וגם לאנגלית.
-            text-balance מחלק את השורות באופן שווה אם בכל זאת נדרשת שבירה.
-          */}
-          <motion.h1 className="mt-4 text-balance" variants={fadeUp}>
-            <span className="block text-[1.2rem] font-extralight leading-tight tracking-tight text-chalk sm:text-4xl lg:text-5xl">
+          {/* גודל כותרת קריא גם במובייל; השורות יכולות להישבר לפי רוחב המסך. */}
+          <h1 id="main-content" tabIndex={-1} className="mt-4 scroll-mt-6 text-balance">
+            <span className="block text-3xl font-extralight leading-tight tracking-tight text-chalk sm:text-4xl lg:text-5xl">
               {t.hero.titleLine1}
             </span>
-            <span className="neon-glow mt-1.5 block font-display text-[1.2rem] leading-tight text-neon sm:text-4xl lg:text-5xl">
+            <span className="mt-1.5 block font-display text-3xl leading-tight text-neon sm:text-4xl lg:text-5xl">
               {t.hero.titleLine2}
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
+          <p
             className="mt-3 max-w-xl text-lg font-light leading-relaxed text-chalk/90 sm:text-xl"
-            variants={fadeUp}
           >
             {t.hero.subtitle}
-          </motion.p>
+          </p>
 
           {/*
             ---------- קבוצת הפעולות ----------
@@ -105,9 +90,10 @@ export default function Hero() {
             (בלי flex-row מיותר לילד בודד) — הזוהר והגודל שלו (h-14, shadow-
             neon) מספיקים כדי שלא "ייראה בודד" גם עם מרחב פנוי לצידו.
           */}
-          <motion.div className="mt-5" variants={fadeUp}>
+          <div className="mt-5">
             <a
               href={PLAY_STORE_URL}
+              data-download-placement="hero"
               {...EXTERNAL_LINK_PROPS}
               className="group inline-flex h-14 w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] sm:w-auto"
             >
@@ -118,8 +104,10 @@ export default function Hero() {
                 className="size-5 shrink-0 transition-transform duration-300 ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
               />
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
+
+        <p className="mt-3 text-sm text-mist"><a href="#features" className="inline-flex min-h-11 items-center underline decoration-hair-lit underline-offset-4 hover:text-neon">{t.hero.planNote}</a></p>
 
         {/* ---------- מדריך שלושת השלבים — מיד מתחת לכפתורים, ברוחב מלא ---------- */}
         <QuickStartSteps />
@@ -152,14 +140,14 @@ export default function Hero() {
 
           {/* ---------- הערת פלטפורמה ---------- */}
           <motion.div
-            className="mt-6 flex max-w-xl items-start gap-3 rounded-xl border border-amber-deep bg-amber/[0.06] px-5 py-4"
+            className="mt-6 flex max-w-xl items-start gap-3 rounded-xl border border-hair bg-abyss/40 px-5 py-4"
             variants={fadeUp}
           >
-            <TriangleAlert
-              className="mt-0.5 size-5 shrink-0 text-amber"
+            <Smartphone
+              className="mt-0.5 size-5 shrink-0 text-neon"
               strokeWidth={1.9}
             />
-            <p className="text-sm leading-relaxed text-amber-soft">
+            <p className="text-sm leading-relaxed text-mist">
               {t.hero.platformNotice}
             </p>
           </motion.div>
@@ -168,3 +156,4 @@ export default function Hero() {
     </section>
   );
 }
+

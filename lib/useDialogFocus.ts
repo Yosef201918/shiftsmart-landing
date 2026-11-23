@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  'a[href], button:enabled, input:enabled, textarea:enabled, select:enabled, [tabindex]:not([tabindex="-1"]):not(:disabled)';
 
 /**
  * ניהול מיקוד למודאל נגיש, בלי ספרייה חיצונית: בפתיחה המיקוד עובר לשדה
@@ -14,6 +14,7 @@ const FOCUSABLE_SELECTOR =
 export function useDialogFocus(isOpen: boolean, onClose: () => void) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
   const onCloseRef = useRef(onClose);
 
   useEffect(() => {
@@ -25,6 +26,19 @@ export function useDialogFocus(isOpen: boolean, onClose: () => void) {
 
     const dialog = dialogRef.current;
     if (!dialog) return;
+
+    // גובה החלון הנראה משתנה עם המקלדת; dvh לבדו אינו מספיק בכל דפדפן.
+    const viewport = window.visualViewport;
+    const syncViewport = () => {
+      viewportRef.current?.style.setProperty("--dialog-height", `${viewport?.height ?? window.innerHeight}px`);
+      viewportRef.current?.style.setProperty("--dialog-top", `${viewport?.offsetTop ?? 0}px`);
+    };
+    syncViewport();
+    viewport?.addEventListener("resize", syncViewport);
+    viewport?.addEventListener("scroll", syncViewport);
+    window.addEventListener("resize", syncViewport);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     const getFocusable = () =>
       Array.from(dialog.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
@@ -41,7 +55,11 @@ export function useDialogFocus(isOpen: boolean, onClose: () => void) {
       if (event.key !== "Tab") return;
 
       const focusable = getFocusable();
-      if (focusable.length === 0) return;
+      if (focusable.length === 0) {
+        event.preventDefault();
+        dialog.focus({ preventScroll: true });
+        return;
+      }
 
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -60,10 +78,14 @@ export function useDialogFocus(isOpen: boolean, onClose: () => void) {
     const trigger = triggerRef.current;
 
     return () => {
+      viewport?.removeEventListener("resize", syncViewport);
+      viewport?.removeEventListener("scroll", syncViewport);
+      window.removeEventListener("resize", syncViewport);
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
-      trigger?.focus();
+      trigger?.focus({ preventScroll: true });
     };
   }, [isOpen]);
 
-  return { dialogRef, triggerRef };
+  return { dialogRef, triggerRef, viewportRef };
 }

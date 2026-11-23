@@ -22,7 +22,7 @@ export default function AppPoster() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative scroll-mt-16 px-5 pb-28 sm:px-8 lg:px-12 lg:pb-40">
+    <section id="brand-poster" className="relative scroll-mt-16 px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28">
       <motion.div
         className="mx-auto flex w-full max-w-6xl flex-col items-center text-center"
         variants={fadeScale}
@@ -50,14 +50,14 @@ export default function AppPoster() {
           התמונה — נראו כמו שלדת מכשיר מזויפת. הפוסטר עצמו כבר מעוצב
           ומוכן, ולכן מוצג נקי לגמרי: רק פינות מעוגלות וצל ירוק עדין.
         */}
-        <div className="mt-10 w-full max-w-[280px] sm:max-w-xs">
+        <div className="mt-10 w-full max-w-[320px] sm:max-w-[400px]">
           <Image
             key={t.appPoster.imageSrc}
-            src={t.appPoster.imageSrc}
+            src={t.appPoster.imageSrc.replace(/\.png$/, ".webp")}
             alt={t.appPoster.imageAlt}
             width={t.appPoster.imageWidth}
             height={t.appPoster.imageHeight}
-            sizes="(min-width: 640px) 320px, 280px"
+            sizes="(min-width: 640px) 400px, (max-width: 360px) calc(100vw - 40px), 320px"
             className="h-auto w-full rounded-3xl shadow-2xl shadow-green-500/10"
           />
         </div>

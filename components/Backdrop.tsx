@@ -20,13 +20,13 @@ export default function Backdrop() {
         src="/background.png"
         alt=""
         fill
-        priority
+        preload
         sizes="100vw"
         className="object-cover object-center"
       />
 
       {/* הכהיה גורפת מעל תמונת הרקע — שומרת על יחס ניגודיות נגיש */}
-      <div className="absolute inset-0 bg-void/88" />
+      <div className="absolute inset-0 bg-void/95" />
 
       {/* ויניאטה: מרכז בהיר יחסית, קצוות שוקעים לשחור */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_0%,rgba(10,20,32,0.55),transparent_65%)]" />

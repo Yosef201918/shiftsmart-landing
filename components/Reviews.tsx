@@ -1,16 +1,21 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Star, X } from "lucide-react";
+import { submitFormViaServer } from "@/lib/submitFormViaServer";
+import OverlayPortal from "@/components/OverlayPortal";
 
-import { FORM_LIMITS, isCoolingDown, markSubmitted } from "@/lib/formGuards";
+import { FORM_LIMITS, isValidFormText, isCoolingDown, markSubmitted } from "@/lib/formGuards";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE, EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { supabase, type ReviewRow } from "@/lib/supabase";
 import { useDialogFocus } from "@/lib/useDialogFocus";
 
 const COOLDOWN_KEY = "shiftsmart-review-last-submit";
+
+// ביקורת דמה שזוהתה ואושרה על ידי בעל האתר; סינון לפי מזהה ולא לפי שם אדם.
+const DEMO_REVIEW_IDS = new Set([7]);
 
 /** כוכבים קבועים (לא אינטראקטיביים) — מציגים דירוג קיים בכרטיס ביקורת/ממוצע */
 function StaticStars({ rating, className = "size-4" }: { rating: number; className?: string }) {
@@ -70,7 +75,10 @@ export default function Reviews() {
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const submissionLock = useRef(false);
+  const [ratingRequired, setRatingRequired] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [validationError, setValidationError] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
   // honeypot: שדה נסתר שרק בוטים ממלאים — ראו הטיפול ב-handleSubmit
   const [honeypot, setHoneypot] = useState("");
@@ -99,7 +107,8 @@ export default function Reviews() {
         } else {
           // [] או null הם תגובה תקינה לגמרי (עדיין אין ביקורות מאושרות),
           // לא מקרה שגיאה — data ?? [] מנרמל את שניהם למערך ריק פשוט.
-          setReviews(data ?? []);
+          setLoadError(false);
+          setReviews((data ?? []).filter((review) => !DEMO_REVIEW_IDS.has(review.id)));
         }
       } catch (unexpectedError) {
         // תופס כשל רשת אמיתי (DNS/CORS/כתובת שגויה) שנזרק כחריגה ולא
@@ -140,8 +149,7 @@ export default function Reviews() {
     };
   }, []);
 
-  // ממוצע אמיתי מהביקורות שנטענו; כל עוד אין אף ביקורת מאושרת עדיין
-  // (אפליקציה חדשה) מוצג הדירוג הבסיסי מהמילון במקום "0.0" מטעה.
+  // מציגים דירוג רק כשנטענו ביקורות אמיתיות, ללא ערך ברירת מחדל.
   const averageRating = useMemo(() => {
     if (reviews.length === 0) return null;
     const sum = reviews.reduce((total, review) => total + review.rating, 0);
@@ -149,27 +157,22 @@ export default function Reviews() {
   }, [reviews]);
 
   const closeModal = () => {
+    // לא מאפשרים לפתוח טופס חדש כשהשליחה הקודמת עדיין בתהליך.
+    if (submissionLock.current) return;
     setIsOpen(false);
     setName("");
     setReviewText("");
     setSelectedRating(0);
     setHoverRating(0);
     setHoneypot("");
+    setValidationError(false);
     setSubmitError(false);
     setRateLimited(false);
+    setRatingRequired(false);
   };
 
   // מיקוד, מלכודת Tab, Escape והחזרת מיקוד לכפתור הפותח — ראו lib/useDialogFocus.ts
-  const { dialogRef, triggerRef } = useDialogFocus(isOpen, closeModal);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
+  const { dialogRef, triggerRef, viewportRef } = useDialogFocus(isOpen, closeModal);
 
   useEffect(() => {
     if (!isToastVisible) return;
@@ -179,7 +182,16 @@ export default function Reviews() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!name.trim() || !reviewText.trim() || selectedRating === 0 || isSubmitting) return;
+    if (submissionLock.current) return;
+    if (!isValidFormText(name, FORM_LIMITS.name) || !isValidFormText(reviewText, FORM_LIMITS.review)) {
+      setValidationError(true);
+      return;
+    }
+    setValidationError(false);
+    if (!Number.isInteger(selectedRating) || selectedRating < 1 || selectedRating > 5) {
+      setRatingRequired(true);
+      return;
+    }
 
     // בוט מילא את השדה הנסתר — מדמים הצלחה בשקט בלי לשלוח כלום ל-Supabase
     if (honeypot) {
@@ -194,18 +206,25 @@ export default function Reviews() {
       return;
     }
 
+    submissionLock.current = true;
     setIsSubmitting(true);
     setSubmitError(false);
     setRateLimited(false);
 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20_000);
     try {
       // status לא נשלח כלל — ברירת המחדל "pending" מוגדרת בטבלה עצמה
       // בצד Supabase, כך שביקורות חדשות תמיד ממתינות לאישור ידני.
-      const { error } = await supabase.from("reviews").insert({
+      const result = process.env.NEXT_PUBLIC_FORM_SUBMISSION_MODE === "server"
+        ? await submitFormViaServer({ kind: "review", name: name.trim(), rating: selectedRating, content: reviewText.trim() }, controller.signal)
+        : { ...await supabase.from("reviews").insert({
         name: name.trim(),
         rating: selectedRating,
         content: reviewText.trim(),
-      });
+      }).abortSignal(controller.signal), rateLimited: false };
+      const { error } = result;
+      if (result.rateLimited) { setRateLimited(true); return; }
 
       if (error) {
         console.error("Supabase Error:", error);
@@ -214,12 +233,15 @@ export default function Reviews() {
       }
 
       markSubmitted(COOLDOWN_KEY);
+      submissionLock.current = false;
       closeModal();
       setIsToastVisible(true);
     } catch (unexpectedError) {
       console.error("Supabase Error:", unexpectedError);
       setSubmitError(true);
     } finally {
+      clearTimeout(timeout);
+      submissionLock.current = false;
       setIsSubmitting(false);
     }
   };
@@ -227,7 +249,7 @@ export default function Reviews() {
   return (
     <section
       id="reviews"
-      className="relative scroll-mt-16 px-5 pb-28 sm:px-8 lg:px-12 lg:pb-40"
+      className="relative scroll-mt-16 px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28"
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* ---------- כותרת המקטע + ממוצע דירוג ---------- */}
@@ -255,18 +277,18 @@ export default function Reviews() {
               </span>
             </motion.h2>
 
-            <motion.div
+            {averageRating !== null ? (
+              <div
               className="mt-5 flex items-center gap-3"
-              variants={fadeUp}
             >
               <span dir="ltr" className="font-display text-4xl text-chalk">
-                {averageRating ?? t.reviews.averageRating}
+                {averageRating}
               </span>
               <span className="flex flex-col gap-1">
-                <StaticStars rating={5} className="size-4" />
-                <span className="text-sm text-mist">{t.reviews.subtitle}</span>
+                <span className="text-sm text-mist">{t.reviews.subtitle} ({reviews.length})</span>
               </span>
-            </motion.div>
+              </div>
+            ) : null}
           </div>
 
           <motion.button
@@ -293,7 +315,7 @@ export default function Reviews() {
           <p className="mt-12 text-base text-mist">{t.reviews.emptyState}</p>
         ) : (
           <motion.div
-            className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            className={`mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 ${reviews.length > 2 ? "lg:grid-cols-3" : ""}`}
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -303,8 +325,8 @@ export default function Reviews() {
               <motion.article
                 key={review.id}
                 variants={fadeUp}
-                whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
-                className="panel panel-rail edge-lit flex flex-col rounded-2xl p-7 transition-colors duration-500 hover:border-hair-lit"
+                whileHover={{ y: -2, transition: { duration: 0.2, ease: "easeOut" } }}
+                className="feature-surface flex flex-col rounded-2xl p-7 transition-colors duration-200"
               >
                 <StaticStars rating={review.rating} />
                 <p className="mt-4 flex-1 text-base leading-relaxed text-mist">
@@ -323,8 +345,11 @@ export default function Reviews() {
         ---------- מודאל כתיבת ביקורת ----------
         מעטפת מיקום קבועה, תמיד מורכבת — ראו הסבר בתחילת הקובץ.
       */}
+      <OverlayPortal>
       <div
-        className={`fixed inset-0 z-[60] flex items-end justify-center p-0 sm:items-center sm:p-5 ${
+        ref={viewportRef}
+        style={{ top: "var(--dialog-top, 0px)", height: "var(--dialog-height, 100dvh)" }}
+        className={`fixed inset-x-0 z-[80] flex items-end justify-center p-2 sm:items-center sm:p-5 ${
           isOpen ? "" : "pointer-events-none"
         }`}
       >
@@ -350,6 +375,7 @@ export default function Reviews() {
               key="review-dialog"
               ref={dialogRef}
               role="dialog"
+              tabIndex={-1}
               aria-modal="true"
               aria-labelledby={titleId}
               dir={dir}
@@ -357,11 +383,12 @@ export default function Reviews() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 24, scale: 0.97 }}
               transition={{ duration: 0.3, ease: EASE }}
-              className="panel edge-lit relative w-full max-w-md rounded-t-3xl p-6 sm:rounded-3xl sm:p-8"
+              className="panel edge-lit relative max-h-full w-full max-w-md overflow-y-auto overscroll-contain rounded-3xl p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:p-8"
             >
               <button
                 type="button"
                 onClick={closeModal}
+                disabled={isSubmitting}
                 aria-label={t.reviews.modal.closeAria}
                 className="absolute end-5 top-5 flex size-9 items-center justify-center rounded-full border border-hair text-mist transition duration-300 hover:border-neon-deep hover:text-neon"
               >
@@ -372,7 +399,8 @@ export default function Reviews() {
                 {t.reviews.modal.title}
               </h2>
 
-              <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit}>
+              <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit} aria-busy={isSubmitting}>
+                <fieldset disabled={isSubmitting} className="contents">
                 <label className="flex flex-col gap-1.5 text-sm text-mist">
                   {t.reviews.modal.nameLabel}
                   <input
@@ -400,7 +428,7 @@ export default function Reviews() {
                         type="button"
                         aria-label={t.reviews.modal.ratingAria(star)}
                         aria-pressed={selectedRating === star}
-                        onClick={() => setSelectedRating(star)}
+                        onClick={() => { setSelectedRating(star); setRatingRequired(false); }}
                         onMouseEnter={() => setHoverRating(star)}
                         className="p-0.5"
                       >
@@ -442,8 +470,14 @@ export default function Reviews() {
                   />
                 </div>
 
+                {validationError ? (
+                  <p role="alert" className="text-sm text-amber-soft">{t.reviews.validationError}</p>
+                ) : null}
                 {submitError ? (
-                  <p className="text-sm text-amber-soft">{t.reviews.submitError}</p>
+                  <p role="alert" className="text-sm text-amber-soft">{t.reviews.submitError}</p>
+                ) : null}
+                {ratingRequired ? (
+                  <p role="alert" className="text-sm text-amber-soft">{t.reviews.modal.ratingRequired}</p>
                 ) : null}
                 {rateLimited ? (
                   <p role="alert" className="text-sm text-amber-soft">{t.reviews.rateLimitError}</p>
@@ -454,8 +488,10 @@ export default function Reviews() {
                   disabled={isSubmitting}
                   className="mt-1 inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] disabled:pointer-events-none disabled:opacity-60"
                 >
-                  {t.reviews.modal.submitCta}
+                  {isSubmitting ? t.reviews.modal.submittingLabel : t.reviews.modal.submitCta}
                 </button>
+                </fieldset>
+                <p role="status" className="sr-only">{isSubmitting ? t.reviews.modal.submittingLabel : ""}</p>
               </form>
             </motion.div>
           ) : null}
@@ -481,6 +517,7 @@ export default function Reviews() {
           ) : null}
         </AnimatePresence>
       </div>
+      </OverlayPortal>
     </section>
   );
 }

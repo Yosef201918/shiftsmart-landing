@@ -1,0 +1,46 @@
+- main [ref=e2]:
+  - generic [ref=e3]: SHIFT SMART / QA
+  - paragraph [ref=e4]: בדיקת PostgreSQL אמיתית עברה
+  - heading "ההגבלה עמדה בשליחות המקבילות." [level=1] [ref=e5]: ההגבלה עמדהבשליחות המקבילות.
+  - paragraph [ref=e6]: 60 פניות דרך חיבורי מסד נפרדים, בשלושה מצבי עומס. בכל מצב נותרה רק שליחה אחת מותרת, והיא הייתה היחידה שנכתבה.
+  - text: 28 באוקטובר 2026 בשעה 17:41 · סביבת בדיקה מקומית
+  - generic [ref=e7]:
+    - article [ref=e8]:
+      - generic [ref=e9]: "20"
+      - text: חיבורים נפרדים
+      - heading "שליחות ראשונות באותו רגע" [level=2] [ref=e10]
+      - generic [ref=e11]:
+        - term [ref=e12]: התקבלו
+        - definition [ref=e13]: "1"
+        - term [ref=e14]: נחסמו במכסה
+        - definition [ref=e15]: "19"
+    - article [ref=e16]:
+      - generic [ref=e17]: "20"
+      - text: חיבורים נפרדים
+      - heading "מקום אחד שנותר במכסה" [level=2] [ref=e18]
+      - generic [ref=e19]:
+        - term [ref=e20]: התקבלו
+        - definition [ref=e21]: "1"
+        - term [ref=e22]: נחסמו במכסה
+        - definition [ref=e23]: "19"
+    - article [ref=e24]:
+      - generic [ref=e25]: "20"
+      - text: חיבורים נפרדים
+      - heading "מעבר בחלון זמן מתגלגל" [level=2] [ref=e26]
+      - generic [ref=e27]:
+        - term [ref=e28]: התקבלו
+        - definition [ref=e29]: "1"
+        - term [ref=e30]: נחסמו במכסה
+        - definition [ref=e31]: "19"
+  - generic [ref=e32]:
+    - heading "מבודד מהאתר החי" [level=2] [ref=e33]
+    - paragraph [ref=e34]: מסד בדיקה נפרד עם נתוני דמה בלבד. אין כאן העתק של ביקורות משתמשים, אין מפתחות מהמסד הפעיל ולא נוצר משאב ענן בתשלום.
+  - heading "גם ההרשאות נבדקו" [level=2] [ref=e35]
+  - paragraph [ref=e36]: הפונקציה והמונה אינם נגישים לתפקידים הציבוריים. לאחר שינוי ההרשאות בסביבת הבדיקה, כתיבה ישירה משני התפקידים הציבוריים נחסמה, ושליחה דרך תפקיד השרת המשיכה לעבוד.
+  - heading "מה עדיין לא הופעל" [level=2] [ref=e37]
+  - paragraph [ref=e38]: ההגנה באתר החי עדיין כבויה. לפני הפעלה נדרשים חיבור מאובטח ל-Supabase ול-Vercel, בדיקה של המסלול דרך שירות ה-REST, פריסה מתואמת ואישור לשינוי הרשאות הכתיבה במסד הפעיל.
+  - generic [ref=e39]:
+    - generic [ref=e40]: "PostgreSQL 17.11 · 127.0.0.1:55432 · מסד בדיקה: shiftsmart_form_qa"
+    - paragraph [ref=e41]:
+      - link "חזרה לתצוגת האתר המקומי" [ref=e42] [cursor=pointer]:
+        - /url: http://127.0.0.1:3001/

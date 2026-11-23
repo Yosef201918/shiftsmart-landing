@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock4 } from "lucide-react";
 
 import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -16,30 +15,23 @@ export default function AboutTimeTracking() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative px-5 pb-28 sm:px-8 lg:px-12 lg:pb-40">
+    <section id="time-tracking" className="relative scroll-mt-12 px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28">
       <motion.div
-        className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center"
+        className="mx-auto grid w-full max-w-6xl gap-5 border-t border-hair-lit/50 pt-8 md:grid-cols-2 md:gap-x-12"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT_ONCE}
       >
-        <motion.span
-          className="panel brackets flex size-12 shrink-0 items-center justify-center rounded-xl"
-          variants={fadeUp}
-        >
-          <Clock4 className="size-5 text-neon" strokeWidth={1.75} />
-        </motion.span>
-
         <motion.p
-          className="font-mono text-xs tracking-[0.3em] text-neon/60"
+          className="font-mono text-xs tracking-[0.3em] text-neon/60 md:col-span-2"
           variants={fadeUp}
         >
           {t.aboutTimeTracking.kicker}
         </motion.p>
 
         <motion.h2
-          className="font-display text-3xl leading-tight text-chalk sm:text-4xl"
+          className="max-w-md text-3xl font-light leading-tight text-chalk sm:text-4xl"
           variants={fadeUp}
         >
           {t.aboutTimeTracking.titlePrefix}

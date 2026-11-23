@@ -1,3 +1,4 @@
+import { MARKETING_SHOTS } from "@/lib/marketingAssets";
 export type Lang = "he" | "en";
 
 export interface TitledItem {
@@ -69,6 +70,7 @@ export interface Dictionary {
     audience: string;
     downloadCta: string;
     platformNotice: string;
+    planNote: string;
   };
   whatsNew: {
     kicker: string;
@@ -110,6 +112,7 @@ export interface Dictionary {
       TitledItem,
       TitledItem,
       TitledItem,
+      TitledItem,
     ];
   };
   reviews: {
@@ -117,8 +120,6 @@ export interface Dictionary {
     titlePrefix: string;
     titleHighlight: string;
     subtitle: string;
-    /** דירוג ברירת מחדל שמוצג עד שיש ולפחות ביקורת מאושרת אחת בטבלה */
-    averageRating: string;
     ratingAriaLabel: (rating: number) => string;
     writeReviewCta: string;
     toastMessage: string;
@@ -130,6 +131,7 @@ export interface Dictionary {
     errorState: string;
     /** מוצג אם שליחת הביקורת החדשה נכשלה */
     submitError: string;
+    validationError: string;
     /** מוצג אם נשלחה ביקורת נוספת לפני שחלף זמן ההמתנה בין שליחות */
     rateLimitError: string;
     modal: {
@@ -141,6 +143,8 @@ export interface Dictionary {
       reviewLabel: string;
       reviewPlaceholder: string;
       submitCta: string;
+      submittingLabel: string;
+      ratingRequired: string;
       closeAria: string;
     };
   };
@@ -163,7 +167,7 @@ export interface Dictionary {
     titlePrefix: string;
     titleHighlight: string;
     subtitle: string;
-    milestones: [TitledItem, TitledItem, TitledItem];
+    milestones: [TitledItem];
   };
   faq: {
     kicker: string;
@@ -200,6 +204,7 @@ export interface Dictionary {
   share: {
     buttonLabel: string;
     copiedLabel: string;
+    manualCopyLabel: string;
     /** כותרת שנשלחת ל-navigator.share() (שדה title של ה-API) */
     title: string;
     /**
@@ -218,10 +223,12 @@ export interface Dictionary {
     featureLabel: string;
     featurePlaceholder: string;
     submitCta: string;
+    submittingLabel: string;
     closeAria: string;
     toastMessage: string;
     /** מוצג אם השליחה ל-Supabase נכשלה */
     submitError: string;
+    validationError: string;
     /** מוצג אם נשלחה הצעה נוספת לפני שחלף זמן ההמתנה בין שליחות */
     rateLimitError: string;
   };
@@ -283,6 +290,7 @@ export interface Dictionary {
     };
     /** שאלון המשוב האופציונלי בתוך האפליקציה — היוצא מן הכלל היחיד לעיקרון "הכול נשאר במכשיר" */
     feedbackSurvey: { title: string; body: string; deletionRequest: string };
+    bugReports: { title: string; body: string; deletionRequest: string };
     /** רכישות תוך-אפליקתיות (שדרוג Pro) — מעובדות ע"י Google Play, לא על ידינו */
     inAppPurchases: { title: string; body: string };
     thirdPartySharing: { title: string; body: string };
@@ -292,7 +300,7 @@ export interface Dictionary {
     /** הנתונים שנאספים דרך אתר השיווק עצמו (טפסים, ניתוח תנועה, אחסון מקומי) — נפרד מהאפליקציה */
     website: {
       title: string;
-      items: [PermissionItem, PermissionItem, PermissionItem, PermissionItem];
+      items: [PermissionItem, PermissionItem, PermissionItem, PermissionItem, PermissionItem, PermissionItem];
     };
     policyChanges: { title: string; body: string };
     /** אילו חוקי פרטיות חלים על האפליקציה, ולמה — נוסף לבקשת עמידה בדין */
@@ -338,7 +346,7 @@ const he: Dictionary = {
   meta: {
     title: "Shift Smart – שעון נוכחות וניהול משמרות",
     description:
-      "שעון נוכחות דיגיטלי לניהול משמרות ושכר, מותאם למאבטחים, סדרנים ומסעדות. הורידו את Shift Smart בחינם מ-Google Play.",
+      "נהלו משמרות, תעדו שעות עבודה וקבלו אומדן שכר לפי התעריפים שלכם. Shift Smart זמינה לאנדרואיד להורדה בחינם מ-Google Play.",
     keywords: [
       "ניהול משמרות",
       "שעון נוכחות",
@@ -347,7 +355,7 @@ const he: Dictionary = {
       "Shift Smart",
     ],
     ogDescription:
-      "שעון נוכחות דיגיטלי לניהול משמרות ושכר. הורידו את Shift Smart בחינם מ-Google Play.",
+      "מעקב אחר משמרות, שעות עבודה ושכר משוער בטלפון. הורידו את Shift Smart בחינם מ-Google Play.",
   },
   brand: {
     name: "Shift Smart",
@@ -360,224 +368,178 @@ const he: Dictionary = {
   },
   hero: {
     kicker: "המשמרות שלכם. בשליטה מלאה.",
+    planNote: "גלו מה אפשר לעשות באפליקציה",
     titleLine1: "עובדים במשמרות?",
     titleLine2: "יש דרך חכמה יותר.",
     subtitle:
-      "נהלו את המשמרות שלכם, עקבו אחרי השעות וחשבו את השכר בקלות, ישירות מהטלפון.",
-    audience: "מושלם למאבטחים סדרנים, מסעדות וכל מי שחי על משמרות.",
+      "נהלו את המשמרות, עקבו אחרי שעות העבודה וראו את השכר המשוער לפי התעריף שלכם.",
+    audience: "למאבטחים, סדרנים, צוותי מסעדות ולכל מי שעובד במשמרות.",
     downloadCta: "הורדה מ-Google Play",
     platformNotice:
-      "שימו לב: זמין למכשירי אנדרואיד בלבד.",
+      "זמין לאנדרואיד דרך Google Play.",
   },
   whatsNew: {
     kicker: "עדכונים",
-    titlePrefix: "🚀 מה חדש ",
+    titlePrefix: "מה חדש ",
     titleHighlight: "באפליקציה?",
-    subtitle: "(עדכונים אחרונים)",
+    subtitle: "חדש בגרסה 1.8.5",
     badgeLabel: "חדש",
     items: [
       {
-        title: "זיהוי חגים ותעריף 150%",
-        description:
-          "האפליקציה מזהה חגים ושבתות ומחשבת בהם אוטומטית תעריף של 150%.",
+            "title": "תקלה או רעיון? דברו איתנו",
+            "description": "נכנסים להגדרות ובוחרים ״תקלה או הצעה״. שולחים דיווח או רעיון ישירות מהאפליקציה, ואפשר לצרף צילום מסך שיעזור לנו להבין מה קרה."
       },
       {
-        title: "יעד כללי וצבירת חופשה ומחלה",
-        description:
-          "מגדירים יעד כללי, ועוקבים אחרי צבירת ימי החופשה והמחלה שלכם.",
+            "title": "מסך ניכויים חדש ומסודר",
+            "description": "הניכויים מוצגים בצורה ברורה יותר, עם חישוב ביטוח לאומי ומס בריאות לפי מדרגות החישוב."
       },
       {
-        title: "עד שתי תגיות ועריכת שעת התחלה",
-        description:
-          "בוחרים עד שתי תגיות לכל משמרת, ואפשר לערוך את שעת ההתחלה גם בזמן שהמשמרת רצה.",
-      },
-    ],
+            "title": "הווידג׳ט נשאר מעודכן",
+            "description": "הסכום בווידג׳ט מתעדכן גם כשהאפליקציה סגורה. מעדיפים פרטיות? אפשר להסתיר את הסכומים גם בווידג׳ט."
+      }
+],
   },
   aboutTimeTracking: {
-    kicker: "למה זה חשוב",
+    kicker: "מעקב שעות",
     titlePrefix: "מה זה בעצם ",
     titleHighlight: "שעון נוכחות דיגיטלי?",
-    body: "שעון נוכחות דיגיטלי מחליף רישום ידני בפנקס או בזיכרון, ומתעד באופן מדויק מתי התחלתם ומתי סיימתם כל משמרת. עבור עובדים במשמרות — מאבטחים, סדרנים, צוותי מסעדות ועוד — זה ההבדל בין הערכה גסה של השכר לבין ידיעה מדויקת כמה שעות עבדתם וכמה זה שווה, בלי לחכות לתלוש כדי לגלות.",
+    body: "מחתימים כניסה ויציאה בטלפון, והמשמרות נשמרות במקום אחד. השכר המשוער מחושב לפי השעות, התעריפים וההגדרות שלכם. בסוף החודש אפשר לעבור על הרישום ולהשוות לתלוש השכר.",
   },
   quickStart: {
     kicker: "התחלה מהירה",
     titlePrefix: "איך ",
     titleHighlight: "מתחילים",
     titleSuffix: "?",
-    subtitle: "שלושה שלבים פשוטים, וכל הנתונים שלכם מוכנים.",
+    subtitle: "מההורדה ועד למשמרת הראשונה.",
     steps: [
       {
-        title: "הורדה מ-Google Play",
+        title: "מורידים את האפליקציה",
         description:
-          "מורידים את Shift Smart ישירות מהחנות — האפליקציה זמינה עכשיו לכולם, בלי הרשמה מוקדמת.",
+          "מתקינים את Shift Smart מ-Google Play.",
         linkLabel: "לחנות Google Play",
       },
       {
-        title: "הגדרת מקום עבודה ותעריף",
+        title: "מגדירים עבודה ותעריף",
         description:
-          "מזינים את תעריף השעה שלכם ופרטי מקום העבודה — האפליקציה תדע לחשב את השכר בהתאם.",
+          "מוסיפים מקום עבודה ומזינים תעריף לשעה.",
       },
       {
-        title: "מתחילים להחתים ולראות שכר מדויק",
+        title: "מחתימים כניסה ויציאה",
         description:
-          "מכאן האפליקציה עוקבת אחרי המשמרות שלכם ומציגה בכל רגע בדיוק כמה הרווחתם.",
+          "עוקבים אחרי שעות העבודה והשכר המשוער.",
       },
     ],
   },
   features: {
-    kicker: "01 — 12",
-    titlePrefix: "כל מה שיש ",
-    titleHighlight: "בפנים",
+    kicker: "יכולות האפליקציה",
+    titlePrefix: "מה אפשר לעשות ",
+    titleHighlight: "באפליקציה",
     items: [
       {
         title: "החתמה בטביעת אצבע",
-        description: "כניסה ויציאה קלה ומאובטחת.",
+        description: "מאמתים כניסה ויציאה בטביעת אצבע. ביציאה דרך הווידג׳ט מתבקש אישור.",
       },
       {
-        title: "מחשבון שכר וטיפים",
-        description: "שעות נוספות, שבתות וחגים – הכל אוטומטי.",
+        title: "חישוב שכר וטיפים",
+        description: "רואים את שעות העבודה, הטיפים והשכר המשוער במקום אחד, לפי התעריפים שהגדרתם.",
       },
       {
-        title: "יומן משמרות חכם",
+        title: "יומן משמרות",
         description:
-          "יומן ייעודי בתוך האפליקציה פלוס סנכרון אוטומטי ליומן Google.",
+          "מתכננים זמני התחלה וסיום, מקבלים תזכורת להחתים יציאה ומסנכרנים ליומן המכשיר, כולל Google Calendar.",
       },
       {
-        title: "חיווי קולי",
-        description: 'צליל "ביפ" בכל החתמה.',
+        title: "צליל בהחתמה",
+        description: "שומעים צליל אישור בהחתמת כניסה או יציאה.",
       },
       {
-        title: "דוחות וגיבוי",
-        description: "סיכום חודשי מפורט ושיתוף דוחות; ב-Pro: ייצוא Excel חודשי, דוח מס שנתי וגיבוי ל-Drive.",
+        title: "דוחות וסיכומים",
+        description: "צופים בסיכום החודשי, עוברים על המשמרות ומשתפים דוחות מתוך האפליקציה.",
       },
       {
-        title: "וידוא מיקום חכם",
-        description: "שמירה מדויקת של תחילת המשמרת.",
+        title: "תיעוד מיקום",
+        description: "שומרים את המיקום שבו התחילה המשמרת.",
       },
       {
-        title: "חיסכון בסוללה ופרטיות",
-        description: "עיצוב כהה, והנתונים נשארים אצלכם במכשיר כברירת מחדל — גיבוי ל-Drive ומשוב הם אופציונליים.",
+        title: "הנתונים נשארים אצלכם",
+        description: "הנתונים נשמרים במכשיר כברירת מחדל. גיבוי ל-Drive ושליחת משוב הם לבחירתכם.",
       },
       {
-        title: "ניהול משרות",
+        title: "כמה מקומות עבודה",
         description:
-          "תמיכה במספר מקומות עבודה, כולל הגדרת משמרות בוקר/צהריים/ערב/לילה.",
+          "מגדירים לכל עבודה תעריף משלה ומשמרות בוקר, צהריים, ערב או לילה.",
       },
       {
-        title: "פירוט ניכויי שכר מלא",
+        title: "פירוט ניכויים",
         description:
-          "ביטוח לאומי, מס בריאות, פנסיה, קרן השתלמות ומס הכנסה — כל ניכוי עם אחוז לעריכה משלו והשפעה מיידית על השכר הנטו.",
+          "מגדירים אחוזים לביטוח לאומי, מס בריאות, פנסיה, קרן השתלמות ומס הכנסה, ורואים את השפעתם על אומדן הנטו.",
       },
       {
-        title: "ווידג'ט חכם למסך הבית",
+        title: "ווידג׳ט למסך הבית",
         description:
-          "הפעלה ועצירה ישירה ממסך הבית, כולל מעקב חי אחרי סטטוס המשמרת.",
+          "מתחילים ומסיימים משמרת ישירות ממסך הבית ורואים אם השעון פועל.",
       },
       {
-        title: "אוטומציה בסיום משמרת",
+        title: "סיכום בסיום המשמרת",
         description:
-          "מעבר אוטומטי לסיכום השעות והקפצת חלון הערות כדי שלא תשכחו שום טיפ.",
+          "עוברים לסיכום השעות ומוסיפים הערות, למשל על טיפים שקיבלתם.",
       },
       {
         title: "תבניות משמרת וימי חופשה",
         description:
-          "יוצרים סדרת משמרות שלמה מדפוס שבועי קבוע בלחיצה אחת, ועוקבים אחרי מכסת ימי המחלה והחופשה השנתית שלכם.",
+          "קובעים שעות משמרת לכל יום בשבוע ועוקבים אחרי ימי חופשה ומחלה.",
       },
+      { title: "דיווח תקלות והצעת פיצ׳רים", description: "מצאתם תקלה או יש לכם רעיון? דרך הגדרות האפליקציה אפשר לשלוח דיווח עם צילום מסך או להציע פיצ׳ר חדש." },
     ],
   },
   reviews: {
     kicker: "דירוגים וביקורות",
     titlePrefix: "מה ",
     titleHighlight: "אומרים עלינו",
-    subtitle: "מבוסס על ביקורות המשתמשים שלנו",
-    averageRating: "4.9",
+    subtitle: "לפי הביקורות שנכתבו באתר",
     ratingAriaLabel: (rating) => `דירוג ${rating} מתוך 5 כוכבים`,
-    writeReviewCta: "כתוב ביקורת",
-    toastMessage: "תודה! הביקורת שלך נשלחה לאישור.",
+    writeReviewCta: "כתבו ביקורת",
+    toastMessage: "תודה! הביקורת נשלחה ותוצג לאחר אישור.",
     loadingLabel: "טוען ביקורות...",
     emptyState: "היו הראשונים לכתוב ביקורת על האפליקציה!",
     errorState: "לא הצלחנו לטעון ביקורות כרגע. נסו לרענן את הדף.",
+    validationError: "כתבו שם וביקורת: עד 60 תווים בשם ועד 500 תווים בביקורת. השדות לא יכולים להיות ריקים.",
     submitError: "שליחת הביקורת נכשלה. בדקו את החיבור ונסו שוב.",
-    rateLimitError: "כבר שלחתם ביקורת לפני רגע. נסו שוב בעוד כחצי דקה.",
+    rateLimitError: "נשלחו כמה בקשות בזמן קצר. המתינו מעט ונסו שוב.",
     modal: {
       title: "כתיבת ביקורת",
       nameLabel: "שם",
-      namePlaceholder: "איך קוראים לך?",
+      namePlaceholder: "השם שלכם",
       ratingLabel: "דירוג",
       ratingAria: (stars) => `דירוג ${stars} כוכבים`,
-      reviewLabel: "הביקורת שלך",
+      reviewLabel: "הביקורת שלכם",
       reviewPlaceholder: "ספרו לנו איך הייתה החוויה שלכם עם האפליקציה...",
       submitCta: "שליחת ביקורת",
+      submittingLabel: "שולחים את הביקורת…",
+      ratingRequired: "בחרו דירוג כוכבים לפני השליחה.",
       closeAria: "סגירת חלון הביקורת",
     },
   },
   gallery: {
-    kicker: "GALLERY",
+    kicker: "מסכי האפליקציה",
     titlePrefix: "הצצה ",
     titleHighlight: "לאפליקציה",
     prevAria: "המסך הקודם",
     nextAria: "המסך הבא",
     goToSlideAria: (position) => `מעבר למסך ${position}`,
-    shots: [
-      {
-        src: "/Screenshot 1.jpg",
-        width: 768,
-        height: 1376,
-        alt: "מסך שעון הנוכחות: כפתור הפעלת שעון בטביעת אצבע, בחירת משרה, תעריף לשעה וצבירה במשמרת",
-      },
-      {
-        src: "/Screenshot 2.jpg",
-        width: 768,
-        height: 1376,
-        alt: "מסך ההגדרות: מצב לילה, בחירת שפת האפליקציה בין עברית לאנגלית וחיסכון סוללה מקסימלי למסכי AMOLED",
-      },
-      {
-        src: "/Screenshot 3.jpg",
-        width: 768,
-        height: 1376,
-        alt: "מסך המשרות: רשימת מקומות עבודה עם תעריף לשעה, החזר נסיעות ומיקום שמור לכל משרה",
-      },
-      {
-        src: "/Screenshot 4.jpg",
-        width: 768,
-        height: 1376,
-        alt: "מסך ההיסטוריה: ייצוא דוח חודשי ל-PDF ולוואטסאפ, ורשימת משמרות עם תאריך, שעות ושכר לכל משמרת",
-      },
-      {
-        src: "/Screenshot 5.jpg",
-        width: 768,
-        height: 1376,
-        alt: "מסך היומן: לוח חודשי עם סימון ימי עבודה והוספת משמרת מתוכננת מראש",
-      },
-      {
-        src: "/Screenshot 6.jpg",
-        width: 768,
-        height: 1376,
-        alt: "מסך הסיכום החודשי: סך הרווח לחודש, שכר נטו משוער, התקדמות מול יעד חודשי ופילוח לפי משרה",
-      },
-    ],
+    shots: MARKETING_SHOTS.he,
   },
   roadmap: {
     kicker: "מפת דרכים",
     titlePrefix: "מה מתוכנן ",
     titleHighlight: "להמשך?",
     subtitle:
-      "זו רק ההתחלה. אלה הדברים שנמצאים על שולחן העבודה שלנו עכשיו.",
+      "אלה התכונות שמתוכננות להמשך. עדיין אין תאריכי השקה סופיים.",
     milestones: [
       {
         title: "גרסת iOS",
         description:
-          "אותה אפליקציה בדיוק, עם אותם מסכים ואותם חישובים — גם למשתמשי אייפון.",
-      },
-      {
-        title: "גרסת Pro",
-        description:
-          "שדרוג Pro כבר זמין ברכישה חד-פעמית. תכונות Pro נוספות נמצאות בתכנון, ולא בהכרח יהיו כלולות ברכישה הקיימת — ייתכן שיוצעו בנפרד, למשל במנוי, ללא מחיר או תאריך סופיים.",
-      },
-      {
-        title: "גיבוי וסנכרון ל-Google Drive",
-        description:
-          "גיבוי ידני ל-Google Drive כבר זמין. גיבוי אוטומטי וסנכרון נוספים לחשבון ה-Google Drive נמצאים בפיתוח פעיל.",
+          "גרסה למשתמשי iPhone נמצאת בתכנון. כיום האפליקציה זמינה לאנדרואיד.",
       },
     ],
   },
@@ -586,53 +548,53 @@ const he: Dictionary = {
     titlePrefix: "שאלות ",
     titleHighlight: "ותשובות",
     subtitle:
-      "כל מה שנשאלנו הכי הרבה על חישוב שעות וניהול משמרות. לא מצאתם תשובה? אנחנו זמינים במייל.",
+      "תשובות על ההורדה, המשמרות וחישובי השכר. לשאלות נוספות אפשר לפנות אלינו במייל.",
     items: [
       {
-        question: "האם צריך תהליך הרשמה מיוחד כדי להוריד את האפליקציה?",
+        question: "איך מורידים את האפליקציה?",
         answer:
-          "לא — מורידים את Shift Smart ישירות מ-Google Play, בלי שום תהליך הרשמה מוקדם. מורידים ומתחילים להשתמש מיד.",
+          "לוחצים על כפתור ההורדה באתר ומתקינים את Shift Smart מ-Google Play במכשיר אנדרואיד.",
       },
       {
         question: "האם האפליקציה בחינם?",
         answer:
-          "האפליקציה להורדה בחינם, כולל שעון הנוכחות והחישובים הבסיסיים. בנוסף יש שדרוג Pro אופציונלי ברכישה חד-פעמית דרך Google Play, הכולל גיבוי ושחזור ל-Google Drive (עד 10 גרסאות), ייצוא Excel חודשי ודוח מס שנתי. תכונות Pro חדשות בעתיד לא בהכרח יהיו כלולות ברכישה זו — ייתכן שיוצעו בנפרד, למשל במנוי — ונציין זאת בבירור לפני כל חיוב.",
+          "כן. אפשר להוריד את האפליקציה ולהשתמש בשעון הנוכחות ובחישובי הבסיס בחינם.",
       },
       {
         question: "מה עושים אם מצאתי באג?",
         answer:
-          "נשמח לדעת! אפשר לדווח לנו ישירות במקטע הביקורות למעלה בעמוד, או לשלוח לנו מייל ל-yoseffstor@gmail.com. כל דיווח עוזר לנו לשפר את האפליקציה.",
+          "אפשר לדווח על תקלה דרך הגדרות האפליקציה ולצרף צילום מסך. אפשר גם לפנות במייל ל-yoseffstor@gmail.com עם תיאור הבעיה ודגם המכשיר.",
       },
       {
         question: "איך מחושבות שעות נוספות?",
         answer:
-          "בכל משמרת האפליקציה משווה את סך השעות שנצברו לאורך יום העבודה שהגדרתם. כל שעה מעבר לסף מסומנת בנפרד ומחושבת לפי אחוז התוספת שקבעתם, כך שהסכום שמופיע בסיכום החודשי כבר כולל אותן ואין צורך בחישוב ידני.",
+          "לפי סף יום העבודה ואחוזי התוספת שהגדרתם באפליקציה. שעות שמעבר לסף מחושבות בתעריף המתאים ונכללות בסיכום החודשי.",
       },
       {
         question: "מה קורה אם שכחתי להחתים כניסה או יציאה?",
         answer:
-          "אפשר להוסיף או לתקן משמרת ידנית בכל רגע. נכנסים ליומן, בוחרים את התאריך הרלוונטי ומזינים את שעות ההתחלה והסיום. הסיכום החודשי וסך ההכנסות מתעדכנים מיד, בלי לפגוע בשאר המשמרות.",
+          "אפשר להוסיף משמרת או לתקן אותה ידנית ביומן. בוחרים תאריך ומזינים את שעות ההתחלה והסיום. הסיכום החודשי מתעדכן בהתאם.",
       },
       {
         question: "אפשר לנהל כמה מקומות עבודה במקביל?",
         answer:
-          "כן. מגדירים לכל מקום עבודה תעריף שעתי ואורך משמרת משלו, וכל משמרת משויכת למקום שבו עבדתם בפועל. הדוח החודשי מציג פילוח נפרד לכל מקום עבודה וגם סיכום כולל של כל השעות וההכנסות יחד.",
+          "כן. מגדירים לכל מקום עבודה תעריף ואורך משמרת משלו. הדוח החודשי מציג פירוט לפי מקום עבודה וגם סיכום כולל של השעות והשכר המשוער.",
       },
       {
-        question: "מה זה שעון נוכחות דיגיטלי, ולמה עדיף על פנקס או Excel?",
+        question: "אפשר לסנכרן משמרות ליומן?",
         answer:
-          "שעון נוכחות דיגיטלי מתעד לכם אוטומטית את שעת הכניסה והיציאה בכל משמרת, ומחשב מיד כמה שעות עבדתם וכמה זה שווה בכסף — בלי לזכור לרשום ידנית ובלי טעויות חישוב שקורות בפנקס או בגיליון Excel. ב-Shift Smart כל זה קורה על המכשיר שלכם בזמן אמת, כך שבסוף החודש הסיכום כבר מוכן ומדויק.",
+          "כן. אפשר לסנכרן את המשמרות ליומן המכשיר, כולל יומן Google, לפי היומן שבחרתם.",
       },
       {
-        question: "איך Shift Smart מחשבת שעות עבודה ושכר?",
+        question: "על מה מבוסס חישוב השכר?",
         answer:
-          "לכל מקום עבודה מגדירים תעריף שעתי ואורך משמרת משלו; בכל משמרת האפליקציה סופרת את השעות בפועל, ומעבר לסף שקבעתם היא מוסיפה אוטומטית את אחוז השעות הנוספות. הסיכום החודשי מרכז את כל המשמרות מכל מקומות העבודה יחד עם סך ההכנסות, בלי צורך בשום חישוב ידני.",
+          "על השעות שרשמתם, התעריף של כל מקום עבודה והגדרות התוספות והניכויים שלכם. שעות נוספות מחושבות לפי הסף והאחוזים שהגדרתם. הסיכום הוא אומדן שמאפשר להשוות את הרישום לתלוש השכר.",
       },
       {
         question:
-          "האם Shift Smart מתאימה לניהול משמרות בעברית, למאבטחים, סדרנים וצוותי מסעדות?",
+          "באילו מכשירים ושפות אפשר להשתמש?",
         answer:
-          "כן — האפליקציה מיועדת בדיוק לקהל הזה: מאבטחים, סדרנים, צוותי מסעדות וכל מי שעובד במשמרות משתנות. הממשק כולו בעברית ומותאם RTL, ותומך במספר מקומות עבודה עם תעריפים שונים במקביל — בדיוק המבנה הנפוץ בעבודות משמרות.",
+          "האפליקציה זמינה לאנדרואיד, בעברית ובאנגלית. גרסת iPhone נמצאת בתכנון ועדיין אין לה תאריך השקה.",
       },
     ],
   },
@@ -655,44 +617,45 @@ const he: Dictionary = {
   share: {
     buttonLabel: "שתף את האפליקציה",
     copiedLabel: "הועתק!",
+    manualCopyLabel: "לא הצלחנו להעתיק אוטומטית. אפשר לבחור ולהעתיק את הטקסט כאן:",
     title: "הכירו את Shift Smart!",
-    buildText: (siteUrl) =>
-      `מה הולך? גם לך יוצא לעבור על תלוש המשכורת בסוף החודש ולתהות איך חישבו בדיוק את השעות הנוספות וההפסקות? 📉\nתכלס, חבל על האנרגיות שלך. בין כל הריצות בעבודה, הדוחות והלחץ היומיומי, הדבר האחרון שצריך זה כאב ראש מול גיליונות אקסל מסובכים או חישובים ידניים שלפעמים מפספסים אגורות חשובות.\nבדיוק בשביל זה פיתחנו את Shift Smart – שעון נוכחות חכם שפשוט עושה סדר בראש ובארנק. 📱✨\nמהיום יודעים בדיוק מה השכר המדויק, עד האגורה האחרונה, בלי ניירת ובלי ניחושים מיותרים. האפליקציה מרכזת הכל במקום אחד בצורה פשוטה, שקופה ונוחה שחוסכת לך המון זמן יקר ועצבים.\nשווה לגמרי לבדוק את זה ולראות איך אפשר להקל על עצמך את החיים כבר מהחודש הקרוב.\nכל הפרטים והורדה מהירה מחכים לך ממש כאן:\n${siteUrl}`,
+    buildText: (siteUrl) => `Shift Smart לניהול משמרות ושעות עבודה. אפשר להחתים כניסה ויציאה ולראות שכר משוער לפי התעריף שמגדירים. האפליקציה זמינה לאנדרואיד.\nלפרטים ולהורדה: ${siteUrl}`,
   },
   featureRequest: {
     buttonLabel: "הצעת פיצ'ר",
     modalTitle: "הצעת פיצ'ר",
-    modalSubtitle: "יש לכם רעיון שיהפוך את Shift Smart לטובה יותר? נשמח לשמוע.",
+    modalSubtitle: "איזו אפשרות חסרה לכם באפליקציה? כתבו לנו מה הייתם רוצים להוסיף.",
     nameLabel: "שם",
-    namePlaceholder: "איך קוראים לך?",
+    namePlaceholder: "השם שלכם",
     featureLabel: "איזה פיצ'ר תרצו לראות?",
     featurePlaceholder: "ספרו לנו על הרעיון שלכם...",
     submitCta: "שליחת הצעה",
+    submittingLabel: "שולחים את ההצעה…",
     closeAria: "סגירת חלון הצעת הפיצ'ר",
-    toastMessage: "תודה! ההצעה שלך נרשמה ותיבדק.",
+    toastMessage: "תודה! ההצעה נשלחה ותיבדק.",
+    validationError: "הזינו שם והצעה עם תוכן גלוי: עד 60 תווים בשם ועד 1,000 בהצעה.",
     submitError: "שליחת ההצעה נכשלה. בדקו את החיבור ונסו שוב.",
-    rateLimitError: "כבר שלחתם הצעה לפני רגע. נסו שוב בעוד כחצי דקה.",
+    rateLimitError: "נשלחו כמה בקשות בזמן קצר. המתינו מעט ונסו שוב.",
   },
   phoneShowcase: {
-    mockupSrc: "/mockup-v2.jpg",
-    mockupWidth: 768,
-    mockupHeight: 1376,
-    mockupAlt:
-      "מסך שעון הנוכחות באפליקציית Shift Smart: משמרת פעילה עם טיימר רץ, תעריף לשעה וצבירה מצטברת במשמרת",
+    mockupSrc: MARKETING_SHOTS.he[0].src,
+    mockupWidth: 1024,
+    mockupHeight: 1536,
+    mockupAlt: MARKETING_SHOTS.he[0].alt,
   },
   appPoster: {
     kicker: "האפליקציה",
     titlePrefix: "הכירו את ",
     titleHighlight: "Shift Smart",
-    imageSrc: "/Sharing image.png",
-    imageWidth: 947,
-    imageHeight: 1661,
+    imageSrc: "/marketing/brand-v3/he.png",
+    imageWidth: 948,
+    imageHeight: 1659,
     imageAlt:
-      "פוסטר Shift Smart — אייקון האפליקציה והסלוגן: המשמרות שלכם. בשליטה מלאה.",
+      "פוסטר Shift Smart: המשמרות שלך. בשליטה. עובדים במשמרות? יש דרך חכמה יותר. נהלו את המשמרות שלכם, עקבו אחרי השעות וחשבו את השכר בקלות וישירות מהנייד. משמרות, שעות, שכר ודוחות.",
   },
   cookieConsent: {
     heading: "אנחנו משתמשים בעוגיות",
-    body: "האתר משתמש בעוגיות חיוניות לתפעולו ולשיפור החוויה שלכם. לפרטים נוספים ראו את",
+    body: "באישורכם נפעיל את Google Analytics למדידת השימוש באתר. בחירת השפה וההעדפה שלכם נשמרות בדפדפן. לפרטים ראו את",
     privacyLinkLabel: "מדיניות הפרטיות",
     acceptLabel: "מאשר/ת",
     rejectLabel: "דוחה",
@@ -706,7 +669,7 @@ const he: Dictionary = {
     metaDescription:
       "מדיניות הפרטיות של אפליקציית Shift Smart — אילו נתונים האפליקציה משתמשת בהם, אילו הרשאות היא מבקשת, ואיך נשמרים הנתונים שלך.",
     pageTitle: "מדיניות פרטיות — Shift Smart",
-    lastUpdated: "עודכן לאחרונה: 18.10.2026",
+    lastUpdated: "עודכן לאחרונה: 03.11.2026",
     backToHome: "חזרה לדף הבית",
     intro:
       "תודה שאתם משתמשים ב-Shift Smart (\"האפליקציה\"). מדיניות זו מסבירה אילו נתונים האפליקציה משתמשת בהם ואיך.",
@@ -724,7 +687,7 @@ const he: Dictionary = {
         },
         { text: "רק על המכשיר שלכם", format: "bold" },
         {
-          text: ". איננו מפעילים שרת שאוסף את נתוני המשמרות והשכר שלכם, ואיננו מוכרים או משתפים אותם. היוצאים מן הכלל הם שלושה אלה בלבד, והם אופציונליים: גיבוי לחשבון ה-Google Drive האישי שלכם, שאלון המשוב, וחיפוש כתובת או בחירת מקום העבודה במפה (הנשלחים לשירות המיקום של Google), המתוארים בהמשך.",
+          text: ". איננו מפעילים שרת שאוסף את נתוני המשמרות והשכר שלכם ואיננו מוכרים אותם. פעולות שאתם בוחרים לבצע עשויות להעביר מידע מחוץ למכשיר: למשל גיבוי לחשבון Google Drive שלכם, שליחת משוב או דיווח עם תמונה, חיפוש כתובת או בחירת מקום במפה באמצעות Google, שיתוף דוחות וקבצים וסנכרון באמצעות ספק היומן שבחרתם. השימושים האלה מפורטים בהמשך.",
         },
       ],
     },
@@ -746,11 +709,11 @@ const he: Dictionary = {
       },
       {
         label: "מצלמה/גלריה:",
-        body: "משמשות רק אם בחרתם לצרף תמונה (למשל קבלה או תלוש) למשמרת בהיסטוריה. התמונה נשמרת מקומית על המכשיר.",
+        body: "משמשות אם בחרתם לצרף תמונה למשמרת בהיסטוריה או לדיווח על תקלה או הצעת פיצ'ר. תמונה שמצורפת למשמרת נשמרת מקומית במכשיר; תמונה שנשלחת בדיווח מועברת כפי שמתואר בסעיף הדיווחים בהמשך.",
       },
       {
         label: "אימות ביומטרי (טביעת אצבע/פנים):",
-        body: "אופציונלי, לנעילת האפליקציה בלבד — לא נשלח ולא נשמר שום נתון ביומטרי על ידינו; האימות מתבצע כולו על ידי מערכת ההפעלה של המכשיר.",
+        body: "משמש לאימות בהחתמת כניסה ויציאה, בהתאם להגדרות באפליקציה. ביציאה מהווידג׳ט מתבקש אישור. איננו מקבלים או שומרים נתונים ביומטריים; האימות הביומטרי מתבצע על ידי מערכת ההפעלה של המכשיר.",
       },
     ],
     backup: {
@@ -787,6 +750,11 @@ const he: Dictionary = {
       deletionRequest: "לבקשת מחיקת משוב ששלחתם, פנו אלינו במייל:",
     },
     /* חדש: מתעד את תשלומי ה-Pro תוך-אפליקתיים לצורך התאמה ל-Data Safety */
+    bugReports: {
+      title: "דיווח על תקלה או הצעת פיצ'ר (אופציונלי)",
+      body: "אם בחרתם לשלוח דיווח על תקלה מתוך ההגדרות, נשלחים לשרת שלנו המתארח ב-Cloudflare התיאור שכתבתם, דגם המכשיר, גרסת מערכת ההפעלה, גרסת האפליקציה והשפה. אם בחרתם לצרף תמונה (למשל צילום מסך), היא מועברת דרך השרת ישירות אלינו בהודעת Telegram ואינה נשמרת בשרת. הדיווח עצמו נשמר בשרת לצורך תיקון התקלה בלבד. בהצעת פיצ'ר נשלחים רק הטקסט, התמונה (אם צורפה), גרסת האפליקציה והשפה, בלי פרטי מכשיר. אל תצרפו תמונה שיש בה פרטים אישיים שאינכם רוצים לשתף.",
+      deletionRequest: "לבקשת מחיקת דיווח, פנו אלינו במייל:",
+    },
     inAppPurchases: {
       title: "רכישות בתוך האפליקציה",
       body: "רכישות בתוך האפליקציה (שדרוג Pro, רכישה חד-פעמית) מעובדות על ידי Google Play. איננו מקבלים ואיננו שומרים פרטי תשלום. סטטוס הרכישה נקבע לפי Google Play ונשמר גם במכשיר, כדי שהתכונות ימשיכו לעבוד. פרטי הרכישה, ההחזרים ותכונות Pro עתידיות מפורטים בתנאי השימוש.",
@@ -809,12 +777,20 @@ const he: Dictionary = {
       title: "הנתונים באתר זה",
       items: [
         {
-          label: "ביקורות והצעות פיצ'ר:",
-          body: "כששולחים ביקורת דרך האתר, נשמרים במסד הנתונים שלנו (Supabase) השם שהוזן, הדירוג (1–5 כוכבים) ותוכן הביקורת. בהצעת פיצ'ר נשמרים השם ותיאור הרעיון. ביקורת מוצגת באתר (שם ותוכן) רק לאחר אישור ידני שלנו. אין חובה לשלוח אותן, ומומלץ לא לכלול בהן פרטים אישיים. שירות הענן של Supabase עשוי לאחסן מידע גם בשרתים מחוץ לישראל. לבקשת מחיקה, ראו את הסעיף \"מחיקת נתונים\" למעלה.",
+          label: "ביקורות באתר:",
+          body: "כששולחים ביקורת דרך האתר, נשמרים במסד הנתונים שלנו (Supabase) השם שהוזן, הדירוג (1–5 כוכבים) ותוכן הביקורת. ביקורת מוצגת באתר (שם ותוכן) רק לאחר אישור ידני שלנו. אין חובה לשלוח אותן, ומומלץ לא לכלול בהן פרטים אישיים. שירות הענן של Supabase עשוי לאחסן מידע גם בשרתים מחוץ לישראל. לבקשת מחיקה, ראו את הסעיף \"מחיקת נתונים\" למעלה.",
         },
         {
           label: "Vercel Analytics:",
           body: "סטטיסטיקות תנועה אנונימיות לאתר (למשל צפיות בדפים), ללא שימוש בעוגיות.",
+        },
+        {
+          label: "סקר ביקוש לגרסת iPhone:",
+          body: "השתתפות בסקר היא לבחירתכם. ב-Supabase נשמרות התשובות לגבי סוג המכשיר, עבודה במשמרות ורמת העניין, הערה אם הוזנה, שפת הטופס, מקור הגעה כללי וזמן השליחה. אפשר להשתתף ללא שם, טלפון או מייל. אם בחרתם במפורש לקבל עדכון והזנתם מייל, נשמור גם אותו ואת מועד ההסכמה לצורך עדכונים על גרסת iPhone בלבד. שליחת הסקר אינה שולחת כרגע מייל אוטומטי. התשובות ופרטי הקשר אינם מוצגים לציבור ואינם נשלחים על ידינו ל-Google Analytics. ניתן לבקש מחיקה או להפסיק עדכונים דרך כתובת הקשר במדיניות זו. המידע נשמר לצורך בדיקת הביקוש והעדכונים שביקשתם; שירות Supabase עשוי לאחסן אותו מחוץ לישראל.",
+        },
+        {
+          label: "הרשמה לעדכוני גרסאות:",
+          body: "ההרשמה לניוזלטר היא בחירה נפרדת מסקר האייפון. כשהשירות פעיל, כתובת המייל שהזנתם מועברת ל-Sender לצורך משלוח מייל אישור והרשמה לעדכוני גרסאות של Shift Smart. ההצטרפות לרשימה מושלמת לאחר אישור הקישור במייל. אין חובה להירשם כדי להשתמש באתר או לענות לסקר, ואפשר להסיר את ההרשמה בקישור שבכל עדכון או לפנות אלינו בבקשת מחיקה. Sender מעבדת כתובות ומידע על ההרשמה, האישור והמסירה לצורך תפעול השירות, ועשויה לעבד מידע מחוץ לישראל. איננו מעבירים אליה את תשובות סקר האייפון לצורך הניוזלטר. הכתובות אינן מוצגות לציבור ואינן נשלחות על ידינו ל-Google Analytics.",
         },
         {
           label: "Google Analytics:",
@@ -822,7 +798,7 @@ const he: Dictionary = {
         },
         {
           label: "אחסון מקומי בדפדפן:",
-          body: "נשמרות העדפת השפה שבחרתם והבחירה שלכם בבאנר העוגיות, כדי לזכור אותן בביקורים הבאים.",
+          body: "בחירת שפה ידנית והבחירה בבאנר העוגיות נשמרות כדי לזכור אותן בביקורים הבאים. בנוסף, זמני שליחת טפסים נשמרים זמנית ב-sessionStorage לצורך הגבלת שליחות חוזרות במהלך סשן הדפדפן.",
         },
       ],
     },
@@ -895,7 +871,7 @@ const en: Dictionary = {
   meta: {
     title: "Shift Smart – Time Clock & Shift Management",
     description:
-      "A digital time clock app for shift management and payroll — built for security guards, stewards, and restaurant staff. Download Shift Smart free on Google Play.",
+      "Manage shifts, record work hours, and estimate pay using your rates. Shift Smart is available for Android, free to download from Google Play.",
     keywords: [
       "shift management",
       "time clock",
@@ -904,7 +880,7 @@ const en: Dictionary = {
       "Shift Smart",
     ],
     ogDescription:
-      "A digital time clock app for shift management and payroll. Download Shift Smart free on Google Play.",
+      "Track shifts, work hours, and estimated pay on your phone. Download Shift Smart free from Google Play.",
   },
   brand: {
     name: "Shift Smart",
@@ -917,148 +893,147 @@ const en: Dictionary = {
   },
   hero: {
     kicker: "Your shifts. In control.",
+    planNote: "Explore the app’s features",
     titleLine1: "Work shifts?",
     titleLine2: "There's a smarter way.",
     subtitle:
-      "Manage your shifts, track your hours, and calculate your pay easily right from your phone.",
+      "Manage your shifts, track your work hours, and see estimated pay based on your hourly rate.",
     audience:
-      "Perfect for security guards, stewards, restaurant staff, and anyone living life in shifts.",
+      "For security guards, stewards, restaurant staff, and anyone who works shifts.",
     downloadCta: "Get it on Google Play",
     platformNotice:
-      "Please note: Android devices only for now.",
+      "Available for Android on Google Play.",
   },
   whatsNew: {
     kicker: "UPDATES",
-    titlePrefix: "🚀 What's ",
-    titleHighlight: "New?",
-    subtitle: "(Latest Updates)",
+    titlePrefix: "What’s ",
+    titleHighlight: "new?",
+    subtitle: "New in version 1.8.5",
     badgeLabel: "NEW",
     items: [
       {
-        title: "Holiday Detection and 150% Rate",
-        description:
-          "The app detects holidays and Saturdays and automatically applies a 150% rate to them.",
+            "title": "A bug or an idea? Let us know",
+            "description": "Open Settings and choose “Bug or suggestion” to send feedback directly from the app. You can attach a screenshot to help us understand what happened."
       },
       {
-        title: "General Goal, Vacation & Sick Accrual",
-        description:
-          "Set a general goal, and track how your vacation and sick days accrue.",
+            "title": "A clearer deductions screen",
+            "description": "The redesigned screen makes deductions easier to follow, with National Insurance and health insurance calculated using the applicable brackets."
       },
       {
-        title: "Up to Two Tags and Editable Start Time",
-        description:
-          "Choose up to two tags per shift, and edit the start time even while the shift is running.",
-      },
-    ],
+            "title": "Your widget stays up to date",
+            "description": "The widget amount updates even when the app is closed. You can also hide amounts in the widget for more privacy."
+      }
+],
   },
   aboutTimeTracking: {
-    kicker: "Why it matters",
+    kicker: "TIME TRACKING",
     titlePrefix: "What is a ",
     titleHighlight: "digital time clock?",
-    body: "A digital time clock replaces manual notes in a paper log or your memory, accurately recording exactly when each shift started and ended. For shift workers — security guards, stewards, restaurant staff, and more — that's the difference between a rough guess at your pay and knowing exactly how many hours you worked and what they're worth, without waiting for a payslip to find out.",
+    body: "Clock in and out on your phone and keep your shifts in one place. Estimated pay is calculated using your hours, rates, and settings. At the end of the month, review your records and compare them with your payslip.",
   },
   quickStart: {
     kicker: "GET STARTED",
     titlePrefix: "How do ",
     titleHighlight: "you get started",
     titleSuffix: "?",
-    subtitle: "Three simple steps, and your data is ready to go.",
+    subtitle: "From download to your first shift.",
     steps: [
       {
-        title: "Download from Google Play",
+        title: "Download the app",
         description:
-          "Get Shift Smart straight from the store — the app is available to everyone now, no sign-up required.",
+          "Install Shift Smart from Google Play.",
         linkLabel: "Go to Google Play",
       },
       {
-        title: "Set Up Your Workplace and Rate",
+        title: "Set your job and rate",
         description:
-          "Enter your hourly rate and workplace details — the app will calculate your pay accordingly.",
+          "Add a workplace and enter your hourly rate.",
       },
       {
-        title: "Start Clocking In and See Accurate Pay",
+        title: "Clock in and out",
         description:
-          "From here the app tracks your shifts and shows you exactly how much you've earned, in real time.",
+          "Track your work hours and estimated pay.",
       },
     ],
   },
   features: {
-    kicker: "01 — 12",
-    titlePrefix: "Everything ",
-    titleHighlight: "Inside",
+    kicker: "APP FEATURES",
+    titlePrefix: "What you can do ",
+    titleHighlight: "with Shift Smart",
     items: [
       {
-        title: "Fingerprint Clock-in",
-        description: "Easy, secure clock-in and clock-out.",
+        title: "Fingerprint clock-in",
+        description: "Verify clock-in and clock-out with your fingerprint. Clocking out through the widget asks for confirmation.",
       },
       {
-        title: "Wage & Tips Calculator",
+        title: "Pay and tips",
         description:
-          "Overtime, weekends, and holidays — all calculated automatically.",
+          "See your work hours, tips, and estimated pay in one place, using the rates you set.",
       },
       {
-        title: "Smart Shift Calendar",
+        title: "Shift calendar",
         description:
-          "A dedicated in-app calendar plus automatic sync with Google Calendar.",
+          "Plan start and end times, get a clock-out reminder, and sync shifts to your device calendar, including Google Calendar.",
       },
       {
-        title: "Audio Alerts",
-        description: 'A "beep" sound with every clock-in.',
+        title: "Clock-in sound",
+        description: "Hear a confirmation sound when you clock in or out.",
       },
       {
-        title: "Reports & Backup",
+        title: "Reports and summaries",
         description:
-          "Detailed monthly summaries and report sharing; in Pro: monthly Excel export, yearly tax report, and Drive backup.",
+          "View your monthly summary, review your shifts, and share reports from the app.",
       },
       {
-        title: "Smart Location Check",
-        description: "Precisely records where your shift began.",
+        title: "Location records",
+        description: "Save the location where your shift started.",
       },
       {
-        title: "Battery Saving & Privacy",
-        description: "Dark design, and your data stays on your device by default — Drive backup and feedback are optional.",
+        title: "Your data, on your device",
+        description: "Your data stays on your device by default. Drive backup and sending feedback are optional.",
       },
       {
-        title: "Multiple Workplaces",
+        title: "Multiple workplaces",
         description:
-          "Support for multiple workplaces, including morning/noon/evening/night shift setups.",
+          "Set a rate for each workplace and define morning, afternoon, evening, or night shifts.",
       },
       {
-        title: "Full Salary Deductions Breakdown",
+        title: "Deduction breakdown",
         description:
-          "National Insurance, health tax, pension, study fund, and income tax — each deduction with its own editable rate and instant effect on your net pay.",
+          "Set rates for National Insurance, health tax, pension, study fund, and income tax, and see their effect on estimated net pay.",
       },
       {
-        title: "Smart Home Screen Widget",
+        title: "Home screen widget",
         description:
-          "Start and stop directly from your home screen with live shift tracking.",
+          "Start and stop a shift from your home screen and see whether the clock is running.",
       },
       {
-        title: "Shift End Automation",
+        title: "End-of-shift summary",
         description:
-          "Auto-redirect to hours summary and quick notes pop-up so you never forget a tip.",
+          "Review your hours and add notes, such as tips you received.",
       },
       {
-        title: "Shift Templates & Time Off",
+        title: "Shift templates and time off",
         description:
-          "Generate a whole series of shifts from a fixed weekly pattern in one tap, and track your annual sick and vacation day balance.",
+          "Set shift hours for each weekday and keep track of vacation and sick days.",
       },
+      { title: "Bug reports and feature ideas", description: "Found a bug or have an idea? Use the app settings to send a bug report with a screenshot or suggest a new feature." },
     ],
   },
   reviews: {
     kicker: "RATINGS & REVIEWS",
     titlePrefix: "What ",
     titleHighlight: "People Say",
-    subtitle: "Based on our users' reviews",
-    averageRating: "4.9",
+    subtitle: "Based on reviews submitted on this website",
     ratingAriaLabel: (rating) => `Rated ${rating} out of 5 stars`,
     writeReviewCta: "Write a Review",
     toastMessage: "Thank you! Your review has been submitted for approval.",
     loadingLabel: "Loading reviews...",
     emptyState: "Be the first to review the app!",
     errorState: "We couldn't load reviews right now. Try refreshing the page.",
+    validationError: "Enter your name and review: up to 60 characters for the name and 500 for the review. Neither field can be blank.",
     submitError: "Couldn't submit your review. Check your connection and try again.",
-    rateLimitError: "You just submitted a review. Please try again in about half a minute.",
+    rateLimitError: "Several requests were sent in a short time. Please wait and try again.",
     modal: {
       title: "Write a Review",
       nameLabel: "Name",
@@ -1068,6 +1043,8 @@ const en: Dictionary = {
       reviewLabel: "Your Review",
       reviewPlaceholder: "Tell us about your experience with the app...",
       submitCta: "Submit Review",
+      submittingLabel: "Submitting your review…",
+      ratingRequired: "Choose a star rating before submitting.",
       closeAria: "Close review dialog",
     },
   },
@@ -1084,72 +1061,19 @@ const en: Dictionary = {
      * הגדרות. ה-alt כאן מתאר בדיוק את מה שמופיע בכל תמונה אנגלית בפועל,
      * ולא תרגום מילולי של ה-alt העברי המקביל.
      */
-    shots: [
-      {
-        src: "/English screenshot1.png",
-        width: 941,
-        height: 1672,
-        alt: "Active shift screen: running timer with a Clock Out button, hourly rate, and current shift earnings",
-      },
-      {
-        src: "/English screenshot2.png",
-        width: 941,
-        height: 1672,
-        alt: "Idle clock screen: \"Ready to start working\" with a Start Clock button and fingerprint authentication prompt",
-      },
-      {
-        src: "/English screenshot3.png",
-        width: 941,
-        height: 1672,
-        alt: "Jobs screen: list of workplaces with hourly rate, travel reimbursement, and saved location for each job",
-      },
-      {
-        src: "/English screenshot4.png",
-        width: 941,
-        height: 1672,
-        alt: "Monthly summary screen: total earnings for the month, progress toward a monthly goal, and a breakdown by job",
-      },
-      {
-        src: "/English screenshot5.png",
-        width: 941,
-        height: 1672,
-        alt: "Settings screen: night mode, in-app language toggle between Hebrew and English, and vibration feedback",
-      },
-      {
-        src: "/English screenshot6.png",
-        width: 941,
-        height: 1672,
-        alt: "Settings screen: sound alerts, maximum battery saving for AMOLED screens, and fingerprint/Face ID clock-in",
-      },
-      {
-        src: "/English screenshot7.png",
-        width: 941,
-        height: 1672,
-        alt: "Settings screen: dark mode toggle, in-app language switch between English and Hebrew, and quick clock vibration/sound options",
-      },
-    ],
+    shots: MARKETING_SHOTS.en,
   },
   roadmap: {
     kicker: "Roadmap",
     titlePrefix: "What's ",
     titleHighlight: "Coming Next?",
     subtitle:
-      "This is just the beginning. Here's what's on our desk right now.",
+      "Features planned for future updates. Release dates have not been finalized.",
     milestones: [
       {
         title: "iOS Version",
         description:
-          "The exact same app, with the same screens and the same calculations — for iPhone users too.",
-      },
-      {
-        title: "Pro Tier",
-        description:
-          "The Pro upgrade is already available as a one-time purchase. Additional Pro features are being planned and are not necessarily included in the existing purchase — they may be offered separately, for example as a subscription, with no final price or date yet.",
-      },
-      {
-        title: "Google Drive Backup & Sync",
-        description:
-          "Manual backup to Google Drive is already available. Automatic backup and sync to your Google Drive account are actively in development.",
+          "An iPhone version is planned. The app is currently available for Android.",
       },
     ],
   },
@@ -1158,53 +1082,53 @@ const en: Dictionary = {
     titlePrefix: "Frequently Asked ",
     titleHighlight: "Questions",
     subtitle:
-      "The questions we get asked the most about calculating hours and managing shifts. Can't find your answer? We're available by email.",
+      "Answers about downloading the app, tracking shifts, and calculating pay. Email us if you have another question.",
     items: [
       {
-        question: "Do I need to sign up for anything special to download the app?",
+        question: "How do I download the app?",
         answer:
-          "No — you download Shift Smart straight from Google Play, with no sign-up process beforehand. Just install it and get started right away.",
+          "Use a download button on this website to open Google Play and install Shift Smart on your Android device.",
       },
       {
         question: "Is the app free?",
         answer:
-          "The app is free to download, including the time clock and the core calculations. There is also an optional Pro upgrade, bought as a one-time purchase through Google Play, which includes backup and restore to Google Drive (up to 10 versions), monthly Excel export, and a yearly tax report. New Pro features added in the future are not necessarily included in this purchase — they may be offered separately, for example as a subscription — and we will state it clearly before any charge.",
+          "Yes. You can download the app and use the time clock and core calculations for free.",
       },
       {
         question: "What should I do if I find a bug?",
         answer:
-          "We'd love to know! You can report it directly in the reviews section above, or email us at yoseffstor@gmail.com. Every report helps us improve the app.",
+          "Report a bug through the app settings and attach a screenshot. You can also email yoseffstor@gmail.com with a description of the problem and your device model.",
       },
       {
         question: "How is overtime calculated?",
         answer:
-          "In every shift, the app compares the total hours accrued across the workday you defined. Every hour beyond the threshold is marked separately and calculated using the overtime percentage you set, so the number in your monthly summary already includes it — no manual math required.",
+          "Overtime uses the workday threshold and extra-pay percentages you set in the app. Hours beyond the threshold are calculated at the corresponding rate and included in the monthly summary.",
       },
       {
         question: "What if I forget to clock in or out?",
         answer:
-          "You can add or fix a shift manually at any time. Open the calendar, pick the relevant date, and enter the start and end times. The monthly summary and total income update immediately, without affecting your other shifts.",
+          "Add or edit the shift manually in the calendar. Choose a date and enter the start and end times. The monthly summary updates accordingly.",
       },
       {
         question: "Can I manage several workplaces at once?",
         answer:
-          "Yes. Each workplace gets its own hourly rate and shift length, and every shift is linked to the place you actually worked at. The monthly report shows a separate breakdown per workplace, plus one combined summary of all hours and income.",
+          "Yes. Set a rate and shift length for each workplace. The monthly report shows a breakdown by workplace and a combined summary of hours and estimated pay.",
       },
       {
-        question: "What is a digital time clock, and why is it better than a paper log or Excel?",
+        question: "Can I sync shifts to my calendar?",
         answer:
-          "A digital time clock automatically records your clock-in and clock-out times for every shift, and instantly calculates how many hours you worked and how much that's worth — no manual writing, and none of the calculation mistakes that creep into a paper log or spreadsheet. With Shift Smart, all of this happens on your device in real time, so your monthly summary is ready and accurate by the end of the month.",
+          "Yes. You can sync shifts to your selected device calendar, including Google Calendar.",
       },
       {
-        question: "How does Shift Smart calculate work hours and pay?",
+        question: "What is the pay estimate based on?",
         answer:
-          "You set an hourly rate and shift length for each workplace; during every shift the app tracks your actual hours, and once you pass the threshold you defined, it automatically adds the overtime percentage. The monthly summary brings together every shift from every workplace along with total income, with no manual math needed.",
+          "Your recorded hours, each workplace’s hourly rate, and your extra-pay and deduction settings. Overtime uses the threshold and percentages you set. The summary is an estimate you can compare with your payslip.",
       },
       {
         question:
-          "Does Shift Smart support Hebrew shift management for security guards, stewards, and restaurant staff?",
+          "Which devices and languages are supported?",
         answer:
-          "Yes — the app is built exactly for that audience: security guards, stewards, restaurant staff, and anyone working variable shifts. The entire interface is in Hebrew with full RTL support, and it handles multiple workplaces with different rates at once — exactly the structure common in shift-based jobs.",
+          "The app is available for Android in Hebrew and English. An iPhone version is planned, with no release date yet.",
       },
     ],
   },
@@ -1227,44 +1151,45 @@ const en: Dictionary = {
   share: {
     buttonLabel: "Share App",
     copiedLabel: "Copied!",
+    manualCopyLabel: "Automatic copying failed. You can select and copy the text below:",
     title: "Meet Shift Smart!",
-    buildText: (siteUrl) =>
-      `What's going on? Do you also dread checking your payslip at the end of the month, wondering exactly how they calculated your overtime and breaks? 📉\nHonestly, it's not worth the energy. Between the running around at work, the reports, and the daily pressure, the last thing you need is a headache over complicated spreadsheets or manual calculations that sometimes miss important cents.\nThat's exactly why we built Shift Smart – a smart time clock that simply gets your head and your wallet in order. 📱✨\nFrom today, you'll know exactly what your pay is, down to the last cent, without paperwork and without unnecessary guesswork. The app brings everything together in one simple, transparent, convenient place that saves you tons of precious time and stress.\nIt's definitely worth checking out and seeing how you can make your life easier starting next month.\nAll the details and a quick download are waiting for you right here:\n${siteUrl}`,
+    buildText: (siteUrl) => `Shift Smart helps you keep track of shifts and work hours. You can clock in and out and see estimated pay based on your hourly rate. It’s available for Android.\nDetails and download: ${siteUrl}`,
   },
   featureRequest: {
     buttonLabel: "Suggest a Feature",
     modalTitle: "Suggest a Feature",
-    modalSubtitle: "Got an idea that would make Shift Smart better? We'd love to hear it.",
+    modalSubtitle: "What’s missing from the app? Tell us what you’d like to add.",
     nameLabel: "Name",
     namePlaceholder: "What's your name?",
     featureLabel: "What feature would you like to see?",
     featurePlaceholder: "Tell us about your idea...",
     submitCta: "Submit Suggestion",
+    submittingLabel: "Submitting your suggestion…",
     closeAria: "Close feature request dialog",
     toastMessage: "Thank you! Your suggestion has been submitted for review.",
+    validationError: "Enter a name and suggestion with visible text: up to 60 characters for the name and 1,000 for the suggestion.",
     submitError: "Couldn't submit your suggestion. Check your connection and try again.",
-    rateLimitError: "You just submitted a suggestion. Please try again in about half a minute.",
+    rateLimitError: "Several requests were sent in a short time. Please wait and try again.",
   },
   phoneShowcase: {
-    mockupSrc: "/English screenshot1.png",
-    mockupWidth: 941,
-    mockupHeight: 1672,
-    mockupAlt:
-      "Shift Smart active shift screen: running timer, Clock Out button, hourly rate, and current shift earnings",
+    mockupSrc: MARKETING_SHOTS.en[0].src,
+    mockupWidth: 1024,
+    mockupHeight: 1536,
+    mockupAlt: MARKETING_SHOTS.en[0].alt,
   },
   appPoster: {
     kicker: "THE APP",
     titlePrefix: "Meet ",
     titleHighlight: "Shift Smart",
-    imageSrc: "/Sharing image2.png",
-    imageWidth: 947,
-    imageHeight: 1661,
+    imageSrc: "/marketing/brand-v3/en.png",
+    imageWidth: 948,
+    imageHeight: 1660,
     imageAlt:
-      "Shift Smart poster — app icon and tagline: Your shifts. In control.",
+      "Shift Smart: Your shifts. In control. Work shifts? There’s a smarter way. Manage your shifts, track your hours, and calculate your pay easily right from your phone. Shifts, hours, pay and reports.",
   },
   cookieConsent: {
     heading: "We use cookies",
-    body: "This site uses essential cookies to operate and improve your experience. For more details, see our",
+    body: "With your permission, we’ll use Google Analytics to measure website usage. Your language and consent preferences are saved in your browser. For details, see our",
     privacyLinkLabel: "Privacy Policy",
     acceptLabel: "Accept",
     rejectLabel: "Reject",
@@ -1278,7 +1203,7 @@ const en: Dictionary = {
     metaDescription:
       "Shift Smart's privacy policy — what data the app uses, what permissions it requests, and how your data is stored.",
     pageTitle: "Privacy Policy — Shift Smart",
-    lastUpdated: "Last updated: 18.10.2026",
+    lastUpdated: "Last updated: 03.11.2026",
     backToHome: "Back to home",
     intro:
       'Thank you for using Shift Smart ("the app"). This policy explains what data the app uses and how.',
@@ -1291,7 +1216,7 @@ const en: Dictionary = {
         },
         { text: "only on your device", format: "bold" },
         {
-          text: ". We do not run a server that collects your shift and pay data, and we do not sell or share it. The only exceptions are these three, all optional: backup to your own personal Google Drive account, the feedback survey, and searching for an address or picking your workplace on the map (which are sent to Google's location service), all described below.",
+          text: ". We do not run a server that collects your shift and pay data, and we do not sell it. Actions you choose may transfer information outside your device, such as backing up to your Google Drive, sending feedback or a report with an image, finding an address or selecting a place through Google, sharing reports and files, or syncing through your selected calendar provider. These uses are described below.",
         },
       ],
     },
@@ -1313,11 +1238,11 @@ const en: Dictionary = {
       },
       {
         label: "Camera/Gallery:",
-        body: "Used only if you choose to attach a photo (for example, a receipt or payslip) to a shift in your history. The photo is stored locally on your device.",
+        body: "Used if you choose to attach an image to a shift in your history, a bug report, or a feature idea. Images attached to shifts stay on your device; images submitted with a report are transferred as described in the reports section below.",
       },
       {
         label: "Biometric authentication (fingerprint/face):",
-        body: "Optional, used only to lock the app — we never send or store any biometric data ourselves; authentication is handled entirely by your device's operating system.",
+        body: "Used to verify clock-in and clock-out according to your app settings. Clocking out through the widget asks for confirmation. We do not receive or store biometric data; biometric verification is performed by your device’s operating system.",
       },
     ],
     backup: {
@@ -1354,6 +1279,11 @@ const en: Dictionary = {
       deletionRequest: "To request deletion of feedback you have already sent, contact us by email:",
     },
     /* New: documents in-app Pro purchases for Data Safety consistency */
+    bugReports: {
+      title: "Bug reports and feature ideas (optional)",
+      body: "If you choose to send a bug report from Settings, the description you wrote, the device model, OS version, app version and language are sent to our server hosted on Cloudflare. If you choose to attach an image (e.g. a screenshot), it is passed through the server directly to us as a Telegram message and is not stored on the server. The report itself is stored on the server only to fix the problem. A feature idea sends only the text, the image (if attached), app version and language, without device details. Do not attach an image containing personal details you do not want to share.",
+      deletionRequest: "To request deletion of a report, email us:",
+    },
     inAppPurchases: {
       title: "In-App Purchases",
       body: "In-app purchases (Pro upgrade, a one-time purchase) are processed by Google Play. We do not receive or store payment details. The purchase status is determined by Google Play and is also stored on your device so that the features keep working. Purchase details, refunds, and future Pro features are described in the Terms of Service.",
@@ -1376,12 +1306,20 @@ const en: Dictionary = {
       title: "Data on This Website",
       items: [
         {
-          label: "Reviews and feature requests:",
-          body: "When you submit a review through the site, the name you entered, the rating (1–5 stars), and the review text are stored in our database (Supabase). For a feature request, the name and the idea description are stored. A review is shown on the site (name and text) only after our manual approval. Submitting either is not required, and we recommend not including personal details in them. Supabase's cloud service may store data on servers outside Israel. To request deletion, see the \"Data Deletion\" section above.",
+          label: "Website reviews:",
+          body: "When you submit a review through the site, the name you entered, the rating (1–5 stars), and the review text are stored in our database (Supabase). A review is shown on the site (name and text) only after our manual approval. Submitting a review is optional, and we recommend not including personal details in it. Supabase's cloud service may store data on servers outside Israel. To request deletion, see the \"Data Deletion\" section above.",
         },
         {
           label: "Vercel Analytics:",
           body: "Anonymous traffic statistics for the site (for example, page views), without the use of cookies.",
+        },
+        {
+          label: "iPhone interest survey:",
+          body: "Participation is optional. Supabase stores your device type, shift-work and interest answers, an optional comment, form language, general referral source and submission time. No name, phone number or email is required. If you explicitly opt in and provide an email, we also store it and the consent time solely for iPhone-version updates. Submitting the survey does not send an automatic email at this time. Responses and contact details are not public and are not sent by us to Google Analytics. You may request deletion or stop updates using the contact address in this policy. Data is retained for demand assessment and the updates you requested; Supabase may store it outside Israel.",
+        },
+        {
+          label: "Release newsletter:",
+          body: "Newsletter signup is separate from the iPhone survey. When the service is active, your email is sent to Sender to request a confirmation email and subscribe to Shift Smart release updates. Joining the list is completed after confirming the email link. Signup is not required to use the website or answer the survey. You can unsubscribe in each update or contact us to request deletion. Sender processes email addresses and signup, confirmation and delivery information to operate the service and may process it outside Israel. We do not send iPhone survey answers to Sender for the newsletter. Email addresses are not public and are not sent by us to Google Analytics.",
         },
         {
           label: "Google Analytics:",
@@ -1389,7 +1327,7 @@ const en: Dictionary = {
         },
         {
           label: "Browser local storage:",
-          body: "Your chosen language preference and your choice in the cookie banner are saved so they can be remembered on later visits.",
+          body: "Your manual language choice and cookie-banner choice are saved for later visits. Form submission times are also saved temporarily in sessionStorage to limit repeated submissions during the browser session.",
         },
       ],
     },
@@ -1459,3 +1397,10 @@ const en: Dictionary = {
 };
 
 export const dictionaries: Record<Lang, Dictionary> = { he, en };
+
+
+
+
+
+
+

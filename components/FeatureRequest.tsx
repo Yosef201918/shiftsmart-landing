@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useId, useState, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Lightbulb, X } from "lucide-react";
+import { submitFormViaServer } from "@/lib/submitFormViaServer";
+import OverlayPortal from "@/components/OverlayPortal";
 
-import { FORM_LIMITS, isCoolingDown, markSubmitted } from "@/lib/formGuards";
+import { FORM_LIMITS, isValidFormText, isCoolingDown, markSubmitted } from "@/lib/formGuards";
 import { fadeUp, staggerContainer, VIEWPORT_ONCE, EASE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { supabase } from "@/lib/supabase";
@@ -33,30 +35,26 @@ export default function FeatureRequest() {
   // honeypot: שדה נסתר שרק בוטים ממלאים — ראו הטיפול ב-handleSubmit
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const submissionLock = useRef(false);
   const [submitError, setSubmitError] = useState(false);
+  const [validationError, setValidationError] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
   const titleId = useId();
 
   const closeModal = () => {
+    // שומרים על אותו טופס עד לסיום הבקשה כדי שלא תסגור טופס חדש שנפתח.
+    if (submissionLock.current) return;
     setIsOpen(false);
     setName("");
     setFeature("");
     setHoneypot("");
+    setValidationError(false);
     setSubmitError(false);
     setRateLimited(false);
   };
 
   // מיקוד, מלכודת Tab, Escape והחזרת מיקוד לכפתור הפותח — ראו lib/useDialogFocus.ts
-  const { dialogRef, triggerRef } = useDialogFocus(isOpen, closeModal);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
+  const { dialogRef, triggerRef, viewportRef } = useDialogFocus(isOpen, closeModal);
 
   useEffect(() => {
     if (!isToastVisible) return;
@@ -66,7 +64,12 @@ export default function FeatureRequest() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!name.trim() || !feature.trim() || isSubmitting) return;
+    if (submissionLock.current) return;
+    if (!isValidFormText(name, FORM_LIMITS.name) || !isValidFormText(feature, FORM_LIMITS.feature)) {
+      setValidationError(true);
+      return;
+    }
+    setValidationError(false);
 
     // בוט מילא את השדה הנסתר — מדמים הצלחה בשקט בלי לשלוח כלום ל-Supabase
     if (honeypot) {
@@ -81,15 +84,22 @@ export default function FeatureRequest() {
       return;
     }
 
+    submissionLock.current = true;
     setIsSubmitting(true);
     setSubmitError(false);
     setRateLimited(false);
 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20_000);
     try {
-      const { error } = await supabase.from("feature_requests").insert({
+      const result = process.env.NEXT_PUBLIC_FORM_SUBMISSION_MODE === "server"
+        ? await submitFormViaServer({ kind: "feature", name: name.trim(), content: feature.trim() }, controller.signal)
+        : { ...await supabase.from("feature_requests").insert({
         name: name.trim(),
         feature_text: feature.trim(),
-      });
+      }).abortSignal(controller.signal), rateLimited: false };
+      const { error } = result;
+      if (result.rateLimited) { setRateLimited(true); return; }
 
       if (error) {
         console.error("Supabase Error:", error);
@@ -98,12 +108,15 @@ export default function FeatureRequest() {
       }
 
       markSubmitted(COOLDOWN_KEY);
+      submissionLock.current = false;
       closeModal();
       setIsToastVisible(true);
     } catch (unexpectedError) {
       console.error("Supabase Error:", unexpectedError);
       setSubmitError(true);
     } finally {
+      clearTimeout(timeout);
+      submissionLock.current = false;
       setIsSubmitting(false);
     }
   };
@@ -146,8 +159,11 @@ export default function FeatureRequest() {
         ---------- מודאל הצעת פיצ'ר ----------
         מעטפת מיקום קבועה, תמיד מורכבת — ראו הסבר בתחילת הקובץ.
       */}
+      <OverlayPortal>
       <div
-        className={`fixed inset-0 z-[60] flex items-end justify-center p-0 sm:items-center sm:p-5 ${
+        ref={viewportRef}
+        style={{ top: "var(--dialog-top, 0px)", height: "var(--dialog-height, 100dvh)" }}
+        className={`fixed inset-x-0 z-[80] flex items-end justify-center p-2 sm:items-center sm:p-5 ${
           isOpen ? "" : "pointer-events-none"
         }`}
       >
@@ -173,6 +189,7 @@ export default function FeatureRequest() {
               key="feature-dialog"
               ref={dialogRef}
               role="dialog"
+              tabIndex={-1}
               aria-modal="true"
               aria-labelledby={titleId}
               dir={dir}
@@ -180,11 +197,12 @@ export default function FeatureRequest() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 24, scale: 0.97 }}
               transition={{ duration: 0.3, ease: EASE }}
-              className="panel edge-lit relative w-full max-w-md rounded-t-3xl p-6 sm:rounded-3xl sm:p-8"
+              className="panel edge-lit relative max-h-full w-full max-w-md overflow-y-auto overscroll-contain rounded-3xl p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:p-8"
             >
               <button
                 type="button"
                 onClick={closeModal}
+                disabled={isSubmitting}
                 aria-label={t.featureRequest.closeAria}
                 className="absolute end-5 top-5 flex size-9 items-center justify-center rounded-full border border-hair text-mist transition duration-300 hover:border-neon-deep hover:text-neon"
               >
@@ -202,7 +220,8 @@ export default function FeatureRequest() {
                 {t.featureRequest.modalSubtitle}
               </p>
 
-              <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit}>
+              <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit} aria-busy={isSubmitting}>
+                <fieldset disabled={isSubmitting} className="contents">
                 <label className="flex flex-col gap-1.5 text-sm text-mist">
                   {t.featureRequest.nameLabel}
                   <input
@@ -241,8 +260,11 @@ export default function FeatureRequest() {
                   />
                 </div>
 
+                {validationError ? (
+                  <p role="alert" className="text-sm text-amber-soft">{t.featureRequest.validationError}</p>
+                ) : null}
                 {submitError ? (
-                  <p className="text-sm text-amber-soft">{t.featureRequest.submitError}</p>
+                  <p role="alert" className="text-sm text-amber-soft">{t.featureRequest.submitError}</p>
                 ) : null}
                 {rateLimited ? (
                   <p role="alert" className="text-sm text-amber-soft">{t.featureRequest.rateLimitError}</p>
@@ -253,8 +275,10 @@ export default function FeatureRequest() {
                   disabled={isSubmitting}
                   className="mt-1 inline-flex h-14 w-full shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-neon px-7 font-display text-base text-[#021309] shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-neon-soft hover:shadow-[0_0_40px_-4px_rgb(92_255_157/0.6)] disabled:pointer-events-none disabled:opacity-60"
                 >
-                  {t.featureRequest.submitCta}
+                  {isSubmitting ? t.featureRequest.submittingLabel : t.featureRequest.submitCta}
                 </button>
+                </fieldset>
+                <p role="status" className="sr-only">{isSubmitting ? t.featureRequest.submittingLabel : ""}</p>
               </form>
             </motion.div>
           ) : null}
@@ -280,6 +304,7 @@ export default function FeatureRequest() {
           ) : null}
         </AnimatePresence>
       </div>
+      </OverlayPortal>
     </section>
   );
 }

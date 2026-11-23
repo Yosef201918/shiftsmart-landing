@@ -1,187 +1,63 @@
 "use client";
 
-import { Clock4, Download, FileText, Mail, ShieldCheck, type LucideIcon } from "lucide-react";
-
+import Image from "next/image";
+import { ArrowUpRight, Download, FileText, Mail, ShieldCheck } from "lucide-react";
 import { FacebookIcon, InstagramIcon, TiktokIcon } from "@/components/SocialIcons";
-import {
-  CONTACT_EMAIL,
-  CONTACT_MAILTO,
-  EXTERNAL_LINK_PROPS,
-  FACEBOOK_URL,
-  INSTAGRAM_URL,
-  PLAY_STORE_URL,
-  TIKTOK_URL,
-} from "@/lib/links";
+import { CONTACT_EMAIL, CONTACT_MAILTO, EXTERNAL_LINK_PROPS, FACEBOOK_URL, INSTAGRAM_URL, PLAY_STORE_URL, TIKTOK_URL } from "@/lib/links";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-
-type FooterLink = {
-  label: string;
-  href: string;
-  icon: LucideIcon;
-  external: boolean;
-  /**
-   * מכריח דיר LTR על כתובת המייל בלבד — היא תמיד תווים לטיניים ללא קשר
-   * לשפת הממשק. שני הקישורים המתורגמים האחרים לא צריכים דיר משלהם;
-   * הם יורשים אותו מ-<html> ומתהפכים ממילא נכון בכל שפה.
-   */
-  forceLtr?: boolean;
-};
-
-type SocialLink = {
-  label: string;
-  href: string;
-  Icon: typeof FacebookIcon;
-  /** צבע המותג שנדלק במעבר עכבר */
-  hover: string;
-  /** האם לפתוח בלשונית חדשה עם מאפייני האבטחה של EXTERNAL_LINK_PROPS */
-  external: boolean;
-};
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Footer() {
   const { t } = useLanguage();
-
-  /* נקבע בזמן הבנייה — מונע פער בין רינדור השרת לרינדור הלקוח */
-  const year = new Date().getFullYear();
-
-  const footerLinks: FooterLink[] = [
-    {
-      label: t.footer.linkPlayStore,
-      href: PLAY_STORE_URL,
-      icon: Download,
-      external: true,
-    },
-    {
-      label: CONTACT_EMAIL,
-      href: CONTACT_MAILTO,
-      icon: Mail,
-      external: false,
-      forceLtr: true,
-    },
-    /*
-     * שלב 28: קישור פנימי לדף מדיניות הפרטיות (app/privacy/page.tsx) —
-     * external:false כי זה נתיב באותו אתר, לא צריך להיפתח בלשונית חדשה.
-     */
-    {
-      label: t.footer.linkPrivacyPolicy,
-      href: "/privacy",
-      icon: ShieldCheck,
-      external: false,
-    },
-    /*
-     * שלב 34: קישור פנימי לדף תנאי השימוש (app/terms/page.tsx) — אותו דפוס
-     * בדיוק כמו מדיניות הפרטיות שמעליו, external:false כי זה נתיב באותו אתר.
-     */
-    {
-      label: t.footer.linkTermsOfService,
-      href: "/terms",
-      icon: FileText,
-      external: false,
-    },
-  ];
-
-  /*
-   * שלב 27: פייסבוק חובר לעמוד הרשמי (FACEBOOK_URL) — כל שלוש הרשתות
-   * החברתיות פעילות עכשיו. במעבר עכבר האייקון והמסגרת נצבעים בצבע המותג
-   * ומקבלים הילה תואמת.
-   */
-  const socialLinks: SocialLink[] = [
-    {
-      label: t.footer.socialFacebookAria,
-      href: FACEBOOK_URL,
-      Icon: FacebookIcon,
-      hover:
-        "hover:border-[#1877F2] hover:text-[#1877F2] hover:shadow-[0_0_24px_-6px_#1877F2]",
-      external: true,
-    },
-    {
-      label: t.footer.socialInstagramAria,
-      href: INSTAGRAM_URL,
-      Icon: InstagramIcon,
-      hover:
-        "hover:border-[#E1306C] hover:text-[#E1306C] hover:shadow-[0_0_24px_-6px_#E1306C]",
-      external: true,
-    },
-    {
-      label: t.footer.socialTiktokAria,
-      href: TIKTOK_URL,
-      Icon: TiktokIcon,
-      hover:
-        "hover:border-[#25F4EE] hover:text-[#25F4EE] hover:shadow-[0_0_24px_-6px_#25F4EE]",
-      external: true,
-    },
+  const socialLinks = [
+    { label: t.footer.socialFacebookAria, name: "Facebook", href: FACEBOOK_URL, Icon: FacebookIcon, theme: "facebook" },
+    { label: t.footer.socialInstagramAria, name: "Instagram", href: INSTAGRAM_URL, Icon: InstagramIcon, theme: "instagram" },
+    { label: t.footer.socialTiktokAria, name: "TikTok", href: TIKTOK_URL, Icon: TiktokIcon, theme: "tiktok" },
   ];
 
   return (
-    // id="site-footer": משמש עוגן ל-IntersectionObserver ב-StickyCta,
-    // כדי שהכפתור הצף ידע להיעלם ברגע שהפוטר נכנס לתצוגה (ראו הסבר שם).
-    <footer id="site-footer" className="relative z-10 px-5 pb-10 sm:px-8 lg:px-12">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="rule-hair" />
-
-        <div className="flex flex-col gap-10 pt-12 lg:flex-row lg:items-start lg:justify-between">
-          {/* ---------- מותג ---------- */}
-          <div className="max-w-sm">
-            <div className="flex items-center gap-3">
-              <span className="panel brackets flex size-11 items-center justify-center rounded-xl">
-                <Clock4 className="size-5 text-neon" strokeWidth={1.75} />
-              </span>
+    <footer id="site-footer" className="relative z-10 px-5 pb-8 pt-8 sm:px-8 lg:px-12">
+      <div className="footer-shell mx-auto max-w-6xl">
+        <NewsletterSignup />
+        <div className="grid gap-10 p-6 sm:p-9 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-16 lg:p-12">
+          <div>
+            <div className="flex items-center gap-4">
+              <Image src="/icon-192.png" alt="" width={76} height={76} className="brand-app-icon size-[68px] shrink-0 rounded-[19px] sm:size-[76px]" />
               <div>
-                <p className="font-display text-base text-chalk">
-                  {t.brand.name}
-                </p>
-                <p className="text-sm text-mist">{t.footer.tagline}</p>
+                <p className="font-display text-2xl text-chalk sm:text-3xl" dir="ltr">{t.brand.name}</p>
+                <p className="mt-1 max-w-xs text-sm leading-relaxed text-mist">{t.footer.tagline}</p>
               </div>
             </div>
-
-            {/* ---------- רשתות חברתיות ---------- */}
-            <div className="mt-7">
-              <p className="text-xs tracking-wide text-mist">
-                {t.footer.followUs}
-              </p>
-              <ul className="mt-3 flex items-center gap-3">
-                {socialLinks.map(({ label, href, Icon, hover, external }) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      aria-label={label}
-                      {...(external ? EXTERNAL_LINK_PROPS : {})}
-                      className={`panel flex size-11 items-center justify-center rounded-full text-mist transition duration-300 hover:-translate-y-0.5 ${hover}`}
-                    >
-                      <Icon className="size-5" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* ---------- קישורים ויצירת קשר ---------- */}
-          <nav aria-label={t.footer.linksAriaLabel}>
-            <ul className="mt-3 flex flex-col gap-3">
-              {footerLinks.map(({ label, href, icon: Icon, external, forceLtr }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    {...(external ? EXTERNAL_LINK_PROPS : {})}
-                    className="group inline-flex min-h-6 items-center gap-2.5 text-sm text-mist transition duration-300 hover:text-neon"
-                  >
-                    <Icon
-                      className="size-4 shrink-0 transition duration-300 group-hover:text-neon"
-                      strokeWidth={1.75}
-                    />
-                    <span dir={forceLtr ? "ltr" : undefined}>{label}</span>
+            <p className="mb-4 mt-8 text-sm text-mist">{t.footer.followUs}</p>
+            <ul className="flex flex-wrap gap-4">
+              {socialLinks.map(({ label, name, href, Icon, theme }) => (
+                <li key={name}>
+                  <a href={href} aria-label={label} {...EXTERNAL_LINK_PROPS} className="footer-social-link group">
+                    <span className={`footer-social-tile footer-social-${theme}`}><Icon className="size-6" /></span>
+                    <span className="mt-3 text-[11px] font-medium tracking-wide text-mist transition-colors group-hover:text-chalk" dir="ltr">{name}</span>
                   </a>
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
+
+          <div className="footer-download-panel min-w-0 rounded-2xl p-4 sm:p-7">
+            <p className="mb-5 font-display text-lg sm:text-xl leading-relaxed text-chalk">{t.hero.kicker}</p>
+            <a href={PLAY_STORE_URL} data-download-placement="footer" {...EXTERNAL_LINK_PROPS} className="footer-download-button flex min-h-16 w-full items-center justify-between gap-4 rounded-xl px-3 py-4 sm:px-5">
+              <span className="flex items-center gap-2 sm:gap-3"><Download className="size-5 shrink-0 sm:size-6" strokeWidth={2} /><span className="whitespace-nowrap font-display text-xs sm:text-base">{t.footer.linkPlayStore}</span></span>
+              <ArrowUpRight className="hidden size-5 shrink-0 sm:block" aria-hidden="true" />
+            </a>
+            <a href={CONTACT_MAILTO} className="mt-5 flex min-h-11 items-center justify-center gap-2 text-sm text-mist transition-colors hover:text-neon"><Mail className="size-4 shrink-0" aria-hidden="true" /><span dir="ltr">{CONTACT_EMAIL}</span></a>
+          </div>
         </div>
 
-        <div className="rule-hair mt-12" />
-
-        <p className="mt-6 text-xs leading-relaxed text-mist/70">
-          {t.footer.copyright(year)}
-        </p>
+        <div className="flex flex-col gap-4 border-t border-white/10 px-6 py-5 sm:px-9 lg:flex-row lg:items-center lg:justify-between lg:px-12">
+          <nav aria-label={t.footer.linksAriaLabel} className="flex flex-wrap gap-x-6 gap-y-1">
+            <a href="/privacy" className="inline-flex min-h-11 items-center gap-2 text-sm text-mist transition-colors hover:text-neon"><ShieldCheck className="size-4" aria-hidden="true" />{t.footer.linkPrivacyPolicy}</a>
+            <a href="/terms" className="inline-flex min-h-11 items-center gap-2 text-sm text-mist transition-colors hover:text-neon"><FileText className="size-4" aria-hidden="true" />{t.footer.linkTermsOfService}</a>
+          </nav>
+          <p className="text-xs leading-relaxed text-mist/70">{t.footer.copyright(new Date().getFullYear())}</p>
+        </div>
       </div>
     </footer>
   );

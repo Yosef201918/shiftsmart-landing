@@ -17,25 +17,25 @@ const siteUrl =
       : "http://localhost:3000");
 
 /* תאריך קבוע שמעודכן ידנית בכל שינוי תוכן מהותי — new Date() שינה אותו בכל בנייה ולכן גוגל התעלמה מהשדה */
-const lastModified = new Date("2026-10-18");
+const contentUpdated = new Date("2026-11-01");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: siteUrl,
-      lastModified,
+      lastModified: contentUpdated,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${siteUrl}/privacy`,
-      lastModified,
+      lastModified: contentUpdated,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${siteUrl}/terms`,
-      lastModified,
+      lastModified: new Date("2026-10-09"),
       changeFrequency: "yearly",
       priority: 0.3,
     },

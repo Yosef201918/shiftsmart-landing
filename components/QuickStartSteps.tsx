@@ -26,7 +26,7 @@ const STEP_META: [StepMeta, StepMeta, StepMeta] = [
 ];
 
 const HOVER_LIFT = {
-  y: -4,
+  y: -1,
   transition: { duration: 0.25, ease: "easeOut" },
 } as const;
 
@@ -72,24 +72,24 @@ export default function QuickStartSteps() {
           const number = String(index + 1).padStart(2, "0");
 
           const cardClass =
-            "panel panel-rail edge-lit group flex items-center gap-3 rounded-xl p-3.5 transition-colors duration-500 hover:border-hair-lit sm:p-4";
+            "quick-start-step group flex items-center gap-3 rounded-lg p-3.5 transition-colors duration-200 sm:p-4";
 
           const content = (
             <>
-              <span className="relative flex size-11 shrink-0 items-center justify-center rounded-xl border border-hair bg-abyss/60 transition duration-500 group-hover:border-neon-deep">
+              <span className="relative flex size-11 shrink-0 items-center justify-center rounded-lg bg-neon/[0.05]">
                 <Icon className="size-5 text-neon" strokeWidth={1.6} />
               </span>
 
               <span className="min-w-0">
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-start gap-1.5">
                   <span dir="ltr" className="font-mono text-[0.65rem] text-neon/60">
                     {number}
                   </span>
-                  <span className="truncate font-display text-sm text-chalk sm:text-base">
+                  <span className="font-display text-sm leading-snug text-chalk sm:text-base">
                     {title}
                   </span>
                 </span>
-                <span className="mt-0.5 line-clamp-2 block text-xs leading-snug text-mist">
+                <span className="mt-1 block text-xs leading-snug text-mist">
                   {description}
                 </span>
               </span>
@@ -100,6 +100,7 @@ export default function QuickStartSteps() {
             <motion.a
               key={number}
               href={href}
+              data-download-placement="quick_start"
               {...EXTERNAL_LINK_PROPS}
               variants={fadeUp}
               whileHover={HOVER_LIFT}

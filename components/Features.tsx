@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import {
-  BatteryCharging,
+  ShieldCheck,
+  MessageSquare,
   Briefcase,
   Calculator,
   CalendarDays,
@@ -17,7 +18,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import { fadeUp, staggerContainer, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /*
@@ -63,6 +63,7 @@ const FEATURE_META: [
   FeatureMeta,
   FeatureMeta,
   FeatureMeta,
+  FeatureMeta,
 ] = [
   { icon: FingerprintPattern, area: "lg:col-span-2 lg:row-span-2", shape: "tall" },
   { icon: Calculator, area: "lg:col-span-4", shape: "wide", accent: "neon" },
@@ -70,12 +71,13 @@ const FEATURE_META: [
   { icon: Volume2, area: "lg:col-span-2", shape: "standard" },
   { icon: DatabaseBackup, area: "lg:col-span-2 lg:row-span-2", shape: "tall" },
   { icon: MapPinned, area: "lg:col-span-2", shape: "standard" },
-  { icon: BatteryCharging, area: "lg:col-span-2", shape: "standard" },
+  { icon: ShieldCheck, area: "lg:col-span-2", shape: "standard" },
   { icon: Briefcase, area: "lg:col-span-2", shape: "standard" },
   { icon: Receipt, area: "lg:col-span-2", shape: "standard", accent: "amber" },
   { icon: LayoutGrid, area: "lg:col-span-2", shape: "standard" },
   { icon: Zap, area: "lg:col-span-2", shape: "standard" },
   { icon: CalendarDays, area: "lg:col-span-2", shape: "standard" },
+  { icon: MessageSquare, area: "sm:col-span-2 lg:col-span-6", shape: "wide" },
 ];
 
 /** מיפוי גודל → סידור פנימי, ריווח, מידות אייקון וטיפוגרפיה */
@@ -139,37 +141,28 @@ export default function Features() {
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* ---------- כותרת המקטע ---------- */}
-        <motion.div
+        <div
           className="max-w-2xl"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_ONCE}
         >
-          <motion.p
+          <p
             className="font-mono text-xs tracking-[0.3em] text-neon/60"
-            variants={fadeUp}
           >
             {t.features.kicker}
-          </motion.p>
-          <motion.h2
+          </p>
+          <h2
             className="mt-4 text-3xl font-extralight leading-tight text-chalk sm:text-4xl"
-            variants={fadeUp}
           >
             {t.features.titlePrefix}
             <span className="font-display font-normal text-neon">
               {t.features.titleHighlight}
             </span>
-          </motion.h2>
-        </motion.div>
+          </h2>
+        </div>
 
         {/* ---------- Bento ---------- */}
-        <motion.div
+        {/* Always visible: a tall mobile grid cannot meet a section-wide intersection threshold. */}
+        <div
           className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6 lg:auto-rows-[minmax(13.5rem,auto)] lg:gap-6"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_ONCE}
         >
           {FEATURE_META.map(({ icon: Icon, area, shape, accent }, index) => {
             const { title, description } = t.features.items[index];
@@ -178,19 +171,17 @@ export default function Features() {
 
             return (
               <motion.article
-                key={title}
-                variants={fadeUp}
+                key={index}
                 /*
                  * ההרמה ב-hover מנוהלת ע"י framer-motion ולא ע"י Tailwind:
                  * framer-motion כותב transform ישירות ל-style, ולכן מחלקת
                  * hover:-translate-y של Tailwind הייתה נדרסת ולא עובדת.
                  */
                 whileHover={{
-                  y: -6,
+                  y: -2,
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                /* edge-lit תופסת ::before ו-panel-rail תופסת ::after — אין התנגשות */
-                className={`panel panel-rail edge-lit group flex rounded-2xl transition-colors duration-500 hover:border-hair-lit ${form.card} ${area} ${tone.card}`}
+                className={`feature-surface group flex rounded-2xl transition-colors duration-200 ${form.card} ${area} ${tone.card}`}
               >
                 <span
                   className={`flex shrink-0 items-center justify-center border transition duration-500 ${form.iconBox} ${tone.iconBox}`}
@@ -214,8 +205,9 @@ export default function Features() {
               </motion.article>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+

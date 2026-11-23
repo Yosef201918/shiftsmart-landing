@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
@@ -15,12 +15,18 @@ export default function AppCarousel() {
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     direction: dir,
-    loop: true,
+    loop: false,
     align: "center",
+    containScroll: "keepSnaps",
+    dragFree: true,
     skipSnaps: false,
+    duration: 20,
   });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+  const dragging = useRef(false);
 
   /*
    * embla קורא את direction רק בהקמה הראשונית. כשהמשתמש מחליף שפה
@@ -33,15 +39,44 @@ export default function AppCarousel() {
   useEffect(() => {
     emblaApi?.reInit({
       direction: dir,
-      loop: true,
+      loop: false,
       align: "center",
-      skipSnaps: false,
+      dragFree: true,
     });
   }, [dir, lang, emblaApi]);
+
+  // A mouse released outside the browser may never send Embla its document mouseup.
+  // Reset only an interrupted drag; normal releases keep their free-scroll position.
+  useEffect(() => {
+    if (!emblaApi) return;
+    const start = () => { dragging.current = true; };
+    const end = () => { dragging.current = false; };
+    const cancel = () => {
+      if (!dragging.current) return;
+      dragging.current = false;
+      emblaApi.reInit({ startIndex: emblaApi.selectedScrollSnap() });
+    };
+    const recoverReleasedMouse = (event: MouseEvent) => {
+      if (event.buttons === 0) cancel();
+    };
+    emblaApi.on("pointerDown", start).on("pointerUp", end);
+    window.addEventListener("blur", cancel);
+    document.addEventListener("mousemove", recoverReleasedMouse, true);
+    return () => {
+      dragging.current = false;
+      emblaApi.off("pointerDown", start).off("pointerUp", end);
+      window.removeEventListener("blur", cancel);
+      document.removeEventListener("mousemove", recoverReleasedMouse, true);
+    };
+  }, [emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
+    // Free dragging may stop between snaps; enable arrows by position, not nearest snap.
+    const progress = emblaApi.scrollProgress();
+    setCanPrev(progress > 0.001);
+    setCanNext(progress < 0.999);
   }, [emblaApi]);
 
   useEffect(() => {
@@ -54,10 +89,12 @@ export default function AppCarousel() {
      */
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
+    emblaApi.on("scroll", onSelect);
 
     return () => {
       emblaApi.off("select", onSelect);
       emblaApi.off("reInit", onSelect);
+      emblaApi.off("scroll", onSelect);
     };
   }, [emblaApi, onSelect]);
 
@@ -68,11 +105,22 @@ export default function AppCarousel() {
     [emblaApi],
   );
 
+  const onGalleryKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      const next = event.key === (dir === "rtl" ? "ArrowLeft" : "ArrowRight");
+      if (next) scrollNext(); else scrollPrev();
+    } else if (event.key === "Home" || event.key === "End") {
+      event.preventDefault();
+      scrollTo(event.key === "Home" ? 0 : shots.length - 1);
+    }
+  };
+
   return (
     <section
       id="gallery"
-      /* פוצל sm:pb-32 שהיה חריג לכל שאר המקטעים (כולם pb-28...lg:pb-40 בלי override ב-sm) — יצר קפיצת ריווח לא עקבית ברוחב טאבלט */
-      className="relative scroll-mt-16 pb-28 lg:pb-40"
+      className="relative scroll-mt-16 pb-20 lg:pb-28"
     >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12">
         {/* ---------- כותרת המקטע ---------- */}
@@ -91,6 +139,7 @@ export default function AppCarousel() {
               {t.gallery.kicker}
             </motion.p>
             <motion.h2
+              id="gallery-heading"
               className="mt-4 text-3xl font-extralight leading-tight text-chalk sm:text-4xl"
               variants={fadeUp}
             >
@@ -109,16 +158,18 @@ export default function AppCarousel() {
             <button
               type="button"
               onClick={scrollPrev}
+              disabled={!canPrev}
               aria-label={t.gallery.prevAria}
-              className="panel flex size-11 items-center justify-center rounded-full text-chalk transition duration-300 hover:border-neon-deep hover:text-neon"
+              className="panel flex size-11 items-center justify-center rounded-full text-chalk transition duration-200 hover:border-neon-deep hover:text-neon disabled:cursor-default disabled:opacity-30"
             >
               <ChevronLeft className="size-5 rtl:rotate-180" strokeWidth={2} />
             </button>
             <button
               type="button"
               onClick={scrollNext}
+              disabled={!canNext}
               aria-label={t.gallery.nextAria}
-              className="panel flex size-11 items-center justify-center rounded-full text-chalk transition duration-300 hover:border-neon-deep hover:text-neon"
+              className="panel flex size-11 items-center justify-center rounded-full text-chalk transition duration-200 hover:border-neon-deep hover:text-neon disabled:cursor-default disabled:opacity-30"
             >
               <ChevronRight className="size-5 rtl:rotate-180" strokeWidth={2} />
             </button>
@@ -131,19 +182,19 @@ export default function AppCarousel() {
         בקצוות המסך. overflow-hidden כאן הוא גם מה שמונע גלילה אופקית של הדף.
       */}
       <motion.div
-        className="mt-12 overflow-hidden"
+        className="mt-8 overflow-hidden sm:mt-10"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT_ONCE}
       >
-        <div ref={emblaRef} className="overflow-hidden">
+        <div ref={emblaRef} tabIndex={0} role="region" aria-labelledby="gallery-heading" onKeyDown={onGalleryKeyDown} className="overflow-hidden">
           {/*
             will-change-transform: embla כותב translate3d על האלמנט הזה בכל
             פריים בזמן גרירה/גלילה — זהו האלמנט הכי "כבד" באנימציה בכל הדף,
             ורמז מוקדם לדפדפן מונע קפיצת שכבת קומפוזיציה ברגע הראשון של הגרירה.
           */}
-          <div className="flex touch-pan-y gap-5 px-5 will-change-transform sm:gap-7 sm:px-8">
+          <div className="flex cursor-grab select-none touch-pan-y gap-5 active:cursor-grabbing px-5 will-change-transform sm:gap-7 sm:px-8">
             {shots.map((shot, index) => (
               <div
                 key={shot.src}
@@ -152,20 +203,23 @@ export default function AppCarousel() {
                 style={{ aspectRatio: `${shot.width} / ${shot.height}` }}
               >
                 <div
-                  className={`relative h-full w-full overflow-hidden rounded-[1.75rem] border transition duration-500 ${
+                  className={`relative h-full w-full overflow-hidden rounded-xl border transition duration-500 ${
                     index === selectedIndex
                       ? "border-neon-deep shadow-[0_30px_70px_-25px_rgba(0,0,0,0.95),0_0_50px_-16px_rgba(92,255,157,0.45)]"
                       : "border-hair shadow-[0_24px_60px_-28px_rgba(0,0,0,0.9)]"
                   }`}
                 >
+                  <a href={shot.src} target="_blank" rel="noopener noreferrer" draggable={false} className="block h-full w-full">
                   <Image
+                    draggable={false}
                     src={shot.src}
                     alt={shot.alt}
                     width={shot.width}
                     height={shot.height}
-                    sizes="(min-width: 640px) 260px, 200px"
-                    className="h-full w-full object-cover"
+                    sizes="(min-width: 640px) 347px, 267px"
+                    className="h-full w-full object-contain"
                   />
+                  </a>
                 </div>
               </div>
             ))}
@@ -180,7 +234,7 @@ export default function AppCarousel() {
         width הוא תכונת פריסה שגורמת לחישוב reflow בכל פריים של האנימציה;
         scaleX רץ על ה-GPU בלבד ואינו נוגע בפריסה כלל.
       */}
-      <div className="mt-8 flex items-center justify-center gap-2.5">
+      <div className="mt-5 flex items-center justify-center gap-2.5">
         {shots.map((shot, index) => (
           <button
             key={shot.src}
@@ -188,7 +242,7 @@ export default function AppCarousel() {
             onClick={() => scrollTo(index)}
             aria-label={t.gallery.goToSlideAria(index + 1)}
             aria-current={index === selectedIndex}
-            className="group flex h-6 w-7 items-center justify-center"
+            className="group flex h-11 w-9 items-center justify-center"
           >
             <span
               className={`block h-1.5 w-7 origin-center rounded-full transition-[transform,background-color] duration-400 will-change-transform ${

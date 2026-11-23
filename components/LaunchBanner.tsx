@@ -21,6 +21,7 @@ export default function LaunchBanner() {
     <div className="relative z-20 border-b border-hair bg-abyss/80 backdrop-blur-sm sm:backdrop-blur-md">
       <a
         href={PLAY_STORE_URL}
+        data-download-placement="launch_banner"
         {...EXTERNAL_LINK_PROPS}
         className="group mx-auto flex w-full max-w-6xl items-center justify-center gap-2 px-5 py-1 text-center text-[0.7rem] text-mist transition duration-300 hover:text-neon sm:gap-2.5 sm:px-8 sm:py-2 sm:text-xs lg:px-12"
       >
